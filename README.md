@@ -1,6 +1,6 @@
 # Entorno de desarrollo Odoo v16.0
 ### Docker, VSCode + Docker, pyright y debugpy
-#### Basado en el _[repositorio]("https://github.com/mjavint/docker-odoo-dev")_
+#### Basado en el _[repositorio](https://github.com/mjavint/docker-odoo-dev)_
 
 ### Prerequisitos
 
