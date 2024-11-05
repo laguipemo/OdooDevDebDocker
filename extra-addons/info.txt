@@ -1,0 +1,1 @@
+This folder stores the third-party and own modules that you wish to install.
