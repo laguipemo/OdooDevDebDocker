@@ -73,7 +73,7 @@
 
      ```
      $ git submodule add --branch 16.0 https://github.com/odoo-ide/odoo-stubs.git odoo-stubs16
-    ```
+     ```
 
    - Cambiar al nuevo directorio `odoo-stubs16`:
 
@@ -83,9 +83,9 @@
 
    - Traer, desde origin, el historial de las últimas confirmaciones (depth 1) correspondientes exclusivamente a la rama 16.0:
 
-      ```
-      $ git fecth --depth=1 origin 16.0:16.0
-      ```
+     ```
+     $ git fecth --depth=1 origin 16.0:16.0
+     ```
 
    - Cambiar a la rama 16.0 para activar su contendio:
 
