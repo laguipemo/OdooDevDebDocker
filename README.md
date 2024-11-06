@@ -73,6 +73,37 @@
 
      ```
      $ git submodule add --branch 16.0 https://github.com/odoo-ide/odoo-stubs.git odoo-stubs16
+    ```
+
+   - Cambiar al nuevo directorio `odoo-stubs16`:
+
+     ```
+     $ cd odoo-stubs16
+     ```
+
+   - Traer, desde origin, el historial de las últimas confirmaciones (depth 1) correspondientes exclusivamente a la rama 16.0:
+
+      ```
+      $ git fecth --depth=1 origin 16.0:16.0
+      ```
+
+   - Cambiar a la rama 16.0 para activar su contendio:
+
+     ```
+     $ git switch 16.0
+     ```
+
+   - Volver al directorio del proyecto principal:
+
+     ```
+     $ cd ..
+     ```
+
+   - Configurar el fichero .gitmodules para indicar la rama y el depth que se desean para este submódulo:
+
+     ```
+     $ git config -f .gitmodules submodule.odoo-stubs16.branch 16.0
+     $ git config -f .gitmodules submodule.odoo-stubs16.depth 1
      ```
 
 5. Agregar carpeta `odoo16` con el código fuente de Odoo al área de trabajo que hemos creado. Para ello utilizamos la opción `Agregar carpeta al área de trabajo...` en el menú contextual de VSCode.
