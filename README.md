@@ -78,4 +78,23 @@
 5. Agregar carpeta `odoo16` con el código fuente de Odoo al área de trabajo que hemos creado. Para ello utilizamos la opción `Agregar carpeta al área de trabajo...` en el menú contextual de VSCode.
 
 ### Configuración del entorno de trabajo
-   
+
+1. Actualizr el fichero `.gitignore` para que no tenga en cuenta el fichero `.log`de Odoo, las copias de seguridad de la base de datos, etc.
+2. Configurar y modificar el fichero `pyrightconfig.json`según los paths a la carpeta `odoo-stubs16`, el código de Odoo clonado en la carpeta `odoo16`, específicamente su carpeta `addons`; además de los paths a las otas carpetas `extra-addons-***` donde colocamos los módulos de terceros y la de `custom-addons` donde ubicamos los módulos que estamos desarrollando o depurando.
+3. Adecuar los ficheros de configuración `odoo.conf` y `default.conf` a nuestras necesidades.
+4. Adecuar a nuestras necesidades el fichero `.env`. En este punto tenemos que comprobar las variables de entorno:
+   - Puertos locales (libres y habilitados en el router si se van a acceder desde el exterior) y nombres de contenedores, usuarios, contraseñas, etc.
+   - Path a la carpeta con el código de `Odoo`
+   - El ENTRYPOINT con el que se lanza `Odoo` con  `debugpy`escuchando el puerto DEBUGPY adecuado y cargando el fichero `odoo.conf`. 
+   Además en este comando se puede incluir la base de datos a emplear con la opción `-d nombre_base_datos` y el nombre del módulo que deseamos depurar mediante la opción `-i nombreDelModulo`.
+5. Adecuar a nuestras necesidades el fichero   `docker-compose.yml`. En mi caso suelo configurar este fichero para crear los servicios: `Odoo`, `Postgres`, `Pgadmin`, `Nginx` y `Portainer`. Teniendo en cuenta los puertos locales libres y habilitados.
+6. Levantar los servicios ejecutando:
+`docker compose up -d`
+7. Crear el fichero de configuración para la depuración:
+   - Ir a la opción `Ejecución y Depuración` de VScode para crear un nuevo fichero de configuración seleccionando el enlace `crear un archivo launch.json`
+   - Se nos solicita entonces la carpeta de trabajo (workspace) en la que deseamos que se cree      el fichero de configuración
+   - Se nos solicta que el `debugger` que utilizaremos, en este caso es `Python`.
+   - Ahora debemos indicar la configuración de depuración que utilizaremos. En nuestro caso será `Remote Attach`
+   - Se nos solicita entonces el ip del servidor al que nos vamos a conectar remotamente para la depuración. En este caso `localhost`.
+   - Tenemos que indicar entonces el puerto por el que estableceremos la conexión. En este caso es el que configuramos para la escucha de `DEBUGPY`
+8. Creado el fichero `lunch.json` con la configuración para la depuración, lo adecuamos a nuestras necesidades. Para ello tenemos que indicar el mapeo de los diferentes paths donde se encuentran los módulos internos, los intalados y los que estamos desarrollando.  
