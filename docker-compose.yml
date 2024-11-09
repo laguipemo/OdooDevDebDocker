@@ -1,0 +1,58 @@
+services:
+  dev-odoo-service:
+    container_name: ${ODOO_CONTAINER_NAME}
+    build:
+      context: ./dockerfiles
+      dockerfile: odoo.Dockerfile
+    depends_on:
+      - dev-postgres-service
+    ports:
+      - ${ODOO_LOCAL_PORT}:8069
+      - ${DEBUGPY_LOCAL_PORT}:8888
+    volumes:
+      - ${ODOO_LOCAL_SERVER}:/var/lib/odoo/odoo
+      - ./custom-addons:/mnt/custom-addons
+      - ./extra-addons:/mnt/extra-addons
+      - ./extra-addons-bank-payment:/mnt/extra-addons-bank-payment
+      - ./extra-addons-commission:/mnt/extra-addons-commission
+      - ./extra-addons-l10n-spain:/mnt/extra-addons-l10n-spain
+      - ./extra-addons-maintenance:/mnt/extra-addons-maintenance
+      - ./extra-addons-management-system:/mnt/extra-addons-management-system
+      - ./extra-addons-web:/mnt/extra-addons-web
+      - ./log:/var/log/odoo
+      - ./odoo-config:/etc/odoo
+      - ./devdb-backups:/mnt/devdb-backups
+      - dev-odoo-data:/var/lib/odoo
+    environment:
+      - HOST=dev-postgres-service
+      - USER=odoo
+      - PASSWORD=odoo
+    entrypoint: ${ENTRYPOINT}
+    restart: always
+    
+  dev-postgres-service:
+    container_name: ${PG_CONTAINER_NAME}
+    image: postgres:${PG_VERSION}
+    ports:
+      - ${PG_LOCAL_PORT}:5432
+    volumes:
+      - dev-postgres-dev-odoo-db-data:/var/lib/postgresql/data/pgdata
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    restart: always
+
+  dev-portainer-service:
+    container_name: ${PORTAINER_CONTAINER_NAME}
+    image: portainer/portainer-ce:${PORTAINER_VERSION}
+    ports: 
+      - ${PORTAINER_LOCAL_PORT}:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+volumes:
+  dev-odoo-data:
+  dev-postgres-dev-odoo-db-data:
