@@ -119,6 +119,11 @@
    - El ENTRYPOINT con el que se lanza `Odoo` con  `debugpy`escuchando el puerto DEBUGPY adecuado y cargando el fichero `odoo.conf`. 
    Además en este comando se puede incluir la base de datos a emplear con la opción `-d nombre_base_datos` y el nombre del módulo que deseamos depurar mediante la opción `-i nombreDelModulo`.
 5. Adecuar a nuestras necesidades el fichero   `docker-compose.yml`. En mi caso suelo configurar este fichero para crear los servicios: `Odoo`, `Postgres`, `Pgadmin`, `Nginx` y `Portainer`. Teniendo en cuenta los puertos locales libres y habilitados.
+
+   > [!NOTE]
+   >
+   > Para simplificar el entorno de desarrollo, no construyo los servicios de `Pgadmin` ni de `Nginx` 
+
 6. Levantar los servicios ejecutando:
 `docker compose up -d`
 7. Crear el fichero de configuración para la depuración:
