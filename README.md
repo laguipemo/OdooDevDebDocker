@@ -111,7 +111,7 @@
 ### Configuración del entorno de trabajo
 
 1. Actualizr el fichero `.gitignore` para que no tenga en cuenta el fichero `.log`de Odoo, las copias de seguridad de la base de datos, etc.
-2. Configurar y modificar el fichero `pyrightconfig.json`según los paths a la carpeta `odoo-stubs16`, el código de Odoo clonado en la carpeta `odoo16`, específicamente su carpeta `addons`; además de los paths a las otas carpetas `extra-addons-***` donde colocamos los módulos de terceros y la de `custom-addons` donde ubicamos los módulos que estamos desarrollando o depurando.
+2. Configurar y modificar el fichero `pyrightconfig.json` según los paths a la carpeta `odoo-stubs16`, el código de Odoo clonado en la carpeta `odoo16`, específicamente su carpeta `addons`; además de los paths a las otas carpetas `extra-addons-***` donde colocamos los módulos de terceros y la de `custom-addons` donde ubicamos los módulos que estamos desarrollando o depurando.q
 3. Adecuar los ficheros de configuración `odoo.conf` y `default.conf` a nuestras necesidades.
 4. Adecuar a nuestras necesidades el fichero `.env`. En este punto tenemos que comprobar las variables de entorno:
    - Puertos locales (libres y habilitados en el router si se van a acceder desde el exterior) y nombres de contenedores, usuarios, contraseñas, etc.
