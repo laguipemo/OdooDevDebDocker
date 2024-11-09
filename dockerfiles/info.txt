@@ -1,0 +1,1 @@
+In this folder the dockerfile files for building custom images are stored
