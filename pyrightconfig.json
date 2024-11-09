@@ -1,0 +1,15 @@
+{
+    "stubPath": "odoo-stubs16",
+    "extraPaths": [
+        "odoo16",
+        "odoo16/addons",
+        "extra-addons",
+        "extra-addons-bank-payment",
+        "extra-addons-commission",
+        "extra-addons-l10n-spain",
+        "extra-addons-maintenance",
+        "extra-addons-management-system",
+        "extra-addons-web",
+        "custom-addons",
+    ]
+}
