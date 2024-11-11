@@ -40,7 +40,7 @@ La vía más fácil para construir el entorno y comenzar a trabajar con él ser�
    $ docker compose up -d
    ```
 
-### Creación del entorno de trabajo
+### Creación del entorno de trabajo desde cero
 
 1. Clonar repositorio original asignándole un nombre si se desea:
 
