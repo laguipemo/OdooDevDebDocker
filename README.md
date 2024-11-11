@@ -7,14 +7,14 @@ Se ha optado por una estructura de carpetas donde colocar modulos de terceros, d
 
 ### Prerequisitos
 
-1. Tener instalado Git.
-2. Instalar _[VSCode](https://code.visualstudio.com)_ desde su página oficial
+1. Tener instalado [Git](https://git-scm.com/).
+2. Instalar _[VSCode](https://code.visualstudio.com)_ desde su página oficial.
 3. Instalar las extensiones necesarias para el trabajo en Odoo con VSCode.
    - [Python Support](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack)
    - [Odoo Support](https://marketplace.visualstudio.com/items?itemName=trinhanhngoc.vscode-odoo)
    - [Odoo Snippets Final](https://marketplace.visualstudio.com/items?itemName=mjavint.mjavint-odoo-snippets) (opcional)
 
-4. Tener instaldo [Docker](https://www.docker.com/)
+4. Tener instaldo [Docker](https://www.docker.com/).
 
 ### Consideraciones para obtener el entorno y trabajar rápidamente con él
 
@@ -39,7 +39,7 @@ La vía más fácil para construir el entorno y comenzar a trabajar con él ser�
    $ cd OdooDevDebDocker
    $ docker compose up -d
    ```
-   
+
 ### Creación del entorno de trabajo
 
 1. Clonar repositorio original asignándole un nombre si se desea:
