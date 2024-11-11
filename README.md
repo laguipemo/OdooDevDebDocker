@@ -2,6 +2,9 @@
 ### Docker, VSCode + Docker, pyright y debugpy
 #### Basado en el _[repositorio](https://github.com/mjavint/docker-odoo-dev)_
 
+En este repositorio ponemos a su disposición todo lo necesario para construir un entorno de trabajo destinado al desarrollo de applicaciones y módulos para Odoo 16 con facilidades de autocomplatado, depuración etc. Todo ello utilizado la tecnología Docker lo que nos permite montar el entorno en pocos minutos y comenzar a trabajar.
+Se ha optado por una estructura de carpetas donde colocar modulos de terceros, divididos según los paquetes a los que "pertenecen" los módulos. De modo que sea mucho más fácil la localización de módulos concretos cuando sea necesario actualizarlos, etc.
+
 ### Prerequisitos
 
 1. Tener instalado Git.
@@ -11,6 +14,32 @@
    - [Odoo Support](https://marketplace.visualstudio.com/items?itemName=trinhanhngoc.vscode-odoo)
    - [Odoo Snippets Final](https://marketplace.visualstudio.com/items?itemName=mjavint.mjavint-odoo-snippets) (opcional)
 
+4. Tener instaldo [Docker](https://www.docker.com/)
+
+### Consideraciones para obtener el entorno y trabajar rápidamente con él
+
+La vía más fácil para construir el entorno y comenzar a trabajar con él sería:
+
+1. Clonar este repositorio.
+
+   > [!IMPORTANT]
+   >
+   > Para el autocompletado y depuración se necesita contar con el codigo fuente de los [odoo-stubs 16.0](https://github.com/odoo-ide/odoo-stubs.git) y de [odoo 16.0](https://github.com/odoo/odoo.git). Además como decidimos incorporarlos a nuestro entorno como submódulos, la clonación del proyecto según:
+   >```
+   >$ git clone \
+   >     --recurse-submodules \
+   >     --remote-submodules \
+   >     --shallow-submodules \
+   >     https://>github.com/laguipemo/OdooDevDebDocker.git
+   >```
+
+2. Cambiarse al directorio del proyecto clonado para construir y levantar el entorno de trabajo con los servicios de odoo, postgres, etc. Para ello ejecutamos:
+
+   ```
+   $ cd OdooDevDebDocker
+   $ docker compose up -d
+   ```
+   
 ### Creación del entorno de trabajo
 
 1. Clonar repositorio original asignándole un nombre si se desea:
