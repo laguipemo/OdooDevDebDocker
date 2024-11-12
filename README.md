@@ -30,7 +30,7 @@ La vía más fácil para obtener, construir el entorno y comenzar a trabajar inm
    >     --recurse-submodules \
    >     --remote-submodules \
    >     --shallow-submodules \
-   >     https://>github.com/laguipemo/OdooDevDebDocker.git
+   >     https://github.com/laguipemo/OdooDevDebDocker.git
    >```
 
 2. Cambiarse al directorio del proyecto clonado, construir y levantar el entorno de trabajo con los servicios de `odoo`, `postgres`, etc. Para ello ejecutamos:
