@@ -22,23 +22,47 @@ La vía más fácil para obtener, construir el entorno y comenzar a trabajar inm
 
 1. Clonar este repositorio.
 
-   > [!IMPORTANT]
-   >
-   > Para el autocompletado y depuración se necesita contar con el codigo fuente de los [odoo-stubs 16.0](https://github.com/odoo-ide/odoo-stubs.git) y de [odoo 16.0](https://github.com/odoo/odoo.git). Además como decidimos incorporarlos a nuestro entorno como submódulos, la clonación del proyecto según:
-   >```
-   > git clone \
-   >     --recurse-submodules \
-   >     --remote-submodules \
-   >     --shallow-submodules \
-   >     https://github.com/laguipemo/OdooDevDebDocker.git
-   >```
-
-2. Cambiarse al directorio del proyecto clonado, construir y levantar el entorno de trabajo con los servicios de `odoo`, `postgres`, etc. Para ello ejecutamos:
+   Las funciones de autompletado y depuración necesitan el código fuente de los [odoo-stubs 16.0](https://github.com/odoo-ide/odoo-stubs.git) y el [odoo 16.0](https://github.com/odoo/odoo.git) los cuales fueron añadidos como submódulos para mantenerlos lo más actualizado posible. Es por ello que la clonación del proyecto se debe hacer según:
+   
+   ```
+   git clone \
+       --recurse-submodules \
+       --remote-submodules \
+       --shallow-submodules \
+       https://github.com/laguipemo/OdooDevDebDocker.git
+   ```
+2. Cambiarse al directorio del proyecto clonado
 
    ```
    cd OdooDevDebDocker
+   ```
+### Verificación y adecuación de la configuración del entorno de trabajo
+
+1. Comprobar que el fichero `.gitignore` excluye los ficheros y carpetas no deseados.
+2. Comporobar que el fichero `pyrightconfig.json` contiene los paths a la carpeta `odoo-stubs16`, el código de Odoo clonado en la carpeta `odoo16`, específicamente su carpeta `addons`; además de los paths a las otas carpetas `extra-addons-***` donde colocamos los módulos de terceros y la de `custom-addons` donde ubicamos los módulos que estamos desarrollando o depurando.
+3. Comprobar y adecuar los ficheros de configuración `odoo.conf` y `default.conf` a nuestras necesidades (`default.conf` no está incluido porque decidí simplificar el entorno de desarrollo prescindiendo de nginx)
+4. Verificar que el fichero `.env` sea el adecuado para nuestras necesidades . En este punto tenemos que comprobar las variables de entorno:
+   - Puertos locales (libres y habilitados en el router si se van a acceder desde el exterior) y nombres de contenedores, usuarios, contraseñas, etc.
+   - Path a la carpeta con el código de `Odoo`
+   - El ENTRYPOINT con el que se lanza `Odoo` con  `debugpy`escuchando el puerto DEBUGPY adecuado y cargando el fichero `odoo.conf`. 
+   Además en este comando se puede incluir la base de datos a emplear con la opción `-d nombre_base_datos` y el nombre del módulo que deseamos depurar mediante la opción `-i nombreDelModulo`.
+5. Comprobar y adecuar a nuestras necesidades el fichero   `docker-compose.yml`. En mi caso suelo configurar este fichero para crear los servicios: `Odoo`, `Postgres`, `Pgadmin`, `Nginx` y `Portainer` en producción. Sin embargo, para desarrollo prescindo de los servicios  `Pgadmin`, `Nginx` para simplificar el entorno. Verificar bien los puertos locales indicados estén libres y habilitados.
+6. Levantar los servicios ejecutando:
+   
+   ```
    docker compose up -d
    ```
+### Depuración en VSCode:
+   1. Crear la configuración para depuración según:
+   
+      - Ir a la opción `Ejecución y Depuración` de VScode para crear un nuevo fichero de configuración seleccionando el enlace `crear un archivo launch.json`
+      - Se nos solicita entonces la carpeta de trabajo (workspace) en la que deseamos que se cree      el fichero de configuración
+      - Se nos solicta que el `debugger` que utilizaremos, en este caso es `Python`.
+      - Ahora debemos indicar la configuración de depuración que utilizaremos. En nuestro caso será `Remote Attach`
+      - Se nos solicita entonces el ip del servidor al que nos vamos a conectar remotamente para la depuración. En este caso `localhost`.
+      - Tenemos que indicar entonces el puerto por el que estableceremos la conexión. En este caso es el que configuramos para la escucha de `DEBUGPY`
+     
+   2. Creado el fichero `lunch.json` con la configuración para la depuración, lo adecuamos a nuestras necesidades. Para ello tenemos que indicar el mapeo de los diferentes paths donde se encuentran los módulos internos, los intalados y los que estamos desarrollando.  
 
 ### Creación del entorno de trabajo desde cero
 
