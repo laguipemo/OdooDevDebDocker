@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
 
 
 # class manage(models.Model):
@@ -16,3 +16,10 @@
 #     def _value_pc(self):
 #         for record in self:
 #             record.value2 = float(record.value) / 100
+
+class task(models.Model):
+    _name = 'manage.task'
+    _description = 'manage.task'
+
+    name = fields.Char()
+    
