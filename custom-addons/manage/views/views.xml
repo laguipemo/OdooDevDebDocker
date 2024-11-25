@@ -35,6 +35,13 @@
     </record>
 -->
 
+    <record model="ir.actions.act_window" id="manage.action_task_window">
+      <field name="name">manage task window</field>
+      <field name="res_model">manage.task</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
     <!-- server action to the one above -->
 <!--
     <record model="ir.actions.server" id="manage.action_server">
