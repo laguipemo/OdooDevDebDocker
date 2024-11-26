@@ -21,7 +21,29 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
+            <field name="description"/>
+            <field name="creation_date"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="is_paused"/>
         </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.task_form">
+      <field name="name">manage task form</field>
+      <field name="model">manage.task</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="creation_date"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="is_paused"/>
+          </group>
+        </form>
       </field>
     </record>
 
