@@ -37,3 +37,4 @@ class sprint(models.Model):
     description = fields.Text()
     start_date = fields.Datetime()
     end_date = fields.Datetime()
+    tasks = fields.One2many("manage.task", "sprint")
