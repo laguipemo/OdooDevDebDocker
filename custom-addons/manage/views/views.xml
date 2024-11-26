@@ -140,10 +140,10 @@
               action="manage.action_server"/>
 -->
     <!-- Task module -->
-    <menuitem name="Task" id="manage.menu_1_task_list" parent="manage.menu_1"
+    <menuitem name="Tasks" id="manage.menu_1_task_list" parent="manage.menu_1"
               action="manage.action_task_window"/>
     <!-- Sprint module -->
-    <menuitem name="Sprint" id="manage.menu_1_sprint_list" parent="manage.menu_1"
+    <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
               action="manage.action_sprint_window"/>
     <!-- <menuitem name="Server to list" id="manage" parent="manage.menu_2"
               action="manage.action_server"
