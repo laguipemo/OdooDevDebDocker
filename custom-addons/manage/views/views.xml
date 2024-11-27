@@ -62,6 +62,7 @@
             <field name="name"/>
             <field name="description"/>
             <field name="start_date"/>
+            <field name="duration"/>
             <field name="end_date"/>
             <field name="tasks"/>
         </tree>
@@ -77,6 +78,7 @@
             <field name="name"/>
             <field name="description"/>
             <field name="start_date"/>
+            <field name="duration"/>
             <field name="end_date"/>
             <field name="tasks"/>
           </group>
