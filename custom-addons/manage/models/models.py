@@ -28,7 +28,7 @@ class task(models.Model):
     end_date = fields.Datetime()
     is_paused = fields.Boolean()
     sprint = fields.Many2one(comodel_name="manage.sprint", string="Sprint", help='Sprint relacionado')
-    technologies = fields.Many2many(comodel_name="manage.technology", string="Tecnologia", help='Tecnologias relacionadas')
+    technologies = fields.Many2many(comodel_name="manage.technology", string="Tecnologias", help='Tecnologias relacionadas')
     
 class sprint(models.Model):
     _name = 'manage.sprint'
