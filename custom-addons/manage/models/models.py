@@ -55,4 +55,6 @@ class technology(models.Model):
     tasks = fields.Many2many(comodel_name="manage.task", 
                              relation="manage_task_technology_rel", 
                              column1="technology_id", 
-                             column2="task_id")
+                             column2="task_id",
+                             string="Tareas",
+                             help='Tareas relacionadas')
