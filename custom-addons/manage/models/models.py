@@ -28,6 +28,7 @@ class task(models.Model):
     end_date = fields.Datetime()
     is_paused = fields.Boolean()
     sprint = fields.Many2one(comodel_name="manage.sprint", string="Sprint", help='Sprint relacionado')
+    technology = fields.Many2many(comodel_name="manage.technology", string="Tecnologia", help='Tecnologias relacionadas')
     
 class sprint(models.Model):
     _name = 'manage.sprint'
@@ -39,3 +40,11 @@ class sprint(models.Model):
     end_date = fields.Datetime()
     tasks = fields.One2many(comodel_name="manage.task", inverse_name="sprint", string="Tareas")
 
+class technology(models.Model):
+    _name = 'manage.technology'
+    _description = 'manage.technology'
+
+    name = fields.Char()
+    description = fields.Text()
+    photo = fields.Image(max_width=200, max_height=200) #fields.Binary()
+    tasks = fields.One2many(comodel_name="manage.task", inverse_name="technology", string="Tareas")
