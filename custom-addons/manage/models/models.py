@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from datetime import datetime, timedelta
+import datetime
 
 
 # class manage(models.Model):
@@ -58,11 +58,11 @@ class sprint(models.Model):
     @api.depends('start_date', 'duration')
     def _compute_end_date(self):
         for sprint in self:
-            if sprint.duration:
-                if not sprint.start_date:
-                    sprint.start_date = datetime.now()
-                sprint.end_date = sprint.start_date + timedelta(days=sprint.duration)
-
+            if sprint.duration > 0 and isinstance(sprint.start_date, datetime.datetime):
+                sprint.end_date = sprint.start_date + datetime.timedelta(days=sprint.duration)
+            else:
+                sprint.end_date = sprint.start_date
+                
 class technology(models.Model):
     _name = 'manage.technology'
     _description = 'manage.technology'
