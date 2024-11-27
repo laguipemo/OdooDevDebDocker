@@ -21,6 +21,7 @@ class task(models.Model):
     _name = 'manage.task'
     _description = 'manage.task'
 
+    code = fields.Char(compute="_compute_code", store=True)
     name = fields.Char(string="Nombre", readonly=False, required=True, help="Introduzca el nombre")
     description = fields.Text()
     creation_date = fields.Date()
@@ -28,6 +29,19 @@ class task(models.Model):
     end_date = fields.Datetime()
     is_paused = fields.Boolean()
     sprint = fields.Many2one(comodel_name="manage.sprint", string="Sprint", help='Sprint relacionado')
+    technologies = fields.Many2many(comodel_name="manage.technology", 
+                                    relation="manage_task_technology_rel",
+                                    column1="task_id", 
+                                    column2="technology_id", 
+                                    string="Tecnologias", 
+                                    help='Tecnologias relacionadas')
+    
+    def _compute_code(self): # self siempre es una colección de registros que hay que recorrer
+        for task in self:
+            if len(task.sprint) == 0:  # no contamos con un sprint
+                task.code = "TSK_{}".format(task.id)
+            else:
+                task.code = "{}_{}".format(task.sprint.name.upper(), task.id)
     
 class sprint(models.Model):
     _name = 'manage.sprint'
@@ -38,3 +52,17 @@ class sprint(models.Model):
     start_date = fields.Datetime()
     end_date = fields.Datetime()
     tasks = fields.One2many(comodel_name="manage.task", inverse_name="sprint", string="Tareas")
+
+class technology(models.Model):
+    _name = 'manage.technology'
+    _description = 'manage.technology'
+
+    name = fields.Char()
+    description = fields.Text()
+    photo = fields.Image(max_width=200, max_height=200) #fields.Binary()
+    tasks = fields.Many2many(comodel_name="manage.task", 
+                             relation="manage_task_technology_rel", 
+                             column1="technology_id", 
+                             column2="task_id",
+                             string="Tareas",
+                             help='Tareas relacionadas')

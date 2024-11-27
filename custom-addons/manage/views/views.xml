@@ -28,6 +28,7 @@
             <field name="end_date"/>
             <field name="is_paused"/>
             <field name="sprint"/>
+            <field name="technologies"/>
         </tree>
       </field>
     </record>
@@ -38,6 +39,7 @@
       <field name="arch" type="xml">
         <form>
           <group>
+            <field name="code"/>
             <field name="name"/>
             <field name="description"/>
             <field name="creation_date"/>
@@ -45,6 +47,7 @@
             <field name="end_date"/>
             <field name="is_paused"/>
             <field name="sprint"/>
+            <field name="technologies"/>
           </group>
         </form>
       </field>
@@ -82,6 +85,36 @@
     </record>
 
 
+    <!-- Technology module -->
+    <record model="ir.ui.view" id="manage.technology_list">
+      <field name="name">manage technology list</field>
+      <field name="model">manage.technology</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="photo"/>
+            <field name="tasks"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.technology_form">
+      <field name="name">manage technology form</field>
+      <field name="model">manage.technology</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="photo"/>
+            <field name="tasks"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
     <!-- actions opening views on models -->
 <!--
     <record model="ir.actions.act_window" id="manage.action_window">
@@ -102,7 +135,12 @@
       <field name="res_model">manage.sprint</field>
       <field name="view_mode">tree,form</field>
     </record>
-
+    <!-- Technology module -->
+    <record model="ir.actions.act_window" id="manage.action_technology_window">
+      <field name="name">manage technology window</field>
+      <field name="res_model">manage.technology</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- server action to the one above -->
 <!--
@@ -143,11 +181,14 @@
               action="manage.action_server"/>
 -->
     <!-- Task module -->
-    <menuitem name="Task" id="manage.menu_1_task_list" parent="manage.menu_1"
+    <menuitem name="Tasks" id="manage.menu_1_task_list" parent="manage.menu_1"
               action="manage.action_task_window"/>
     <!-- Sprint module -->
-    <menuitem name="Sprint" id="manage.menu_1_sprint_list" parent="manage.menu_1"
+    <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
               action="manage.action_sprint_window"/>
+    <!-- Technology module -->
+    <menuitem name="Technologies" id="manage.menu_1_technology_list" parent="manage.menu_1"
+              action="manage.action_technology_window"/>
     <!-- <menuitem name="Server to list" id="manage" parent="manage.menu_2"
               action="manage.action_server"
     /> -->
