@@ -84,6 +84,36 @@
     </record>
 
 
+    <!-- Technology module -->
+    <record model="ir.ui.view" id="manage.technology_list">
+      <field name="name">manage technology list</field>
+      <field name="model">manage.technology</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="photo"/>
+            <field name="tasks"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.technology_form">
+      <field name="name">manage technology form</field>
+      <field name="model">manage.technology</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="photo"/>
+            <field name="tasks"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
     <!-- actions opening views on models -->
 <!--
     <record model="ir.actions.act_window" id="manage.action_window">
