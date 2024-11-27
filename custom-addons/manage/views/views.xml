@@ -39,6 +39,7 @@
       <field name="arch" type="xml">
         <form>
           <group>
+            <field name="code"/>
             <field name="name"/>
             <field name="description"/>
             <field name="creation_date"/>

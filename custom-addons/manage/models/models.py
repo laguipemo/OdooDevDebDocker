@@ -21,6 +21,7 @@ class task(models.Model):
     _name = 'manage.task'
     _description = 'manage.task'
 
+    code = fields.Char(compute="_compute_code", store=True)
     name = fields.Char(string="Nombre", readonly=False, required=True, help="Introduzca el nombre")
     description = fields.Text()
     creation_date = fields.Date()
@@ -34,6 +35,13 @@ class task(models.Model):
                                     column2="technology_id", 
                                     string="Tecnologias", 
                                     help='Tecnologias relacionadas')
+    
+    def _compute_code(self): # self siempre es una colección de registros que hay que recorrer
+        for task in self:
+            if len(task.sprint) == 0:  # no contamos con un sprint
+                task.code = "TSK_{}".format(task.id)
+            else:
+                task.code = "{}_{}".format(task.sprint.name.upper(), task.id)
     
 class sprint(models.Model):
     _name = 'manage.sprint'
