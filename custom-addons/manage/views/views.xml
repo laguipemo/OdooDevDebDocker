@@ -28,7 +28,7 @@
             <field name="end_date"/>
             <field name="is_paused"/>
             <field name="sprint"/>
-            <field name="technology"/>
+            <field name="technologies"/>
         </tree>
       </field>
     </record>
@@ -46,7 +46,7 @@
             <field name="end_date"/>
             <field name="is_paused"/>
             <field name="sprint"/>
-            <field name="technology"/>
+            <field name="technologies"/>
           </group>
         </form>
       </field>
