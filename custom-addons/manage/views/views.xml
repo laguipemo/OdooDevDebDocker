@@ -28,6 +28,7 @@
             <field name="end_date"/>
             <field name="is_paused"/>
             <field name="sprint"/>
+            <field name="technology"/>
         </tree>
       </field>
     </record>
@@ -45,6 +46,7 @@
             <field name="end_date"/>
             <field name="is_paused"/>
             <field name="sprint"/>
+            <field name="technology"/>
           </group>
         </form>
       </field>
@@ -102,7 +104,12 @@
       <field name="res_model">manage.sprint</field>
       <field name="view_mode">tree,form</field>
     </record>
-
+    <!-- Technology module -->
+    <record model="ir.actions.act_window" id="manage.action_technology_window">
+      <field name="name">manage technology window</field>
+      <field name="res_model">manage.technology</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- server action to the one above -->
 <!--
@@ -148,6 +155,9 @@
     <!-- Sprint module -->
     <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
               action="manage.action_sprint_window"/>
+    <!-- Technology module -->
+    <menuitem name="Technologies" id="manage.menu_1_technology_list" parent="manage.menu_1"
+              action="manage.action_technology_window"/>
     <!-- <menuitem name="Server to list" id="manage" parent="manage.menu_2"
               action="manage.action_server"
     /> -->
