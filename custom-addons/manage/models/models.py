@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from odoo import _
 import datetime
+
 
 
 # class manage(models.Model):
@@ -39,10 +42,13 @@ class task(models.Model):
     
     def _compute_code(self): # self siempre es una colección de registros que hay que recorrer
         for task in self:
-            if len(task.sprint) == 0:  # no contamos con un sprint
-                task.code = "TSK_{}".format(task.id)
-            else:
-                task.code = "{}_{}".format(task.sprint.name.upper(), task.id)
+            try:
+                if len(task.sprint) == 0:  # no contamos con un sprint
+                    task.code = "TSK_{}".format(task.id_) # fuerzo error al utilizar un campo que no existe
+                else:
+                    task.code = "{}_{}".format(task.sprint.name.upper(), task.id)
+            except:
+                raise ValidationError(_("No se puede calcular el código de la tarea"))
     
 class sprint(models.Model):
     _name = 'manage.sprint'
@@ -62,7 +68,7 @@ class sprint(models.Model):
                 sprint.end_date = sprint.start_date + datetime.timedelta(days=sprint.duration)
             else:
                 sprint.end_date = sprint.start_date
-                
+
 class technology(models.Model):
     _name = 'manage.technology'
     _description = 'manage.technology'
