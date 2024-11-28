@@ -4,8 +4,10 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from odoo import _
 import datetime
+import logging
 
 
+_logger = logging.getLogger(__name__) # descriptor del fichero utilizado como log
 
 # class manage(models.Model):
 #     _name = 'manage.manage'
@@ -44,9 +46,12 @@ class task(models.Model):
         for task in self:
             try:
                 if len(task.sprint) == 0:  # no contamos con un sprint
-                    task.code = "TSK_{}".format(task.id_) # fuerzo error al utilizar un campo que no existe
+                    #task.code = "TSK_{}".format(task.id_) # fuerzo error al utilizar un campo que no existe
+                    task.code = "TSK_{}".format(task.id)
                 else:
                     task.code = "{}_{}".format(task.sprint.name.upper(), task.id)
+                
+                _logger.debug("Generado código de tarea: {}".format(task.code))
             except:
                 raise ValidationError(_("No se puede calcular el código de la tarea"))
     
