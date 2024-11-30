@@ -23,6 +23,21 @@ _logger = logging.getLogger(__name__) # descriptor del fichero utilizado como lo
 #         for record in self:
 #             record.value2 = float(record.value) / 100
 
+
+class project(models.Model):
+    _name = 'manage.project'
+    _description = 'manage.project'
+
+    name = fields.Char()
+    description = fields.Text()
+
+class history(models.Model):
+    _name = 'manage.history'
+    _description = 'manage.history'
+
+    name = fields.Char()
+    description = fields.Text()
+
 class task(models.Model):
     _name = 'manage.task'
     _description = 'manage.task'
