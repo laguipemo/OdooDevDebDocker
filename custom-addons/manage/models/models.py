@@ -54,7 +54,6 @@ class task(models.Model):
     code = fields.Char(compute="_compute_code")
     name = fields.Char(string="Nombre", readonly=False, required=True, help="Introduzca el nombre")
     description = fields.Text()
-    creation_date = fields.Date()
     start_date = fields.Datetime()
     end_date = fields.Datetime()
     is_paused = fields.Boolean()
