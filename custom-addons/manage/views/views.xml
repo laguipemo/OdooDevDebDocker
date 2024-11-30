@@ -15,6 +15,58 @@
     </record>
 -->
 
+    <!-- Project module -->
+    <record model="ir.ui.view" id="manage.project_list">
+      <field name="name">manage project list</field>
+      <field name="model">manage.project</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.project_form">
+      <field name="name">manage project form</field>
+      <field name="model">manage.project</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- History module -->
+    <record model="ir.ui.view" id="manage.history_list">
+      <field name="name">manage history list</field>
+      <field name="model">manage.history</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="project"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.history_form">
+      <field name="name">manage history form</field>
+      <field name="model">manage.history</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="project"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
     <!-- Task module -->
     <record model="ir.ui.view" id="manage.task_list">
       <field name="name">manage task list</field>
@@ -125,6 +177,18 @@
       <field name="view_mode">tree,form</field>
     </record>
 -->
+    <!-- Project module -->
+    <record model="ir.actions.act_window" id="manage.action_project_window">
+      <field name="name">manage project window</field>
+      <field name="res_model">manage.project</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- History module -->
+    <record model="ir.actions.act_window" id="manage.action_history_window">
+      <field name="name">manage history window</field>
+      <field name="res_model">manage.history</field>
+      <field name="view_mode">tree,form</field>
+    </record>
     <!-- Task module -->
     <record model="ir.actions.act_window" id="manage.action_task_window">
       <field name="name">manage task window</field>
@@ -182,6 +246,12 @@
     <menuitem name="Server to list" id="manage" parent="manage.menu_2"
               action="manage.action_server"/>
 -->
+    <!-- Project module -->
+    <menuitem name="Projects" id="manage.menu_1_project_list" parent="manage.menu_1"
+              action="manage.action_project_window"/>
+    <!-- Sprint module -->
+    <menuitem name="Histories" id="manage.menu_1_history_list" parent="manage.menu_1"
+              action="manage.action_history_window"/>
     <!-- Task module -->
     <menuitem name="Tasks" id="manage.menu_1_task_list" parent="manage.menu_1"
               action="manage.action_task_window"/>
