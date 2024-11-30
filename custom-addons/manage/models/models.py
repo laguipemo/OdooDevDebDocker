@@ -46,6 +46,10 @@ class history(models.Model):
                               ondelete="cascade", 
                               string="Proyecto", 
                               help='Proyecto relacionado')
+    tasks = fields.One2many(comodel_name="manage.task", 
+                            inverse_name="history", 
+                            string="Tareas", 
+                            help='Tareas relacionadas')                              
 
 class task(models.Model):
     _name = 'manage.task'
@@ -53,6 +57,10 @@ class task(models.Model):
 
     code = fields.Char(compute="_compute_code")
     name = fields.Char(string="Nombre", readonly=False, required=True, help="Introduzca el nombre")
+    history = fields.Many2one(comodel_name="manage.history", 
+                              ondelete="cascade", 
+                              string="Historial", 
+                              help='Historial relacionado')
     description = fields.Text()
     start_date = fields.Datetime()
     end_date = fields.Datetime()

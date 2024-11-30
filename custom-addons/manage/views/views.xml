@@ -76,6 +76,7 @@
       <field name="arch" type="xml">
         <tree>
             <field name="name"/>
+            <field name="history"/>
             <field name="description"/>
             <field name="start_date"/>
             <field name="end_date"/>
@@ -94,6 +95,7 @@
           <group>
             <field name="code"/>
             <field name="name"/>
+            <field name="history"/>
             <field name="description"/>
             <field name="start_date"/>
             <field name="end_date"/>
