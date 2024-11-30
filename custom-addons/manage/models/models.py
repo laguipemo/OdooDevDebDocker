@@ -37,6 +37,11 @@ class history(models.Model):
 
     name = fields.Char()
     description = fields.Text()
+    #muchas historias está asociadas a un proyecto 
+    project = fields.Many2one(comodel_name="manage.project", 
+                              ondelete="cascade", 
+                              string="Proyecto", 
+                              help='Proyecto relacionado')
 
 class task(models.Model):
     _name = 'manage.task'
