@@ -30,6 +30,10 @@ class project(models.Model):
 
     name = fields.Char()
     description = fields.Text()
+    histories = fields.One2many(comodel_name="manage.history", 
+                                inverse_name="project", 
+                                string="Historias",
+                                help='Historias asociadas')
 
 class history(models.Model):
     _name = 'manage.history'
