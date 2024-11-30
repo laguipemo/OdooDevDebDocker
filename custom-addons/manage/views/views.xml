@@ -36,6 +36,7 @@
           <group>
             <field name="name"/>
             <field name="description"/>
+            <field name="histories"/>
           </group>
         </form>
       </field>
