@@ -89,6 +89,7 @@ class task(models.Model):
             except:
                 raise ValidationError(_("No se puede calcular el código de la tarea"))
 
+    @api.depends("code", "start_date")
     def _compute_sprint(self):
         for task in self:
             # buscar los sprints correspondientes al proyecto de la historia de usuario en la que está la tarea
