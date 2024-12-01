@@ -24,6 +24,7 @@
             <field name="name"/>
             <field name="description"/>
             <field name="histories"/>
+            <field name="sprints"/>
         </tree>
       </field>
     </record>
@@ -37,6 +38,7 @@
             <field name="name"/>
             <field name="description"/>
             <field name="histories"/>
+            <field name="sprints"/>
           </group>
         </form>
       </field>
@@ -113,6 +115,7 @@
       <field name="model">manage.sprint</field>
       <field name="arch" type="xml">
         <tree>
+            <field name="project"/> 
             <field name="name"/>
             <field name="description"/>
             <field name="start_date"/>
@@ -129,6 +132,7 @@
       <field name="arch" type="xml">
         <form>
           <group>
+            <field name="project"/>
             <field name="name"/>
             <field name="description"/>
             <field name="start_date"/>
