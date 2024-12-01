@@ -34,6 +34,10 @@ class project(models.Model):
                                 inverse_name="project", 
                                 string="Historial",
                                 help='Historial de usuarios asociados al proyecto')
+    sprints = fields.One2many(comodel_name="manage.sprint", 
+                              inverse_name="project", 
+                              string="Sprints",
+                              help='Sprints asociados al proyecto')
 
 class history(models.Model):
     _name = 'manage.history'
@@ -90,6 +94,10 @@ class sprint(models.Model):
     _name = 'manage.sprint'
     _description = 'manage.sprint'
 
+    project = fields.Many2one(comodel_name="manage.project", 
+                              ondelete="cascade", 
+                              string="Proyecto", 
+                              help='Proyecto relacionado')
     name = fields.Char()
     description = fields.Text()
     start_date = fields.Datetime()
