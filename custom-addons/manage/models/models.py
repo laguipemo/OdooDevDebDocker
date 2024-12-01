@@ -69,7 +69,10 @@ class task(models.Model):
     start_date = fields.Datetime()
     end_date = fields.Datetime()
     is_paused = fields.Boolean()
-    sprint = fields.Many2one(comodel_name="manage.sprint", ondelete="cascade", string="Sprint", help='Sprint relacionado')
+    sprint = fields.Many2one(comodel_name="manage.sprint", 
+                             compute="_compute_sprint", 
+                             string="Sprint", 
+                             help='Sprint relacionado')
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     relation="manage_task_technology_rel",
                                     column1="task_id", 
@@ -80,15 +83,27 @@ class task(models.Model):
     def _compute_code(self): # self siempre es una colección de registros que hay que recorrer
         for task in self:
             try:
-                if len(task.sprint) == 0:  # no contamos con un sprint
-                    #task.code = "TSK_{}".format(task.id_) # fuerzo error al utilizar un campo que no existe
-                    task.code = "TSK_{}".format(task.id)
-                else:
-                    task.code = "{}_{}".format(task.sprint.name.upper(), task.id)
-                
+                #task.code = "TSK_{}".format(task.id_) # Ej: fuerzo error al utilizar un campo que no existe
+                task.code = "TSK_{}".format(task.id)
                 _logger.debug("Generado código de tarea: {}".format(task.code))
             except:
                 raise ValidationError(_("No se puede calcular el código de la tarea"))
+
+    def _compute_sprint(self):
+        for task in self:
+            # buscar los sprints correspondientes al proyecto de la historia de usuario en la que está la tarea
+            sprints_for_project = self.env["manage.sprint"].search([("project.id","=", task.history.project.id)])
+            # obtener el sprint activo. Estamos asumiendo que solo hay un sprint activo por proyecto
+            found = False
+            for sprint in sprints_for_project:
+                if isinstance(sprint.end_date, datetime.datetime) and sprint.end_date > datetime.datetime.now():
+                    if isinstance(task.start_date, datetime.datetime) and sprint.end_date > task.start_date:
+                        task.sprint = sprint
+                        found = True
+                        break
+            if not found:
+                task.sprint = False
+
     
 class sprint(models.Model):
     _name = 'manage.sprint'
