@@ -63,9 +63,10 @@
       <field name="arch" type="xml">
         <form>
           <group>
+            <field name="project"/>
             <field name="name"/>
             <field name="description"/>
-            <field name="project"/>
+            
           </group>
         </form>
       </field>
@@ -78,8 +79,8 @@
       <field name="arch" type="xml">
         <tree>
             <field name="name"/>
-            <field name="history"/>
             <field name="description"/>
+            <field name="history"/>
             <field name="start_date"/>
             <field name="end_date"/>
             <field name="is_paused"/>
@@ -97,8 +98,8 @@
           <group>
             <field name="code"/>
             <field name="name"/>
-            <field name="history"/>
             <field name="description"/>
+            <field name="history"/>
             <field name="start_date"/>
             <field name="end_date"/>
             <field name="is_paused"/>
@@ -115,9 +116,9 @@
       <field name="model">manage.sprint</field>
       <field name="arch" type="xml">
         <tree>
-            <field name="project"/> 
             <field name="name"/>
             <field name="description"/>
+            <field name="project"/> 
             <field name="start_date"/>
             <field name="duration"/>
             <field name="end_date"/>
