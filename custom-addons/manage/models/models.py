@@ -53,7 +53,23 @@ class history(models.Model):
     tasks = fields.One2many(comodel_name="manage.task", 
                             inverse_name="history", 
                             string="Tareas", 
-                            help='Tareas relacionadas')                              
+                            help='Tareas relacionadas')
+    used_technologies = fields.Many2many(comodel_name="manage.technology",
+                                         compute="_compute_used_technologies",
+                                         string="Tecnologias utilizadas",
+                                         help='Tecnologias utilizadas en la historia')
+
+    def _compute_used_technologies(self):
+        for history in self:
+            technologies = None
+            for task in history.tasks:
+                if task.technologies:
+                    if technologies:
+                        technologies += task.technologies
+                    else:
+                        technologies = task.technologies
+            history.used_technologies = technologies
+            
 
 class task(models.Model):
     _name = 'manage.task'

@@ -53,6 +53,8 @@
             <field name="name"/>
             <field name="description"/>
             <field name="project"/>
+            <field name="tasks"/>
+            <field name="used_technologies"/>
         </tree>
       </field>
     </record>
@@ -66,7 +68,8 @@
             <field name="project"/>
             <field name="name"/>
             <field name="description"/>
-            
+            <field name="tasks"/>
+            <field name="used_technologies"/>
           </group>
         </form>
       </field>
