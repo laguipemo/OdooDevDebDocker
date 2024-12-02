@@ -93,10 +93,10 @@ class task(models.Model):
     def _compute_sprint(self):
         for task in self:
             # buscar los sprints correspondientes al proyecto de la historia de usuario en la que está la tarea
-            sprints_for_project = self.env["manage.sprint"].search([("project.id","=", task.history.project.id)])
+            list_sprints_project = self.env["manage.sprint"].search([("project.id","=", task.history.project.id)])
             # obtener el sprint activo. Estamos asumiendo que solo hay un sprint activo por proyecto
             found = False
-            for sprint in sprints_for_project:
+            for sprint in list_sprints_project:
                 if isinstance(sprint.end_date, datetime.datetime) and sprint.end_date > datetime.datetime.now():
                     if isinstance(task.start_date, datetime.datetime) and sprint.end_date > task.start_date:
                         task.sprint = sprint
