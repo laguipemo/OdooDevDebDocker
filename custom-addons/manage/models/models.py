@@ -138,7 +138,7 @@ class sprint(models.Model):
     name = fields.Char()
     description = fields.Text()
     start_date = fields.Datetime()
-    duration = fields.Integer(string="Duración (días)")
+    duration = fields.Integer(default=15, string="Duración (días)", help='Duración del sprint en días')
     end_date = fields.Datetime(compute="_compute_end_date", store=True)
     tasks = fields.One2many(comodel_name="manage.task", inverse_name="sprint", string="Tareas")
 
