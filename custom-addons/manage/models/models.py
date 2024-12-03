@@ -87,6 +87,9 @@ class task(models.Model):
                               string="Historial", 
                               help='Historial relacionado')
     description = fields.Text()
+    definition_date = fields.Datetime(default=lambda d: datetime.datetime.now(), 
+                                      string="Fecha de definición", 
+                                      help='Fecha de definición de la tarea')
     start_date = fields.Datetime()
     end_date = fields.Datetime()
     is_paused = fields.Boolean()
@@ -101,12 +104,7 @@ class task(models.Model):
                                     string="Tecnologias", 
                                     help='Tecnologias relacionadas')
 
-    def default_definition_date(self):
-        return datetime.datetime.now()
 
-    definition_date = fields.Datetime(default=default_definition_date, 
-                                      string="Fecha de definición", 
-                                      help='Fecha de definición de la tarea')
     
     def _compute_code(self): # self siempre es una colección de registros que hay que recorrer
         for task in self:
