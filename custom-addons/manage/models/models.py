@@ -100,6 +100,13 @@ class task(models.Model):
                                     column2="technology_id", 
                                     string="Tecnologias", 
                                     help='Tecnologias relacionadas')
+
+    def default_definition_date(self):
+        return datetime.datetime.now()
+
+    definition_date = fields.Datetime(default=default_definition_date, 
+                                      string="Fecha de definición", 
+                                      help='Fecha de definición de la tarea')
     
     def _compute_code(self): # self siempre es una colección de registros que hay que recorrer
         for task in self:
