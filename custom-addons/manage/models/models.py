@@ -75,6 +75,11 @@ class task(models.Model):
     _name = 'manage.task'
     _description = 'manage.task'
 
+    project = fields.Many2one(comodel_name="manage.project",
+                              related='history.project',
+                              readonly=True, 
+                              string="Proyecto", 
+                              help='Proyecto relacionado')
     code = fields.Char(compute="_compute_code")
     name = fields.Char(string="Nombre", readonly=False, required=True, help="Introduzca el nombre")
     history = fields.Many2one(comodel_name="manage.history", 

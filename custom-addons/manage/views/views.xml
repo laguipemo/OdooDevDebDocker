@@ -81,6 +81,8 @@
       <field name="model">manage.task</field>
       <field name="arch" type="xml">
         <tree>
+            <field name="project"/>
+            <field name="code"/>
             <field name="name"/>
             <field name="description"/>
             <field name="history"/>
@@ -99,6 +101,7 @@
       <field name="arch" type="xml">
         <form>
           <group>
+            <field name="project"/>
             <field name="code"/>
             <field name="name"/>
             <field name="description"/>
