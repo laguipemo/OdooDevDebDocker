@@ -192,6 +192,12 @@
       <field name="view_mode">tree,form</field>
     </record>
 -->
+    <!-- Developer module -->
+    <record model="ir.actions.act_window" id="manage.action_developer_window">
+      <field name="name">manage developer window</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+    </record>
     <!-- Project module -->
     <record model="ir.actions.act_window" id="manage.action_project_window">
       <field name="name">manage project window</field>
@@ -273,6 +279,9 @@
     <!-- Sprint module -->
     <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
               action="manage.action_sprint_window"/>
+    <!-- Developer module -->
+    <menuitem name="Developers" id="manage.menu_1_developer_list" parent="manage.menu_1"
+              action="manage.action_developer_window"/>
     <!-- Technology module -->
     <menuitem name="Technologies" id="manage.menu_1_technology_list" parent="manage.menu_1"
               action="manage.action_technology_window"/>
