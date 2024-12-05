@@ -25,7 +25,8 @@ _logger = logging.getLogger(__name__) # descriptor del fichero utilizado como lo
 
 
 class developer(models.Model):
-    inherit = "res.partner"
+    _name = "res.partner"
+    _inherit = "res.partner"
     
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     string="Tecnologías", 
