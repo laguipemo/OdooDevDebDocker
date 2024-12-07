@@ -30,7 +30,7 @@
           </page>
         </xpath> -->
         <page name="internal_notes" position="after">
-          <page name="developer" string="Developer">
+          <page name="developer" string="Developer" attrs="{'invisible': [('is_developer', '=', False)]}">
             <group>
               <field name="is_developer" string="Developer" widget="boolean"/>
               <field name="technologies" string="Tecnologías" widget="many2many_tags"/>
