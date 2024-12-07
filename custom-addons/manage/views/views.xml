@@ -32,6 +32,7 @@
         <page name="internal_notes" position="after">
           <page name="developer" string="Developer">
             <group>
+              <field name="is_developer" string="Developer" widget="boolean"/>
               <field name="technologies" string="Tecnologías" widget="many2many_tags"/>
             </group>
           </page>
@@ -221,6 +222,8 @@
     <record model="ir.actions.act_window" id="manage.action_developer_window">
       <field name="name">manage developer window</field>
       <field name="res_model">res.partner</field>
+      <field name="domain">[('is_developer', '=', True)]</field>
+      <field name="context">{'default_is_developer': True}</field>
       <field name="view_mode">tree,form</field>
     </record>
 

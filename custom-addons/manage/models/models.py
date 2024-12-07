@@ -28,6 +28,7 @@ class developer(models.Model):
     _name = "res.partner"
     _inherit = "res.partner"
     
+    is_developer = fields.Boolean()
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     string="Tecnologías", 
                                     relation="developer_technology_rel", 
