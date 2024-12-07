@@ -109,6 +109,9 @@ class task(models.Model):
                              compute="_compute_sprint", 
                              string="Sprint", 
                              help='Sprint relacionado')
+    developer = fields.Many2one(comodel_name="res.partner",
+                                string="Desarrollador", 
+                                help='Desarrollador que realizará la tarea')
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     relation="manage_task_technology_rel",
                                     column1="task_id", 
