@@ -139,7 +139,7 @@
             <field name="end_date"/>
             <field name="is_paused"/>
             <field name="sprint"/>
-            <field name="developer" domain="[('is_developer', '=', True)]"/>
+            <field name="developer" domain="[('is_developer', '=', True)]" context="{'form_view_ref': 'manage.developer_form'}"/>
             <field name="technologies"/>
           </group>
         </form>
