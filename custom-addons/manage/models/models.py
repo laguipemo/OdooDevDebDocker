@@ -35,6 +35,15 @@ class developer(models.Model):
                                     column1="developer_id", 
                                     column2="technology_id",
                                     help='Tecnologías utilizadas por el desarrollador')
+    
+    @api.onchange("is_developer")
+    def _onchange_is_developer(self):
+        categories = self.env["res.partner.category"].search([('name', '=', "Developer")])
+        if len(categories) > 0:
+            category = categories[0]
+        else:
+            category = self.env["res.partner.category"].create({"name": "Developer"})
+        self.category_id = [(4, category.id)]
 
 class project(models.Model):
     _name = 'manage.project'
