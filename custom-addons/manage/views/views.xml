@@ -101,51 +101,7 @@
       </field>
     </record>
 
-    <!-- Task module -->
-    <record model="ir.ui.view" id="manage.task_list">
-      <field name="name">manage task list</field>
-      <field name="model">manage.task</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="project"/>
-            <field name="code"/>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="history"/>
-            <field name="definition_date"/>
-            <field name="start_date"/>
-            <field name="end_date"/>
-            <field name="is_paused"/>
-            <field name="sprint"/>
-            <field name="developer"/>
-            <field name="technologies"/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="manage.task_form">
-      <field name="name">manage task form</field>
-      <field name="model">manage.task</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="project"/>
-            <field name="code"/>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="history"/>
-            <field name="definition_date"/>
-            <field name="start_date"/>
-            <field name="end_date"/>
-            <field name="is_paused"/>
-            <field name="sprint"/>
-            <field name="developer" domain="[('is_developer', '=', True)]" context="{'form_view_ref': 'manage.developer_form'}"/>
-            <field name="technologies"/>
-          </group>
-        </form>
-      </field>
-    </record>
-
+    
     <!-- Sprint module -->
     <record model="ir.ui.view" id="manage.sprint_list">
       <field name="name">manage sprint list</field>
@@ -256,12 +212,7 @@
       <field name="res_model">manage.history</field>
       <field name="view_mode">tree,form</field>
     </record>
-    <!-- Task module -->
-    <record model="ir.actions.act_window" id="manage.action_task_window">
-      <field name="name">manage task window</field>
-      <field name="res_model">manage.task</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+    
     <!-- Sprint module -->
     <record model="ir.actions.act_window" id="manage.action_sprint_window">
       <field name="name">manage sprint window</field>
@@ -319,9 +270,7 @@
     <!-- Sprint module -->
     <menuitem name="Histories" id="manage.menu_1_history_list" parent="manage.menu_1"
               action="manage.action_history_window"/>
-    <!-- Task module -->
-    <menuitem name="Tasks" id="manage.menu_1_task_list" parent="manage.menu_1"
-              action="manage.action_task_window"/>
+    
     <!-- Sprint module -->
     <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
               action="manage.action_sprint_window"/>
