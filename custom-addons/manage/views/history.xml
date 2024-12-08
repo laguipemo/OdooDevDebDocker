@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <!-- explicit views definitions -->
+
+        <!-- list view for history model -->
+        <record model="ir.ui.view" id="manage.history_list">
+            <field name="name">manage history list</field>
+            <field name="model">manage.history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="project" />
+                    <field name="tasks" />
+                    <field name="used_technologies" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view for history model -->
+        <record model="ir.ui.view" id="manage.history_form">
+            <field name="name">manage history form</field>
+            <field name="model">manage.history</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="project" />
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="tasks" />
+                        <field name="used_technologies" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <!-- History module -->
+        <record model="ir.actions.act_window" id="manage.action_history_window">
+            <field name="name">manage history window</field>
+            <field name="res_model">manage.history</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- server action to the one above -->
+        <!--
+    <record model="ir.actions.server" id="manage.action_server">
+      <field name="name">manage server</field>
+      <field name="model_id" ref="model_manage_manage"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+        <!-- menu items for the actions -->
+
+        <!-- History module -->
+        <menuitem name="Histories" id="manage.menu_1_history_list" parent="manage.menu_1"
+            action="manage.action_history_window" />
+
+    </data>
+</odoo>
