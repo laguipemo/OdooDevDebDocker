@@ -31,6 +31,7 @@
         'views/sprint.xml',
         'views/task.xml',
         'views/technology.xml',
+        'views/developer.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
