@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/project.xml',
         'views/history.xml',
+        'views/sprint.xml',
         'views/task.xml',
         'views/templates.xml',
     ],
