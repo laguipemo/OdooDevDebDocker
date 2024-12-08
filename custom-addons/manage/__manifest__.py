@@ -30,6 +30,7 @@
         'views/history.xml',
         'views/sprint.xml',
         'views/task.xml',
+        'views/technology.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
