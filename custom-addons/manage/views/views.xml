@@ -40,176 +40,23 @@
       </field>
     </record>
 
-
-    <!-- Project module -->
-    <record model="ir.ui.view" id="manage.project_list">
-      <field name="name">manage project list</field>
-      <field name="model">manage.project</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="histories"/>
-            <field name="sprints"/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="manage.project_form">
-      <field name="name">manage project form</field>
-      <field name="model">manage.project</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="histories"/>
-            <field name="sprints"/>
-          </group>
-        </form>
-      </field>
-    </record>
-
     <!-- History module -->
-    <record model="ir.ui.view" id="manage.history_list">
-      <field name="name">manage history list</field>
-      <field name="model">manage.history</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="project"/>
-            <field name="tasks"/>
-            <field name="used_technologies"/>
-        </tree>
-      </field>
-    </record>
+    
 
-    <record model="ir.ui.view" id="manage.history_form">
-      <field name="name">manage history form</field>
-      <field name="model">manage.history</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="project"/>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="tasks"/>
-            <field name="used_technologies"/>
-          </group>
-        </form>
-      </field>
-    </record>
+    
 
-    <!-- Task module -->
-    <record model="ir.ui.view" id="manage.task_list">
-      <field name="name">manage task list</field>
-      <field name="model">manage.task</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="project"/>
-            <field name="code"/>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="history"/>
-            <field name="definition_date"/>
-            <field name="start_date"/>
-            <field name="end_date"/>
-            <field name="is_paused"/>
-            <field name="sprint"/>
-            <field name="developer"/>
-            <field name="technologies"/>
-        </tree>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="manage.task_form">
-      <field name="name">manage task form</field>
-      <field name="model">manage.task</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="project"/>
-            <field name="code"/>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="history"/>
-            <field name="definition_date"/>
-            <field name="start_date"/>
-            <field name="end_date"/>
-            <field name="is_paused"/>
-            <field name="sprint"/>
-            <field name="developer" domain="[('is_developer', '=', True)]" context="{'form_view_ref': 'manage.developer_form'}"/>
-            <field name="technologies"/>
-          </group>
-        </form>
-      </field>
-    </record>
+    
 
     <!-- Sprint module -->
-    <record model="ir.ui.view" id="manage.sprint_list">
-      <field name="name">manage sprint list</field>
-      <field name="model">manage.sprint</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="project"/> 
-            <field name="start_date"/>
-            <field name="duration"/>
-            <field name="end_date"/>
-            <field name="tasks"/>
-        </tree>
-      </field>
-    </record>
+    
 
-    <record model="ir.ui.view" id="manage.sprint_form">
-      <field name="name">manage sprint form</field>
-      <field name="model">manage.sprint</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="project"/>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="start_date"/>
-            <field name="duration"/>
-            <field name="end_date"/>
-            <field name="tasks"/>
-          </group>
-        </form>
-      </field>
-    </record>
+    
 
 
     <!-- Technology module -->
-    <record model="ir.ui.view" id="manage.technology_list">
-      <field name="name">manage technology list</field>
-      <field name="model">manage.technology</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="photo"/>
-            <field name="tasks"/>
-        </tree>
-      </field>
-    </record>
+    
 
-    <record model="ir.ui.view" id="manage.technology_form">
-      <field name="name">manage technology form</field>
-      <field name="model">manage.technology</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="name"/>
-            <field name="description"/>
-            <field name="photo"/>
-            <field name="tasks"/>
-          </group>
-        </form>
-      </field>
-    </record>
+    
 
 
     <!-- actions opening views on models -->
@@ -245,35 +92,14 @@
 
 
     <!-- Project module -->
-    <record model="ir.actions.act_window" id="manage.action_project_window">
-      <field name="name">manage project window</field>
-      <field name="res_model">manage.project</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+    
     <!-- History module -->
-    <record model="ir.actions.act_window" id="manage.action_history_window">
-      <field name="name">manage history window</field>
-      <field name="res_model">manage.history</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    <!-- Task module -->
-    <record model="ir.actions.act_window" id="manage.action_task_window">
-      <field name="name">manage task window</field>
-      <field name="res_model">manage.task</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+    
+    
     <!-- Sprint module -->
-    <record model="ir.actions.act_window" id="manage.action_sprint_window">
-      <field name="name">manage sprint window</field>
-      <field name="res_model">manage.sprint</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+    
     <!-- Technology module -->
-    <record model="ir.actions.act_window" id="manage.action_technology_window">
-      <field name="name">manage technology window</field>
-      <field name="res_model">manage.technology</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+    
 
     <!-- server action to the one above -->
 <!--
@@ -314,23 +140,17 @@
               action="manage.action_server"/>
 -->
     <!-- Project module -->
-    <menuitem name="Projects" id="manage.menu_1_project_list" parent="manage.menu_1"
-              action="manage.action_project_window"/>
+    
     <!-- Sprint module -->
-    <menuitem name="Histories" id="manage.menu_1_history_list" parent="manage.menu_1"
-              action="manage.action_history_window"/>
-    <!-- Task module -->
-    <menuitem name="Tasks" id="manage.menu_1_task_list" parent="manage.menu_1"
-              action="manage.action_task_window"/>
+    
+    
     <!-- Sprint module -->
-    <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
-              action="manage.action_sprint_window"/>
+    
     <!-- Developer module -->
     <menuitem name="Developers" id="manage.menu_1_developer_list" parent="manage.menu_1"
               action="manage.action_developer_window"/>
     <!-- Technology module -->
-    <menuitem name="Technologies" id="manage.menu_1_technology_list" parent="manage.menu_1"
-              action="manage.action_technology_window"/>
+    
     <!-- <menuitem name="Server to list" id="manage" parent="manage.menu_2"
               action="manage.action_server"
     /> -->

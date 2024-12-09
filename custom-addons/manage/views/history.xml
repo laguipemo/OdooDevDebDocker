@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- list view for history model -->
+        <record model="ir.ui.view" id="manage.history_list">
+            <field name="name">manage history list</field>
+            <field name="model">manage.history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="project" />
+                    <field name="tasks" />
+                    <field name="used_technologies" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view for history model -->
+        <record model="ir.ui.view" id="manage.history_form">
+            <field name="name">manage history form</field>
+            <field name="model">manage.history</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="project" />
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="tasks" />
+                        <field name="used_technologies" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <!-- action window for history model -->
+        <record model="ir.actions.act_window" id="manage.action_history_window">
+            <field name="name">manage history window</field>
+            <field name="res_model">manage.history</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions -->
+
+        <!-- manuitem for histories -->
+        <menuitem name="Histories" id="manage.menu_1_history_list" parent="manage.menu_1"
+            action="manage.action_history_window" />
+
+
+    </data>
+</odoo>
