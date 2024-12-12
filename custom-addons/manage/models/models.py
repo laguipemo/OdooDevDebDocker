@@ -24,6 +24,68 @@ _logger = logging.getLogger(__name__) # descriptor del fichero utilizado como lo
 #             record.value2 = float(record.value) / 100
 
 
+class bug(models.Model):
+    _name = "manage.bug"
+    _description = "manage.bug"
+    _inherit = "manage.task"
+
+    technologies = fields.Many2many(comodel_name="manage.technology",
+                                    string="Tecnologías",
+                                    relation="bug_technology_rel",
+                                    column1="bug_id",
+                                    column2="technology_id",
+                                    help='Tecnologías utilizadas en el bug')
+    tasks_linked = fields.Many2many(comodel_name="manage.task",
+                                    string="Tareas",
+                                    relation="bug_task_rel",
+                                    column1="bug_id",
+                                    column2="task_id",
+                                    help='Tareas relacionadas con el bug')
+    bugs_linked = fields.Many2many(comodel_name="manage.bug",
+                                   string="Bugs",
+                                   relation="bug_bug_rel",
+                                   column1="bug_id",
+                                   column2="bug_id",
+                                   help='Bugs relacionados con el bug')
+    improvements_linked = fields.Many2many(comodel_name="manage.improvement",
+                                           string="Mejoras",
+                                           relation="bug_improvement_rel",
+                                           column1="bug_id",
+                                           column2="improvement_id",
+                                           help='Mejoras relacionadas con el bug')
+    developers = fields.Many2many(comodel_name="res.partner",
+                                    string="Desarrolladores",
+                                    relation="bug_developer_rel",
+                                    column1="bug_id",
+                                    column2="developer_id",
+                                    help='Desarrolladores involucrados en el bug')
+
+
+class improvement(models.Model):
+    _name = 'manage.improvement'
+    _description = 'manage.improvement'
+    _inherit = "manage.task"
+
+    technologies = fields.Many2many(comodel_name="manage.technology",
+                                    string="Tecnologías",
+                                    relation="improvement_technology_rel",
+                                    column1="improvement_id",
+                                    column2="technology_id",
+                                    help='Tecnologías utilizadas en la mejora')
+    histories_linked = fields.Many2many(comodel_name="manage.history",
+                                        string="Historias",
+                                        relation="improvement_history_rel",
+                                        column1="improvement_id",
+                                        column2="history_id",
+                                        help='Historias relacionadas con la mejora')
+    developers = fields.Many2many(comodel_name="res.partner",
+                                    string="Desarrolladores",
+                                    relation="improvement_developer_rel",
+                                    column1="improvement_id",
+                                    column2="developer_id",
+                                    help='Desarrolladores involucrados en la mejora')  
+    
+
 class developer(models.Model):
     _name = "res.partner"
     _inherit = "res.partner"
