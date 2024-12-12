@@ -180,7 +180,7 @@ class task(models.Model):
                              compute="_compute_sprint", 
                              string="Sprint", 
                              help='Sprint relacionado')
-    developer = fields.Many2many(comodel_name="res.partner", 
+    developers = fields.Many2many(comodel_name="res.partner", 
                                  relation="manage_task_developer_rel", 
                                  column1="task_id", 
                                  column2="developer_id", 
