@@ -32,6 +32,7 @@
         'views/technology.xml',
         'views/developer.xml',
         'views/task.xml',
+        'views/bug.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
