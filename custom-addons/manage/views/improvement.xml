@@ -20,8 +20,8 @@
                     <field name="sprint" />
                     <field name="developers" />
                     <field name="technologies" />
-                    <field name="histories_linked"/>
-                    <field name="developers"/>
+                    <field name="histories_linked" />
+                    <field name="developers" />
                 </tree>
             </field>
         </record>
@@ -43,11 +43,14 @@
                         <field name="end_date" />
                         <field name="is_paused" />
                         <field name="sprint" />
-                        <field name="developers" domain="[('is_developer', '=', True)]"
-                            context="{'form_view_ref': 'manage.developer_form'}" />
+                        <field
+                            name="developers"
+                            domain="[('is_developer', '=', True)]"
+                            context="{'form_view_ref': 'manage.developer_form'}"
+                            widget="many2many_tags" />
                         <field name="technologies" />
-                        <field name="histories_linked"/>
-                        <field name="developers"/>
+                        <field name="histories_linked" />
+                        <field name="developers" />
                     </group>
                 </form>
             </field>

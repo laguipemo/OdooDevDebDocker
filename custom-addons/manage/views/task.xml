@@ -41,8 +41,11 @@
                         <field name="end_date" />
                         <field name="is_paused" />
                         <field name="sprint" />
-                        <field name="developers" domain="[('is_developer', '=', True)]"
-                            context="{'form_view_ref': 'manage.developer_form'}" />
+                        <field
+                            name="developers"
+                            domain="[('is_developer', '=', True)]"
+                            context="{'form_view_ref': 'manage.developer_form'}"
+                            widget="many2many_tags" />
                         <field name="technologies" />
                     </group>
                 </form>
