@@ -179,8 +179,8 @@ class bug(models.Model):
     bugs_linked = fields.Many2many(comodel_name="manage.bug",
                                    string="Bugs",
                                    relation="bug_bug_rel",
-                                   column1="bug_id",
-                                   column2="bug_id",
+                                   column1="bug1_id",
+                                   column2="bug2_id",
                                    help='Bugs relacionados con el bug')
     improvements_linked = fields.Many2many(comodel_name="manage.improvement",
                                            string="Mejoras",
