@@ -25,9 +25,9 @@ _logger = logging.getLogger(__name__) # descriptor del fichero utilizado como lo
 
 
 class bug(models.Model):
-    _name = "manage.bug"
-    _description = "manage.bug"
-    _inherit = "manage.task"
+    _name = 'manage.bug'
+    _description = 'manage.bug'
+    _inherit = 'manage.task'
 
     technologies = fields.Many2many(comodel_name="manage.technology",
                                     string="Tecnologías",
@@ -64,7 +64,7 @@ class bug(models.Model):
 class improvement(models.Model):
     _name = 'manage.improvement'
     _description = 'manage.improvement'
-    _inherit = "manage.task"
+    _inherit = 'manage.task'
 
     technologies = fields.Many2many(comodel_name="manage.technology",
                                     string="Tecnologías",
@@ -87,8 +87,8 @@ class improvement(models.Model):
     
 
 class developer(models.Model):
-    _name = "res.partner"
-    _inherit = "res.partner"
+    _name = 'res.partner'
+    _inherit = 'res.partner'
     
     is_developer = fields.Boolean()
     technologies = fields.Many2many(comodel_name="manage.technology", 
