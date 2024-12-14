@@ -35,6 +35,24 @@ class developer(models.Model):
                                     column1="developer_id", 
                                     column2="technology_id",
                                     help='Tecnologías utilizadas por el desarrollador')
+    tasks = fields.Many2many(comodel_name="manage.task", 
+                             string="Tareas", 
+                             relation="developer_task_rel", 
+                             column1="developer_id", 
+                             column2="task_id",
+                             help='Tareas realizadas por el desarrollador')
+    bugs = fields.Many2many(comodel_name="manage.bug", 
+                            string="Bugs", 
+                            relation="developer_bug_rel", 
+                            column1="developer_id", 
+                            column2="bug_id",
+                            help='Bugs reportados por el desarrollador')
+    improvements = fields.Many2many(comodel_name="manage.improvement", 
+                                    string="Mejoras", 
+                                    relation="developer_improvement_rel", 
+                                    column1="developer_id", 
+                                    column2="improvement_id",
+                                    help='Mejoras realizadas por el desarrollador') 
     
     @api.onchange("is_developer")
     def _onchange_is_developer(self):
