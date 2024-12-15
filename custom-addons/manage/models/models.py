@@ -158,7 +158,21 @@ class task(models.Model):
     def _compute_sprint(self):
         for task in self:
             # buscar los sprints correspondientes al proyecto de la historia de usuario en la que está la tarea
-            list_sprints_project = self.env["manage.sprint"].search([("project.id","=", task.history.project.id)])
+            #list_sprints_project = self.env["manage.sprint"].search([("project.id","=", task.history.project.id)])
+
+            # Lo anterior da un error del tipo: invalid input syntax for type integer: "NewId_1" debido
+            # a que se ha creado un nuevo id para proyecto a partir de la historia a la que pertenece
+            # la nueva tarea que estamos creando, pero dicho valor no se ha guardado en bbdd. Esto se
+            # traduce en que task.history.project.id es de tipo models.NewId y no de tipo integer como 
+            # se espera. Entonces tenemos que comprobar el tipo antes de hacer el search:
+
+            if isinstance(task.history.project.id, models.NewId):
+                id_project = int(task.history.project.id.origin)
+            else:
+                id_project = task.history.project.id
+
+            list_sprints_project = self.env["manage.sprint"].search([("project.id","=", id_project)])
+
             # obtener el sprint activo. Estamos asumiendo que solo hay un sprint activo por proyecto
             found = False
             for sprint in list_sprints_project:
