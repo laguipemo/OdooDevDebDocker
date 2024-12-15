@@ -73,6 +73,10 @@ class developer(models.Model):
                 _logger.info("Access code of developer {} is correct".format(developer.name))
             else:
                 raise ValidationError("Access code of developer {} is not correct".format(developer.name))
+    
+    _sql_constraints = [
+        ('access_code_unique', 'unique(access_code)', 'Access code must be unique')
+    ]
 
 class project(models.Model):
     _name = 'manage.project'
