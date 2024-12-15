@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 from odoo import _
 import datetime
 import logging
+import re
 
 
 _logger = logging.getLogger(__name__) # descriptor del fichero utilizado como log
@@ -66,11 +67,12 @@ class developer(models.Model):
 
     @api.constrains('access_code')
     def _check_access_code(self):
+        correct_value = re.compile("^[0-9]{8}[A-Z]{1}_*", re.IGNORECASE)
         for developer in self:
-            if len(developer.access_code) < 8:
-                raise ValidationError(_("El código de acceso debe tener al menos 8 caracteres"))
+            if correct_value.match(developer.access_code):
+                _logger.info("Access code of developer {} is correct".format(developer.name))
             else:
-                _logger.info("El código de acceso del desarrollador %s es %s".format(developer.name, developer.access_code))
+                raise ValidationError("Access code of developer {} is not correct".format(developer.name))
 
 class project(models.Model):
     _name = 'manage.project'
