@@ -136,12 +136,6 @@ class task(models.Model):
                              compute="_compute_sprint", 
                              string="Sprint", 
                              help='Sprint relacionado')
-    developers = fields.Many2many(comodel_name="res.partner", 
-                                 relation="manage_task_developer_rel", 
-                                 column1="task_id", 
-                                 column2="developer_id", 
-                                 string="Desarrolladores", 
-                                 help='Desarrolladores relacionados')
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     relation="manage_task_technology_rel",
                                     column1="task_id", 
@@ -176,6 +170,21 @@ class task(models.Model):
             if not found:
                 task.sprint = False
 
+    def _get_default_developer(self):
+        current_developer = self.browse(self._context.get('current_developer'))
+
+        if current_developer:
+            return [current_developer.id]
+        else: 
+            return []
+
+    developers = fields.Many2many(comodel_name="res.partner", 
+                                 relation="manage_task_developer_rel", 
+                                 column1="task_id", 
+                                 column2="developer_id", 
+                                 string="Desarrolladores", 
+                                 default=_get_default_developer,
+                                 help='Desarrolladores relacionados')
 
 class bug(models.Model):
     _name = 'manage.bug'
