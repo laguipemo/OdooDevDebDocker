@@ -23,8 +23,12 @@
                     <page name="developer" string="Developer"
                         attrs="{'invisible': [('is_developer', '=', False)]}">
                         <group>
-                            <field name="is_developer" string="Developer" widget="boolean"
+                            <field
+                                name="is_developer"
+                                string="Developer"
+                                widget="boolean"
                                 attrs="{'invisible': True}" />
+                            <field name="access_code" string="Código de acceso"/>
                             <field name="technologies" string="Tecnologías" widget="many2many_tags" />
                             <field
                                 name="tasks"

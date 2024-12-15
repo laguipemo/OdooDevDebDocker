@@ -29,6 +29,7 @@ class developer(models.Model):
     _inherit = 'res.partner'
     
     is_developer = fields.Boolean()
+    access_code = fields.Char()
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     string="Tecnologías", 
                                     relation="manage_developer_technology_rel", 
@@ -62,6 +63,14 @@ class developer(models.Model):
         else:
             category = self.env["res.partner.category"].create({"name": "Developer"})
         self.category_id = [(4, category.id)]
+
+    @api.constrains('access_code')
+    def _check_access_code(self):
+        for developer in self:
+            if len(developer.access_code) < 8:
+                raise ValidationError(_("El código de acceso debe tener al menos 8 caracteres"))
+            else:
+                _logger.info("El código de acceso del desarrollador %s es %s".format(developer.name, developer.access_code))
 
 class project(models.Model):
     _name = 'manage.project'
