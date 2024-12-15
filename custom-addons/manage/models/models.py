@@ -31,25 +31,25 @@ class developer(models.Model):
     is_developer = fields.Boolean()
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     string="Tecnologías", 
-                                    relation="developer_technology_rel", 
+                                    relation="manage_developer_technology_rel", 
                                     column1="developer_id", 
                                     column2="technology_id",
                                     help='Tecnologías utilizadas por el desarrollador')
     tasks = fields.Many2many(comodel_name="manage.task", 
                              string="Tareas", 
-                             relation="developer_task_rel", 
+                             relation="manage_task_developer_rel", 
                              column1="developer_id", 
                              column2="task_id",
                              help='Tareas realizadas por el desarrollador')
     bugs = fields.Many2many(comodel_name="manage.bug", 
                             string="Bugs", 
-                            relation="developer_bug_rel", 
+                            relation="manage_bug_developer_rel", 
                             column1="developer_id", 
                             column2="bug_id",
                             help='Bugs reportados por el desarrollador')
     improvements = fields.Many2many(comodel_name="manage.improvement", 
                                     string="Mejoras", 
-                                    relation="developer_improvement_rel", 
+                                    relation="manage_improvement_developer_rel", 
                                     column1="developer_id", 
                                     column2="improvement_id",
                                     help='Mejoras realizadas por el desarrollador') 
@@ -184,31 +184,31 @@ class bug(models.Model):
 
     technologies = fields.Many2many(comodel_name="manage.technology",
                                     string="Tecnologías",
-                                    relation="bug_technology_rel",
+                                    relation="manage_bug_technology_rel",
                                     column1="bug_id",
                                     column2="technology_id",
                                     help='Tecnologías utilizadas en el bug')
     tasks_linked = fields.Many2many(comodel_name="manage.task",
                                     string="Tareas",
-                                    relation="bug_task_rel",
+                                    relation="manage_bug_task_rel",
                                     column1="bug_id",
                                     column2="task_id",
                                     help='Tareas relacionadas con el bug')
     bugs_linked = fields.Many2many(comodel_name="manage.bug",
                                    string="Bugs",
-                                   relation="bug_bug_rel",
+                                   relation="manage_bug_bug_rel",
                                    column1="bug1_id",
                                    column2="bug2_id",
                                    help='Bugs relacionados con el bug')
     improvements_linked = fields.Many2many(comodel_name="manage.improvement",
                                            string="Mejoras",
-                                           relation="bug_improvement_rel",
+                                           relation="manage_bug_improvement_rel",
                                            column1="bug_id",
                                            column2="improvement_id",
                                            help='Mejoras relacionadas con el bug')
     developers = fields.Many2many(comodel_name="res.partner",
                                     string="Desarrolladores",
-                                    relation="bug_developer_rel",
+                                    relation="manage_bug_developer_rel",
                                     column1="bug_id",
                                     column2="developer_id",
                                     help='Desarrolladores involucrados en el bug')
@@ -221,19 +221,19 @@ class improvement(models.Model):
 
     technologies = fields.Many2many(comodel_name="manage.technology",
                                     string="Tecnologías",
-                                    relation="improvement_technology_rel",
+                                    relation="manage_improvement_technology_rel",
                                     column1="improvement_id",
                                     column2="technology_id",
                                     help='Tecnologías utilizadas en la mejora')
     histories_linked = fields.Many2many(comodel_name="manage.history",
                                         string="Historias",
-                                        relation="improvement_history_rel",
+                                        relation="manage_improvement_history_rel",
                                         column1="improvement_id",
                                         column2="history_id",
                                         help='Historias relacionadas con la mejora')
     developers = fields.Many2many(comodel_name="res.partner",
                                     string="Desarrolladores",
-                                    relation="improvement_developer_rel",
+                                    relation="manage_improvement_developer_rel",
                                     column1="improvement_id",
                                     column2="developer_id",
                                     help='Desarrolladores involucrados en la mejora')  
@@ -252,7 +252,9 @@ class sprint(models.Model):
     start_date = fields.Datetime()
     duration = fields.Integer(default=15, string="Duración (días)", help='Duración del sprint en días')
     end_date = fields.Datetime(compute="_compute_end_date", store=True)
-    tasks = fields.One2many(comodel_name="manage.task", inverse_name="sprint", string="Tareas")
+    tasks = fields.One2many(comodel_name="manage.task", 
+                            inverse_name="sprint", 
+                            string="Tareas")
 
     @api.depends('start_date', 'duration')
     def _compute_end_date(self):
