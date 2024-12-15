@@ -44,7 +44,9 @@
                         <field
                             name="developers"
                             domain="[('is_developer', '=', True)]"
-                            context="{'form_view_ref': 'manage.developer_form'}"
+                            context="{'form_view_ref': 'manage.developer_form',
+                                      'default_is_developer': True
+                                      }"
                             widget="many2many_tags" />
                         <field name="technologies" />
                     </group>
