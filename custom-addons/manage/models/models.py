@@ -67,7 +67,7 @@ class developer(models.Model):
 
     @api.constrains('access_code')
     def _check_access_code(self):
-        correct_value = re.compile("^[0-9]{8}[A-Z]{1}_*", re.IGNORECASE)
+        correct_value = re.compile("^[0-9]{8}[A-Z]{1}$", re.IGNORECASE)
         for developer in self:
             if correct_value.match(developer.access_code):
                 _logger.info("Access code of developer {} is correct".format(developer.name))
