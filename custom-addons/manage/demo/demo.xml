@@ -26,5 +26,10 @@
             <field name="value">40</field>
           </record>
 -->
+      <record id="dev_0000001" model="res.partner">
+        <field name="name">Lázaro Guillermo Pérez Montoto</field>
+        <field name="access_code">05119731T</field>
+        <field name="is_developer">True</field>
+      </record>
     </data>
 </odoo>
