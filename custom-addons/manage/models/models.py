@@ -56,14 +56,27 @@ class developer(models.Model):
                                     column2="improvement_id",
                                     help='Mejoras realizadas por el desarrollador') 
     
+    def _developer_category(self):
+        for developer in self:
+            if developer.is_developer:
+                categories = developer.env["res.partner.category"].search([('name', '=', "Developer")])  
+                if len(categories) > 0:
+                    category = categories[0]
+                else:
+                    category = developer.env["res.partner.category"].create({"name": "Developer"})
+                return category
+    
     @api.onchange("is_developer")
     def _onchange_is_developer(self):
-        categories = self.env["res.partner.category"].search([('name', '=', "Developer")])
-        if len(categories) > 0:
-            category = categories[0]
-        else:
-            category = self.env["res.partner.category"].create({"name": "Developer"})
+        category = self._developer_category()
         self.category_id = [(4, category.id)]
+
+    @api.constrains("is_developer")
+    def _check_is_developer(self):
+        category = self._developer_category()
+        for developer in self:
+            if developer.is_developer:
+                developer.category_id = [(4, category.id)]
 
     @api.constrains('access_code')
     def _check_access_code(self):
