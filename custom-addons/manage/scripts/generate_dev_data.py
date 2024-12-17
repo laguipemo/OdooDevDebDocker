@@ -26,9 +26,16 @@ def devs_generator(f_source, demo_file):
 
 
 def main():
-    if os.path.exists('custom-addons/manage/demo/devs.xml'):
-        os.remove('custom-addons/manage/demo/devs.xml')
-    devs_generator('dev_data.csv', 'custom-addons/manage/demo/devs.xml')
+    path_dir_demo = os.path.join(os.path.dirname(__file__), '../demo') #custom-addons/manage/demo'
+    path_dir_source = os.path.join(os.path.dirname(__file__), '../csv') #'custom-addons/manage/csv'
+
+    
+    if os.path.exists(os.path.join(path_dir_demo, 'devs.xml')):
+        os.remove(os.path.join(path_dir_demo, 'devs.xml'))
+    devs_generator(
+        os.path.join(path_dir_source, 'dev_data.csv'), 
+        os.path.join(path_dir_demo, 'devs.xml')
+        )
 
 
 if __name__ == '__main__':
