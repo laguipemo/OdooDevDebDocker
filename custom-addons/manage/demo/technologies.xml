@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <record id="technology_1" model="manage.technology">
+            <field name="name">Python</field>
+        </record>
+        <record id="technology_2" model="manage.technology">
+            <field name="name">Docker</field>
+        </record>
+        <record id="technology_3" model="manage.technology">
+            <field name="name">Java</field>
+        </record>
+        <record id="technology_4" model="manage.technology">
+            <field name="name">JavaScript</field>
+        </record>
+        <record id="technology_5" model="manage.technology">
+            <field name="name">Angular</field>
+        </record>
+        <record id="technology_6" model="manage.technology">
+            <field name="name">Odoo</field>
+        </record>
+    </data>
+</odoo>

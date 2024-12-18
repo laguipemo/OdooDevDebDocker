@@ -28,6 +28,12 @@ def write_history(list_line, demo_file):
     write_text(f'{" "*12}<field name="project" ref="project_1" />\n',demo_file)
     write_text(f'{" "*8}</record>\n',demo_file)
 
+# Technology
+def write_technology(list_line, demo_file):
+    write_text(f'{" "*8}<record id="technology_{list_line[0]}" model="manage.technology">\n',demo_file)  
+    write_text(f'{" "*12}<field name="name">{list_line[1]}</field>\n',demo_file)
+    write_text(f'{" "*8}</record>\n',demo_file)
+
 
 ###### Generators ######
 
@@ -70,6 +76,19 @@ def histories_generator(f_source, demo_file):
     write_text(f'{" "*4}</data>\n', demo_file)
     write_text(f'</odoo>\n', demo_file)
 
+# Technology
+def technologies_generator(f_source, demo_file):
+    write_text(f'<odoo>\n', demo_file)
+    write_text(f'{" "*4}<data>\n', demo_file)
+
+    with open(f_source, 'r') as f:
+        for line in f:
+            list_line = line.strip().split(',')
+            write_technology(list_line, demo_file)
+
+    write_text(f'{" "*4}</data>\n', demo_file)
+    write_text(f'</odoo>\n', demo_file)
+
 
 def main():
     path_dir_demo = os.path.join(os.path.dirname(__file__), '../demo') #custom-addons/manage/demo'
@@ -97,6 +116,14 @@ def main():
     histories_generator(
         os.path.join(path_dir_source, 'history_data.csv'), 
         os.path.join(path_dir_demo, 'histories.xml')
+        )
+
+    # Technology
+    if os.path.exists(os.path.join(path_dir_demo, 'technologies.xml')):
+        os.remove(os.path.join(path_dir_demo, 'technologies.xml'))
+    technologies_generator(
+        os.path.join(path_dir_source, 'technology_data.csv'), 
+        os.path.join(path_dir_demo, 'technologies.xml')
         )
 
 if __name__ == '__main__':
