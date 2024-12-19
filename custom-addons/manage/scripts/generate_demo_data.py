@@ -18,6 +18,12 @@ def random_technologies():
             cont += 1
     return technologies_linked
 
+def eval_str_technologies():
+    eval_str = "[(6, 0, ["
+    for tech_id in random_technologies():
+        eval_str += f"ref('{tech_id}'), "
+    return eval_str[:-2] + "])]"
+
 def write_text(text, file):
     with open(file, 'a') as f:
         f.write(text)
@@ -31,10 +37,7 @@ def write_dev(list_line, demo_file):
     write_text(f'{" "*12}<field name="name">{list_line[1]}</field>\n',demo_file)
     write_text(f'{" "*12}<field name="access_code">{list_line[2]}</field>\n',demo_file)
     write_text(f'{" "*12}<field name="is_developer">True</field>\n',demo_file)
-    eval_str = "[(6, 0, ["
-    for tech_id in random_technologies():
-        eval_str += f"ref('{tech_id}'), "
-    write_text(f'{" "*12}<field name="technologies" eval="{eval_str[:-2]}])]" />\n',demo_file)
+    write_text(f'{" "*12}<field name="technologies" eval="{eval_str_technologies()}" />\n',demo_file)
     write_text(f'{" "*8}</record>\n',demo_file)
 
 # Project
