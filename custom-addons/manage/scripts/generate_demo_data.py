@@ -1,5 +1,6 @@
 import os
 import random
+import base64
 
 
 n_technologies = 0
@@ -23,6 +24,13 @@ def eval_str_technologies():
     for tech_id in random_technologies():
         eval_str += f"ref('{tech_id}'), "
     return eval_str[:-2] + "])]"
+
+def get_base64_image(image_name):
+    # abrir el fichero de la imagen como binario y en modo lectura
+    with open(os.path.join(os.path.dirname(__file__), '../images', f'{image_name}.png'), 'rb') as image_file:
+        # codificar la imagen en base64 y decodificarla a utf-8 para poder escribirla en el fichero xml
+        base64_image = base64.b64encode(image_file.read()).decode('utf-8')
+    return base64_image
 
 def write_text(text, file):
     with open(file, 'a') as f:
@@ -56,7 +64,8 @@ def write_history(list_line, demo_file):
 
 # Technology
 def write_technology(list_line, demo_file):
-    write_text(f'{" "*8}<record id="technology_{list_line[0]}" model="manage.technology">\n',demo_file)  
+    write_text(f'{" "*8}<record id="technology_{list_line[0]}" model="manage.technology">\n',demo_file)
+    write_text(f'{" "*12}<field name="photo">{get_base64_image(list_line[1])}</field>\n',demo_file)
     write_text(f'{" "*12}<field name="name">{list_line[1]}</field>\n',demo_file)
     write_text(f'{" "*8}</record>\n',demo_file)
 

@@ -25,7 +25,7 @@
                     <group>
                         <field name="name" />
                         <field name="description" />
-                        <field name="photo" />
+                        <field name="photo" widget="image" class="oe_avatar"/>
                         <field name="tasks" />
                     </group>
                 </form>
