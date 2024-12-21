@@ -28,6 +28,7 @@
                                 string="Developer"
                                 widget="boolean"
                                 attrs="{'invisible': True}" />
+                            <field name="last_login" string="Último acceso" />
                             <field name="access_code" string="Código de acceso"/>
                             <field name="technologies" string="Tecnologías" widget="many2many_tags" />
                             <field

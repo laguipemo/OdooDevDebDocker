@@ -30,6 +30,7 @@ class developer(models.Model):
     _inherit = 'res.partner'
     
     is_developer = fields.Boolean()
+    last_login = fields.Date()
     access_code = fields.Char()
     technologies = fields.Many2many(comodel_name="manage.technology", 
                                     string="Tecnologías", 
