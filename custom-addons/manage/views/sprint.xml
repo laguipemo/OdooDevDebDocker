@@ -7,7 +7,11 @@
             <field name="name">manage sprint list</field>
             <field name="model">manage.sprint</field>
             <field name="arch" type="xml">
-                <tree decoration-warning="duration &lt; 15">
+                <tree 
+                    decoration-warning="duration &lt; 15"
+                    decoration-info="active == True">
+                    
+
                     <field name="name" />
                     <field name="description" />
                     <field name="project" />
@@ -15,6 +19,7 @@
                     <field name="duration" />
                     <field name="end_date" />
                     <field name="tasks" />
+                    <field name="active" invisible="True" />
                 </tree>
             </field>
         </record>
@@ -32,6 +37,7 @@
                         <field name="start_date" />
                         <field name="duration" />
                         <field name="end_date" />
+                        <!-- <field name="active" /> -->
                         <field name="tasks" />
                     </group>
                 </form>

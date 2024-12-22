@@ -304,6 +304,7 @@ class sprint(models.Model):
     start_date = fields.Datetime()
     duration = fields.Integer(default=15, string="Duración (días)", help='Duración del sprint en días')
     end_date = fields.Datetime(compute="_compute_end_date", store=True)
+    active = fields.Boolean(compute="_compute_active")
     tasks = fields.One2many(comodel_name="manage.task", 
                             inverse_name="sprint", 
                             string="Tareas")
@@ -315,6 +316,18 @@ class sprint(models.Model):
                 sprint.end_date = sprint.start_date + datetime.timedelta(days=sprint.duration)
             else:
                 sprint.end_date = sprint.start_date
+
+    @api.depends('start_date', 'duration')
+    def _compute_active(self):
+        for sprint in self:
+            if (isinstance(sprint.start_date, datetime.datetime) and 
+                isinstance(sprint.end_date, datetime.datetime) and
+                sprint.start_date <= datetime.datetime.now() and 
+                sprint.end_date > datetime.datetime.now()):
+
+                sprint.active = True
+            else:
+                sprint.active = False
 
 class technology(models.Model):
     _name = 'manage.technology'
