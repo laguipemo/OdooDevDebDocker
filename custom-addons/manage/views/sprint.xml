@@ -7,7 +7,7 @@
             <field name="name">manage sprint list</field>
             <field name="model">manage.sprint</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-warning="duration &lt; 15">
                     <field name="name" />
                     <field name="description" />
                     <field name="project" />
