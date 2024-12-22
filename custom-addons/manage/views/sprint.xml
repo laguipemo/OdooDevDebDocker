@@ -16,10 +16,10 @@
                     <field name="description" />
                     <field name="project" />
                     <field name="start_date" />
-                    <field name="duration" />
                     <field name="end_date" />
                     <field name="tasks" />
                     <field name="active" invisible="True" />
+                    <field name="duration"  sum="Total"/>
                 </tree>
             </field>
         </record>
