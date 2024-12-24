@@ -1,6 +1,45 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
+    <record id="soporte_incidencia_view_tree" model="ir.ui.view">
+      <field name="name">Lista de incidencias</field>
+      <field name="model">soporte.incidencia</field>
+      <field name="arch" type="xml">
+        <tree string="String en el árbol">
+          <field name="name"/>
+          <field name="description"/>
+          <field name="priority"/>
+          <field name="urgent"/>
+          <field name="closed"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record id="soporte_incidencia_view_form" model="ir.ui.view">
+      <field name="name">Formulario de Incidencia</field>
+      <field name="model">soporte.incidencia</field>
+      <field name="arch" type="xml">
+        <form string="Incidencia">
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="description" />
+            </group>
+            <group>
+              <group>
+                <field name="priority" />
+                <field name="urgent" />
+              </group>
+              <group>
+                <field name="closed" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
 <!--
     <record model="ir.ui.view" id="soporte.list">
       <field name="name">soporte list</field>
@@ -16,6 +55,13 @@
 -->
 
     <!-- actions opening views on models -->
+
+    <record id="soporte_incidencia_action_window" model="ir.actions.act_window">
+      <field name="name">Soporte incidencias</field>
+      <field name="res_model">soporte.incidencia</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
 <!--
     <record model="ir.actions.act_window" id="soporte.action_window">
       <field name="name">soporte window</field>
@@ -41,20 +87,22 @@
 -->
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="soporte" id="soporte.menu_root"/>
--->
+
+    <menuitem name="Soporte" id="soporte_menu_root"/>
+
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="soporte.menu_1" parent="soporte.menu_root"/>
-    <menuitem name="Menu 2" id="soporte.menu_2" parent="soporte.menu_root"/>
--->
+
+    <menuitem name="Incidencias" id="soporte_menu_incidencias" parent="soporte_menu_root"/>
+    
+    <!-- <menuitem name="Menu 2" id="soporte.menu_2" parent="soporte.menu_root"/> -->
+
     <!-- actions -->
-<!--
-    <menuitem name="List" id="soporte.menu_1_list" parent="soporte.menu_1"
-              action="soporte.action_window"/>
-    <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
-              action="soporte.action_server"/>
--->
+
+    <menuitem name="Lista Insidencias" id="soporte_menu_insidencias_list" parent="soporte_menu_incidencias"
+              action="soporte_incidencia_action_window"/>
+
+    <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
+              action="soporte.action_server"/> -->
+
   </data>
 </odoo>
