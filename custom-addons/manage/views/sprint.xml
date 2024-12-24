@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- list view for sprint model -->
+        <record model="ir.ui.view" id="manage.sprint_list">
+            <field name="name">manage sprint list</field>
+            <field name="model">manage.sprint</field>
+            <field name="arch" type="xml">
+                <tree 
+                    decoration-warning="duration &lt; 15"
+                    decoration-info="active == True">
+                    
+
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="project" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="tasks" />
+                    <field name="active" invisible="True" />
+                    <field name="duration"  sum="Total"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view for sprint model -->
+        <record model="ir.ui.view" id="manage.sprint_form">
+            <field name="name">manage sprint form</field>
+            <field name="model">manage.sprint</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="project" />
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="start_date" />
+                        <field name="duration" />
+                        <field name="end_date" />
+                        <!-- <field name="active" /> -->
+                        <field name="tasks" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <!-- action window for sprint model -->
+        <record model="ir.actions.act_window" id="manage.action_sprint_window">
+            <field name="name">manage sprint window</field>
+            <field name="res_model">manage.sprint</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions -->
+
+        <!-- manuitem for sprints -->
+        <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
+            action="manage.action_sprint_window" />
+
+
+    </data>
+</odoo>

@@ -1,0 +1,80 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- list view for bug model -->
+        <record model="ir.ui.view" id="manage.bug_list">
+            <field name="name">manage bug list</field>
+            <field name="model">manage.bug</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="project" />
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="history" />
+                    <field name="definition_date" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="is_paused" />
+                    <field name="sprint" />
+                    <field name="developers" />
+                    <field name="technologies" />
+                    <field name="tasks_linked" />
+                    <field name="bugs_linked" />
+                    <field name="improvements_linked" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view for task model -->
+        <record model="ir.ui.view" id="manage.bug_form">
+            <field name="name">manage bug form</field>
+            <field name="model">manage.bug</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="project" />
+                        <field name="code" />
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="history" />
+                        <field name="definition_date" />
+                        <field name="start_date" />
+                        <field name="end_date" />
+                        <field name="is_paused" />
+                        <field name="sprint" />
+                        <field
+                            name="developers"
+                            domain="[('is_developer', '=', True)]"
+                            context="{'form_view_ref': 'manage.developer_form',
+                                      'default_is_developer': True
+                                     }"
+                            widget="many2many_tags" />
+                        <field name="technologies" />
+                        <field name="tasks_linked" />
+                        <field name="bugs_linked" />
+                        <field name="improvements_linked" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <!-- action window for bug model -->
+        <record model="ir.actions.act_window" id="manage.action_bug_window">
+            <field name="name">manage bug window</field>
+            <field name="res_model">manage.bug</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions -->
+
+        <!-- manuitem for tasks -->
+        <menuitem name="Bugs" id="manage.menu_1_bug_list" parent="manage.menu_1"
+            action="manage.action_bug_window" />
+
+
+    </data>
+</odoo>

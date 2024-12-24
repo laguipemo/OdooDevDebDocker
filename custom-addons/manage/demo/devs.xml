@@ -1,0 +1,74 @@
+<odoo>
+    <data>
+        <record id="dev_1" model="res.partner">
+            <field name="name">Harv Denisevich</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">94502133T</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_3'), ref('technology_1'), ref('technology_4'), ref('technology_6'), ref('technology_5')])]" />
+        </record>
+        <record id="dev_2" model="res.partner">
+            <field name="name">Farley Lockhart</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">40385570O</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_1'), ref('technology_6'), ref('technology_2'), ref('technology_3')])]" />
+        </record>
+        <record id="dev_3" model="res.partner">
+            <field name="name">Gisela Langdridge</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">77543067g</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_3'), ref('technology_5')])]" />
+        </record>
+        <record id="dev_4" model="res.partner">
+            <field name="name">Arvy Alves</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">93034810y</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_4')])]" />
+        </record>
+        <record id="dev_5" model="res.partner">
+            <field name="name">Hedwiga O'Shee</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">07260876J</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_3'), ref('technology_4'), ref('technology_6'), ref('technology_5')])]" />
+        </record>
+        <record id="dev_6" model="res.partner">
+            <field name="name">Consuela Paydon</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">44706805u</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_1')])]" />
+        </record>
+        <record id="dev_7" model="res.partner">
+            <field name="name">Hector Leeke</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">71349080j</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_6'), ref('technology_1'), ref('technology_5'), ref('technology_2')])]" />
+        </record>
+        <record id="dev_8" model="res.partner">
+            <field name="name">Saxon Brosini</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">67579248i</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_2'), ref('technology_1'), ref('technology_4')])]" />
+        </record>
+        <record id="dev_9" model="res.partner">
+            <field name="name">Tilda Paolillo</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">44825871O</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_6'), ref('technology_1'), ref('technology_5'), ref('technology_3')])]" />
+        </record>
+        <record id="dev_10" model="res.partner">
+            <field name="name">Miriam Roseby</field>
+            <field name="last_login" eval="(datetime.now().strftime('%Y-%m-%d'))"></field>
+            <field name="access_code">89444984G</field>
+            <field name="is_developer">True</field>
+            <field name="technologies" eval="[(6, 0, [ref('technology_1')])]" />
+        </record>
+    </data>
+</odoo>
