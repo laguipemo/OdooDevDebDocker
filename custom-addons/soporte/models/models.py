@@ -2,9 +2,9 @@
 
 from odoo import models, fields, api
 
-class SoporteIncidencias(models.Model):
+class SoporteIncidencia(models.Model):
     '''Modelo para la gestión de incidencias'''
-    _name = 'soporte.incidencias'
+    _name = 'soporte.incidencia'
     _description = 'Modelo para la gestión de incidencias'
 
     name = fields.Char(string='Nombre', required=True)
