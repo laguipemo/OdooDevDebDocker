@@ -9,7 +9,7 @@
         Descripción del módulo de soporte para la gestión de incidencias
     """,
 
-    'author': "LGPM developments",
+    'author': "Lázaro Guillermo Pérez Montoto -LGPM developments-",
     'website': "https://github.com/laguipemo",
 
     # Categories can be used to filter modules in modules listing
