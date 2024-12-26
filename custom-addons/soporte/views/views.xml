@@ -10,7 +10,10 @@
           <field name="description"/>
           <field name="priority"/>
           <field name="urgent"/>
+          <field name="ubicacion"/>
           <field name="closed"/>
+          <field name="fecha_creacion"/>
+          <field name="fecha_modificacion"/>
         </tree>
       </field>
     </record>
@@ -32,7 +35,12 @@
                 <field name="urgent" />
               </group>
               <group>
+                <field name="ubicacion" />
                 <field name="closed" />
+              </group>
+              <group>
+                <field name="fecha_creacion" />
+                <field name="fecha_modificacion" />
               </group>
             </group>
           </sheet>
