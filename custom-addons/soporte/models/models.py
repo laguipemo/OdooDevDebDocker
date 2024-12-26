@@ -8,15 +8,18 @@ class SoporteIncidencia(models.Model):
     _description = 'Modelo para la gestión de incidencias'
 
     name = fields.Char(string='Nombre', required=True)
-    description = fields.Text(string='Description')
+    description = fields.Html(string='Description')
     priority = fields.Integer(
         string='Prioridad',
         default=1,
         help='Prioridad de la incidencia (1-10). Valor mayor que 7 es urgente'
         )
-    urgent = fields.Selection(
-        string='Urgente',
-        selection=[('0', 'No'), ('1', 'Si')])
+    urgent = fields.Boolean(
+        string='Urgente', 
+        default=False, 
+        help='Urgente?'
+    )
+
     closed = fields.Boolean(string='Cerrada', default=False)
 
 
