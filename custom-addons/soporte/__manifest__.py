@@ -27,7 +27,8 @@
         'views/views.xml',
         'views/templates.xml',
         'views/menu_root.xml',
-        'views/incidencia.xml'
+        'views/incidencia.xml',
+        'views/ubicacion.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
