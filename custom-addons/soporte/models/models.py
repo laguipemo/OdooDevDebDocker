@@ -50,9 +50,7 @@ class SoporteIncidencia(models.Model):
         default=fields.Date.today
         )
     
-
-
-
+    
 class SoporteUbicacion(models.Model):
     _name = 'soporte.ubicacion'
     _description = 'Modelo para almacenar las ubicaciones de las incidencias'
