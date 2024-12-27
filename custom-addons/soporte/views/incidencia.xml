@@ -47,6 +47,9 @@
                 <field name="fecha_modificacion" />
               </group>
             </group>
+            <group>
+              <field name="tecnico_ids" />
+            </group>
           </sheet>
         </form>
       </field>

@@ -57,3 +57,12 @@ class SoporteIncidencia(models.Model):
         string='Fecha última modificación',
         default=fields.Date.today
         )
+    
+    tecnico_ids = fields.Many2many(
+        string='Técnicos',
+        comodel_name='soporte.tecnico',
+        relation='soporte_incidencia_tecnico_rel',
+        column1='incidencia_id',
+        column2='tecnico_id',
+        help='Técnicos asignados a la incidencia'
+        )
