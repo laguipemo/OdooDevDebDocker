@@ -1,0 +1,6 @@
+<odoo>
+
+    <data>
+        <menuitem name="Soporte" id="soporte_menu_root"/>
+    </data> 
+</odoo>
