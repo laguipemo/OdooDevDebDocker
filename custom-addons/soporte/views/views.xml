@@ -39,7 +39,11 @@
                 <field name="closed" />
               </group>
               <group>
+                <field name="archivo" />
                 <field name="fecha_creacion" />
+              </group>
+              <group>
+                <field name="foto" widget="image" class="oe_left oe_avatar" />
                 <field name="fecha_modificacion" />
               </group>
             </group>
