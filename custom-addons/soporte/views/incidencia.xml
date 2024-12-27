@@ -10,7 +10,7 @@
           <field name="description"/>
           <field name="priority"/>
           <field name="urgent"/>
-          <field name="ubicacion"/>
+          <field name="ubicacion_id"/>
           <field name="closed"/>
           <field name="fecha_creacion"/>
           <field name="fecha_modificacion"/>
@@ -35,7 +35,7 @@
                 <field name="urgent" />
               </group>
               <group>
-                <field name="ubicacion" />
+                <field name="ubicacion_id" />
                 <field name="closed" />
               </group>
               <group>

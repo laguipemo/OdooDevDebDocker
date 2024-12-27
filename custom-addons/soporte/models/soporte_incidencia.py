@@ -22,12 +22,20 @@ class SoporteIncidencia(models.Model):
         help='Se considera urgente si priorida >= 7'
     )
 
-    ubicacion = fields.Selection(
+    """ ubicacion = fields.Selection(
         string='Ubicacion',
         selection=[
             ('1', 'Aula 1'),
             ('2', 'Aula 2')
             ]
+        )
+ """
+
+    ubicacion_id = fields.Many2one(
+        string='Ubicación',
+        comodel_name='soporte.ubicacion',
+        ondelete='cascade',
+        help='Ubicación de la incidencia'
         )
 
     closed = fields.Boolean(string='Cerrada', default=False)
