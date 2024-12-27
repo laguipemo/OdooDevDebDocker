@@ -24,3 +24,9 @@ class SoporteUbicacion(models.Model):
             ('2', 'Planta segunda'),
             ]
         )
+    insidencia_ids = fields.One2many(
+        string='Incidencias',
+        comodel_name='soporte.incidencia',
+        inverse_name='ubicacion_id',
+        help='Incidencias ocurridas en esta ubicación'
+        )

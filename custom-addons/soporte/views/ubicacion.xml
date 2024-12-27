@@ -33,6 +33,9 @@
                 <field name="planta" />
               </group>
             </group>
+            <group>
+              <field name="insidencia_ids" />
+            </group>
           </sheet>
         </form>
       </field>
