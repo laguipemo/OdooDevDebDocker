@@ -16,11 +16,26 @@ class SoporteIncidencia(models.Model):
         default=1,
         help='Prioridad de la incidencia (1-10). Valor mayor que 7 es urgente'
         )
+
     urgent = fields.Boolean(
+        string='urgent',
+        compute='_compute_urgent',
+        store=True,
+        help='Se considera urgente si prioridad > 7')
+
+    @api.depends('priority')
+    def _compute_urgent(self):
+        for incidencia in self:
+            if incidencia.priority > 7:
+                incidencia.urgent = True
+            else:
+                incidencia.urgent = False
+
+    """ urgent = fields.Boolean(
         string='Urgente',
         default=False,
-        help='Se considera urgente si priorida >= 7'
-    )
+        help='Se considera urgente si prioridad > 7'
+    ) """
 
     """ ubicacion = fields.Selection(
         string='Ubicacion',
