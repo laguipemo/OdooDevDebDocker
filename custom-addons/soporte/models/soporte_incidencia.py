@@ -65,14 +65,31 @@ class SoporteIncidencia(models.Model):
 
     fecha_creacion = fields.Datetime(
         string='Fecha de creación',
-        default=fields.Datetime.now
+        # la asignación directa se ejecuta solo al instalar o actualizar el modulo
+        # default=fields.Datetime.now()
+        # al asignarse mediante función, se ejecuta cada vez que se crea el registro
+        default= lambda self: fields.Datetime.now(),
+        help='Fecha en la que se crea la incidencia'
         )
 
-    fecha_modificacion = fields.Date(
+    fecha_modificacion = fields.Datetime(
         string='Fecha última modificación',
-        default=fields.Date.today
+        # al asignarse mediante función, se ejecuta cada vez que se crea el registro
+        default= lambda self: fields.Datetime.now(),
+        help='Fecha en la que se modifica la incidencia'
         )
-    
+
+    @api.onchange(
+        'name',
+        'description',
+        'priority',
+        'ubicacion_id',
+        'closed',
+        'tecnico_ids'
+        )
+    def _onchange_fecha_modificacion(self):
+        self.fecha_modificacion = fields.Datetime.now()
+
     tecnico_ids = fields.Many2many(
         string='Técnicos',
         comodel_name='soporte.tecnico',
