@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+import logging
+
+
+_logger = logging.getLogger(__name__)
 
 class SoporteIncidencia(models.Model):
     '''Modelo para la gestión de incidencias'''
@@ -17,25 +22,17 @@ class SoporteIncidencia(models.Model):
         help='Prioridad de la incidencia (1-10). Valor mayor que 7 es urgente'
         )
 
+    """ urgent = fields.Boolean(
+        string='Urgente',
+        default=False,
+        help='Se considera urgente si prioridad > 7'
+    ) """
     urgent = fields.Boolean(
         string='urgent',
         compute='_compute_urgent',
         store=True,
         help='Se considera urgente si prioridad > 7')
 
-    @api.depends('priority')
-    def _compute_urgent(self):
-        for incidencia in self:
-            if incidencia.priority > 7:
-                incidencia.urgent = True
-            else:
-                incidencia.urgent = False
-
-    """ urgent = fields.Boolean(
-        string='Urgente',
-        default=False,
-        help='Se considera urgente si prioridad > 7'
-    ) """
 
     """ ubicacion = fields.Selection(
         string='Ubicacion',
@@ -43,9 +40,7 @@ class SoporteIncidencia(models.Model):
             ('1', 'Aula 1'),
             ('2', 'Aula 2')
             ]
-        )
- """
-
+        )"""
     ubicacion_id = fields.Many2one(
         string='Ubicación',
         comodel_name='soporte.ubicacion',
@@ -79,6 +74,24 @@ class SoporteIncidencia(models.Model):
         help='Fecha en la que se modifica la incidencia'
         )
 
+    tecnico_ids = fields.Many2many(
+        string='Técnicos',
+        comodel_name='soporte.tecnico',
+        relation='soporte_incidencia_tecnico_rel',
+        column1='incidencia_id',
+        column2='tecnico_id',
+        help='Técnicos asignados a la incidencia'
+        )
+
+    @api.constrains('priority')
+    def _check_priority(self):
+        for incidencia in self:
+            if incidencia.priority < 1 or incidencia.priority > 10:
+                raise ValidationError(
+                    'La prioridad debe estar entre 1 y 10')
+            else:
+                _logger.info('Prioridad correcta')
+
     @api.onchange(
         'name',
         'description',
@@ -92,11 +105,10 @@ class SoporteIncidencia(models.Model):
     def _onchange_fecha_modificacion(self):
         self.fecha_modificacion = fields.Datetime.now()
 
-    tecnico_ids = fields.Many2many(
-        string='Técnicos',
-        comodel_name='soporte.tecnico',
-        relation='soporte_incidencia_tecnico_rel',
-        column1='incidencia_id',
-        column2='tecnico_id',
-        help='Técnicos asignados a la incidencia'
-        )
+    @api.depends('priority')
+    def _compute_urgent(self):
+        for incidencia in self:
+            if incidencia.priority > 7:
+                incidencia.urgent = True
+            else:
+                incidencia.urgent = False
