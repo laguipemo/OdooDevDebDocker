@@ -11,7 +11,7 @@
         >
           <field name="name"/>
           <field name="description"/>
-          <field name="priority"/>
+          <field name="priority" avg="Prioridad promedio"/>
           <field name="urgent"/>
           <field name="ubicacion_id"/>
           <field name="closed"/>
