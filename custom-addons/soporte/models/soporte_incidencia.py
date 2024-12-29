@@ -85,6 +85,8 @@ class SoporteIncidencia(models.Model):
         'priority',
         'ubicacion_id',
         'closed',
+        'archivo',
+        'foto',
         'tecnico_ids'
         )
     def _onchange_fecha_modificacion(self):
