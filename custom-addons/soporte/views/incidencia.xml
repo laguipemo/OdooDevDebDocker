@@ -6,9 +6,9 @@
       <field name="model">soporte.incidencia</field>
       <field name="arch" type="xml">
         <tree 
+          decoration-danger="urgent == True and closed == False"
           decoration-success="closed == True"
-          decoration-danger="urgent == True or priority &gt;7"
-        > 
+        >
           <field name="name"/>
           <field name="description"/>
           <field name="priority"/>
