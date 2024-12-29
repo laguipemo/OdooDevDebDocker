@@ -112,3 +112,10 @@ class SoporteIncidencia(models.Model):
                 incidencia.urgent = True
             else:
                 incidencia.urgent = False
+
+    _sql_constraints = [
+        ('constrint_priority_range', # nombre de la restricción
+         'CHECK (priority BETWEEN 1 AND 10)', # condición de la restricción
+         'La prioridad debe estar entre 1 y 10' # mensaje de error
+        )
+    ]
