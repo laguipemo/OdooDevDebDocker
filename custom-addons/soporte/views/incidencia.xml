@@ -5,7 +5,7 @@
       <field name="name">Lista de incidencias</field>
       <field name="model">soporte.incidencia</field>
       <field name="arch" type="xml">
-        <tree string="String en el árbol">
+        <tree decoration-success="closed == True"> 
           <field name="name"/>
           <field name="description"/>
           <field name="priority"/>
