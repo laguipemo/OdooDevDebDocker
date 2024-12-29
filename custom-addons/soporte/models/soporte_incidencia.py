@@ -86,11 +86,11 @@ class SoporteIncidencia(models.Model):
     @api.constrains('priority')
     def _check_priority(self):
         for incidencia in self:
-            if incidencia.priority < 1 or incidencia.priority > 10:
+            if incidencia.priority < 0:
                 raise ValidationError(
-                    'La prioridad debe estar entre 1 y 10')
+                    'La prioridad debe ser mayor que 0')
             else:
-                _logger.info('Prioridad correcta')
+                _logger.info('Prioridad > 0')
 
     @api.onchange(
         'name',
