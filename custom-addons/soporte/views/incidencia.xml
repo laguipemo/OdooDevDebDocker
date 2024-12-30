@@ -28,21 +28,26 @@
       <field name="arch" type="xml">
         <form string="Incidencia">
           <sheet>
-            <group col="6">
+            <group col="4">
               <field name="name" />
+            </group>
+            <group>
               <field name="description" />
             </group>
             <notebook>
               <page name="datos_generales" string="Datos Generales">
-                <group>
+                <group col="8">
                   <field name="priority" />
-                  <field name="ubicacion_id" />
+                </group>
+                <group  col="4">
+                  <field name="ubicacion_id"/>
                 </group>
               </page>
               <page name="adjuntos" string="Adjuntos">
                 <group>
                   <separator string="Capturas de la incidencia" />
                   <field name="archivo" />
+                  <separator string="" />
                   <field name="foto" widget="image" class="oe_left oe_avatar" />
                 </group>
               </page>
