@@ -28,9 +28,11 @@
       <field name="arch" type="xml">
         <form string="Incidencia">
           <sheet>
-            <group col="4">
-              <field name="name" />
-            </group>
+            <h2 style="color: red;">
+              <group col="4">
+                <field name="name" />
+              </group>
+            </h2>
             <group>
               <field name="description" />
             </group>
