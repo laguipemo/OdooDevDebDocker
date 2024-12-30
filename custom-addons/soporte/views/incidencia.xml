@@ -56,7 +56,7 @@
                   <field name="fecha_creacion" />
                   <field name="fecha_modificacion" />
                   <separator string="Tecnicos trabajando en la incidencia" />
-                  <field name="tecnico_ids">
+                  <field name="tecnico_ids" can_create="True" can_write="True">
                     <tree>
                       <field name="name" />
                     </tree>
