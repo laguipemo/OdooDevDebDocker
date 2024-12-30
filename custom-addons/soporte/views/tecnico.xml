@@ -19,8 +19,13 @@
         <form>
           <sheet>
             <group>
-              <field name="name" />
-              <field name="incidencia_ids" />
+              <group name="datos" string="Datos">
+                <field name="name" />
+              </group>
+              <newline></newline>
+              <group name="trabajo" string="Trabajo" colspan="2">
+                <field name="incidencia_ids"/>
+              </group>
             </group>
           </sheet>
         </form>
