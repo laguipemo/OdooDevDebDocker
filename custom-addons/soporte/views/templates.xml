@@ -1,6 +1,6 @@
 <odoo>
-    <data>
-<!--
+  <data>
+    <!--
         <template id="listing">
           <ul>
             <li t-foreach="objects" t-as="object">
@@ -20,5 +20,44 @@
           </dl>
         </template>
 -->
-    </data>
+
+    <record model="ir.actions.report" id="soporte_incidencia_info_action_report">
+      <field name="name">Incidencia Info Reporte</field>
+      <field name="model">soporte.incidencia</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">soporte.incidencia_info_report</field>
+      <field name="report_file">soporte.incidencia_info_report</field>
+      <field name="binding_model_id" ref="model_soporte_incidencia" />
+    </record>
+
+    <template id="soporte.incidencia_info_report">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="incidencia">
+          <t t-call="web.external_layout">
+            <div class="page">
+              <div class="alert alert-primary" role="alert">
+                <h1 class="text-center"><span t-field="incidencia.name" /></h1>
+                <h5 class="text-justify text-secondary"><span t-field="incidencia.description" /></h5>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div class="alert alert-secondary text-start col-4" role="alert">
+                  <!-- <h5 class="text-start">Datos Generales</h5> -->
+                  <p class="text-start"><span class="fw-bold">Ubicación:</span> <span t-field="incidencia.ubicacion_id" /></p>
+                  <p class="text-start">Prioridad: <span t-field="incidencia.priority" /></p>
+                  <p class="text-start">Urgente: <span t-if="incidencia.urgent == True">Si</span> <span t-else="">No</span></p>
+                  <p class="text-start">Cerrada: <span t-if="incidencia.closed == True">Si</span> <span t-else="">No</span> </p>
+                </div>
+                <div class="col-4"></div>
+                <div class="text-end col-4">
+                  <img t-att-src="image_data_uri(incidencia.foto)" t-att-alt="incidencia.foto" class="img-thumbnail" width="150" height="150"/>
+                </div>
+              </div>
+            </div>
+            <p style="page-break-after: always;"></p>
+          </t>
+        </t>
+      </t>
+    </template>
+
+  </data>
 </odoo>
