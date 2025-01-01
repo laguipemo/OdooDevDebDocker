@@ -20,7 +20,12 @@
           </dl>
         </template>
 -->
-    <!-- <record id="soporte.paperformat_id" model="report.paperformat">
+
+    <!-- Si quiero crear un formato de papel o folio personalizado, tengo qeu crear
+    un registro de tipo report.paperformat con los campos necesarios para
+    definir la personalización que se desea aplicar. Un ejemplo es el siguiente: -->
+
+    <!-- <record id="soporte_paperformat_id" model="report.paperformat">
       <field name="name">Soporte paperformat</field>
       <field name="default" eval="True" />
       <field name="format">custom</field>
@@ -36,8 +41,14 @@
       <field name="dpi">80</field>
     </record> -->
 
+    <!-- **** OjO ****
+    No utilizaré el formato de papel personalizado pues deseo utilizar el
+    web.external_layout en la plantilla de mi reporte para que muestre el
+    encabezado y pie de página de la plantilla utilizada por la empresa
+    para presupuestos, facturar, etc. Si utilizo el formato personalizado
+    se me desconficura lo anterior. -->
     <record model="ir.actions.report" id="soporte_incidencia_info_action_report">
-      <field name="name">Incidencia Info Reporte</field>
+      <field name="name">Reporte de incidencia</field> <!-- Nombre de la acción el menú imprimir -->
       <field name="model">soporte.incidencia</field>
       <field name="report_type">qweb-pdf</field>
       <field name="report_name">soporte.incidencia_info_report</field>
@@ -45,7 +56,7 @@
       <field name="binding_model_id" ref="model_soporte_incidencia" />
 
       <field name="print_report_name">'Reporte-%s' %(object.name)</field>
-      <!-- <field name="paperformat_id" ref="soporte.paperformat_id" /> -->
+      <!-- <field name="paperformat_id" ref="soporte_paperformat_id" /> -->
     </record>
 
     <template id="soporte.incidencia_info_report">
