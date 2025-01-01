@@ -12,6 +12,11 @@ class SoporteIncidencia(models.Model):
     _name = 'soporte.incidencia'
     _description = 'Modelo para la gestión de incidencias'
 
+    def soporte_incidencia_print_report_button(self):
+        return self.env.ref(
+            'soporte.soporte_incidencia_info_action_report'
+            ).report_action(self)
+
     name = fields.Char(string='Nombre', required=True)
     description = fields.Html(
         string='Description',

@@ -27,6 +27,13 @@
       <field name="model">soporte.incidencia</field>
       <field name="arch" type="xml">
         <form string="Incidencia">
+          <header>
+            <button
+              name="soporte_incidencia_print_report_button"
+              string="Imprimir Reporte"
+              type="object"
+              class="btn-primary"/>
+          </header>
           <sheet>
             <h2 style="color: red;">
               <group col="4">
