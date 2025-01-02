@@ -31,6 +31,7 @@
         'views/incidencia.xml',
         'views/ubicacion.xml',
         'views/tecnico.xml',
+        'demo/demo.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
