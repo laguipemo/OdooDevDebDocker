@@ -51,12 +51,15 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Ubicaciones" id="soporte_menu_ubicaciones" parent="soporte_menu_root"/>
+    <menuitem name="Ubicaciones" id="soporte_menu_ubicaciones" parent="soporte_menu_root" groups="soporte_group_admins"/>
 
     <!-- actions -->
 
-    <menuitem name="Lista ubicaciones" id="soporte_menu_ubicaciones_list" parent="soporte_menu_ubicaciones"
-              action="soporte_ubicacion_action_window"/>
+    <menuitem name="Lista ubicaciones"
+              id="soporte_menu_ubicaciones_list"
+              parent="soporte_menu_ubicaciones"
+              action="soporte_ubicacion_action_window"
+              groups="soporte_group_admins"/>
 
     <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
               action="soporte.action_server"/> -->

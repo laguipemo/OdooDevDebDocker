@@ -94,13 +94,14 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Incidencias" id="soporte_menu_incidencias" parent="soporte_menu_root" />
+    <menuitem name="Incidencias" id="soporte_menu_incidencias" parent="soporte_menu_root" groups="soporte_group_users"/>
 
     <!-- actions -->
 
     <menuitem name="Lista Insidencias" id="soporte_menu_insidencias_list"
       parent="soporte_menu_incidencias"
-      action="soporte_incidencia_action_window" />
+      action="soporte_incidencia_action_window"
+      groups="soporte_group_users" />
 
     <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
               action="soporte.action_server"/> -->

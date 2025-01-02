@@ -42,12 +42,15 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Tecnicos" id="soporte_menu_tecnicos" parent="soporte_menu_root"/>
+    <menuitem name="Tecnicos" id="soporte_menu_tecnicos" parent="soporte_menu_root" groups="soporte_group_admins"/>
 
     <!-- actions -->
 
-    <menuitem name="Lista tecnicos" id="soporte_menu_tecnicos_list" parent="soporte_menu_tecnicos"
-              action="soporte_tecnico_action_window"/>
+    <menuitem name="Lista tecnicos"
+              id="soporte_menu_tecnicos_list"
+              parent="soporte_menu_tecnicos"
+              action="soporte_tecnico_action_window"
+              groups="soporte_group_admins"/>
 
     <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
               action="soporte.action_server"/> -->
