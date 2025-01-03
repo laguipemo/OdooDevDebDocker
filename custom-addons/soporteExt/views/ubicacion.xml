@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="soporte_ubicacion_view_tree" model="ir.ui.view">
+      <field name="name">Lista de ubicaciones</field>
+      <field name="model">soporte.ubicacion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="pabellon"/>
+          <field name="planta"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record id="soporte_ubicacion_view_form" model="ir.ui.view">
+      <field name="name">Formulario de ubicacion</field>
+      <field name="model">soporte.ubicacion</field>
+      <field name="arch" type="xml">
+        <form string="ubicacion">
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="description" />
+            </group>
+            <group>
+              <group>
+                <field name="pabellon" />
+              </group>
+              <group>
+                <field name="planta" />
+              </group>
+            </group>
+            <group>
+              <field name="insidencia_ids" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record id="soporte_ubicacion_action_window" model="ir.actions.act_window">
+      <field name="name">Soporte ubicaciones</field>
+      <field name="res_model">soporte.ubicacion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- menu categories -->
+
+    <menuitem name="Ubicaciones" id="soporte_menu_ubicaciones" parent="soporte_menu_root" groups="soporte_group_admins"/>
+
+    <!-- actions -->
+
+    <menuitem name="Lista ubicaciones"
+              id="soporte_menu_ubicaciones_list"
+              parent="soporte_menu_ubicaciones"
+              action="soporte_ubicacion_action_window"
+              groups="soporte_group_admins"/>
+
+    <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
+              action="soporte.action_server"/> -->
+
+  </data>
+</odoo>

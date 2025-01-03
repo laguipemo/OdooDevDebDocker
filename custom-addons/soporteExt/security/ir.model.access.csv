@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_soporte_incidencia,soporte.incidencia,model_soporte_incidencia,soporte_group_users,1,1,1,1
+access_soporte_tecnico,soporte.tecnico,model_soporte_tecnico,soporte_group_users,1,1,1,1
+access_soporte_ubicacion,soporte.ubicacion,model_soporte_ubicacion,soporte_group_users,1,1,1,1
