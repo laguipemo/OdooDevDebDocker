@@ -7,7 +7,13 @@
       <field name="inherit_id" ref="soporte.soporte_tecnico_view_tree" />
       <field name="arch" type="xml">
         <field name="name" position="after">
+          <field name="apellido1" />
+          <field name="apellido2" />
+          <field name="dni" />
           <field name="tipo" />
+          <field name="fecha_nacimiento" />
+          <field name="fecha_incorporacion" />
+
         </field>
       </field>
     </record>
@@ -18,9 +24,28 @@
       <field name="model">soporte.tecnico</field>
       <field name="inherit_id" ref="soporte.soporte_tecnico_view_form" />
       <field name="arch" type="xml">
-        <field name="name" position="after">
-          <field name="tipo" />
-        </field>
+        <group name="datos" position="replace">
+          <group name="datos" string="Datos" colspan="4">
+            <group labels="right">
+              <field name="name" />
+              <field name="apellido1" />
+              <field name="apellido2" />
+            </group>
+            <group>
+              <field name="foto" widget="image" nolabel="1" class="oe_avatar oe_right" colspan="2"/>
+            </group>
+          </group>
+          <group name="more_datos" colspan="4">
+            <group>
+              <field name="dni" />
+              <field name="fecha_nacimiento" />
+            </group>
+            <group style="border-left: 1px solid #e6e6e6;">
+              <field name="tipo"/>
+              <field name="fecha_incorporacion" />
+            </group>
+          </group>
+        </group>
         <sheet position="after">
           <div class="oe_chatter">
             <field name="message_follower_ids" widget="mail_follower" />
