@@ -24,29 +24,38 @@
       <field name="model">soporte.tecnico</field>
       <field name="inherit_id" ref="soporte.soporte_tecnico_view_form" />
       <field name="arch" type="xml">
-        <group name="datos" position="replace">
-          <group name="datos" string="Datos" colspan="4">
-            <group labels="right">
-              <field name="name" />
-              <field name="apellido1" />
-              <field name="apellido2" />
+        <sheet position="replace">
+          <sheet>
+            <div class="row">
+              <div class="oe_title column col-8">
+                <h1>Técnico-<field name="id"/></h1>
+                <h2>
+                  <label for="dni" class="oe_form_label oe_edit_only" />
+                  <field name="dni" placeholder="12345678X" class="oe_inline" />
+                </h2>
+              </div>
+              <div class="col-4">
+                <field name="foto" widget="image" class="oe_avatar oe_right" />
+              </div>
+            </div>
+            <separator string="Datos Personales" />
+            <group name="name" col="3" >
+              <group>
+                <field name="apellido1" />
+                <field name="fecha_nacimiento" />
+              </group>
+              <group>
+                <field name="apellido2" />
+                <field name="fecha_incorporacion" />
+              </group>
+              <group>
+                <field name="name" />
+                <field name="tipo" />
+              </group>
             </group>
-            <group>
-              <field name="foto" widget="image" nolabel="1" class="oe_avatar oe_right" colspan="2"/>
-            </group>
-          </group>
-          <group name="more_datos" colspan="4">
-            <group>
-              <field name="dni" />
-              <field name="fecha_nacimiento" />
-            </group>
-            <group style="border-left: 1px solid #e6e6e6;">
-              <field name="tipo"/>
-              <field name="fecha_incorporacion" />
-            </group>
-          </group>
-        </group>
-        <sheet position="after">
+            <separator string="Incidencias asignadas" colspan="4" />
+            <field name="incidencia_ids" />
+          </sheet>
           <div class="oe_chatter">
             <field name="message_follower_ids" widget="mail_follower" />
             <field name="message_ids" widget="mail_thread" />
