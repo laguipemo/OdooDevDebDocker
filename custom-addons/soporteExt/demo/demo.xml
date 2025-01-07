@@ -28,7 +28,7 @@
 -->
 
       <!-- Data for model soporte.tecnico -->
-      <record id="tecnico1" model="soporte.tecnico">
+      <!-- <record id="tecnico1" model="soporte.tecnico">
         <field name="name">Lázaro Guillermo Pérez Montoto</field>
         <field name="tipo">1</field>
       </record>
@@ -39,7 +39,7 @@
       <record id="tecnico3" model="soporte.tecnico">
         <field name="name">Chachy Pérez</field>
         <field name="tipo">0</field>
-      </record>
+      </record> -->
 
       
     </data>
