@@ -70,7 +70,7 @@
       <field name="name">Kanban de tecnico</field>
       <field name="model">soporte.tecnico</field>
       <field name="arch" type="xml">
-        <kanban>
+        <kanban default_group_by="tipo">
           <!-- Fields needed for kanban view logic -->
           <field name="name" />
           <field name="id" />
