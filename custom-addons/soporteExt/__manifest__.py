@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "soporte",
+    'name': "soporteExt",
 
     'summary': """
-        Módulo de soporte para la gestión de incidencias""",
+        Módulo de soporte extendido para la gestión de incidencias """,
 
     'description': """
-        Descripción del módulo de soporte para la gestión de incidencias
+        Descripción del módulo de soporte para la gestión de incidencias. Extensión para técnicos.
     """,
 
     'author': "Lázaro Guillermo Pérez Montoto -LGPM developments-",
@@ -19,17 +19,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'mail', 'soporte'],
 
     # always loaded
     'data': [
         'security/groups.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
-        'views/menu_root.xml',
-        'views/incidencia.xml',
-        'views/ubicacion.xml',
         'views/tecnico.xml',
         'demo/demo.xml',
     ],
