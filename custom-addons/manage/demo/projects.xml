@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <record id="project_1" model="manage.project">
+            <field name="name">Maravilla</field>
+        </record>
+    </data>
+</odoo>

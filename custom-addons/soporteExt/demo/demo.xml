@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+<!--
+          <record id="object0" model="soporte.soporte">
+            <field name="name">Object 0</field>
+            <field name="value">0</field>
+          </record>
+
+          <record id="object1" model="soporte.soporte">
+            <field name="name">Object 1</field>
+            <field name="value">10</field>
+          </record>
+
+          <record id="object2" model="soporte.soporte">
+            <field name="name">Object 2</field>
+            <field name="value">20</field>
+          </record>
+
+          <record id="object3" model="soporte.soporte">
+            <field name="name">Object 3</field>
+            <field name="value">30</field>
+          </record>
+
+          <record id="object4" model="soporte.soporte">
+            <field name="name">Object 4</field>
+            <field name="value">40</field>
+          </record>
+-->
+
+      <!-- Data for model soporte.tecnico -->
+      <!-- <record id="tecnico1" model="soporte.tecnico">
+        <field name="name">Lázaro Guillermo Pérez Montoto</field>
+        <field name="tipo">1</field>
+      </record>
+      <record id="tecnico2" model="soporte.tecnico">
+        <field name="name">laguipemo</field>
+        <field name="tipo">2</field>
+      </record>
+      <record id="tecnico3" model="soporte.tecnico">
+        <field name="name">Chachy Pérez</field>
+        <field name="tipo">0</field>
+      </record> -->
+
+      
+    </data>
+</odoo>

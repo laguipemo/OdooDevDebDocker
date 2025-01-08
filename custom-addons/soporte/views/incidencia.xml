@@ -1,0 +1,110 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="soporte_incidencia_view_tree" model="ir.ui.view">
+      <field name="name">Lista de incidencias</field>
+      <field name="model">soporte.incidencia</field>
+      <field name="arch" type="xml">
+        <tree
+          decoration-danger="urgent == True and closed == False"
+          decoration-success="closed == True"
+        >
+          <field name="name" />
+          <field name="description" />
+          <field name="priority" avg="Prioridad promedio" />
+          <field name="urgent" />
+          <field name="ubicacion_id" />
+          <field name="closed" />
+          <field name="fecha_creacion" />
+          <field name="fecha_modificacion" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record id="soporte_incidencia_view_form" model="ir.ui.view">
+      <field name="name">Formulario de Incidencia</field>
+      <field name="model">soporte.incidencia</field>
+      <field name="arch" type="xml">
+        <form string="Incidencia">
+          <header>
+            <button
+              name="soporte_incidencia_print_report_button"
+              string="Imprimir Reporte"
+              type="object"
+              class="btn-primary"/>
+          </header>
+          <sheet>
+            <h2 style="color: red;">
+              <group col="4">
+                <field name="name" />
+              </group>
+            </h2>
+            <group>
+              <field name="description" />
+            </group>
+            <notebook>
+              <page name="datos_generales" string="Datos Generales">
+                <group col="8">
+                  <field name="priority" attrs="{'invisible': [('closed', '=', True)]}"/>
+                </group>
+                <group  col="4">
+                  <field name="ubicacion_id"/>
+                </group>
+              </page>
+              <page name="adjuntos" string="Adjuntos">
+                <group>
+                  <separator string="Capturas de la incidencia" />
+                  <field name="archivo" />
+                  <separator string="" />
+                  <field name="foto" widget="image" class="oe_left oe_avatar" />
+                </group>
+              </page>
+              <page name="datos_tecnicos" string="Datos Tecnicos">
+                <group>
+                  <field name="fecha_creacion" />
+                  <field name="fecha_modificacion" />
+                  <separator string="Tecnicos trabajando en la incidencia" />
+                  <field name="tecnico_ids" can_create="True" can_write="True">
+                    <tree>
+                      <field name="name" />
+                    </tree>
+                  </field>
+                </group>
+              </page>
+              <page name="mas_informacion" string="Más Información" >  
+                <group>
+                  <field name="urgent" />
+                  <field name="closed" widget="boolean_toggle" />
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record id="soporte_incidencia_action_window" model="ir.actions.act_window">
+      <field name="name">Soporte incidencias</field>
+      <field name="res_model">soporte.incidencia</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- menu categories -->
+
+    <menuitem name="Incidencias" id="soporte_menu_incidencias" parent="soporte_menu_root" groups="soporte_group_users"/>
+
+    <!-- actions -->
+
+    <menuitem name="Lista Insidencias" id="soporte_menu_insidencias_list"
+      parent="soporte_menu_incidencias"
+      action="soporte_incidencia_action_window"
+      groups="soporte_group_users" />
+
+    <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
+              action="soporte.action_server"/> -->
+
+  </data>
+</odoo>

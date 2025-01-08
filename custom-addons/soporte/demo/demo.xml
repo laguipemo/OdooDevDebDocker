@@ -1,0 +1,109 @@
+<odoo>
+    <data>
+<!--
+          <record id="object0" model="soporte.soporte">
+            <field name="name">Object 0</field>
+            <field name="value">0</field>
+          </record>
+
+          <record id="object1" model="soporte.soporte">
+            <field name="name">Object 1</field>
+            <field name="value">10</field>
+          </record>
+
+          <record id="object2" model="soporte.soporte">
+            <field name="name">Object 2</field>
+            <field name="value">20</field>
+          </record>
+
+          <record id="object3" model="soporte.soporte">
+            <field name="name">Object 3</field>
+            <field name="value">30</field>
+          </record>
+
+          <record id="object4" model="soporte.soporte">
+            <field name="name">Object 4</field>
+            <field name="value">40</field>
+          </record>
+-->
+
+      <!-- Data for model soporte.tecnico -->
+      <record id="tecnico1" model="soporte.tecnico">
+        <field name="name">Lázaro Guillermo Pérez Montoto</field>
+      </record>
+      <record id="tecnico2" model="soporte.tecnico">
+        <field name="name">laguipemo</field>
+      </record>
+      <record id="tecnico3" model="soporte.tecnico">
+        <field name="name">Chachy Pérez</field>
+      </record>
+
+      <!-- Data for model soporte.ubicacion -->
+      <record id="ubicacion1" model="soporte.ubicacion">
+        <field name="name">Salón de actos</field>
+        <field name="pabellon">1</field>
+        <field name="planta">0</field>
+      </record>
+      <record id="ubicacion2" model="soporte.ubicacion">
+        <field name="name">Aula 1</field>
+        <field name="pabellon">1</field>
+        <field name="planta">1</field>
+      </record>
+      <record id="ubicacion3" model="soporte.ubicacion">
+        <field name="name">Aula 2</field>
+        <field name="pabellon">1</field>
+        <field name="planta">2</field>
+      </record>
+      <record id="ubicacion4" model="soporte.ubicacion">
+        <field name="name">Cafetería</field>  
+        <field name="pabellon">2</field>
+        <field name="planta">0</field> 
+      </record>
+      <record id="ubicacion5" model="soporte.ubicacion">
+        <field name="name">Lab 1</field>  
+        <field name="pabellon">2</field>
+        <field name="planta">1</field> 
+      </record>
+      <record id="ubicacion6" model="soporte.ubicacion">
+        <field name="name">Lab 2</field>  
+        <field name="pabellon">2</field>
+        <field name="planta">2</field> 
+      </record>
+
+      <!-- Data for model soporte.incidencia -->
+      <record id="incidencia1" model="soporte.incidencia">
+        <field name="name">Incidencia 1</field>
+        <field name="description">Ordenador del puesto 5, muy lento</field>
+        <field name="priority">7</field>
+        <field name="ubicacion_id" ref="ubicacion2" />
+        <field name="closed">False</field>
+        <field name="foto" file="soporte/static/imgs/ordenador.png" type="base64" />
+        <field name="fecha_creacion" eval="(datetime.now()).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="fecha_modificacion" eval="(datetime.now()).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="tecnico_ids" eval="[(6, 0, [ref('tecnico1'), ref('tecnico2'), ref('tecnico3')])]" />
+      </record>
+      <record id="incidencia2" model="soporte.incidencia">
+        <field name="name">Incidencia 2</field>
+        <field name="description">Proyector desconfigurado</field>
+        <field name="priority">8</field>
+        <field name="ubicacion_id" ref="ubicacion1" />
+        <field name="closed">False</field>
+        <field name="foto" file="soporte/static/imgs/proyector.png" type="base64" />
+        <field name="fecha_creacion" eval="(datetime.now()).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="fecha_modificacion" eval="(datetime.now()).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="tecnico_ids" eval="[(6, 0, [ref('tecnico2'), ref('tecnico3')])]" />
+      </record>
+      <record id="incidencia3" model="soporte.incidencia">
+        <field name="name">Incidencia 3</field>
+        <field name="description">Rantón del profesor no funciona</field>
+        <field name="priority">9</field>
+        <field name="ubicacion_id" ref="ubicacion5" />
+        <field name="closed">True</field>
+        <field name="foto" file="soporte/static/imgs/raton.png" type="base64" />
+        <field name="fecha_creacion" eval="(datetime.now()).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="fecha_modificacion" eval="(datetime.now()).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="tecnico_ids" eval="[(6, 0, [ref('tecnico1')])]" />
+      </record>
+      
+    </data>
+</odoo>

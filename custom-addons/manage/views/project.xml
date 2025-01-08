@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- list view for project model -->
+        <record model="ir.ui.view" id="manage.project_list">
+            <field name="name">manage project list</field>
+            <field name="model">manage.project</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="histories" />
+                    <field name="sprints" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view for project model -->
+        <record model="ir.ui.view" id="manage.project_form">
+            <field name="name">manage project form</field>
+            <field name="model">manage.project</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="histories" />
+                        <field name="sprints" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <!-- action window for project model -->
+        <record model="ir.actions.act_window" id="manage.action_project_window">
+            <field name="name">manage project window</field>
+            <field name="res_model">manage.project</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions -->
+
+        <!-- manuitem for projects -->
+        <menuitem name="Projects" id="manage.menu_1_project_list" parent="manage.menu_1"
+            action="manage.action_project_window" />
+
+
+    </data>
+</odoo>

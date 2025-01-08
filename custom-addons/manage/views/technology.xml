@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- list view for technology model -->
+        <record model="ir.ui.view" id="manage.technology_list">
+            <field name="name">manage technology list</field>
+            <field name="model">manage.technology</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="photo" />
+                    <field name="tasks" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view for technology model -->
+        <record model="ir.ui.view" id="manage.technology_form">
+            <field name="name">manage technology form</field>
+            <field name="model">manage.technology</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="photo" widget="image" class="oe_avatar"/>
+                        <field name="tasks" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <!-- action window for technology model -->
+        <record model="ir.actions.act_window" id="manage.action_technology_window">
+            <field name="name">manage technology window</field>
+            <field name="res_model">manage.technology</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions -->
+
+        <!-- manuitem for technologies -->
+        <menuitem name="Technologies" id="manage.menu_1_technology_list" parent="manage.menu_1"
+            action="manage.action_technology_window" />
+
+
+    </data>
+</odoo>

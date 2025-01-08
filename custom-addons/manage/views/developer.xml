@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- list view for developer model -->
+        <!-- developer model use the father list view -->
+
+        <!-- form view for developer model -->
+        <record model="ir.ui.view" id="manage.developer_form">
+            <field name="name">manage developer form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//sheet/notebook/page[@name='internal_notes']" position="after">
+          <page name="developer" string="Developer">
+            <group>
+              <field name="technologies" string="Tecnologías" widget="many2many_tags"/>
+            </group>
+          </page>
+        </xpath> -->
+                <page name="internal_notes" position="after">
+                    <page name="developer" string="Developer"
+                        attrs="{'invisible': [('is_developer', '=', False)]}">
+                        <group>
+                            <field
+                                name="is_developer"
+                                string="Developer"
+                                widget="boolean"
+                                attrs="{'invisible': True}" />
+                            <field name="last_login" string="Último acceso" />
+                            <field name="access_code" string="Código de acceso"/>
+                            <field name="technologies" string="Tecnologías" widget="many2many_tags" />
+                            <field
+                                name="tasks"
+                                string="Tareas"
+                                widget="many2many_tags"
+                                context="{'current_developer': active_id}"
+                            />
+                            <field name="bugs" string="Bugs" widget="many2many_tags" />
+                            <field name="improvements" string="Mejoras" widget="many2many_tags" />
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <!-- action window for developer model -->
+        <record model="ir.actions.act_window" id="manage.action_developer_window">
+            <field name="name">manage developer window</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">[('is_developer', '=', True)]</field>
+            <field name="context">{'default_is_developer': True}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="manage.action_developer_window_tree">
+            <field name="sequence" eval="1" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="base.view_partner_tree" />
+            <field name="act_window_id" ref="manage.action_developer_window" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="manage.action_developer_window_form">
+            <field name="sequence" eval="2" />
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="manage.developer_form" />
+            <field name="act_window_id" ref="manage.action_developer_window" />
+        </record>
+
+        <!-- actions -->
+
+        <!-- manuitem for developers -->
+        <menuitem name="Developers" id="manage.menu_1_developer_list" parent="manage.menu_1"
+            action="manage.action_developer_window" />
+
+
+    </data>
+</odoo>

@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    
+    <!-- explicit calendar view definition -->
+    <record id="soporte_incidencia_view_calendar" model="ir.ui.view">
+      <field name="name">Calendario de Incidencia</field>
+      <field name="model">soporte.incidencia</field>
+      <field name="arch" type="xml">
+        <calendar string="Incidencias" date_start="fecha_creacion" color="closed" mode="month" event_limit="2">
+          <field name="name" />
+          <field name="urgent" />
+          <field name="closed" />
+          <field name="id" filters="1"/>
+          <field name="tecnico_ids" />
+        </calendar>
+      </field>
+    </record>
+
+    <!-- override actions opening views on models -->
+
+    <record id="soporte_incidencia_extended_action_window" model="ir.actions.act_window">
+      <field name="name">Calendario incidencias</field>
+      <field name="res_model">soporte.incidencia</field>
+      <field name="view_mode">calendar,tree,form</field>
+    </record>
+
+    <!-- override actions -->
+
+    <menuitem name="Lista Insidencias" id="soporte.soporte_menu_insidencias_list"
+      parent="soporte.soporte_menu_incidencias"
+      action="soporte_incidencia_extended_action_window"
+      groups="soporte_group_users" />
+
+    <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
+              action="soporte.action_server"/> -->
+
+  </data>
+</odoo>
