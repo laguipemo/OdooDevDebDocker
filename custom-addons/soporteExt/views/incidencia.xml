@@ -1,7 +1,7 @@
 <odoo>
   <data>
     
-    <!-- explicit form view definition -->
+    <!-- explicit calendar view definition -->
     <record id="soporte_incidencia_view_calendar" model="ir.ui.view">
       <field name="name">Calendario de Incidencia</field>
       <field name="model">soporte.incidencia</field>
@@ -16,7 +16,7 @@
       </field>
     </record>
 
-    <!-- overrideactions opening views on models -->
+    <!-- override actions opening views on models -->
 
     <record id="soporte_incidencia_extended_action_window" model="ir.actions.act_window">
       <field name="name">Calendario incidencias</field>
