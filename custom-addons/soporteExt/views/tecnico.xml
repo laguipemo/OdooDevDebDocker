@@ -1,0 +1,145 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="soporte_tecnico_view_tree_inherited" model="ir.ui.view">
+      <field name="name">Lista de tecnicos</field>
+      <field name="model">soporte.tecnico</field>
+      <field name="inherit_id" ref="soporte.soporte_tecnico_view_tree" />
+      <field name="arch" type="xml">
+        <field name="name" position="after">
+          <field name="apellido1" />
+          <field name="apellido2" />
+          <field name="dni" />
+          <field name="tipo" />
+          <field name="fecha_nacimiento" />
+          <field name="fecha_incorporacion" />
+
+        </field>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record id="soporte_tecnico_view_form_inherited" model="ir.ui.view">
+      <field name="name">Formulario de tecnico</field>
+      <field name="model">soporte.tecnico</field>
+      <field name="inherit_id" ref="soporte.soporte_tecnico_view_form" />
+      <field name="arch" type="xml">
+        <sheet position="replace">
+          <sheet>
+            <div class="row">
+              <div class="oe_title column col-8">
+                <h1>Técnico-<field name="id"/></h1>
+                <h2>
+                  <label for="dni" class="oe_form_label oe_edit_only" />
+                  <field name="dni" placeholder="12345678X" class="oe_inline" />
+                </h2>
+              </div>
+              <div class="col-4">
+                <field name="foto" widget="image" class="oe_avatar oe_right" />
+              </div>
+            </div>
+            <separator string="Datos Personales" />
+            <group name="name" col="3" >
+              <group>
+                <field name="apellido1" />
+                <field name="fecha_nacimiento" />
+              </group>
+              <group>
+                <field name="apellido2" />
+                <field name="fecha_incorporacion" />
+              </group>
+              <group>
+                <field name="name" />
+                <field name="tipo" />
+              </group>
+            </group>
+            <separator string="Incidencias asignadas" colspan="4" />
+            <field name="incidencia_ids" />
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_follower" />
+            <field name="message_ids" widget="mail_thread" />
+            <field name="activity_ids" widget="mail_activity" />
+          </div>
+        </sheet>
+      </field>
+    </record>
+
+    <!-- model.name kanban view -->
+    <record id="soporte_tecnico_view_kanban" model="ir.ui.view">
+      <field name="name">Kanban de tecnico</field>
+      <field name="model">soporte.tecnico</field>
+      <field name="arch" type="xml">
+        <kanban default_group_by="tipo">
+          <!-- Fields needed for kanban view logic -->
+          <field name="name" />
+          <field name="id" />
+          <field name="tipo" />
+          <field name="incidencia_ids" sum="Total incidencias"/>
+
+          <!-- Templates for kanban view layout -->
+          <templates>
+            <!-- Root template for kanban view  minimum required -->
+            <t t-name="kanban-box">
+              <div class="oe_kanban_card oe_kanban_global_click">
+                <div class="card-header d-fex justify-content-between align-items-center">
+                  <strong class="text-primary">
+                    <field name="name"/>
+                  </strong>
+                </div>
+                <div class="card-body">
+                  <div class="mt-2">
+                    <div class="row">
+                      <div class="col-8">
+                        <div class="mt-3">
+                          <i class="fa fa-address-card me-2"></i>
+                          <strong class="me-2">Técnico:</strong>
+                          <field name="id"/>
+                        </div>
+                        <div class="mt-2">
+                          <i class="fa fa-rocket me-2" ></i>
+                          <strong class="me-2">Tipo:</strong>
+                          <field name="tipo"/>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <img t-att-src="kanban_image('soporte.tecnico', 'foto', record.id.raw_value)" t-att-alt="record.name" class="oe_avatar oe_right me-2" style="height: 75px; width: 75px;" />
+                      </div>
+                    </div>
+                    <div class="mt-3">
+                      <strong class="me-2">Incidencias:</strong>
+                      <span class="oe_kanban_list_many2many">
+                        <field name="incidencia_ids" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="mt-2">
+                    <strong class="text-info me-2">Total:</strong>
+                    <field name="incidencia_ids" widget="statinfo" sum="{'sum': 'id'}"/>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <!-- Override action windows for icludes the kanban view -->
+    <record id="soporte_tecnico_extended_action_window" model="ir.actions.act_window">
+      <field name="name">Soporte tecnicos</field>
+      <field name="res_model">soporte.tecnico</field>
+      <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+    <!-- Override the menu item to call the action window defined above -->
+    <menuitem name="Lista tecnicos"
+              id="soporte.soporte_menu_tecnicos_list"
+              parent="soporte.soporte_menu_tecnicos"
+              action="soporte_tecnico_extended_action_window"
+              groups="soporte_group_admins"/>
+
+  </data>
+</odoo>

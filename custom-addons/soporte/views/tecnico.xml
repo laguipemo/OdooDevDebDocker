@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="soporte_tecnico_view_tree" model="ir.ui.view">
+      <field name="name">Lista de tecnicos</field>
+      <field name="model">soporte.tecnico</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record id="soporte_tecnico_view_form" model="ir.ui.view">
+      <field name="name">Formulario de tecnico</field>
+      <field name="model">soporte.tecnico</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group name="datos" string="Datos">
+                <field name="name" />
+              </group>
+              <newline></newline>
+              <group name="trabajo" string="Trabajo" colspan="2">
+                <field name="incidencia_ids"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record id="soporte_tecnico_action_window" model="ir.actions.act_window">
+      <field name="name">Soporte tecnicos</field>
+      <field name="res_model">soporte.tecnico</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- menu categories -->
+
+    <menuitem name="Tecnicos" id="soporte_menu_tecnicos" parent="soporte_menu_root" groups="soporte_group_admins"/>
+
+    <!-- actions -->
+
+    <menuitem name="Lista tecnicos"
+              id="soporte_menu_tecnicos_list"
+              parent="soporte_menu_tecnicos"
+              action="soporte_tecnico_action_window"
+              groups="soporte_group_admins"/>
+
+    <!-- <menuitem name="Server to list" id="soporte" parent="soporte.menu_2"
+              action="soporte.action_server"/> -->
+
+  </data>
+</odoo>

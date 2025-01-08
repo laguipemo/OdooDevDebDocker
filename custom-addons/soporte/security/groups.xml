@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <!-- New category for the Soporte module, specifically for users access -->
+        <record id="soporte_category_users_access" model="ir.module.category">
+            <field name="name">Soporte</field>
+            <field name="description">Gestión de usuarios para el módulo Soporte</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <!-- New group of users for he Soporte module, specifically for users
+        that only have access for consulting the information -->
+        <record id="soporte_group_users" model="res.groups">
+            <field name="name">Usuarios para consulta</field>
+            <field name="category_id" ref="soporte_category_users_access"/>
+            <field name="comment">Usuarios que solo pueden consultar la información</field>
+            <!-- Add the same permissions that have the users of the group "base.group_user" -->
+            <field name="users" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+        <!-- New group of users for he Soporte module, specifically for users
+        that can make changes to the information (e.g. create, update, delete) -->
+        <record id="soporte_group_admins" model="res.groups">
+            <field name="name">Usuarios administradores</field>
+            <field name="category_id" ref="soporte_category_users_access"/>
+            <field name="comment">Usuarios administadores para Soporte</field>
+            <!-- Add the same permissions that have the users of the group "base.user_admin" -->
+            <field name="users" eval="[(4,ref('base.user_admin'))]"/>
+            <!-- Add the same permissions that have the users of the group "soporte_group_users" -->
+            <field name="implied_ids" eval="[(4,ref('soporte_group_users'))]"/>
+        </record>
+    </data>
+</odoo>
