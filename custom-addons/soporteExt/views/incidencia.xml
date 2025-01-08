@@ -6,11 +6,11 @@
       <field name="name">Calendario de Incidencia</field>
       <field name="model">soporte.incidencia</field>
       <field name="arch" type="xml">
-        <calendar string="Incidencias" date_start="fecha_creacion" color="closed" mode="month">
+        <calendar string="Incidencias" date_start="fecha_creacion" color="closed" mode="month" event_limit="2">
           <field name="name" />
           <field name="urgent" />
           <field name="closed" />
-          <field name="id" />
+          <field name="id" filters="1"/>
           <field name="tecnico_ids" />
         </calendar>
       </field>
