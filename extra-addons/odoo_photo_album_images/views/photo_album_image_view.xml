@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_photo_album_images_form" model="ir.ui.view">
+            <field name="name">Photo Album Image View</field>
+            <field name="model">photo.album.image</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_custom_email_send" string="Send by Email" type="object" class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="view_album_photos"
+                               type="object"
+                               class="oe_stat_button"
+                               string="Album Photos"
+                               icon="fa-picture-o"
+                               />
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='create_date'/>
+                                <field name="custom_location"/>
+                                <field name="album_method" widget='radio'/>
+                                <field name="partner_custom_id" attrs="{'invisible':[('album_method','=','internal_company')],
+                                    'required':[('album_method','!=','internal_company')]}"/>
+                            </group>
+                            <group>
+                                <field name='created_by'/>
+                                <field name="custom_album_type"/>
+                                <field name='custom_album_tags' widget='many2many_tags' options="{'color_field': 'color'}"/>
+                                <field name="company_id" widget="selection"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="custom_image_lines" string="Album Photos">
+                            <!-- <group> -->
+                                <field name="custom_image_line_ids" widget="section_and_note_one2many" mode="tree" nolabel="1">
+                                    <form string="Album Photos">
+                                        <group>
+                                            <group>
+                                                <field name="custom_image"/>
+                                            </group>
+                                            <group>
+                                                <field name='custom_image_id'/>
+                                                <field name="description"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                    <tree string="Album Photos" editable="bottom">
+                                        <field name='custom_image_id' invisible='1'/>
+                                        <field name="custom_image" widget="image" class="oe_avatar" options="{'preview_image': 'custom_image'}"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            <!-- </group> -->
+                        </page>
+                        </notebook>
+                        <field name="description" placeholder="Description..." />
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_custom_photo_album_image_tree" model="ir.ui.view">
+            <field name="name">Photo Album Image Tree View</field>
+            <field name="model">photo.album.image</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name='name'/>
+                    <field name='album_method'/>
+                    <field name="custom_album_type"/>
+                    <field name='create_date'/>
+                    <field name='created_by'/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="custom_album_image_kanban" model="ir.ui.view">
+            <field name="name">Photo Album Image kanban View</field>
+            <field name="model">photo.album.image</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <field name='name'/>
+                    <field name="create_date"/>
+                    <field name="created_by"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban">
+                                        <span style="font-weight:bold">Name :
+                                        <field name="name"/></span>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban">
+                                        <span style="font-weight:bold">Customer :
+                                        <field name="partner_custom_id"/></span>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban">
+                                        <span style="font-weight:bold">Album Method :
+                                        <field name="album_method"/></span>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban">
+                                        <span style="font-weight:bold">Album Type :
+                                        <field name="custom_album_type"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="custom_action_photo_album_image">
+            <field name="name">Photo Albums</field>
+            <field name="res_model">photo.album.image</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem
+        id="custom_photo_album_image_menu"
+        name="Albums"
+        />
+
+        <menuitem
+        id="probc_photo_album_image_menu"
+        name="Photo Albums"
+        sequence='1'
+        parent="odoo_photo_album_images.custom_photo_album_image_menu"
+        action="odoo_photo_album_images.custom_action_photo_album_image"
+        />
+
+        <menuitem
+        id="custom_configuration_menu"
+        name="Configuration"
+        sequence='3'
+        parent="odoo_photo_album_images.custom_photo_album_image_menu"
+        />
+
+        <menuitem
+        id="probc_photo_album_tags_menu"
+        name="Album Tags"
+        parent="odoo_photo_album_images.custom_configuration_menu"
+        action="odoo_photo_album_images.custom_action_album_tags"
+        />
+
+        <menuitem
+        id="probc_photo_album_type_menu"
+        name="Album Types"
+        parent="odoo_photo_album_images.custom_configuration_menu"
+        action="odoo_photo_album_images.custom_action_album_type"
+        />
+        
+    </data>
+</odoo>
+
+

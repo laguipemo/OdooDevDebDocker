@@ -21,3 +21,4 @@ xmlsig
 cachetools
 openupgradelib
 fsspec>=2024.5.0
+cryptography==3.4.8

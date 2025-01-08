@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_lot_form_eq" model="ir.ui.view">
+        <field name="name">stock.lot.form.eq</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <field name="display_complete" position="after">
+                <field name="product_tracking" invisible="1"/>
+            </field>
+            <button name="action_lot_open_quants" position="before">
+                <button name="action_open_eq" icon="fa-legal" class="oe_stat_button" string="Equipment" type="object"
+                        attrs="{'invisible': [('product_tracking', '!=', 'serial')]}"
+                        groups="maintenance.group_equipment_manager"/>
+            </button>
+        </field>
+    </record>
+</odoo>
