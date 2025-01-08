@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <!-- <report
+            id="report_photo_album_image"
+            string="Photo Album Image"
+            model="photo.album.image"
+            report_type="qweb-pdf"
+            name="odoo_photo_album_images.template_report_photo_album"
+            file="odoo_photo_album_images.template_report_photo_album"
+        /> -->
+
+        <record id="report_photo_album_image" model="ir.actions.report">
+            <field name="name">Photo Album Image</field>
+            <field name="model">photo.album.image</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odoo_photo_album_images.template_report_photo_album</field>
+            <field name="report_file">odoo_photo_album_images.template_report_photo_album</field>
+            <field name="binding_model_id" ref="model_photo_album_image"/>
+            <field name="binding_type">report</field>
+        </record>
+         
+        <template id="template_report_photo_album">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                <div class="page">
+                    <div class="text-center">
+                        <h3>
+                            <strong><h3><span t-field="doc.name"/></h3></strong>
+                        </h3>
+                    </div>
+                    <table class="table col-12">
+                        <tr class="table col-12" style="border: 2px solid black;">
+                           <td><strong>Creation Date</strong></td><td><span t-field="doc.create_date"/></td>
+                           <td><strong>Created By</strong></td><td><span t-field="doc.created_by"/></td>
+                        </tr>
+                        <tr class="table col-12" style="border: 2px solid black;">
+                            <td><strong>Album Location</strong></td><td><span t-field="doc.custom_location"/></td>
+                           <td><strong>Album Type</strong></td><td><span t-field="doc.custom_album_type"/></td>
+                        </tr>
+                        <tr class="table col-12" style="border: 2px solid black;">
+                           <td><strong>Album Method</strong></td><td><span t-field="doc.album_method"/></td>
+                           <td><strong>Album Tags</strong></td><td><span t-field="doc.custom_album_tags"/></td>
+                        </tr>
+                        <tr class="table col-12" style="border: 2px solid black;">
+                           <td><strong>Customer</strong></td><td><span t-field="doc.partner_custom_id"/></td>
+                           <td><strong>Company</strong></td><td><span t-field="doc.company_id"/></td>
+                        </tr>
+                    </table>
+                    <h3>Album Photos</h3>
+                        <table class="table col-12">
+                            <tr style="border: 2px solid black;">
+                               <th>Photo</th>
+                               <th>Photo Detail</th>
+                            </tr>
+                            <tbody class="table col-12">
+                                <t t-foreach ="doc.custom_image_line_ids" t-as="line">
+                                    <tr style="border: 2px solid black;">
+                                        <td t-if="line.custom_image"><img alt="set company logo" style="width:80px;height:80px;" t-attf-src="data:image/gif;base64, #{line.custom_image}"/></td>
+                                        <td><span t-field="line.description"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <table class="table col-12">
+                            <tr style="border: 2px solid black;">
+                                <th>Description</th>
+                            </tr>
+                            <tbody class="table col-12">
+                                <tr style="border: 2px solid black;">
+                                    <td><span t-field="doc.description"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+              </t>
+            </t>
+            </t>
+        </template>
+        
+    </data>
+</odoo>

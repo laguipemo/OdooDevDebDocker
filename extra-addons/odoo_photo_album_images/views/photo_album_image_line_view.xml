@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_custom_album_image_lines_form" model="ir.ui.view">
+            <field name="name">Photo Album Image Lines Form View</field>
+            <field name="model">photo.album.image.lines</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name='custom_image_id'/>
+                            </group>
+                            <group>
+                                <field name='custom_image'/>
+                                <field name='description'/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+                       
+        <record id="view_custom_album_image_lines_tree" model="ir.ui.view">
+                <field name="name">Photo Album Image Lines Tree View</field>
+                <field name="model">photo.album.image.lines</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="name"/>
+                        <field name='description'/>
+                    </tree>
+                </field>
+        </record>
+
+        <record id="custom_album_image_lines_kanban" model="ir.ui.view">
+            <field name="name">Photo Album Image Lines kanban View</field>
+            <field name="model">photo.album.image.lines</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <field name='id'/>
+                    <field name='name'/>
+                    <field name="custom_image" options='{"preview_image": "image_small"}'/>
+                    <field name="description"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <div class="o_kanban_image">
+                                        <img t-att-src="kanban_image('photo.album.image.lines', 'custom_image', record.id.raw_value)" alt="Product" class="o_image_64_contain"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div class="o_kanban_tags_section">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div class="o_kanban_tags_section">
+                                        <strong><field name="description"/></strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_custom_album_image_lines">
+            <field name="name">Photos in Album</field>
+            <field name="res_model">photo.album.image.lines</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem
+        id="probc_photo_album_image_lines_menu"
+        name="Photos in Album"
+        sequence='2'
+        parent="odoo_photo_album_images.custom_photo_album_image_menu"
+        action="odoo_photo_album_images.action_custom_album_image_lines"
+        />
+
+    </data>
+
+</odoo>
+
+
