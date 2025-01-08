@@ -26,6 +26,7 @@
         'security/groups.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
+        'views/incidencia.xml',
         'views/tecnico.xml',
         'demo/demo.xml',
     ],
