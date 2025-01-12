@@ -25,7 +25,8 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
-        'views/lgpm_maintenance_sat_views.xml',
+        'views/lgpm_maintenance_equipment_views.xml',
+        'views/lgpm_maintenance_request_views.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
