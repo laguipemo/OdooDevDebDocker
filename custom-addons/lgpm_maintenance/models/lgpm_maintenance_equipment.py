@@ -12,9 +12,9 @@ class LgpmMaintenanceEquipment(models.Model):
         string = 'Type',
         selection=[
             ('NO', ''),
-            ('AS', 'Armario de seguridad'),
+            ('AS', 'Armario de Seguridad'),
             ('CF', 'Cabina de Flujo'),
-            ('CP', 'Cabina de pesadas'),
+            ('CP', 'Cabina de Pesadas'),
             ('PALP', 'Punto de Aspiración Localizada Pared'),
             ('PALB', 'Punto de Aspiración Localizada Brazo'),
             ('VG', 'Vitrina de Gases'),
