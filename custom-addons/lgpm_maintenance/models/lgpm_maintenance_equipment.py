@@ -11,12 +11,13 @@ class LgpmMaintenanceEquipment(models.Model):
     equipment_type = fields.Selection(
         string = 'Type',
         selection=[
-            ('VG', 'Vitrina de Gases'),
+            ('NO', ''),
+            ('AS', 'Armario de seguridad'),
             ('CF', 'Cabina de Flujo'),
+            ('CP', 'Cabina de pesadas'),
             ('PALP', 'Punto de Aspiración Localizada Pared'),
             ('PALB', 'Punto de Aspiración Localizada Brazo'),
-            ('AS', 'Armario de seguridad'),
-            ('NO', ''),
+            ('VG', 'Vitrina de Gases'),
         ],
         default='NO'
     )
