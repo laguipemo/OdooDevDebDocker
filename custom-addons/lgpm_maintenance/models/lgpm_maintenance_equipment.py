@@ -12,6 +12,7 @@ class LgpmMaintenanceEquipment(models.Model):
         string = 'Type',
         selection=[
             ('VG', 'Vitrina de Gases'),
+            ('CF', 'Cabina de Flujo'),
             ('PALP', 'Punto de Aspiración Localizada Pared'),
             ('PALB', 'Punto de Aspiración Localizada Brazo'),
             ('AS', 'Armario de seguridad'),

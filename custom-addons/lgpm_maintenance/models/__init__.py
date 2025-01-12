@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 
 from . import models
-from . import lgpm_maintenance_sat
+from . import lgpm_maintenance_equipment
