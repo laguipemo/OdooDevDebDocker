@@ -16,4 +16,4 @@ class LgpmMaintenanceRequest(models.Model):
             if maintenance_request.equipment_id:
                 maintenance_request.equipment_type = self.equipment_id.equipment_type    
             else: 
-                maintenance_request.equipment_type = ''
+                maintenance_request.equipment_type = 'NO'
