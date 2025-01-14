@@ -32,5 +32,3 @@ class LgpmMaintenanceEquipment(models.Model):
         comodel_name='res.partner',
         ondelete='cascade'
     )
-
-

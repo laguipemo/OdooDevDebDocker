@@ -11,6 +11,12 @@ class LgpmMaintenanceRequest(models.Model):
     equipment_type = fields.Char(string='Tipo', compute="_compute_equipment_type", readonly=True)
     owner_name = fields.Char(string='Propietario', compute="_compute_owner_id", readonly=True)
     searial_no = fields.Char()
+    purchase_order_id = fields.Many2one(
+        string='Orden de compra',
+        comodel_name='purchase.order', 
+        ondelete='cascade'
+        )
+    
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):
