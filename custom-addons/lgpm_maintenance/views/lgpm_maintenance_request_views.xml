@@ -13,8 +13,12 @@
           <field name="equipment_type" invisible="1"/>
         </xpath>
         <xpath expr="//page[@name='description_page']" position="after">
-          <page name="sat" string="SAT" attrs="{'invisible': [('equipment_type', '=', 'NO')]}">
+          <page name="sat" string="SAT" attrs="{'invisible': [('equipment_type', '=', '')]}">
             <h1><field name="equipment_type" /></h1>
+            <group>
+              <field name="owner_name" />
+            </group>
+            
           </page>
         </xpath>
       </field>

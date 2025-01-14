@@ -11,6 +11,10 @@
         <xpath expr="//field[@name='model']" position="before">
           <field name="equipment_type" />
         </xpath>
+        <xpath expr="//field[@name='warranty_date']" position="after">
+          <field name="owner_id"  domain="[('is_company', '=', True)]"/>
+          <field name="contact_id" domain="[('parent_id', '=', owner_id)]"/>
+        </xpath>
 
       </field>
     </record>

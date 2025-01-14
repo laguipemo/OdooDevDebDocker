@@ -21,3 +21,16 @@ class LgpmMaintenanceEquipment(models.Model):
         ],
         default='NO'
     )
+
+    owner_id = fields.Many2one(
+        string='Propietario',
+        comodel_name='res.partner',
+        ondelete='cascade'
+    )
+    contact_id = fields.Many2one(
+        string='Contacto',
+        comodel_name='res.partner',
+        ondelete='cascade'
+    )
+
+
