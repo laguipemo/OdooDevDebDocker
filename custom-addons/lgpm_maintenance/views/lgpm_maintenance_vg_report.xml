@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+
+      <!-- actions opening views on models -->
+      <record model="ir.actions.report" id="lgpm_maintenance_request_vg_action_report">
+        <field name="name">Informe Mantenimiento VG</field>
+        <field name="model">maintenance.request</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">lgpm_maintenance.request_vg_report</field>
+        <field name="report_file">lgpm_maintenance.request_vg_report</field>
+        <field name="binding_model_id" ref="model_maintenance_request" />
+
+        <field name="print_report_name">'Informe VG - %s' %(object.name)</field>
+      </record>
+
+      <!-- explicit template definition -->
+
+      <template id="lgpm_maintenance.request_vg_report">
+        <t t-call="web.html_container">
+          <t t-foreach="docs" t-as="maintenance_request">
+            <t t-call="web.external_layout" >
+              <div class="page">
+                <div class="alert alert-light mb-0 pb-0" role="alert">
+                    <h1 class="alert-heading text-center my-0 py-0">
+                      <span><b>Informe Vitrina de Gases</b></span>
+                    </h1>
+                </div>
+                <div class="d-flex row justify-content-center col-mb-4 text-center">
+                    <h3 class="alert-heading text-center my-0 py-0">
+                      <span class="badge bg-success py-4">
+                        <span t-field="maintenance_request.serial_no" class="m-5"/>
+                      </span>
+                    </h3>
+                </div>
+              </div>
+
+               <p style="page-break-after: always;"></p>
+            </t>
+          </t>
+        </t>
+      </template>
+
+
+
+<!--
+        <template id="listing">
+          <ul>
+            <li t-foreach="objects" t-as="object">
+              <a t-attf-href="#{ root }/objects/#{ object.id }">
+                <t t-esc="object.display_name"/>
+              </a>
+            </li>
+          </ul>
+        </template>
+        <template id="object">
+          <h1><t t-esc="object.display_name"/></h1>
+          <dl>
+            <t t-foreach="object._fields" t-as="field">
+              <dt><t t-esc="field"/></dt>
+              <dd><t t-esc="object[field]"/></dd>
+            </t>
+          </dl>
+        </template>
+-->
+    </data>
+</odoo>

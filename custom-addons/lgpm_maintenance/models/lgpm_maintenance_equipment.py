@@ -8,6 +8,7 @@ class LgpmMaintenanceEquipment(models.Model):
     _inherit = ['maintenance.equipment']
     _description = 'lgpm_maintenance.equipment'
 
+
     equipment_type = fields.Selection(
         string = 'Type',
         selection=[
