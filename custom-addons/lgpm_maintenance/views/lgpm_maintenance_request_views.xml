@@ -19,8 +19,19 @@
           <page name="sat" string="SAT" attrs="{'invisible': [('equipment_type', '=', '')]}">
             <h1><field name="equipment_type" /></h1>
             <group>
-              <field name="owner_name" />
+              <group name="sat_equipment_gnrl" string="Información general">
+                <field name="owner_name" />
+                <field name='contact_name' />
+                <field name="contact_email" />
+                <field name="contact_phone" />
+              </group>
+              <group name="sat_equipment_info" string="Información del equipo">
+                <field name="partner_id" />
+                <field name="partner_ref" />
+                <field name="lot_id" />
+              </group>  
             </group>
+            
             
           </page>
         </xpath>

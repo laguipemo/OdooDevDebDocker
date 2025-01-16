@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'maintenance', 'purchase'],
+    'depends': ['base', 'maintenance', 'purchase', 'cck_sn_to_eq'],
 
     # always loaded
     'data': [

@@ -13,24 +13,43 @@ class LgpmMaintenanceRequest(models.Model):
 
     equipment_type = fields.Char(
         string='Tipo',
-        compute="_compute_equipment_type",
-        readonly=True
-        )
+        compute='_compute_equipment_type'
+    )
     owner_name = fields.Char(
         string='Propietario',
-        compute="_compute_owner_id",
-        readonly=True)
-    serial_no = fields.Char(
+        related='equipment_id.owner_id.name'
+        )
+    lot_id = fields.Char(
         string='Número de serie',
-        compute="_compute_serial_no",
-        readonly=True
+        related='equipment_id.lot_id.name'
+        )
+    contact_name = fields.Char(
+        string='Contacto',
+        related='equipment_id.contact_id.name'
+        )
+    contact_email = fields.Char(
+        string='Correo',
+        related='equipment_id.contact_id.email'
+        )
+    contact_phone = fields.Char(
+        string='Teléfono',
+        related='equipment_id.contact_id.phone'
+        )
+    partner_id = fields.Char(
+        string='Fabricante',
+        related='equipment_id.partner_id.name'
     )
+    partner_ref = fields.Char(
+        string='Referencia',
+        related='equipment_id.partner_ref'
+    )
+    
+
     purchase_order_id = fields.Many2one(
         string='Orden de compra',
         comodel_name='purchase.order', 
         ondelete='cascade'
         )
-    
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):
@@ -43,25 +62,5 @@ class LgpmMaintenanceRequest(models.Model):
                         ]._fields[
                             'equipment_type'
                             ].selection).get(key)
-            else: 
-                maintenance_request.equipment_type = ''
-    
-    @api.depends('equipment_id')
-    def _compute_owner_id(self):
-        for maintenance_request in self:
-            if maintenance_request.equipment_id:
-                maintenance_request.owner_name = self.equipment_id.owner_id.name
             else:
-                maintenance_request.owner_name = ''
-
-    @api.depends('equipment_id')
-    def _compute_serial_no(self):
-        for maintenance_request in self:
-            if maintenance_request.equipment_id:
-                maintenance_request.serial_no = self.env[
-                        'maintenance.equipment'
-                        ]._fields[
-                            'serial_no'
-                        ]
-            else:
-                maintenance_request.serial_no = ''
+                maintenance_request.equipment_type = ''    
