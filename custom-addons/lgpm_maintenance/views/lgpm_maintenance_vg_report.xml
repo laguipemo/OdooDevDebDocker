@@ -44,6 +44,7 @@
                       <p><b>Fabricante:</b><span t-field="maintenance_request.partner_id" class="mx-2"/></p>
                       <p><b>Referencia:</b><span t-field="maintenance_request.partner_ref" class="mx-2"/></p>
                       <p><b>Nº de Serie:</b><span t-field="maintenance_request.lot_id" class="mx-2"/></p>
+                      <p><b>Nº de Serie:</b><span t-field="maintenance_request.lot_id" class="mx-2"/></p>
                     </div>
                   </div>
 <!--                 

@@ -10,6 +10,10 @@
       <field name="arch" type="xml">
         <xpath expr="//field[@name='model']" position="before">
           <field name="equipment_type" />
+          <field name="equipment_use" attrs="{'invisible': [('equipment_type', '!=', 'VG')]}" />
+        </xpath>
+        <xpath expr="//field[@name='effective_date']" position="before">
+          <field name="inventary_number" />
         </xpath>
         <xpath expr="//field[@name='warranty_date']" position="after">
           <field name="owner_id"  domain="[('is_company', '=', True)]"/>
