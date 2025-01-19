@@ -9,6 +9,9 @@ class LgpmMaintenanceEquipment(models.Model):
     _description = 'lgpm_maintenance.equipment'
 
 
+    manufacture_date = fields.Date(
+        string='Fecha deFabricación',
+    )
     equipment_type = fields.Selection(
         string = 'Tipo',
         selection=[

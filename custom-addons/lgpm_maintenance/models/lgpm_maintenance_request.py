@@ -11,9 +11,22 @@ class LgpmMaintenanceRequest(models.Model):
     """ def maintenance_request_report_button(self):
         return self.env.ref('lgpm_maintenance_request_vg_action_report').report_action(self) """
 
+    maintenance_date = fields.Date(
+        string='Fecha',
+        help='Fecha de la realización del mantenimiento',
+        required=True
+    )
+    manufacture_date = fields.Date(
+        string='Fecha de fabricación',
+        related='equipment_id.manufacture_date'
+    )
     equipment_type = fields.Char(
         string='Tipo',
         compute='_compute_equipment_type'
+    )
+    equipment_use = fields.Char(
+        string='Tipo de Uso',
+        compute='_compute_equipment_use'
     )
     owner_name = fields.Char(
         string='Propietario',
@@ -23,6 +36,10 @@ class LgpmMaintenanceRequest(models.Model):
         string='Número de serie',
         related='equipment_id.lot_id.name'
         )
+    inventary_number = fields.Char(
+        string='Nº Inventario',
+        related='equipment_id.inventary_number'
+    )
     contact_name = fields.Char(
         string='Contacto',
         related='equipment_id.contact_id.name'
@@ -63,4 +80,18 @@ class LgpmMaintenanceRequest(models.Model):
                             'equipment_type'
                             ].selection).get(key)
             else:
-                maintenance_request.equipment_type = ''    
+                maintenance_request.equipment_type = ''
+
+    @api.depends('equipment_id')
+    def _compute_equipment_use(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_id:
+                key = self.equipment_id.equipment_use
+                maintenance_request.equipment_use = dict(
+                    self.env[
+                        'maintenance.equipment'
+                        ]._fields[
+                            'equipment_use'
+                            ].selection).get(key)
+            else:
+                maintenance_request.equipment_use = ''
