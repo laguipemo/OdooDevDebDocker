@@ -55,13 +55,13 @@
                     <span><b>Relación de equipos de medición empleados</b></span>
                   </h4>
                   <table class="table table-striped">
-                    <thead class="table-success">
+                    <thead class="table-success fw-bold" style="background-color:#E0E0E0;">
                       <tr>
-                        <th scope="col">Equipo</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Modelo</th>
-                        <th scope="col">Referencia Interna</th>
-                        <th scope="col">Nº de Serie</th>
+                        <th scope="col"><b>Equipo</b></th>
+                        <th scope="col"><b>Marca</b></th>
+                        <th scope="col"><b>Modelo</b></th>
+                        <th scope="col"><b>Referencia Interna</b></th>
+                        <th scope="col"><b>Nº de Serie</b></th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
@@ -99,6 +99,9 @@
               </div>
               <p style="page-break-after: always;"></p>
               <div class="page">
+                  <h4 class="alert-heading text-left mt-5 py-0">
+                    <span><b>Comprobación y ajuste del sistema de extracción</b></span>
+                  </h4>
               </div>
             </t>
           </t>
