@@ -66,7 +66,27 @@ class LgpmMaintenanceRequest(models.Model):
         string='Orden de compra',
         comodel_name='purchase.order', 
         ondelete='cascade'
-        )
+    )
+
+    sat_digital_ctrl = fields.Selection(
+        string='Control digital',
+        selection=[
+            ('NO', ''),
+            ('C', 'CORRECTO'),
+            ('RR', 'REQUIERE REPARACIÓN')
+        ],
+        default='NO'
+    )
+
+    sat_extraction_sys = fields.Selection(
+        string='Sistema de extracción',
+        selection=[
+            ('NO', ''),
+            ('C', 'CORRECTO'),
+            ('RR', 'REQUIERE REPARACIÓN')
+        ],
+        default='NO'
+    )
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):

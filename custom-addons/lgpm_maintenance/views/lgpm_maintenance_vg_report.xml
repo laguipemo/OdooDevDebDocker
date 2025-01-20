@@ -99,9 +99,141 @@
               </div>
               <p style="page-break-after: always;"></p>
               <div class="page">
-                  <h4 class="alert-heading text-left mt-5 py-0">
+                  <h4 class="alert-heading text-left mt-5 py-0" colspan="4">
                     <span><b>Comprobación y ajuste del sistema de extracción</b></span>
                   </h4>
+                  <div class="d-flex flex-row">
+                    <div class="col-m-12 p2">
+                      <p>
+                        <b>Funcionamiento del controlador digital:</b>
+                        <span t-field="maintenance_request.sat_digital_ctrl" class="mx-2" />
+                      </p>
+                      <p>
+                        <b>Inspección visual del sistema de extracción:</b>
+                        <span t-field="maintenance_request.sat_extraction_sys" class="mx-2" />
+                      </p>
+                    </div>
+                  </div>
+                  <h6 class="alert-heading text-left mt-5 py-0">
+                    <span><b>Longitud de vitrina/guillotina/caudal recomendado</b></span>
+                  </h6>
+                  <table class="table table-borderless mt-2">
+                    <thead>
+                      <tr>
+                        <th scope="col"><b>Vitrina (mm)</b> </th>
+                        <th scope="col"><b>Guillotina (mm)</b> </th>
+                        <th scope="col"><b>Caudal recomendado (m<sup>3</sup>/h)</b> </th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <tr>
+                        <td>1200</td>
+                        <td>0,9</td>
+                        <td>500</td>
+                      </tr>
+                      <tr>
+                        <td>1500</td>
+                        <td>1,2</td>
+                        <td>650</td>
+                      </tr>
+                      <tr>
+                        <td>1800</td>
+                        <td>1,5</td>
+                        <td>750</td>
+                      </tr>
+                      <tr>
+                        <td>2000</td>
+                        <td>1,7</td>
+                        <td>850</td>
+                      </tr>
+                      <tr>
+                        <td>2100</td>
+                        <td>1,8</td>
+                        <td>900</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h6 class="alert-heading text-left mt-5 py-0">
+                    <span><b>Requerimiento según British Standard 7258, con volumen de extracción constante</b></span>
+                  </h6>
+                  <table class="table table-borderless mt-2">
+                    <thead>
+                      <tr>
+                        <th scope="col"><b>Vitrina (mm)</b> </th>
+                        <th scope="col"><b>Volocidad de entrada (m/s)</b> </th>
+                        <th scope="col"><b>Caudal recomendado (m<sup>3</sup>/h)</b> </th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <tr>
+                        <td>1200</td>
+                        <td>0,5</td>
+                        <td>1050</td>
+                      </tr>
+                      <tr>
+                        <td>1500</td>
+                        <td>0,5</td>
+                        <td>1200</td>
+                      </tr>
+                      <tr>
+                        <td>1800</td>
+                        <td>0,5</td>
+                        <td>1500</td>
+                      </tr>
+                      <tr>
+                        <td>2000</td>
+                        <td>0,5</td>
+                        <td>1700</td>
+                      </tr>
+                      <tr>
+                        <td>2100</td>
+                        <td>0,5</td>
+                        <td>1800</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h6 class="alert-heading text-left mt-5 py-0">
+                    <span><b>Requerimiento según AFNOR XP X15-203, con volumen de extracción constante</b></span>
+                  </h6>
+                  <table class="table table-borderless mt-2">
+                    <thead>
+                      <tr>
+                        <th scope="col"><b>Vitrina (mm)</b> </th>
+                        <th scope="col"><b>Volocidad de entrada (m/s)</b> </th>
+                        <th scope="col"><b>Caudal recomendado (m<sup>3</sup>/h)</b> </th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                      <tr>
+                        <td>1200</td>
+                        <td>0,5</td>
+                        <td>650</td>
+                      </tr>
+                      <tr>
+                        <td>1500</td>
+                        <td>0,5</td>
+                        <td>850</td>
+                      </tr>
+                      <tr>
+                        <td>1800</td>
+                        <td>0,5</td>
+                        <td>1050</td>
+                      </tr>
+                      <tr>
+                        <td>2000</td>
+                        <td>0,5</td>
+                        <td>1200</td>
+                      </tr>
+                      <tr>
+                        <td>2100</td>
+                        <td>0,5</td>
+                        <td>1250</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p style="page-break-after: always;"></p>
+                  <div class="page">
+                  </div>
               </div>
             </t>
           </t>

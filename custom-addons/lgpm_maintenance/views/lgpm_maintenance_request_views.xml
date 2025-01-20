@@ -34,6 +34,15 @@
                 <field name="lot_id" />
               </group>  
             </group>
+            <group name="sat_check_extraction_system"
+                   string="Comprobación y ajuste del sistema de extracción">
+              <group>
+                <field name="sat_digital_ctrl" />
+              </group>
+              <group>
+                <field name="sat_extraction_sys" />
+              </group>
+            </group>
             
             
           </page>
