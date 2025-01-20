@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="lgpm_maintenance_hr_equipment_request_view_form_inherited">
+      <field name="name">lgpm_maintenance.hr_equipment.request.form.inherit</field>
+      <field name="model">maintenance.request</field>
+      <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
+      <field name="priority">999</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='equipment_id']" position="after">
+          <field name="equipment_type" invisible="1"/>
+        </xpath>
+        <xpath expr="//page[@name='description_page']" position="after">
+          <page name="sat" string="SAT" attrs="{'invisible': [('equipment_type', '=', 'NO')]}">
+            <h1><field name="equipment_type" /></h1>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record id="lgpm_maintenance_hr_equipment_request_action_inherited" model="ir.actions.act_window">
+        <field name="name">Maintenance Requests</field>
+        <field name="res_model">maintenance.request</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph,calendar</field>
+        <field name="view_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+        <field name="context">{'default_user_id': uid}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new maintenance request
+            </p><p>
+                Follow the process of the request and communicate with the collaborator.
+            </p>
+        </field>
+    </record>
+
+    <!-- actions -->
+    <menuitem
+        id="maintenance.menu_m_request_form"
+        name="Maintenance Requests"
+        parent="maintenance.menu_m_request"
+        action="lgpm_maintenance_hr_equipment_request_action_inherited"
+        groups="maintenance.group_equipment_manager,base.group_user"
+        sequence="1"/>
+
+
+  </data>
+</odoo>
