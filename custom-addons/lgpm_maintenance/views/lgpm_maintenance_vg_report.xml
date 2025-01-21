@@ -114,8 +114,11 @@
                       </p>
                     </div>
                   </div>
-                  <h6 class="alert-heading text-left mt-5 py-0">
+                  <h5 class="alert-heading text-left mt-4 py-0">
                     <span><b>Longitud de vitrina/guillotina/caudal recomendado</b></span>
+                  </h5>
+                  <h6 class="alert-heading text-left mt-3 py-0">
+                    <span><b>Requerimiento según norma DIN EN 14175</b></span>
                   </h6>
                   <table class="table table-borderless mt-2">
                     <thead>
@@ -233,6 +236,16 @@
                   </table>
                   <p style="page-break-after: always;"></p>
                   <div class="page">
+                    <div class="mt-5">
+                      <p>
+                        <b>Requerimiento fabricante:</b>
+                        <span t-field="maintenance_request.requirements_partner" class="mx-2" />
+                      </p>
+                      <p>
+                        <b>Requerimiento cliente:</b>
+                        <span t-field="maintenance_request.requirements_client" class="mx-2" />
+                      </p>
+                    </div>
                   </div>
               </div>
             </t>

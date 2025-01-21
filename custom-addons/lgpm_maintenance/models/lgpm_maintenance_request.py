@@ -87,12 +87,64 @@ class LgpmMaintenanceRequest(models.Model):
         ],
         default='NO'
     )
+    requirements_partner = fields.Text(
+        string='Requerimientos fabricante',
+        help='Requerimientos del fabricante'
+    )
+    requirements_client = fields.Text(
+        string='Requerimientos cliente',
+        help='Requerimientos del cliente'
+    )
+    work_length = fields.Integer(
+        string='Longitud de trabajo',
+        help='Longitud de trabajo del equipo en mm'
+    )
+    work_height = fields.Integer(
+        string='Altura de trabajo',
+        help='Atura de trabajo para a gillotina en mm'
+    )
+    measurement_area= fields.Float(
+        string='Superficie de medición',
+        compute='_compute_measurement_area',
+        store=True,
+        help='Superficie de medición en metros cuadrados'
+    )
+    frontal_v1 = fields.Float(
+        default=0.0
+    )
+    frontal_v2 = fields.Float(
+        default=0.0
+    )
+    frontal_v3 = fields.Float(
+        default=0.0
+    )
+    frontal_v4 = fields.Float(
+        default=0.0
+    )
+    frontal_v5 = fields.Float(
+        default=0.0
+    )
+    frontal_v6 = fields.Float(
+        default=0.0
+    )
+    frontal_v7 = fields.Float(
+        default=0.0
+    )
+    frontal_v8 = fields.Float(
+        default=0.0
+    )
+    frontal_v9 = fields.Float(
+        default=0.0
+    )
+    frontal_v_media= fields.Float(
+        compute='_compute_frontal_v_media'
+    )
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):
         for maintenance_request in self:
             if maintenance_request.equipment_id:
-                key = self.equipment_id.equipment_type
+                key = maintenance_request.equipment_id.equipment_type
                 maintenance_request.equipment_type = dict(
                     self.env[
                         'maintenance.equipment'
@@ -106,7 +158,7 @@ class LgpmMaintenanceRequest(models.Model):
     def _compute_equipment_use(self):
         for maintenance_request in self:
             if maintenance_request.equipment_id:
-                key = self.equipment_id.equipment_use
+                key = maintenance_request.equipment_id.equipment_use
                 maintenance_request.equipment_use = dict(
                     self.env[
                         'maintenance.equipment'
@@ -115,3 +167,46 @@ class LgpmMaintenanceRequest(models.Model):
                             ].selection).get(key)
             else:
                 maintenance_request.equipment_use = ''
+
+    @api.depends('work_length', 'work_height')
+    def _compute_measurement_area(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_type.lower() in ['vitrina de gases', 'cabina de flujo', 'cabina de pesadas']:
+                maintenance_request.measurement_area = (
+                    (maintenance_request.work_length/1000) * (maintenance_request.work_height/1000)
+                )
+            else:
+                maintenance_request.measurement_area = 0.0
+
+    @api.depends(
+        'frontal_v1',
+        'frontal_v2',
+        'frontal_v3',
+        'frontal_v4',
+        'frontal_v5',
+        'frontal_v6',
+        'frontal_v7',
+        'frontal_v8',
+        'frontal_v9',
+        )
+    def _compute_frontal_v_media(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_type.lower() in ['vitrina de gases', 'cabina de flujo', 'cabina de pesadas']:
+                values = [
+                    maintenance_request.frontal_v1,
+                    maintenance_request.frontal_v2,
+                    maintenance_request.frontal_v3,
+                    maintenance_request.frontal_v4,
+                    maintenance_request.frontal_v5,
+                    maintenance_request.frontal_v6,
+                    maintenance_request.frontal_v7,
+                    maintenance_request.frontal_v8,
+                    maintenance_request.frontal_v9
+                ]
+            else:
+                values = [
+                    maintenance_request.frontal_v1,
+                    maintenance_request.frontal_v2,
+                    maintenance_request.frontal_v3
+                ]
+            maintenance_request.frontal_v_media = sum(values)/len(values)

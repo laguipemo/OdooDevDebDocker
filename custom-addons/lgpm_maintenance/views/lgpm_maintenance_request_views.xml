@@ -17,7 +17,9 @@
         </xpath>
         <xpath expr="//page[@name='description_page']" position="after">
           <page name="sat" string="SAT" attrs="{'invisible': [('equipment_type', '=', '')]}">
-            <h1><field name="equipment_type" /></h1>
+            <h1>
+              <field name="equipment_type" />
+            </h1>
             <group>
               <group name="sat_equipment_gnrl" string="Información general">
                 <field name="maintenance_date" />
@@ -32,19 +34,63 @@
                 <field name="partner_ref" />
                 <field name="manufacture_date" />
                 <field name="lot_id" />
-              </group>  
-            </group>
-            <group name="sat_check_extraction_system"
-                   string="Comprobación y ajuste del sistema de extracción">
-              <group>
-                <field name="sat_digital_ctrl" />
               </group>
-              <group>
+            </group>
+            <group name="sat_check_extraction"
+                   string="Comprobación y ajuste del sistema de extracción"
+                   col="12">
+              <group colspan="5" string="Inspección Visual">
+                <field name="sat_digital_ctrl" />
                 <field name="sat_extraction_sys" />
               </group>
+              <group colspan="7" string="Requerimientos">
+                <field name="requirements_partner" />
+                <field name="requirements_client" />
+              </group>
             </group>
-            
-            
+            <group name="measurements" string="Medición volumen de extracción" col="12">
+              <group string="Dimensiones" colspan="4">
+                <field name="work_length" />
+                <field name="work_height" />
+                <field name="measurement_area" />
+              </group>
+              <group string="Velocidades frontal" colspan="8">
+                <table class="table table-bordered text-center" colspan="2">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Izquierda</th>
+                      <th scope="col">Centro</th>
+                      <th scope="col">Derecha</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Arriba</th>
+                      <td><field name="frontal_v1" /></td>
+                      <td><field name="frontal_v2" /></td>
+                      <td><field name="frontal_v3" /></td>
+                    </tr>
+                    <tr>
+                      <th>Centro</th>
+                      <td><field name="frontal_v4" /></td>
+                      <td><field name="frontal_v5" /></td>
+                      <td><field name="frontal_v6" /></td>
+                    </tr>
+                    <tr>
+                      <th>Abajo</th>
+                      <td><field name="frontal_v7" /></td>
+                      <td><field name="frontal_v8" /></td>
+                      <td><field name="frontal_v9" /></td>
+                    </tr>
+                    <tr>
+                      <th colspan="3" style="text-align:right;">Media</th>
+                      <td><field name="frontal_v_media" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </group>
+            </group>
           </page>
         </xpath>
       </field>
@@ -52,28 +98,23 @@
 
     <!-- actions opening views on models -->
     <record id="lgpm_maintenance_hr_equipment_request_action_inherited" model="ir.actions.act_window">
-        <field name="name">Maintenance Requests</field>
-        <field name="res_model">maintenance.request</field>
-        <field name="view_mode">kanban,tree,form,pivot,graph,calendar</field>
-        <field name="view_id" ref="maintenance.hr_equipment_request_view_kanban"/>
-        <field name="context">{'default_user_id': uid}</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
+      <field name="name">Maintenance Requests</field>
+      <field name="res_model">maintenance.request</field>
+      <field name="view_mode">kanban,tree,form,pivot,graph,calendar</field>
+      <field name="view_id" ref="maintenance.hr_equipment_request_view_kanban"/>
+      <field name="context">{'default_user_id': uid}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
                 Add a new maintenance request
-            </p><p>
+        </p>
+        <p>
                 Follow the process of the request and communicate with the collaborator.
-            </p>
-        </field>
+        </p>
+      </field>
     </record>
 
     <!-- actions -->
-    <menuitem
-        id="maintenance.menu_m_request_form"
-        name="Maintenance Requests"
-        parent="maintenance.menu_m_request"
-        action="lgpm_maintenance_hr_equipment_request_action_inherited"
-        groups="maintenance.group_equipment_manager,base.group_user"
-        sequence="1"/>
+    <menuitem id="maintenance.menu_m_request_form" name="Maintenance Requests" parent="maintenance.menu_m_request" action="lgpm_maintenance_hr_equipment_request_action_inherited" groups="maintenance.group_equipment_manager,base.group_user" sequence="1"/>
 
 
   </data>
