@@ -99,9 +99,15 @@ class LgpmMaintenanceRequest(models.Model):
         string='Longitud de trabajo',
         help='Longitud de trabajo del equipo en mm'
     )
+    work_length_m = fields.Float(
+        compute='_compute_work_length_m',
+    )
     work_height = fields.Integer(
         string='Altura de trabajo',
         help='Atura de trabajo para a gillotina en mm'
+    )
+    work_height_m = fields.Float(
+        compute='_compute_work_height_m'
     )
     measurement_area= fields.Float(
         string='Superficie de medición',
@@ -210,3 +216,16 @@ class LgpmMaintenanceRequest(models.Model):
                     maintenance_request.frontal_v3
                 ]
             maintenance_request.frontal_v_media = sum(values)/len(values)
+
+    def convert_to_meters(self, value):
+        return value/1000.0
+
+    @api.depends('work_length')
+    def _compute_work_length_m(self):
+        for maintenance_request in self:
+            maintenance_request.work_length_m = self.convert_to_meters(maintenance_request.work_length)
+
+    @api.depends('work_height')
+    def _compute_work_height_m(self):
+        for maintenance_request in self:
+            maintenance_request.work_height_m = self.convert_to_meters(maintenance_request.work_height)
