@@ -13,12 +13,14 @@
         <field name="print_report_name">'Informe VG - %s' %(object.name)</field>
       </record>
 
+
+
       <!-- explicit template definition -->
 
       <template id="lgpm_maintenance.request_vg_report">
         <t t-call="web.html_container">
           <t t-foreach="docs" t-as="maintenance_request">
-            <t t-call="web.external_layout" >
+            <t t-call="web.external_layout">
               <div class="page">
                 <div class="alert alert-light mb-0 pb-0" role="alert">
                     <h1 class="alert-heading text-center my-0 py-0">
@@ -246,6 +248,43 @@
                         <span t-field="maintenance_request.requirements_client" class="mx-2" />
                       </p>
                     </div>
+                    <h5 class="alert-heading text-left mt-3 py-0">
+                      <span><b>Medición volumen de extracción</b></span>
+                    </h5>
+                    <div class="mt-2">
+                      <p>
+                        <b>Longitud guillotina (mm):</b>
+                        <span t-field="maintenance_request.work_length" class="mx-2" />
+                      </p>
+                      <p>
+                        <b>Atura de trabajo (mm):</b>
+                        <span t-field="maintenance_request.work_height" class="mx-2" />
+                      </p>
+                    </div>
+                    <h6 class="alert-heading text-left mt-3 py-0">
+                      <span><b><i>Superficie de medición(m<sup>2</sup>) = Longitud de trabajo(m) x Altura de trabajo(m) </i></b></span>
+                    </h6>
+                    <table class="table table-borderless mt-2">
+                      <thead>
+                        <tr>
+                          <th scope="col"><b>Longitud de trabajo (m)</b> </th>
+                          <th scope="col"><b>Altura de trabajo (m)</b> </th>
+                          <th scope="col"><b>Superficie de medición (m<sup>2</sup>)</b> </th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <t
+                          t-set="length_in_meters"
+                          t-value="maintenance_request.convert_to_meters(maintenance_request.work_length)"
+                          t-options='{"widget": "float", "precision": 2}' />
+                        <t t-set="height_in_meters" t-value="maintenance_request.work_height/1000" />
+                        <tr>
+                          <td><span t-esc="length_in_meters" class="mx-2" t-lang="es_ES" /></td>
+                          <td><span t-esc="height_in_meters" class="mx-2" /></td>
+                          <td><span t-field="maintenance_request.measurement_area" class="mx-2" /></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
               </div>
             </t>

@@ -210,3 +210,6 @@ class LgpmMaintenanceRequest(models.Model):
                     maintenance_request.frontal_v3
                 ]
             maintenance_request.frontal_v_media = sum(values)/len(values)
+
+    def convert_to_meters(self, value):
+        return value/1000
