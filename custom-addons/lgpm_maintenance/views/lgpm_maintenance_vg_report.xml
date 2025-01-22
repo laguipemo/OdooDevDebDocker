@@ -1,300 +1,401 @@
 <odoo>
-    <data>
+  <data>
 
-      <!-- actions opening views on models -->
-      <record model="ir.actions.report" id="lgpm_maintenance_request_vg_action_report">
-        <field name="name">Informe Mantenimiento VG</field>
-        <field name="model">maintenance.request</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">lgpm_maintenance.request_vg_report</field>
-        <field name="report_file">lgpm_maintenance.request_vg_report</field>
-        <field name="binding_model_id" ref="model_maintenance_request" />
+    <!-- actions opening views on models -->
+    <record model="ir.actions.report" id="lgpm_maintenance_request_vg_action_report">
+      <field name="name">Informe Mantenimiento VG</field>
+      <field name="model">maintenance.request</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">lgpm_maintenance.request_vg_report</field>
+      <field name="report_file">lgpm_maintenance.request_vg_report</field>
+      <field name="binding_model_id" ref="model_maintenance_request" />
 
-        <field name="print_report_name">'Informe VG - %s' %(object.name)</field>
-      </record>
+      <field name="print_report_name">'Informe VG - %s' %(object.name)</field>
+    </record>
 
 
 
-      <!-- explicit template definition -->
-
-      <template id="lgpm_maintenance.request_vg_report">
-        <t t-call="web.html_container">
-          <t t-foreach="docs" t-as="maintenance_request">
-            <t t-call="web.external_layout">
-              <div class="page">
-                <div class="alert alert-light mb-0 pb-0" role="alert">
-                    <h1 class="alert-heading text-center my-0 py-0">
-                      <span><b>Informe Vitrina de Gases</b></span>
-                    </h1>
-                </div>
-                <div class="d-flex row justify-content-center col-mb-4 my-5 text-center aling-items-center">
-                    <h1 class="alert-heading text-center my-0 py-0">
-                      <span class="badge bg-light border border-success text-dark py-3 px=5">
-                        <span t-field="maintenance_request.lot_id" class="px-5" />
-                      </span>
-                    </h1>
-                </div>
-                <div class="container">
-                  <div class="d-flex row justify-content-between my-3 border border-success bg-light">
-                    <div class="col-7 p-3">
-                      <p><b>Fecha:</b><span t-field="maintenance_request.maintenance_date" class="mx-2"/></p>
-                      <p><b>Propietario:</b><span t-field="maintenance_request.owner_name" class="mx-2"/></p>
-                      <p><b>Contacto:</b><span t-field="maintenance_request.contact_name" class="mx-2"/></p>
-                      <p><b>Email:</b><span t-field="maintenance_request.contact_email" class="mx-2"/></p>
-                      <p><b>Telefono:</b><span t-field="maintenance_request.contact_phone" class="mx-2"/></p>
-                    </div>
-                    <div class="col-5 p-3"> 
-                      <p><b>Fabricante:</b><span t-field="maintenance_request.partner_id" class="mx-2"/></p>
-                      <p><b>Tipo de uso:</b><span t-field="maintenance_request.equipment_use" class="mx-2"/></p>
-                      <p><b>Referencia:</b><span t-field="maintenance_request.partner_ref" class="mx-2"/></p>
-                      <p><b>Año construcción:</b><span t-field="maintenance_request.manufacture_date" class="mx-2"/></p>
-                      <p><b>Nº de Serie:</b><span t-field="maintenance_request.lot_id" class="mx-2"/></p>
-                      <p><b>Nº Inventario:</b><span t-field="maintenance_request.lot_id" class="mx-2"/></p>
-                      <p><b>Técnico:</b><span t-field="maintenance_request.user_id" class="mx-2"/></p>
-                    </div>
-                  </div>
-                  <h4 class="alert-heading text-left mt-5 py-0">
-                    <span><b>Relación de equipos de medición empleados</b></span>
-                  </h4>
-                  <table class="table table-striped">
-                    <thead class="table-success fw-bold" style="background-color:#E0E0E0;">
-                      <tr>
-                        <th scope="col"><b>Equipo</b></th>
-                        <th scope="col"><b>Marca</b></th>
-                        <th scope="col"><b>Modelo</b></th>
-                        <th scope="col"><b>Referencia Interna</b></th>
-                        <th scope="col"><b>Nº de Serie</b></th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-center">
-                      <tr>
-                        <td>Anemómetro</td>
-                        <td>PCE</td>
-                        <td>423</td>
-                        <td>AT02</td>
-                        <td>150107658</td>
-                      </tr>
-                      <tr>
-                        <td>Luxómetro</td>
-                        <td>PCE</td>
-                        <td>174</td>
-                        <td>AT04</td>
-                        <td>150206366</td>
-                      </tr>
-                      <tr>
-                        <td>Dinamómetro</td>
-                        <td>DFG500</td>
-                        <td>423</td>
-                        <td>AT05</td>
-                        <td>4111502055</td>
-                      </tr>
-                      <tr>
-                        <td>Sonómetro</td>
-                        <td>PCE</td>
-                        <td>322A</td>
-                        <td>AT06</td>
-                        <td>2015097392</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <p style="page-break-after: always;"></p>
-              <div class="page">
-                  <h4 class="alert-heading text-left mt-5 py-0" colspan="4">
-                    <span><b>Comprobación y ajuste del sistema de extracción</b></span>
-                  </h4>
-                  <div class="d-flex flex-row">
-                    <div class="col-m-12 p2">
-                      <p>
-                        <b>Funcionamiento del controlador digital:</b>
-                        <span t-field="maintenance_request.sat_digital_ctrl" class="mx-2" />
-                      </p>
-                      <p>
-                        <b>Inspección visual del sistema de extracción:</b>
-                        <span t-field="maintenance_request.sat_extraction_sys" class="mx-2" />
-                      </p>
-                    </div>
-                  </div>
-                  <h5 class="alert-heading text-left mt-4 py-0">
-                    <span><b>Longitud de vitrina/guillotina/caudal recomendado</b></span>
-                  </h5>
-                  <h6 class="alert-heading text-left mt-3 py-0">
-                    <span><b>Requerimiento según norma DIN EN 14175</b></span>
-                  </h6>
-                  <table class="table table-borderless mt-2">
-                    <thead>
-                      <tr>
-                        <th scope="col"><b>Vitrina (mm)</b> </th>
-                        <th scope="col"><b>Guillotina (mm)</b> </th>
-                        <th scope="col"><b>Caudal recomendado (m<sup>3</sup>/h)</b> </th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-center">
-                      <tr>
-                        <td>1200</td>
-                        <td>0,9</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>1500</td>
-                        <td>1,2</td>
-                        <td>650</td>
-                      </tr>
-                      <tr>
-                        <td>1800</td>
-                        <td>1,5</td>
-                        <td>750</td>
-                      </tr>
-                      <tr>
-                        <td>2000</td>
-                        <td>1,7</td>
-                        <td>850</td>
-                      </tr>
-                      <tr>
-                        <td>2100</td>
-                        <td>1,8</td>
-                        <td>900</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <h6 class="alert-heading text-left mt-5 py-0">
-                    <span><b>Requerimiento según British Standard 7258, con volumen de extracción constante</b></span>
-                  </h6>
-                  <table class="table table-borderless mt-2">
-                    <thead>
-                      <tr>
-                        <th scope="col"><b>Vitrina (mm)</b> </th>
-                        <th scope="col"><b>Volocidad de entrada (m/s)</b> </th>
-                        <th scope="col"><b>Caudal recomendado (m<sup>3</sup>/h)</b> </th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-center">
-                      <tr>
-                        <td>1200</td>
-                        <td>0,5</td>
-                        <td>1050</td>
-                      </tr>
-                      <tr>
-                        <td>1500</td>
-                        <td>0,5</td>
-                        <td>1200</td>
-                      </tr>
-                      <tr>
-                        <td>1800</td>
-                        <td>0,5</td>
-                        <td>1500</td>
-                      </tr>
-                      <tr>
-                        <td>2000</td>
-                        <td>0,5</td>
-                        <td>1700</td>
-                      </tr>
-                      <tr>
-                        <td>2100</td>
-                        <td>0,5</td>
-                        <td>1800</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <h6 class="alert-heading text-left mt-5 py-0">
-                    <span><b>Requerimiento según AFNOR XP X15-203, con volumen de extracción constante</b></span>
-                  </h6>
-                  <table class="table table-borderless mt-2">
-                    <thead>
-                      <tr>
-                        <th scope="col"><b>Vitrina (mm)</b> </th>
-                        <th scope="col"><b>Volocidad de entrada (m/s)</b> </th>
-                        <th scope="col"><b>Caudal recomendado (m<sup>3</sup>/h)</b> </th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-center">
-                      <tr>
-                        <td>1200</td>
-                        <td>0,5</td>
-                        <td>650</td>
-                      </tr>
-                      <tr>
-                        <td>1500</td>
-                        <td>0,5</td>
-                        <td>850</td>
-                      </tr>
-                      <tr>
-                        <td>1800</td>
-                        <td>0,5</td>
-                        <td>1050</td>
-                      </tr>
-                      <tr>
-                        <td>2000</td>
-                        <td>0,5</td>
-                        <td>1200</td>
-                      </tr>
-                      <tr>
-                        <td>2100</td>
-                        <td>0,5</td>
-                        <td>1250</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p style="page-break-after: always;"></p>
-                  <div class="page">
-                    <div class="mt-5">
-                      <p>
-                        <b>Requerimiento fabricante:</b>
-                        <span t-field="maintenance_request.requirements_partner" class="mx-2" />
-                      </p>
-                      <p>
-                        <b>Requerimiento cliente:</b>
-                        <span t-field="maintenance_request.requirements_client" class="mx-2" />
-                      </p>
-                    </div>
-                    <h5 class="alert-heading text-left mt-3 py-0">
-                      <span><b>Medición volumen de extracción</b></span>
-                    </h5>
-                    <div class="mt-2">
-                      <p>
-                        <b>Longitud guillotina (mm):</b>
-                        <span t-field="maintenance_request.work_length" class="mx-2" />
-                      </p>
-                      <p>
-                        <b>Atura de trabajo (mm):</b>
-                        <span t-field="maintenance_request.work_height" class="mx-2" />
-                      </p>
-                    </div>
-                    <h6 class="alert-heading text-left mt-3 py-0">
-                      <span><b><i>Superficie de medición(m<sup>2</sup>) = Longitud de trabajo(m) x Altura de trabajo(m) </i></b></span>
-                    </h6>
-                    <table class="table table-borderless mt-2">
-                      <thead>
-                        <tr>
-                          <th scope="col"><b>Longitud de trabajo (m)</b> </th>
-                          <th scope="col"><b>Altura de trabajo (m)</b> </th>
-                          <th scope="col"><b>Superficie de medición (m<sup>2</sup>)</b> </th>
-                        </tr>
-                      </thead>
-                      <tbody class="text-center">
-                        <t
-                          t-set="length_in_meters"
-                          t-value="maintenance_request.convert_to_meters(maintenance_request.work_length)"
-                          t-options='{"widget": "float", "precision": 2}' />
-                        <t t-set="height_in_meters" t-value="maintenance_request.work_height/1000" />
-                        <tr>
-                          <td><span t-esc="length_in_meters" class="mx-2" t-lang="es_ES" /></td>
-                          <td><span t-esc="height_in_meters" class="mx-2" /></td>
-                          <td><span t-field="maintenance_request.measurement_area" class="mx-2" /></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-            </t>
-          </t>
+    <!-- explicit template definition -->
+    <template id="lgpm_maintenance.request_vg_report">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="maintenance_request">
+          <t t-set="lang" t-value="maintenance_request.equipment_id.partner_id.lang" />
+          <t t-call="lgpm_maintenance.request_vg_report_document" t-lang="lang"/>
         </t>
-      </template>
+      </t>
+    </template>
+
+    <template id="lgpm_maintenance.request_vg_report_document">
+      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+      <t t-call="web.external_layout">
+        <div class="page">
+          <div class="alert alert-light mb-0 pb-0" role="alert">
+            <h1 class="alert-heading text-center my-0 py-0">
+              <span>
+                <b>Informe Vitrina de Gases</b>
+              </span>
+            </h1>
+          </div>
+          <div class="d-flex row justify-content-center col-mb-4 my-5 text-center aling-items-center">
+            <h1 class="alert-heading text-center my-0 py-0">
+              <span class="badge bg-light border border-success text-dark py-3 px=5">
+                <span t-field="maintenance_request.lot_id" class="px-5" />
+              </span>
+            </h1>
+          </div>
+          <div class="container">
+            <div class="d-flex row justify-content-between my-3 border border-success bg-light">
+              <div class="col-7 p-3">
+                <p>
+                  <b>Fecha:</b>
+                  <span t-field="maintenance_request.maintenance_date" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Propietario:</b>
+                  <span t-field="maintenance_request.owner_name" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Contacto:</b>
+                  <span t-field="maintenance_request.contact_name" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Email:</b>
+                  <span t-field="maintenance_request.contact_email" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Telefono:</b>
+                  <span t-field="maintenance_request.contact_phone" class="mx-2"/>
+                </p>
+              </div>
+              <div class="col-5 p-3">
+                <p>
+                  <b>Fabricante:</b>
+                  <span t-field="maintenance_request.partner_id" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Tipo de uso:</b>
+                  <span t-field="maintenance_request.equipment_use" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Referencia:</b>
+                  <span t-field="maintenance_request.partner_ref" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Año construcción:</b>
+                  <span t-field="maintenance_request.manufacture_date" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Nº de Serie:</b>
+                  <span t-field="maintenance_request.lot_id" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Nº Inventario:</b>
+                  <span t-field="maintenance_request.lot_id" class="mx-2"/>
+                </p>
+                <p>
+                  <b>Técnico:</b>
+                  <span t-field="maintenance_request.user_id" class="mx-2"/>
+                </p>
+              </div>
+            </div>
+            <h4 class="alert-heading text-left mt-5 py-0">
+              <span>
+                <b>Relación de equipos de medición empleados</b>
+              </span>
+            </h4>
+            <table class="table table-striped">
+              <thead class="table-success fw-bold" style="background-color:#E0E0E0;">
+                <tr>
+                  <th scope="col">
+                    <b>Equipo</b>
+                  </th>
+                  <th scope="col">
+                    <b>Marca</b>
+                  </th>
+                  <th scope="col">
+                    <b>Modelo</b>
+                  </th>
+                  <th scope="col">
+                    <b>Referencia Interna</b>
+                  </th>
+                  <th scope="col">
+                    <b>Nº de Serie</b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td>Anemómetro</td>
+                  <td>PCE</td>
+                  <td>423</td>
+                  <td>AT02</td>
+                  <td>150107658</td>
+                </tr>
+                <tr>
+                  <td>Luxómetro</td>
+                  <td>PCE</td>
+                  <td>174</td>
+                  <td>AT04</td>
+                  <td>150206366</td>
+                </tr>
+                <tr>
+                  <td>Dinamómetro</td>
+                  <td>DFG500</td>
+                  <td>423</td>
+                  <td>AT05</td>
+                  <td>4111502055</td>
+                </tr>
+                <tr>
+                  <td>Sonómetro</td>
+                  <td>PCE</td>
+                  <td>322A</td>
+                  <td>AT06</td>
+                  <td>2015097392</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p style="page-break-after: always;"></p>
+        <div class="page">
+          <h4 class="alert-heading text-left mt-5 py-0" colspan="4">
+            <span>
+              <b>Comprobación y ajuste del sistema de extracción</b>
+            </span>
+          </h4>
+          <div class="d-flex flex-row">
+            <div class="col-m-12 p2">
+              <p>
+                <b>Funcionamiento del controlador digital:</b>
+                <span t-field="maintenance_request.sat_digital_ctrl" class="mx-2" />
+              </p>
+              <p>
+                <b>Inspección visual del sistema de extracción:</b>
+                <span t-field="maintenance_request.sat_extraction_sys" class="mx-2" />
+              </p>
+            </div>
+          </div>
+          <h5 class="alert-heading text-left mt-4 py-0">
+            <span>
+              <b>Longitud de vitrina/guillotina/caudal recomendado</b>
+            </span>
+          </h5>
+          <h6 class="alert-heading text-left mt-3 py-0">
+            <span>
+              <b>Requerimiento según norma DIN EN 14175</b>
+            </span>
+          </h6>
+          <table class="table table-borderless mt-2">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <b>Vitrina (mm)</b>
+                </th>
+                <th scope="col">
+                  <b>Guillotina (mm)</b>
+                </th>
+                <th scope="col">
+                  <b>Caudal recomendado (m<sup>3</sup>/h)</b>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td>1200</td>
+                <td>0,9</td>
+                <td>500</td>
+              </tr>
+              <tr>
+                <td>1500</td>
+                <td>1,2</td>
+                <td>650</td>
+              </tr>
+              <tr>
+                <td>1800</td>
+                <td>1,5</td>
+                <td>750</td>
+              </tr>
+              <tr>
+                <td>2000</td>
+                <td>1,7</td>
+                <td>850</td>
+              </tr>
+              <tr>
+                <td>2100</td>
+                <td>1,8</td>
+                <td>900</td>
+              </tr>
+            </tbody>
+          </table>
+          <h6 class="alert-heading text-left mt-5 py-0">
+            <span>
+              <b>Requerimiento según British Standard 7258, con volumen de extracción constante</b>
+            </span>
+          </h6>
+          <table class="table table-borderless mt-2">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <b>Vitrina (mm)</b>
+                </th>
+                <th scope="col">
+                  <b>Volocidad de entrada (m/s)</b>
+                </th>
+                <th scope="col">
+                  <b>Caudal recomendado (m<sup>3</sup>/h)</b>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td>1200</td>
+                <td>0,5</td>
+                <td>1050</td>
+              </tr>
+              <tr>
+                <td>1500</td>
+                <td>0,5</td>
+                <td>1200</td>
+              </tr>
+              <tr>
+                <td>1800</td>
+                <td>0,5</td>
+                <td>1500</td>
+              </tr>
+              <tr>
+                <td>2000</td>
+                <td>0,5</td>
+                <td>1700</td>
+              </tr>
+              <tr>
+                <td>2100</td>
+                <td>0,5</td>
+                <td>1800</td>
+              </tr>
+            </tbody>
+          </table>
+          <h6 class="alert-heading text-left mt-5 py-0">
+            <span>
+              <b>Requerimiento según AFNOR XP X15-203, con volumen de extracción constante</b>
+            </span>
+          </h6>
+          <table class="table table-borderless mt-2">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <b>Vitrina (mm)</b>
+                </th>
+                <th scope="col">
+                  <b>Volocidad de entrada (m/s)</b>
+                </th>
+                <th scope="col">
+                  <b>Caudal recomendado (m<sup>3</sup>/h)</b>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td>1200</td>
+                <td>0,5</td>
+                <td>650</td>
+              </tr>
+              <tr>
+                <td>1500</td>
+                <td>0,5</td>
+                <td>850</td>
+              </tr>
+              <tr>
+                <td>1800</td>
+                <td>0,5</td>
+                <td>1050</td>
+              </tr>
+              <tr>
+                <td>2000</td>
+                <td>0,5</td>
+                <td>1200</td>
+              </tr>
+              <tr>
+                <td>2100</td>
+                <td>0,5</td>
+                <td>1250</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="page-break-after: always;"></p>
+          <div class="page">
+            <div class="mt-5">
+              <p>
+                <b>Requerimiento fabricante:</b>
+                <span t-field="maintenance_request.requirements_partner" class="mx-2" />
+              </p>
+              <p>
+                <b>Requerimiento cliente:</b>
+                <span t-field="maintenance_request.requirements_client" class="mx-2" />
+              </p>
+            </div>
+            <h5 class="alert-heading text-left mt-3 py-0">
+              <span>
+                <b>Medición volumen de extracción</b>
+              </span>
+            </h5>
+            <div class="mt-2">
+              <p>
+                <b>Longitud guillotina (mm):</b>
+                <span t-field="maintenance_request.work_length" class="mx-2" />
+              </p>
+              <p>
+                <b>Atura de trabajo (mm):</b>
+                <span t-field="maintenance_request.work_height" class="mx-2" />
+              </p>
+            </div>
+            <h6 class="alert-heading text-left mt-3 py-0">
+              <span>
+                <b>
+                  <i>Superficie de medición(m<sup>2</sup>) = Longitud de trabajo(m) x Altura de trabajo(m) </i>
+                </b>
+              </span>
+            </h6>
+            <table class="table table-borderless mt-2">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <b>Longitud de trabajo (m)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Altura de trabajo (m)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Superficie de medición (m<sup>2</sup>)
+                    </b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <!-- <t t-set="length_in_meters" t-value="maintenance_request.convert_to_meters(maintenance_request.work_length)" />
+                <t t-set="height_in_meters" t-value="maintenance_request.work_height/1000" /> -->
+                <tr>
+                  <td>
+                    <!-- <span t-esc="length_in_meters" class="mx-2" /> -->
+                    <span t-field="maintenance_request.work_length_m" class="mx-2" />
+                  </td>
+                  <td>
+                    <!-- <span t-esc="height_in_meters" class="mx-2" /> -->
+                    <span t-field="maintenance_request.work_height_m" class="mx-2" />
+                  </td>
+                  <td>
+                    <span t-field="maintenance_request.measurement_area" class="mx-2" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </t>
+    </template>
 
 
 
-<!--
+    <!--
         <template id="listing">
           <ul>
             <li t-foreach="objects" t-as="object">
@@ -314,5 +415,5 @@
           </dl>
         </template>
 -->
-    </data>
+  </data>
 </odoo>
