@@ -202,27 +202,27 @@
             <tbody class="text-center">
               <tr>
                 <td>1200</td>
-                <td>0,9</td>
+                <td>0,90</td>
                 <td>500</td>
               </tr>
               <tr>
                 <td>1500</td>
-                <td>1,2</td>
+                <td>1,20</td>
                 <td>650</td>
               </tr>
               <tr>
                 <td>1800</td>
-                <td>1,5</td>
+                <td>1,50</td>
                 <td>750</td>
               </tr>
               <tr>
                 <td>2000</td>
-                <td>1,7</td>
+                <td>1,70</td>
                 <td>850</td>
               </tr>
               <tr>
                 <td>2100</td>
-                <td>1,8</td>
+                <td>1,80</td>
                 <td>900</td>
               </tr>
             </tbody>
@@ -249,27 +249,27 @@
             <tbody class="text-center">
               <tr>
                 <td>1200</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1050</td>
               </tr>
               <tr>
                 <td>1500</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1200</td>
               </tr>
               <tr>
                 <td>1800</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1500</td>
               </tr>
               <tr>
                 <td>2000</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1700</td>
               </tr>
               <tr>
                 <td>2100</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1800</td>
               </tr>
             </tbody>
@@ -296,27 +296,27 @@
             <tbody class="text-center">
               <tr>
                 <td>1200</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>650</td>
               </tr>
               <tr>
                 <td>1500</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>850</td>
               </tr>
               <tr>
                 <td>1800</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1050</td>
               </tr>
               <tr>
                 <td>2000</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1200</td>
               </tr>
               <tr>
                 <td>2100</td>
-                <td>0,5</td>
+                <td>0,50</td>
                 <td>1250</td>
               </tr>
             </tbody>
@@ -376,14 +376,73 @@
                 <tr>
                   <td>
                     <!-- <span t-esc="length_in_meters" class="mx-2" /> -->
-                    <span t-field="maintenance_request.work_length_m" class="mx-2" />
+                    <span t-field="maintenance_request.work_length_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                   </td>
                   <td>
                     <!-- <span t-esc="height_in_meters" class="mx-2" /> -->
-                    <span t-field="maintenance_request.work_height_m" class="mx-2" />
+                    <span t-field="maintenance_request.work_height_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                   </td>
                   <td>
-                    <span t-field="maintenance_request.measurement_area" class="mx-2" />
+                    <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h6 class="alert-heading text-left mt-3 py-0">
+              <span>
+                <b>Velocidades en frontal (m/s)</b>
+              </span>
+            </h6>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Izquierda</th>
+                  <th scope="col">Centro</th>
+                  <th scope="col">Derecha</th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <th>Arriba</th>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Centro</th>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v4" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v5" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v6" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>Abajo</th>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v7" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v8" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v9" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="3" style="text-align:right;">Media</th>
+                  <td>
+                    <span t-field="maintenance_request.frontal_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                   </td>
                 </tr>
               </tbody>
