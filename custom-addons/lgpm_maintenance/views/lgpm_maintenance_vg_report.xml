@@ -158,7 +158,14 @@
                     <b>Administración</b>
                   </td>
                   <td>
-                    <b>Firma</b>
+                    <img
+                      src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png"
+                      alt="" 
+                      class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                      data-original-id="8079" 
+                      data-original-src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png" 
+                      data-mimetype="image/png"
+                      style="max-height: 90px;" />
                   </td>
                 </tr>
                 <tr>
@@ -172,7 +179,15 @@
                     <b>Responsable SAT</b>
                   </td>
                   <td>
-                    <b>Firma</b>
+                    <!-- <img t-att-src="'/lgpm_maintenance/static/src/img/sign_sat.png'" style="width:50px; height:50px;" /> -->
+                    <img 
+                      src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png"
+                      alt="" 
+                      class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                      data-original-id="8079" 
+                      data-original-src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png" 
+                      data-mimetype="image/png"
+                      style="max-height: 90px;" />
                   </td>
                 </tr>
                 <tr>
@@ -186,7 +201,14 @@
                     <b>Técnico Prevención</b>
                   </td>
                   <td>
-                    <b>Firma</b>
+                    <img 
+                      src="/web/image/13750-d74a8838/Firma%20Rafa%20en%20Blanco%20y%20negro.png" 
+                      alt="" 
+                      class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                      data-original-id="13750" 
+                      data-original-src="/web/image/13750-d74a8838/Firma%20Rafa%20en%20Blanco%20y%20negro.png" 
+                      data-mimetype="image/png" 
+                      style="max-height: 90px;" />
                   </td>
                 </tr>
               </tbody>

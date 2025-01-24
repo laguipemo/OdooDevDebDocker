@@ -145,6 +145,19 @@ class LgpmMaintenanceRequest(models.Model):
     frontal_v_media= fields.Float(
         compute='_compute_frontal_v_media'
     )
+    sign_admin = fields.Image(
+        max_width=200,
+        max_hight=200
+    )
+    sign_sat = fields.Image(
+        max_width=200,
+        max_hight=200
+    )
+    sign_prev = fields.Image(
+        max_width=200,
+        max_hight=200
+    )
+
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):
