@@ -91,6 +91,11 @@
                 </table>
               </group>
             </group>
+            <div class="d-flex flex-row justify-content-between">
+              <field name="sign_admin" />
+              <field name="sign_sat" />
+              <field name="sign_prev" />
+            </div>
           </page>
         </xpath>
       </field>

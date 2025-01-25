@@ -145,15 +145,18 @@ class LgpmMaintenanceRequest(models.Model):
     frontal_v_media= fields.Float(
         compute='_compute_frontal_v_media'
     )
-    sign_admin = fields.Image(
+    sign_admin = fields.Binary(
+        string='Firma administrador',
         max_width=200,
         max_hight=200
     )
     sign_sat = fields.Image(
+        string='Firma SAT',
         max_width=200,
         max_hight=200
     )
     sign_prev = fields.Image(
+        string='Firma prevención',
         max_width=200,
         max_hight=200
     )

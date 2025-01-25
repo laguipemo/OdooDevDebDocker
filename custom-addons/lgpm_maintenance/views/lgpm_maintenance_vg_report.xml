@@ -146,69 +146,74 @@
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="text-center">
                 <tr>
-                  <td>
+                  <td class="align-middle">
                     <b>Redacción</b>
                   </td>
-                  <td>
+                  <td class="align-middle">
                     <b>Marisa Villar Neo</b>
                   </td>
-                  <td>
+                  <td class="align-middle">
                     <b>Administración</b>
                   </td>
                   <td>
-                    <img
-                      src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png"
-                      alt="" 
-                      class="img img-fluid o_we_custom_image o_modified_image_to_save" 
-                      data-original-id="8079" 
-                      data-original-src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png" 
-                      data-mimetype="image/png"
-                      style="max-height: 90px;" />
+                    <div>
+                      <center>
+                        <img 
+                          t-attf-src="data:image/*;base64,{{maintenance_request.sign_admin}}"
+                          t-alt="Firma de la administración"
+                          class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                          style="max-height: 90px;"/>
+                      </center>
+                    </div>
+                    
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  <td class="align-middle">
                     <b>Revisión</b>
                   </td>
-                  <td>
+                  <td class="align-middle">
                     <b>Lázaro Guillermo Pérez Montoto</b>
                   </td>
-                  <td>
+                  <td class="align-middle">
                     <b>Responsable SAT</b>
                   </td>
                   <td>
-                    <!-- <img t-att-src="'/lgpm_maintenance/static/src/img/sign_sat.png'" style="width:50px; height:50px;" /> -->
-                    <img 
-                      src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png"
-                      alt="" 
-                      class="img img-fluid o_we_custom_image o_modified_image_to_save" 
-                      data-original-id="8079" 
-                      data-original-src="/web/image/8079-810a85e3/Mi%20Firma%20az%C3%BAl.png" 
-                      data-mimetype="image/png"
-                      style="max-height: 90px;" />
+                    <div>
+                      <center>
+                        <img
+                          t-attf-src="data:image/*;base64,{{maintenance_request.sign_sat}}"
+                          t-alt="Firma del responsable SAT" 
+                          class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                          height="90" width="90" />
+                      </center>
+                    </div>
+                    
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  <td class="align-middle">
                     <b>Revisión</b>
                   </td>
-                  <td>
+                  <td class="align-middle">
                     <b>Rafael Romero</b>
                   </td>
-                  <td>
+                  <td class="align-middle">
                     <b>Técnico Prevención</b>
                   </td>
                   <td>
-                    <img 
-                      src="/web/image/13750-d74a8838/Firma%20Rafa%20en%20Blanco%20y%20negro.png" 
-                      alt="" 
-                      class="img img-fluid o_we_custom_image o_modified_image_to_save" 
-                      data-original-id="13750" 
-                      data-original-src="/web/image/13750-d74a8838/Firma%20Rafa%20en%20Blanco%20y%20negro.png" 
-                      data-mimetype="image/png" 
-                      style="max-height: 90px;" />
+                    <div>
+                      <center>
+                        <img
+                          t-attf-src="data:image/*;base64,{{maintenance_request.sign_prev}}"
+                          t-alt="Firma del responsable prevención" 
+                          class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                          height="90" width="90" />
+                      </center>
+                    </div>
+                    
                   </td>
                 </tr>
               </tbody>
