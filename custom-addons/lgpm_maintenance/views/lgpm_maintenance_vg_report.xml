@@ -46,8 +46,8 @@
                     <span t-field="maintenance_request.name" class="mx-2"/>
                   </p>
                   <p class="m-0 p-0">
-                    <b>Fecha:</b>
-                    <span t-field="maintenance_request.maintenance_date" class="mx-2"/>
+                    <b>Fecha del informe:</b>
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')" class="mx-2"/>
                   </p>
                 </div>
               </div>
@@ -474,6 +474,14 @@
             </div>
           </div>
 
+          <!-- Maintenance info -->
+          <h5 class="alert-heading text-left mt-5 py-0">
+            <span>
+              <b>Fecha de la actuación:</b>
+              <span t-field="maintenance_request.maintenance_date" class="mx-2"/>
+            </span>
+          </h5>
+
           <!-- Verifications -->
           <h5 class="alert-heading text-left mt-5 py-0" colspan="4">
             <span>
@@ -576,44 +584,44 @@
             </thead>
             <tbody class="text-center">
               <tr>
-                <th>Arriba</th>
-                <td>
+                <th class="align-middle">Arriba</th>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
-                <td>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
-                <td>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
               </tr>
               <tr>
-                <th>Centro</th>
-                <td>
+                <th class="align-middle">Centro</th>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v4" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
-                <td>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v5" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
-                <td>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v6" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
               </tr>
               <tr>
-                <th>Abajo</th>
-                <td>
+                <th class="align-middle">Abajo</th>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v7" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
-                <td>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v8" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
-                <td>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v9" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
               </tr>
               <tr>
-                <th colspan="3" style="text-align:right;">Media</th>
-                <td>
+                <th colspan="3" class="align-middle" style="text-align:right;">Media</th>
+                <td class="align-middle">
                   <span t-field="maintenance_request.frontal_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
               </tr>
