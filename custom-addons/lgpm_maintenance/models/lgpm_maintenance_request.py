@@ -1,6 +1,8 @@
 #-*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+import os
+import base64
 
 
 class LgpmMaintenanceRequest(models.Model):
@@ -11,10 +13,18 @@ class LgpmMaintenanceRequest(models.Model):
     """ def maintenance_request_report_button(self):
         return self.env.ref('lgpm_maintenance_request_vg_action_report').report_action(self) """
 
+
+    def get_default_image(self, image_name):
+        image_path = os.path.join(
+            os.path.dirname(__file__), '../static/src/img', image_name)
+        with open(image_path, 'rb') as image_file:
+            base64_image = base64.b64encode(image_file.read())
+        return base64_image
+
+
     maintenance_date = fields.Date(
         string='Fecha',
-        help='Fecha de la realización del mantenimiento',
-        required=True
+        help='Fecha de la realización del mantenimiento'
     )
     manufacture_date = fields.Date(
         string='Fecha de fabricación',
@@ -145,20 +155,23 @@ class LgpmMaintenanceRequest(models.Model):
     frontal_v_media= fields.Float(
         compute='_compute_frontal_v_media'
     )
-    sign_admin = fields.Binary(
+    sign_admin = fields.Image(
         string='Firma administrador',
         max_width=200,
-        max_hight=200
+        max_hight=200,
+        default=lambda self: self.get_default_image('sign_admin.png')
     )
     sign_sat = fields.Image(
         string='Firma SAT',
         max_width=200,
-        max_hight=200
+        max_hight=200,
+        default=lambda self: self.get_default_image('sign_sat.png')
     )
     sign_prev = fields.Image(
         string='Firma prevención',
         max_width=200,
-        max_hight=200
+        max_hight=200,
+        default=lambda self: self.get_default_image('sign_prev.png')
     )
 
 
