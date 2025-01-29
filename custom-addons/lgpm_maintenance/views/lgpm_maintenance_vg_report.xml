@@ -129,7 +129,7 @@
                 <b>Firmas de responsabilidad</b>
               </span>
             </h5>
-            <table class="table table-bordered">
+            <table class="table table-striped mt-2">
               <thead>
                 <tr>
                   <th>
@@ -237,7 +237,7 @@
                 </li>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">2. FECHA DE ACTUACIÓN</span> </div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">2. FECHA DE LA ACTUACIÓN</span> </div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
                   </div>
                 </li>
@@ -250,7 +250,7 @@
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
                     <div class="col-11 ps-0"><span class="ms-0 ps-0">4. INSTRUMENTACIÓN UTILIZADA</span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
                   </div>
                 </li>
                 <li>
@@ -377,6 +377,146 @@
                 </li>
               </ul>
             </div>
+            <p style="page-break-after: always;"></p>
+
+            <br/>
+            <h5 name="objetivo" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>1. OBJETIVO</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              El objetivo del presente Informe es reflejar los resultados obtenidos durante la
+              cualificación de los equipos de tratamiento de aire detallados en cada hoja de 
+              trabajo incluida en el Anexo B del presente informe, con el fin de demostrar 
+              documentalmente que son adecuados para su uso previsto dentro de los rangos de
+              trabajo definidos por la Normativa Vigente.
+            </p>
+            <h5 name="fecha" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>2. FECHA DE LA ACTUACIÓN</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Las pruebas se realizaron el día: <span t-field="maintenance_request.maintenance_date" />
+            </p>
+            <h5 name="personal" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>3. PERSONAL</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Las pruebas se han realizado por el personal Técnico de <b>ATLAS ROMERO Services</b> que
+               se refleja a continuación:
+            </p>
+            <table class="table table-striped mt-2">
+              <thead>  
+                <tr>
+                  <th scope="col">
+                    <b>Nombre</b>
+                  </th>
+                  <th scope="col">
+                    <b>Cargo</b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td>
+                    Rafael Romero
+                  </td>
+                  <td>
+                    Técnico Prevención en Nivel Intermedio
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="text-align: justify;">
+              Todo el personal del Servicio Técnico de <b>ATLAS ROMERO Services</b> se encuentra sujeto
+              a un plan de formación anual, que comprende todas las áreas de conocimiento en función de
+              su trabajo a realizar.
+            </p>
+            <h5 name="instrumentacion" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>4. INSTRUMENTACIÓN UTILIZADA</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Los equipos utilizados en la cualificación son los indicados en la siguiente tabla, adjuntándose
+              una copia de sus certificados de calibración en el Anexos E y F del presente informe.<br/>
+              Los instrumentos utilizados para realizar los tests se encontraban calibrados durante la ejecución
+              de las pruebas de cualificación. Todos ellos están sujetos a un plan anual de calibración en el que
+              se especifica su periodo de validez, y en el que como norma general para todos los equipos se
+              establece en un máximo de 24 meses.
+            </p>
+            <table class="table table-striped mt-2">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <b>Equipo</b>
+                  </th>
+                  <th scope="col">
+                    <b>Marca</b>
+                  </th>
+                  <th scope="col">
+                    <b>Modelo</b>
+                  </th>
+                  <th scope="col">
+                    <b>Referencia Interna</b>
+                  </th>
+                  <th scope="col">
+                    <b>Nº de Serie</b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td>Anemómetro</td>
+                  <td>PCE</td>
+                  <td>423</td>
+                  <td>AT02</td>
+                  <td>150107658</td>
+                </tr>
+                <tr>
+                  <td>Luxómetro</td>
+                  <td>PCE</td>
+                  <td>174</td>
+                  <td>AT04</td>
+                  <td>150206366</td>
+                </tr>
+                <tr>
+                  <td>Dinamómetro</td>
+                  <td>DFG500</td>
+                  <td>423</td>
+                  <td>AT05</td>
+                  <td>4111502055</td>
+                </tr>
+                <tr>
+                  <td>Sonómetro</td>
+                  <td>PCE</td>
+                  <td>322A</td>
+                  <td>AT06</td>
+                  <td>2015097392</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="page-break-after: always;"></p>
+
+            <br/>
+            <h5 name="ensayos_criterios" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              A continuación se detallan los ensayos principales a realizar en los equipos de tratamiento de aire
+              y una pequeña descripción de los procedimientos internos que les aplican a cada uno de ellos. Todos
+              los procedimientos se ajustan a la Normativa vigente y son revisados periódicamente por el Departamento
+              de Calidad de <b>Atlas Romero</b>.<br/>
+              De los ensayos detallados en este apartado, se han realizado únicamente aquellos acordados previamente
+              con el cliente.
+            </p>
+
             <p style="page-break-after: always;"></p>
 
             <br/>
@@ -523,65 +663,6 @@
                   <td>2100</td>
                   <td>0,50</td>
                   <td>1250</td>
-                </tr>
-              </tbody>
-            </table>
-            <p style="page-break-after: always;"></p>
-
-            <br/>
-            <h5 class="alert-heading text-left mt-4 py-0">
-            <span>
-              <b>Relación de equipos de medición empleados</b>
-            </span>
-            </h5>
-            <table class="table table-striped">
-              <thead class="table-success fw-bold" style="background-color:#E0E0E0;">
-                <tr>
-                  <th scope="col">
-                    <b>Equipo</b>
-                  </th>
-                  <th scope="col">
-                    <b>Marca</b>
-                  </th>
-                  <th scope="col">
-                    <b>Modelo</b>
-                  </th>
-                  <th scope="col">
-                    <b>Referencia Interna</b>
-                  </th>
-                  <th scope="col">
-                    <b>Nº de Serie</b>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-                <tr>
-                  <td>Anemómetro</td>
-                  <td>PCE</td>
-                  <td>423</td>
-                  <td>AT02</td>
-                  <td>150107658</td>
-                </tr>
-                <tr>
-                  <td>Luxómetro</td>
-                  <td>PCE</td>
-                  <td>174</td>
-                  <td>AT04</td>
-                  <td>150206366</td>
-                </tr>
-                <tr>
-                  <td>Dinamómetro</td>
-                  <td>DFG500</td>
-                  <td>423</td>
-                  <td>AT05</td>
-                  <td>4111502055</td>
-                </tr>
-                <tr>
-                  <td>Sonómetro</td>
-                  <td>PCE</td>
-                  <td>322A</td>
-                  <td>AT06</td>
-                  <td>2015097392</td>
                 </tr>
               </tbody>
             </table>
