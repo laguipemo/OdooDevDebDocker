@@ -21,6 +21,8 @@ class LgpmMaintenanceRequest(models.Model):
             base64_image = base64.b64encode(image_file.read())
         return base64_image
 
+    def get_image(self, image_name):
+        return self.get_default_image(image_name).decode('utf-8')
 
     maintenance_date = fields.Date(
         string='Fecha',
