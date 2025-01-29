@@ -556,10 +556,29 @@
               La sonda del anemómetro se situará en los puntos determinados por la intersección de las siguientes líneas
               en el plano interior de medida (ver figura 1):
             </p>
-            <t t-set="value" t-value="maintenance_request.get_default_image('sign_sat.png')"/>
-            <img 
-              t-attf-src="data:image/*;base64,{{t-esc='value'}}" 
-              class="img img-fluid o_we_custom_image o_modified_image_to_save" />
+            <t t-set="value" t-value="maintenance_request.get_image('sign_sat.png')"/>
+
+            <div>
+              <center>
+                <img t-attf-src="data:image/*;base64,{{maintenance_request.sign_sat}}" height="90" width="90" />
+              </center>
+            </div>
+            <div>
+              <center>
+                <img t-attf-src="/lgpm_maintenance/static/src/img/sign_sat.png" t-alt="Firma del responsable SAT" height="90" width="90" />
+              </center>
+            </div>
+            <!-- <div>
+              <center>
+                <img 
+                  t-attf-src="data:image/*;base64,{{t-esc='value'}}" 
+                  t-alt="Firma del responsable SAT" 
+                  class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                  height="90" width="90"  />
+              </center>
+            </div> -->
+
+            <p><span t-esc="value" /></p>
 
             <p style="page-break-after: always;"></p>
             

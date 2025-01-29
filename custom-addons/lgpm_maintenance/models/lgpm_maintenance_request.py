@@ -24,6 +24,10 @@ class LgpmMaintenanceRequest(models.Model):
     def get_image(self, image_name):
         return self.get_default_image(image_name).decode('utf-8')
 
+    def get_path_image(self, image_name):
+        return os.path.join(
+            os.path.dirname(__file__), '../static/src/img', image_name)
+
     maintenance_date = fields.Date(
         string='Fecha',
         help='Fecha de la realización del mantenimiento'
