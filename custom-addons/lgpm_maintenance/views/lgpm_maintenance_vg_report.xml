@@ -530,7 +530,6 @@
               Determinar la velocidad promedio del aire de impulsión, la uniformidad del flujo del aire en el
               interior de la cabina y cuando sea aplicable la velocidad frontal y de extracción.
             </p>
-            <p style="page-break-after: always;"></p>
             <h6>
               <span>
                 <b>Equipo:</b>
@@ -554,34 +553,247 @@
               las velocidades de aire entre 0,2 m/s y 0,15 m/s. Se utilizará un anemómetro con certificado de
               calibración en vigor. El factor de corrección es el propio de cada aparato de media.<br/>
               La sonda del anemómetro se situará en los puntos determinados por la intersección de las siguientes líneas
-              en el plano interior de medida (ver figura 1):
+              en el plano interior de medida (ver <b>Figura 1</b>):
             </p>
-            <t t-set="value" t-value="maintenance_request.get_image('sign_sat.png')"/>
-
-            <div>
+            <figure class="figure col-12">
               <center>
-                <img t-attf-src="data:image/*;base64,{{maintenance_request.sign_sat}}" height="90" width="90" />
-              </center>
-            </div>
-            <div>
-              <center>
-                <img t-attf-src="/lgpm_maintenance/static/src/img/sign_sat.png" t-alt="Firma del responsable SAT" height="90" width="90" />
-              </center>
-            </div>
-            <!-- <div>
-              <center>
-                <img 
-                  t-attf-src="data:image/*;base64,{{t-esc='value'}}" 
-                  t-alt="Firma del responsable SAT" 
+                <img t-attf-src="data:image/*;base64,{{maintenance_request.fig1_intro_vg}}"
+                  t-alt="Figutra 1: Lectura con anemómetro"
                   class="img img-fluid o_we_custom_image o_modified_image_to_save"
-                  height="90" width="90"  />
+                  style="width: 60%; height: 300px" />
               </center>
-            </div> -->
-
-            <p><span t-esc="value" /></p>
-
+              <figcaption class="figure-caption text-center mt-2">
+                <b>Figura 1:</b> <i>Lectura con anemómetro</i>
+              </figcaption>
+            </figure>
+            <p style="text-align: justify;">
+              Una serie de, al menos, tres líneas equidistantes situadas entre los límites horizontales del plano
+              interior de medida. Las dos líneas exteriores de la serie estarán situadas a (100 ± 5) mm de los límites
+              horizontales. Las líneas intermedias estarán a una distancia menor o igual a 400 mm, entre sí y respecto a
+              las líneas exteriores (ver <b>Figura 2</b>). <br/>
+              Las medidas se realizarán situando la sonda del anemómetro en cada punto de medida. La medida se hará
+               perpendicular al plano interior de medida ajustando para ello la orientación del sensor. El anemómetro
+              se soportará en los puntos de medida por una sola persona o bien mediante un trípode que debe situarse de
+              forma que provoque la menor perturbación posible en el flujo de aire (ver <b>Figura 3</b>).<br/>
+              Medir y registrar la velocidad perpendicular al plano de la guillotina a intervalos regulares menores
+              o iguales a 1 s, durante un periodo de, al menos, 60 s.
+            </p>
+            <div class="d-flex flex-row justify-content-between col-12 p-2" >
+              <div class="col-8 p-2">
+                <figure class="figure w-100" >
+                  <center>  
+                    <img t-attf-src="data:image/*;base64,{{maintenance_request.fig2_intro_vg}}"
+                      t-alt="Figura 2: Distribución de puntos de lectrua frontal"
+                      class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                      style="width: 100%; height: 300px" />
+                  </center>
+                  <figcaption class="figure-caption text-center mt-2">
+                    <b>Figura 2:</b> <i>Distribución de puntos de lectrua frontal</i>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-4 p-2">
+                <figure class="figure w-100">
+                  <center>  
+                    <img t-attf-src="data:image/*;base64,{{maintenance_request.fig3_intro_vg}}"
+                      t-alt="Figura 3: Detalle de trípode con anemómetro"
+                      class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                      style="width: 100%; height: 300px" />
+                  </center>
+                  <figcaption class="figure-caption text-center mt-2">
+                    <b>Figura 3:</b> <i>Trípode con anemómetro</i>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+            <h6>
+              <span>
+                <b>Medida del caudal de extracción:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Una vez calculada la velocidad media en el plano de la guillotina se calcula el caudal aplicando la
+              fórmula que se indica a continuación: 
+            </p>
+            <h6 class="mx-2">
+              <span class="fw-bold ff-italic mx-4">
+                Q = V(m<sup>3</sup>/h) * S(m<sup>3</sup>)
+              </span>
+            </h6>
+            <p>
+              Donde:<br/>
+              <span class="fw-bold ff-italic mx-4">Q = Caudal de aspiración</span><br/>
+              <span class="fw-bold ff-italic mx-4">V = Velocidad media en el plano máximo de entrada de la vitrina (m/s)</span><br/>
+              <span class="fw-bold ff-italic mx-4">S = Superficie del plano máximo den entrada de la vitrina (m<sup>2</sup>)</span><br/>
+            </p>
+            <p style="text-align: justify;">
+              Cuando, por diseño, existe un hueco significativo de paso de aire en la vitrina al margen de la
+              guillotina, se puede proceder buscando la corrección al mismo o realizando el ensayo tras sellar
+              con cinta u otro material apropiado dicho hueco mientras se ejecuta el ensayo.
+            </p>
             <p style="page-break-after: always;"></p>
             
+            <br/>
+            <h6>
+              <span>
+                <b>Homogeneidad de la velocidad en el plano de la guillotina:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Otro aspecto a comprobar, de cara al buen funcionamiento de la vitrina es la homogeneidad en
+              las velocidades medidas en el plano de la vitrina, recomendándose unos valores mínimos que se
+              indican en la <b>Tabla 1</b>.
+            </p>
+             <table class="table table-borderless">
+              <caption><b>Tabla 1.</b> <i>Velocidad de entrada de la vitrina (m/s)</i></caption>
+              <thead>
+                <tr>
+                  <th class="col-7">
+                    <b>Medida</b>
+                  </th>
+                  <th class="col-5">
+                    <b>Recomendaciones</b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Velocidad media global
+                  </td> 
+                  <td>
+                    &gt; 80% del valor fijado como estándar
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Velocidad media en cualquier punto
+                  </td> 
+                  <td>
+                    &gt; 85% del valor medio global
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Relación valor mayor / valor menor de la velocidad media en dos puntos correspondientes
+                    a ambos lados de la fila central
+                  </td> 
+                  <td>
+                    &lt; 1,3
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h6>
+              <span>
+                <b>Criterios de aceptación:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Para Vitrinas de aspiración y cabinas de extracción: <b>INFORMATIVO</b>. Se recomienda un valor superior a 0,4m/s.
+            </p>
+            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.2. TEST DE SONIDO</b>
+              </span>
+            </h5>
+            <h6>
+              <span>
+                <b>Objetivo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Determinar la medida de la presión acústica es proporcionar al usuario los niveles de presión
+              acústica de la vitrina de gases cuando esté en uso.
+            </p>
+            <h6>
+              <span>
+                <b>Equipo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Sonómetro.
+            </p>
+            <h6>
+              <span>
+                <b>Procedimiento:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
+              en las siguientes normativas: <b>EN ISO 3740</b>, <b>EN ISO 11204</b>, <b>EN 61672-1.</b><br/>
+              Es conveniente que la medida del nivel de presión acústica se lleve a cabo como nivel de presión
+              acústica ponderado A en dB(A), situado delante de la vitrina de gases, que conviene que esté equipada
+              para el uso previsto, en la posición siguiente:
+            </p>
+            <ul>
+              <li>
+                a una altura de 150 cm respecto del suelo,
+              </li>
+              <li>
+                30 cm por delante del plano de la guillotina,
+              </li>
+              <li>
+                en el centro del plano paralelo al plano de la guillotina.
+              </li>
+            </ul>
+            <h6>
+              <span>
+                <b>Criterios de aceptación:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              <b>INFORMATIVO</b>. Se recomienda un nivel de ruido igual o inferior a70 db(A).
+            </p>
+            <p style="page-break-after: always;"></p>
+
+            <br/>
+            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.3. TEST DE LUMINOSIDAD</b>
+              </span>
+            </h5>
+            <h6>
+              <span>
+                <b>Objetivo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Determinar los niveles de luminosidad que se alcanzan en el interior del equipo.
+            </p>
+            <h6>
+              <span>
+                <b>Equipo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Luxómetro.
+            </p>
+            <h6>
+              <span>
+                <b>Procedimiento:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
+              en las siguientes normativas: <b>EN ISO 14175</b>, <b>EN 126665.</b><br/>
+              La iluminación debe medirse en, al menos, 8 puntos por metro cuadrado de la superficie de trabajo,
+              homogéneamente distribuidos. Se calcula el valor medio y la uniformidad.
+            </p>
+            <h6>
+              <span>
+                <b>Criterios de aceptación:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              El fabricante debe indicar el <b>Indice Ra</b> y éste se hará constar en el informe.<br/>
+              El nivel de iluminación en la superficie de trabajo no debe ser inferior a 400 lux. Las luminarias
+              deben estar aisladas de los vapores y humos generados en la vitrina y la temperatura de la superficie
+              de superficie de la luminaria debe estar por debajo de la temperatura de ignición o inflamación de
+              los vapores que pueden estar presente en el interior de la vitrina.
+            </p>
+
+            <p style="page-break-after: always;"></p>
 
             <br/>
             <h5 name="intro" class="alert-heading text-left mt-4 py-0">

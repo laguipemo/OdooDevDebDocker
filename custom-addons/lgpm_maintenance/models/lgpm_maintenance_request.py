@@ -21,13 +21,6 @@ class LgpmMaintenanceRequest(models.Model):
             base64_image = base64.b64encode(image_file.read())
         return base64_image
 
-    def get_image(self, image_name):
-        return self.get_default_image(image_name).decode('utf-8')
-
-    def get_path_image(self, image_name):
-        return os.path.join(
-            os.path.dirname(__file__), '../static/src/img', image_name)
-
     maintenance_date = fields.Date(
         string='Fecha',
         help='Fecha de la realización del mantenimiento'
@@ -164,20 +157,35 @@ class LgpmMaintenanceRequest(models.Model):
     sign_admin = fields.Image(
         string='Firma administrador',
         max_width=200,
-        max_hight=200,
+        max_height=200,
         default=lambda self: self.get_default_image('sign_admin.png')
     )
     sign_sat = fields.Image(
         string='Firma SAT',
         max_width=200,
-        max_hight=200,
+        max_height=200,
         default=lambda self: self.get_default_image('sign_sat.png')
     )
     sign_prev = fields.Image(
         string='Firma prevención',
         max_width=200,
-        max_hight=200,
+        max_height=200,
         default=lambda self: self.get_default_image('sign_prev.png')
+    )
+    fig1_intro_vg = fields.Image(
+        max_width=200,
+        max_height=200,
+        default=lambda self:self.get_default_image('fig1_intro_vg.png')
+    )
+    fig2_intro_vg = fields.Image(
+        max_width=200,
+        max_height=200,
+        default=lambda self:self.get_default_image('fig2_intro_vg.png')
+    )
+    fig3_intro_vg = fields.Image(
+        max_width=200,
+        max_height=200,
+        default=lambda self:self.get_default_image('fig3_intro_vg.png')
     )
 
 
