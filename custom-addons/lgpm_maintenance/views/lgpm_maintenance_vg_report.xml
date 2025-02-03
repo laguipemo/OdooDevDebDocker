@@ -1200,12 +1200,39 @@
             </div>
             <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
               <div class="alert alert-success" role="alert">
-                  <h1 class="alert-heading text-center my-5 py-5"><b>ANEXO A</b></h1>
+                  <h1 class="alert-heading text-center my-5 py-5"><b>Anexo A</b></h1>
                   <hr/>
-                  <p class="mb-0"><i>Hoja de datos correspondientes a las cabinas cualificadas.</i></p>
+                  <p class="mb-0"><i>Hoja de datos correspondientes a los equipos cualificadas.</i></p>
               </div>
             </div>
-            
+            <p style="page-break-after: always;"></p>
+
+            <br/>
+            <table class="table table-borderless caption-top mt-2">
+              <caption><b>Tabla:</b> Hoja de Datos correspondientes a los equipos cualificadas.</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">Marca</th>
+                  <th scope="col" class="text-center">Modelo</th>
+                  <th scope="col" class="text-center">Referencia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="docs" t-as="mr">
+                  <tr>
+                    <td class="text-center">
+                      <span t-field="mr.partner_id" class="mx-2" />
+                    </td>
+                    <td class="text-center">
+                      <span  t-field="mr.partner_ref" class="mx-2" />
+                    </td>
+                    <td class="text-center">
+                      <span   t-field="mr.lot_id" class="mx-2" />
+                    </td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
             <p style="page-break-after: always;"></p>
           </t> <!-- End common block -->
 
@@ -1246,7 +1273,7 @@
                 </p>
                 <p>
                   <b>Nº Inventario:</b>
-                  <span t-field="maintenance_request.lot_id" class="mx-2"/>
+                  <span t-field="maintenance_request.inventary_number" class="mx-2"/>
                 </p>
               </div>
             </div>
