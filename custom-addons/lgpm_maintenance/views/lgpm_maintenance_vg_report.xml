@@ -449,7 +449,8 @@
               se especifica su periodo de validez, y en el que como norma general para todos los equipos se
               establece en un máximo de 24 meses.
             </p>
-            <table class="table table-striped mt-2">
+            <table class="table table-striped caption-top mt-2">
+              <caption>Equipos utilizdos en la cualificación</caption>
               <thead>
                 <tr>
                   <th scope="col">
@@ -634,6 +635,146 @@
             <p style="page-break-after: always;"></p>
             
             <br/>
+            <h6 >
+              <span>
+                <b>Criterios de aceptación:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Los valores de caudal recomendados para cada longitud de vitrina/guillotina según las difrentes normativas son:
+            </p>
+            <table class="table table-borderless caption-top mt-2">
+              <caption>Requerimiento según norma DIN EN 14175</caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <b>Vitrina (mm)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Guillotina (mm)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Caudal recomendado (m<sup>3</sup>/h)</b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td>1200</td>
+                  <td>0,90</td>
+                  <td>500</td>
+                </tr>
+                <tr>
+                  <td>1500</td>
+                  <td>1,20</td>
+                  <td>650</td>
+                </tr>
+                <tr>
+                  <td>1800</td>
+                  <td>1,50</td>
+                  <td>750</td>
+                </tr>
+                <tr>
+                  <td>2000</td>
+                  <td>1,70</td>
+                  <td>850</td>
+                </tr>
+                <tr>
+                  <td>2100</td>
+                  <td>1,80</td>
+                  <td>900</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table table-borderless caption-top mt-2">
+              <caption>Requerimiento según British Standard 7258, con volumen de extracción constante</caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <b>Vitrina (mm)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Volocidad de entrada (m/s)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Caudal recomendado (m<sup>3</sup>/h)</b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td>1200</td>
+                  <td>0,50</td>
+                  <td>1050</td>
+                </tr>
+                <tr>
+                  <td>1500</td>
+                  <td>0,50</td>
+                  <td>1200</td>
+                </tr>
+                <tr>
+                  <td>1800</td>
+                  <td>0,50</td>
+                  <td>1500</td>
+                </tr>
+                <tr>
+                  <td>2000</td>
+                  <td>0,50</td>
+                  <td>1700</td>
+                </tr>
+                <tr>
+                  <td>2100</td>
+                  <td>0,50</td>
+                  <td>1800</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table table-borderless caption-top mt-2">
+              <caption>Requerimiento según AFNOR XP X15-203, con volumen de extracción constante</caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <b>Vitrina (mm)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Volocidad de entrada (m/s)</b>
+                  </th>
+                  <th scope="col">
+                    <b>Caudal recomendado (m<sup>3</sup>/h)</b>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td>1200</td>
+                  <td>0,50</td>
+                  <td>650</td>
+                </tr>
+                <tr>
+                  <td>1500</td>
+                  <td>0,50</td>
+                  <td>850</td>
+                </tr>
+                <tr>
+                  <td>1800</td>
+                  <td>0,50</td>
+                  <td>1050</td>
+                </tr>
+                <tr>
+                  <td>2000</td>
+                  <td>0,50</td>
+                  <td>1200</td>
+                </tr>
+                <tr>
+                  <td>2100</td>
+                  <td>0,50</td>
+                  <td>1250</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="page-break-after: always;"></p>
+
+            <br/>
             <h6>
               <span>
                 <b>Homogeneidad de la velocidad en el plano de la guillotina:</b>
@@ -644,7 +785,7 @@
               las velocidades medidas en el plano de la vitrina, recomendándose unos valores mínimos que se
               indican en la <b>Tabla 1</b>.
             </p>
-             <table class="table table-borderless">
+             <table class="table table-borderless caption-top">
               <caption><b>Tabla 1.</b> <i>Velocidad de entrada de la vitrina (m/s)</i></caption>
               <thead>
                 <tr>
@@ -692,6 +833,7 @@
             <p style="text-align: justify;">
               Para Vitrinas de aspiración y cabinas de extracción: <b>INFORMATIVO</b>. Se recomienda un valor superior a 0,4m/s.
             </p>
+
             <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
               <span>
                 <b>5.2. TEST DE SONIDO</b>
@@ -721,19 +863,19 @@
             </h6>
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
-              en las siguientes normativas: <b>EN ISO 3740</b>, <b>EN ISO 11204</b>, <b>EN 61672-1.</b><br/>
+              en las siguientes normativas: <b>EN ISO 3740</b>, <b>EN ISO 11204</b>, <b>EN 61672-1</b>.<br/>
               Es conveniente que la medida del nivel de presión acústica se lleve a cabo como nivel de presión
               acústica ponderado A en dB(A), situado delante de la vitrina de gases, que conviene que esté equipada
               para el uso previsto, en la posición siguiente:
             </p>
             <ul>
-              <li>
+              <li class="py-1">
                 a una altura de 150 cm respecto del suelo,
               </li>
-              <li>
+              <li class="py-1">
                 30 cm por delante del plano de la guillotina,
               </li>
-              <li>
+              <li class="py-1">
                 en el centro del plano paralelo al plano de la guillotina.
               </li>
             </ul>
@@ -776,7 +918,7 @@
             </h6>
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
-              en las siguientes normativas: <b>EN ISO 14175</b>, <b>EN 126665.</b><br/>
+              en las siguientes normativas: <b>EN ISO 14175</b>, <b>EN 126665</b>.<br/>
               La iluminación debe medirse en, al menos, 8 puntos por metro cuadrado de la superficie de trabajo,
               homogéneamente distribuidos. Se calcula el valor medio y la uniformidad.
             </p>
@@ -792,156 +934,264 @@
               de superficie de la luminaria debe estar por debajo de la temperatura de ignición o inflamación de
               los vapores que pueden estar presente en el interior de la vitrina.
             </p>
+            <h5 name="test_desplaz_guillotina" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.4. TEST DE DESPLAZAMIENTO DE GUILLOTINA</b>
+              </span>
+            </h5>
+            <h6>
+              <span>
+                <b>Objetivo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Evaluar el correcto funcionamiento de la guillotina, incluyendo la determinación de la fuerza necesaria
+              para su apertura y cierre. Además en los casos en que proceda, se evaluarán los sistemas de protección
+              asociados: stop de la guillotina y alarma.
+            </p>
+            <h6>
+              <span>
+                <b>Equipo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Dinamómetro.
+            </p>
+            <h6>
+              <span>
+                <b>Procedimiento:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
+              en las siguientes normativas: <b>EN ISO 12543</b>, <b>EN 14174</b>.
+            </p>
 
             <p style="page-break-after: always;"></p>
 
             <br/>
-            <h5 name="intro" class="alert-heading text-left mt-4 py-0">
+            <h5 name="ensayos_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>Longitud de vitrina/guillotina/caudal recomendado</b>
+                <b>5.4.1. ENSAYOS DE LA GUILLOTINA</b>
               </span>
             </h5>
-            <h6 class="alert-heading text-left mt-3 py-0">
+            <h5 name="suspension_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>Requerimiento según norma DIN EN 14175</b>
+                <b>5.4.1.1. ENSAYO DE SUSPENCIÓN DE LA GUILLOTINA</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Se coloca la guillotina en la posición de ensayo. Se desconecta uno de los dispositivos
+              de suspensión de la guillotina. La guillotina debe permanecer próxima a su posición
+              inicial. Se repite el ensayo con los otros dispositivos de suspensión.
+            </p>
+            <h5 name="ensayo_desplaz_guillotina" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.4.1.2. ENSAYO DE DESPLAZAMIENTO DE LA GUILLOTINA</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Se mide la fuerza de desplazamiento de la guillotina en tres posiciones equidistantes,
+              a lo largo del(de los) borde(s) de la guillotina, en cualquier posible dirección de
+              movimiento.
+            </p>
+            <h5 name="ensayo_suspension_guillotina" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.4.1.3. PROTECCIÓN FRENTE A LAS SALPICADURAS</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Debe realizarse una inspección visual para comprobar si están las protecciones frente
+              a salpicaduras.
+            </p>
+            <h5 name="stop_guillotina_ensayo_alarma" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.4.1.4. STOP DE LA GUILLOTINA Y ENSAYO DE LA ALARMA</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Debe inspeccionarse el stop de la guillotina y probar su funcionamiento.<br/>
+              Si la vitrina está provista de una alarma sonora y visual, debe inspeccionarse durante
+              el funcionamiento de la guillotina.
+            </p>
+            <h5 name="suspension_guillotina" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.4.1.5. SUSPENCIÓN DE LA GUILLOTINA</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Cuando una guillotina vertical se ensaya no debe caer cuando un dispositivo de suspensión
+              falla. La acción de abrir y cerrar la guillotina no debe provocar riesgo de daños. La
+              guillotina debe poder pararse en cualquier posición.<br/>
+              Los dispositivos de suspensión de la guillotina no deben exponerse a la atmósfera de la
+              zona de trabajo. En caso contrario, deben estar protegidos de forma adecuada frente a
+              atmósferas corrosivas.<br/>
+              Se comprobará la integridad de la protección y el estado de los elementos.
+            </p>
+            <h5 name="test_visual_flujo_aire" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE</b>
+              </span>
+            </h5>
+            <h6>
+              <span>
+                <b>Objetivo:</b>
               </span>
             </h6>
-            <table class="table table-borderless mt-2">
-              <thead>
-                <tr>
-                  <th scope="col">
-                    <b>Vitrina (mm)</b>
-                  </th>
-                  <th scope="col">
-                    <b>Guillotina (mm)</b>
-                  </th>
-                  <th scope="col">
-                    <b>Caudal recomendado (m<sup>3</sup>/h)</b>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-                <tr>
-                  <td>1200</td>
-                  <td>0,90</td>
-                  <td>500</td>
-                </tr>
-                <tr>
-                  <td>1500</td>
-                  <td>1,20</td>
-                  <td>650</td>
-                </tr>
-                <tr>
-                  <td>1800</td>
-                  <td>1,50</td>
-                  <td>750</td>
-                </tr>
-                <tr>
-                  <td>2000</td>
-                  <td>1,70</td>
-                  <td>850</td>
-                </tr>
-                <tr>
-                  <td>2100</td>
-                  <td>1,80</td>
-                  <td>900</td>
-                </tr>
-              </tbody>
-            </table>
-            <h6 class="alert-heading text-left mt-5 py-0">
+            <p style="text-align: justify;">
+              Estudiar la direccionalidad del aire mediante el comportamiento del humo generado en
+              la cabina, con el fin de comprobar su estanqueidad o de localizar posibles
+              <b>“zonas muertas”</b> en su interior.
+            </p>
+            <h6>
               <span>
-                <b>Requerimiento según British Standard 7258, con volumen de extracción constante</b>
+                <b>Equipo:</b>
               </span>
             </h6>
-            <table class="table table-borderless mt-2">
-              <thead>
-                <tr>
-                  <th scope="col">
-                    <b>Vitrina (mm)</b>
-                  </th>
-                  <th scope="col">
-                    <b>Volocidad de entrada (m/s)</b>
-                  </th>
-                  <th scope="col">
-                    <b>Caudal recomendado (m<sup>3</sup>/h)</b>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-                <tr>
-                  <td>1200</td>
-                  <td>0,50</td>
-                  <td>1050</td>
-                </tr>
-                <tr>
-                  <td>1500</td>
-                  <td>0,50</td>
-                  <td>1200</td>
-                </tr>
-                <tr>
-                  <td>1800</td>
-                  <td>0,50</td>
-                  <td>1500</td>
-                </tr>
-                <tr>
-                  <td>2000</td>
-                  <td>0,50</td>
-                  <td>1700</td>
-                </tr>
-                <tr>
-                  <td>2100</td>
-                  <td>0,50</td>
-                  <td>1800</td>
-                </tr>
-              </tbody>
-            </table>
-            <h6 class="alert-heading text-left mt-5 py-0">
+            <p style="text-align: justify;">
+              Trazador de corrientes de aire tipo Dräger o similar.
+            </p>
+            <h6>
               <span>
-                <b>Requerimiento según AFNOR XP X15-203, con volumen de extracción constante</b>
+                <b>Procedimiento:</b>
               </span>
             </h6>
-            <table class="table table-borderless mt-2">
-              <thead>
-                <tr>
-                  <th scope="col">
-                    <b>Vitrina (mm)</b>
-                  </th>
-                  <th scope="col">
-                    <b>Volocidad de entrada (m/s)</b>
-                  </th>
-                  <th scope="col">
-                    <b>Caudal recomendado (m<sup>3</sup>/h)</b>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-                <tr>
-                  <td>1200</td>
-                  <td>0,50</td>
-                  <td>650</td>
-                </tr>
-                <tr>
-                  <td>1500</td>
-                  <td>0,50</td>
-                  <td>850</td>
-                </tr>
-                <tr>
-                  <td>1800</td>
-                  <td>0,50</td>
-                  <td>1050</td>
-                </tr>
-                <tr>
-                  <td>2000</td>
-                  <td>0,50</td>
-                  <td>1200</td>
-                </tr>
-                <tr>
-                  <td>2100</td>
-                  <td>0,50</td>
-                  <td>1250</td>
-                </tr>
-              </tbody>
-            </table>
+            <p style="text-align: justify;">
+              Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
+              en las siguientes normativas: <b>EN 14175</b>.
+            </p>
+            <p style="page-break-after: always;"></p>
+
+            <br/>
+            <h5 name="test_alarma_temp" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>5.6. TEST ALARMA DE TEMPERATURA DE TRABAJO</b>
+              </span>
+            </h5>
+            <h6>
+              <span>
+                <b>Objetivo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Las vitrinas de gases para alta temperatura deben estar provistas de un sensor de temperatura en
+              la parte superior de la vitrina, con una alarma que indique cuando se ha sobrepasado la temperatura
+              máxima del aire extraído especificada en el manual de instrucciones. La alarma debería poderse
+              transmitir.
+            </p>
+            <h6>
+              <span>
+                <b>Equipo:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              PLACA CALEFACTORA Ø 150 MM. 1500W.<br/>
+              Mechero.
+            </p>
+            <h6>
+              <span>
+                <b>Procedimiento:</b>
+              </span>
+            </h6>
+            <p style="text-align: justify;">
+              Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
+              en las siguientes normativas: <b>EN 14175</b>.<br/>
+              Durante los ensayos, debe colocarse dos placas calefactoras en la zona de trabajo de la vitrina de
+              gases. Se encienden las placas calefactoras y se deja estabilizar la temperatura de la zona de
+              trabajo de la vitrina  alrededor de 1 h.
+            </p>
+            <h5 name="detalles_valores_obtenidos" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>6. DETALLE DE LOS VALORES OBTENIDOS</b>
+              </span>
+            </h5>
+            <h5 name="detalles_resultados" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>6.1. DETALLES DE LOS RESULTADOS</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Los resultados obtenidos durante la realización de los ensayos de cualificación de los equipos de
+              tratamiento de Aire están registrados en las correspondientes hojas de datos que se adjuntan como
+              <b><i>Anexo B</i></b> del presente informe.
+            </p>
+            <h5 name="dictamen final" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>6.2. DICTAMEN FINAL</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              La interpretación de los resultados obtenidos son evaluados en el informe de emisiones de datos
+              de cada equipo <b><i>Anexo B</i></b> del presente informe.
+            </p>
+            <h5 name="observaciones" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>7. OBSERVACIONES</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Si durante la cualificación se detecta alguna observación que se considere oportuna, se adjuntará
+              a modo de resumen del presente informe como <b><i>Anexo C</i></b>. En caso contrario no existirá
+              dicho anexo.
+            </p>
+            <h5 name="no_conformidades" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>8. LISTADO DE NO CONFORMIDADES</b>
+              </span>
+            </h5>
+            <p style="text-align: justify;">
+              Si durante la cualificación se detecta alguna No Conformidad, se adjuntará al presente informe
+              como  <b><i>Anexo D</i></b>. En caso contrario no existirá dicho anexo.
+            </p>
+            <p style="page-break-after: always;"></p>
+
+            <br/>
+            <h5 name="anexos" class="alert-heading text-left mt-4 py-0">
+              <span>
+                <b>9. LISTADO DE ANEXOS</b>
+              </span>
+            </h5>
+            <ul class="list-unstyled">
+              <li class="py-1">
+                <span>
+                  <b><i>Anexo A:</i></b> <i>Hoja de datos correspondientes a los equipos cualificados.</i>
+                </span>
+              </li>
+              <li class="py-2">
+                <span>
+                  <b><i>Anexo B:</i></b> <i>Hojas de toma de datos correspondiente a las mediciones realizadas.</i>
+                </span>
+              </li>
+              <li class="py-2">
+                <span>
+                  <b><i>Anexo C:</i></b> <i>Tabla resumen de observaciones por equipos.</i>
+                </span>
+              </li>
+              <li class="py-2">
+                <span>  
+                  <b><i>Anexo D:</i></b> <i>Tabla resumen No  conformidades encontradas durante los ensayos.</i>
+                </span> 
+              </li>
+              <li class="py-2">
+                <span>  
+                  <b><i>Anexo E:</i></b> 
+                  <i>
+                    Fotocopias validadas de los Certificados de calibración correspondientes a los
+                    equipos que han sido utilizados durante los ensayos de cualificación.
+                  </i>
+                </span> 
+              </li>
+              <li class="py-2">
+                <span>  
+                  <b><i>Anexo F:</i></b> <i>Fotocopias de los Documentos de verificación y control de otros equipos utilizados.</i>
+                </span> 
+              </li>
+              <li class="py-2">
+                <span>  
+                  <b><i>Anexo G:</i></b> <i>Archivo fotográfico completo de los equipos analizados. (Bajo petición).</i>
+                </span> 
+              </li>
+            </ul>     
             <p style="page-break-after: always;"></p>
             
           </t> <!-- End common block -->
