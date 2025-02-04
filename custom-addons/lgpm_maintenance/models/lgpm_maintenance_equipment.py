@@ -8,8 +8,12 @@ class LgpmMaintenanceEquipment(models.Model):
     _inherit = ['maintenance.equipment']
     _description = 'lgpm_maintenance.equipment'
 
+
+    manufacture_date = fields.Date(
+        string='Fecha deFabricación',
+    )
     equipment_type = fields.Selection(
-        string = 'Type',
+        string = 'Tipo',
         selection=[
             ('NO', ''),
             ('AS', 'Armario de Seguridad'),
@@ -20,4 +24,26 @@ class LgpmMaintenanceEquipment(models.Model):
             ('VG', 'Vitrina de Gases'),
         ],
         default='NO'
+    )
+    equipment_use = fields.Selection(
+        string = 'Tipo de Uso',
+        selection=[
+            ('NO', ''),
+            ('G', 'General'),
+            ('AC', 'Ácidos Concentrados'),
+        ],
+        default='NO',
+    )
+    inventary_number = fields.Char(
+        string='Nº Inventario',
+    )
+    owner_id = fields.Many2one(
+        string='Propietario',
+        comodel_name='res.partner',
+        ondelete='cascade'
+    )
+    contact_id = fields.Many2one(
+        string='Contacto',
+        comodel_name='res.partner',
+        ondelete='cascade'
     )

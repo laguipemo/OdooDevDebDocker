@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'maintenance'],
+    'depends': ['base', 'maintenance', 'purchase', 'cck_sn_to_eq'],
 
     # always loaded
     'data': [
@@ -27,6 +27,8 @@
         'views/views.xml',
         'views/lgpm_maintenance_equipment_views.xml',
         'views/lgpm_maintenance_request_views.xml',
+        'views/lgpm_maintenance_request_purchase_views.xml',
+        'views/lgpm_maintenance_vg_report.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
