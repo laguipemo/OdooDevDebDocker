@@ -118,7 +118,7 @@ class LgpmMaintenanceRequest(models.Model):
     work_height_m = fields.Float(
         compute='_compute_work_height_m'
     )
-    measurement_area= fields.Float(
+    measurement_area = fields.Float(
         string='Superficie de medición',
         compute='_compute_measurement_area',
         store=True,
@@ -151,9 +151,15 @@ class LgpmMaintenanceRequest(models.Model):
     frontal_v9 = fields.Float(
         default=0.0
     )
-    frontal_v_media= fields.Float(
+    frontal_v_media = fields.Float(
         compute='_compute_frontal_v_media'
     )
+    observations = fields.Html(
+        string="Observaciones",
+        placeholder="Introduce las observaciones a reflejar en el informe"
+    )
+
+
     sign_admin = fields.Image(
         string='Firma administrador',
         max_width=200,

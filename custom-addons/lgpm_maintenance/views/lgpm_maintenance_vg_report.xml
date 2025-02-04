@@ -30,7 +30,8 @@
         <div class="page">
           <!-- Common for all docs. Show only in first doc -->
           <t t-if="maintenance_request_first">
-            <!-- Title, code and date of maintenance  -->
+
+            <!-- Title, code and date of maintenance document  -->
             <div class="alert alert-light mb-0 pb-0" role="alert">
               <h2 class="alert-heading text-center mx-0 py-5">
                 <span>
@@ -53,13 +54,16 @@
               </div>
               <hr/>
             </div>
-            <!-- Customer info -->
+
+            <!-- Customer -->
             <h5 class="alert-heading text-left mt-5 py-0">
               <span>
                 <b>Datos del cliente</b>
               </span>
             </h5>
+            <!-- Customer data info -->
             <div class="d-flex flex-row justify-content-between mt-2 p-0 border border-light bg-light">
+              <!-- Name, address info -->
               <div class="col-6 p-2">
                 <p>
                   <b>Empresa:</b>
@@ -107,6 +111,7 @@
                   </div>
                 </div>
               </div>
+              <!-- Contact info -->
               <div class="col-6 p-2">
                 <p>
                   <b>Contacto:</b>
@@ -124,7 +129,7 @@
             </div>
 
             <!-- Responsibility signatures -->
-             <h5 class="alert-heading text-left mt-5 py-0">
+            <h5 class="alert-heading text-left mt-5 py-0">
               <span>
                 <b>Firmas de responsabilidad</b>
               </span>
@@ -218,15 +223,18 @@
                 </tr>
               </tbody>
             </table>
-            <p style="page-break-after: always;"></p>
 
-            <!-- Begining the report introduction -->
-            <br/>
+            <p style="page-break-after: always;" />
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Index title -->
             <h5 class="alert-heading text-left mt-4 py-0">
               <span>
                 <b>ÍNDICE</b>
               </span>
             </h5>
+            <!-- Index table of content -->
             <div>
               <ul class="list-unstyled">
                 <li>
@@ -237,76 +245,70 @@
                 </li>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">2. FECHA DE LA ACTUACIÓN</span> </div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">2. PERSONAL</span></div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">3. PERSONAL</span></div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">3. INSTRUMENTACIÓN UTILIZADA</span></div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">4. INSTRUMENTACIÓN UTILIZADA</span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">5. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN </span>N</div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN </span>N</div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
                   </div>
                 </li>
                 <ul class="list-unstyled">
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.1. ENSAYO DE VELOCIDAD Y UNIFORMIDAD DEL AIRE </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">4.1. ENSAYO DE VELOCIDAD Y UNIFORMIDAD DEL AIRE </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
                     </div>
                   </li>
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.2. TEST DE SONIDO </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">4.2. TEST DE SONIDO </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
                     </div>
                   </li>
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.3. TEST DE LUMINOSIDAD </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">4.3. TEST DE LUMINOSIDAD </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
                     </div>
                   </li>
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.4. TEST DE DESPLAZAMIENTO DE GUILLOTINA </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">4.4. TEST DE DESPLAZAMIENTO DE GUILLOTINA </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">10</span></div>
                     </div>
                   </li>
                   <ul class="list-unstyled">
                     <li>
                       <div class="d-flex flex-row justify-content-between col-12 py-1">
-                        <div class="col-11 ps-4"><span class="ms-2 ps-0">5.4.1. ENSAYOS DE LA GUILLOTINA </span></div>
+                        <div class="col-11 ps-4"><span class="ms-2 ps-0">4.4.1. ENSAYOS DE LA GUILLOTINA </span></div>
                         <div class="col-1 text-right"><span class="badge bg-success rounded-pill">10</span></div>
                       </div>
                     </li>
                     <ul class="list-unstyled">
                       <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
-                          <div class="col-11 ps-4"><span class="ms-2 ps-0">5.4.1.1. ENSAYOS DE SUSPENSIÓN DE LA GUILLOTINA </span></div>
+                          <div class="col-11 ps-4"><span class="ms-2 ps-0">4.4.1.1. ENSAYOS DE SUSPENSIÓN DE LA GUILLOTINA </span></div>
                           <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                         </div>
                       </li>
                       <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
-                          <div class="col-11 ps-4"><span class="ms-2 ps-0">5.4.1.2. ENSAYOS DE DESPLAZAMIENTO DE LA GUILLOTINA </span></div>
+                          <div class="col-11 ps-4"><span class="ms-2 ps-0">4.4.1.2. ENSAYOS DE DESPLAZAMIENTO DE LA GUILLOTINA </span></div>
                           <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                         </div>
                       </li>
                       <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
-                          <div class="col-11 ps-4"><span class="ms-2 ps-0">5.4.1.3. PROTECCIÓN FRENTE A LAS SALPICADURAS </span></div>
+                          <div class="col-11 ps-4"><span class="ms-2 ps-0">4.4.1.3. PROTECCIÓN FRENTE A LAS SALPICADURAS </span></div>
                           <div class="col-1 text-right"><span class="badge bg-success rounded-pill">12</span></div>
                         </div>
                       </li>
@@ -318,7 +320,7 @@
                       </li>
                       <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
-                          <div class="col-11 ps-4"><span class="ms-2 ps-0">5.4.1.5. SUSPENSIÓN DE LA GUILLOTINA </span></div>
+                          <div class="col-11 ps-4"><span class="ms-2 ps-0">4.4.1.5. SUSPENSIÓN DE LA GUILLOTINA </span></div>
                           <div class="col-1 text-right"><span class="badge bg-success rounded-pill">13</span></div>
                         </div>
                       </li>
@@ -326,52 +328,52 @@
                   </ul>
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">4.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">13</span></div>
                     </div>
                   </li>
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.6. TES DE ALARMA DE TEMPERATURA DE TRABAJO </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">4.6. TES DE ALARMA DE TEMPERATURA DE TRABAJO </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">14</span></div>
                     </div>
                   </li>
                 </ul>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">6. DETALLES DE LOS VALORES OBTENIDOS</span></div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">5. DETALLES DE LOS VALORES OBTENIDOS</span></div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">14</span></div>
                   </div>
                 </li>
                 <ul class="list-unstyled">
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">6.1. DETALLES DE LOS RESULTADOS </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.1. DETALLES DE LOS RESULTADOS </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">15</span></div>
                     </div>
                   </li>
                   <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                      <div class="col-11 ps-2"><span class="ms-2 ps-0">6.2. DICTAMEN FINAL </span></div>
+                      <div class="col-11 ps-2"><span class="ms-2 ps-0">5.2. DICTAMEN FINAL </span></div>
                       <div class="col-1 text-right"><span class="badge bg-success rounded-pill">15</span></div>
                     </div>
                   </li>
                 </ul>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">7. OBSERVACIONES </span></div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">6. OBSERVACIONES </span></div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">16</span></div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">8. LISTADO DE NO CONFORMIDADES </span></div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">7. LISTADO DE NO CONFORMIDADES </span></div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">16</span></div>
                   </div>
                 </li>
                 <li>
                   <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">9. LISTADO DE ANEXOS </span></div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">8. LISTADO DE ANEXOS </span></div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">17</span></div>
                   </div>
                 </li>
@@ -379,12 +381,15 @@
             </div>
             <p style="page-break-after: always;"></p>
 
-            <br/>
+            <br/><!-- Initial space for begining of the new page -->
+
+            <!-- Objective title-->
             <h5 name="objetivo" class="alert-heading text-left mt-4 py-0">
               <span>
                 <b>1. OBJETIVO</b>
               </span>
             </h5>
+            <!-- Objective content -->
             <p style="text-align: justify;">
               El objetivo del presente Informe es reflejar los resultados obtenidos durante la
               cualificación de los equipos de tratamiento de aire detallados en cada hoja de 
@@ -392,23 +397,19 @@
               documentalmente que son adecuados para su uso previsto dentro de los rangos de
               trabajo definidos por la Normativa Vigente.
             </p>
-            <h5 name="fecha" class="alert-heading text-left mt-4 py-0">
-              <span>
-                <b>2. FECHA DE LA ACTUACIÓN</b>
-              </span>
-            </h5>
-            <p style="text-align: justify;">
-              Las pruebas se realizaron el día: <span t-field="maintenance_request.maintenance_date" />
-            </p>
+
+            <!-- Personnel title -->
             <h5 name="personal" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>3. PERSONAL</b>
+                <b>2. PERSONAL</b>
               </span>
             </h5>
+            <!-- Personnel content -->
             <p style="text-align: justify;">
               Las pruebas se han realizado por el personal Técnico de <b>ATLAS ROMERO Services</b> que
                se refleja a continuación:
             </p>
+            <!-- Personnel list -->
             <table class="table table-striped mt-2">
               <thead>  
                 <tr>
@@ -431,16 +432,20 @@
                 </tr>
               </tbody>
             </table>
+            <!-- Personnel more info -->
             <p style="text-align: justify;">
               Todo el personal del Servicio Técnico de <b>ATLAS ROMERO Services</b> se encuentra sujeto
               a un plan de formación anual, que comprende todas las áreas de conocimiento en función de
               su trabajo a realizar.
             </p>
+
+            <!-- Equipment title -->
             <h5 name="instrumentacion" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>4. INSTRUMENTACIÓN UTILIZADA</b>
+                <b>3. INSTRUMENTACIÓN UTILIZADA</b>
               </span>
             </h5>
+            <!-- Equipment content -->
             <p style="text-align: justify;">
               Los equipos utilizados en la cualificación son los indicados en la siguiente tabla, adjuntándose
               una copia de sus certificados de calibración en el Anexos E y F del presente informe.<br/>
@@ -449,6 +454,7 @@
               se especifica su periodo de validez, y en el que como norma general para todos los equipos se
               establece en un máximo de 24 meses.
             </p>
+            <!-- Equipment list -->
             <table class="table table-striped caption-top mt-2">
               <caption>Equipos utilizdos en la cualificación</caption>
               <thead>
@@ -501,14 +507,18 @@
                 </tr>
               </tbody>
             </table>
+
             <p style="page-break-after: always;"></p>
 
-            <br/>
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Tests performed title -->
             <h5 name="ensayos_criterios" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN</b>
+                <b>4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN</b>
               </span>
             </h5>
+            <!-- Tests performed content -->
             <p style="text-align: justify;">
               A continuación se detallan los ensayos principales a realizar en los equipos de tratamiento de aire
               y una pequeña descripción de los procedimientos internos que les aplican a cada uno de ellos. Todos
@@ -517,33 +527,40 @@
               De los ensayos detallados en este apartado, se han realizado únicamente aquellos acordados previamente
               con el cliente.
             </p>
+            <!-- Test of air title -->
             <h5 name="uniformidad_aire" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.1. ENSAYO DE VELOCIDAD Y UNIFORMIDAD DEL AIRE</b>
+                <b>4.1. ENSAYO DE VELOCIDAD Y UNIFORMIDAD DEL AIRE</b>
               </span>
             </h5>
+            <!-- Test of air objective -->
             <h6>
               <span>
                 <b>Objetivo:</b>
               </span>
             </h6>
+            <!-- Test of air content -->
             <p style="text-align: justify;">
               Determinar la velocidad promedio del aire de impulsión, la uniformidad del flujo del aire en el
               interior de la cabina y cuando sea aplicable la velocidad frontal y de extracción.
             </p>
+            <!-- Test of ait equipment title -->
             <h6>
               <span>
                 <b>Equipo:</b>
               </span>
             </h6>
+            <!-- Test of air equipment -->
             <p style="text-align: justify;">
               Anemómetro de filamento caliente.
             </p>
+            <!-- Test of air procedure title -->
             <h6>
               <span>
                 <b>Procedimiento:</b>
               </span>
             </h6>
+            <!-- Test of air procedure content -->
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
               en las siguientes normativas: EN ISO 5167-1, EN 14175-3, AFNOR NF X 15-211.<br/>
@@ -556,6 +573,7 @@
               La sonda del anemómetro se situará en los puntos determinados por la intersección de las siguientes líneas
               en el plano interior de medida (ver <b>Figura 1</b>):
             </p>
+            <!-- Figure 1 Anemometer reading -->
             <figure class="figure col-12">
               <center>
                 <img t-attf-src="data:image/*;base64,{{maintenance_request.fig1_intro_vg}}"
@@ -567,6 +585,7 @@
                 <b>Figura 1:</b> <i>Lectura con anemómetro</i>
               </figcaption>
             </figure>
+            <!-- Test with anemometer, more precedure info -->
             <p style="text-align: justify;">
               Una serie de, al menos, tres líneas equidistantes situadas entre los límites horizontales del plano
               interior de medida. Las dos líneas exteriores de la serie estarán situadas a (100 ± 5) mm de los límites
@@ -579,6 +598,7 @@
               Medir y registrar la velocidad perpendicular al plano de la guillotina a intervalos regulares menores
               o iguales a 1 s, durante un periodo de, al menos, 60 s.
             </p>
+            <!-- Figures 2 and 3 anemometer reading lacation -->
             <div class="d-flex flex-row justify-content-between col-12 p-2" >
               <div class="col-8 p-2">
                 <figure class="figure w-100" >
@@ -607,42 +627,53 @@
                 </figure>
               </div>
             </div>
+
+            <!-- Caudal measurement tile -->
             <h6>
               <span>
                 <b>Medida del caudal de extracción:</b>
               </span>
             </h6>
+            <!-- Caudal measurement content -->
             <p style="text-align: justify;">
               Una vez calculada la velocidad media en el plano de la guillotina se calcula el caudal aplicando la
               fórmula que se indica a continuación: 
             </p>
+            <!-- Caudal calculation expresion -->
             <h6 class="mx-2">
               <span class="fw-bold ff-italic mx-4">
                 Q = V(m<sup>3</sup>/h) * S(m<sup>3</sup>)
               </span>
             </h6>
+            <!-- Caudal calculation expression details -->
             <p>
               Donde:<br/>
               <span class="fw-bold ff-italic mx-4">Q = Caudal de aspiración</span><br/>
               <span class="fw-bold ff-italic mx-4">V = Velocidad media en el plano máximo de entrada de la vitrina (m/s)</span><br/>
               <span class="fw-bold ff-italic mx-4">S = Superficie del plano máximo den entrada de la vitrina (m<sup>2</sup>)</span><br/>
             </p>
+            <!-- Caudal calculation more info -->
             <p style="text-align: justify;">
               Cuando, por diseño, existe un hueco significativo de paso de aire en la vitrina al margen de la
               guillotina, se puede proceder buscando la corrección al mismo o realizando el ensayo tras sellar
               con cinta u otro material apropiado dicho hueco mientras se ejecuta el ensayo.
             </p>
+
             <p style="page-break-after: always;"></p>
             
-            <br/>
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Acceptance criterias title -->
             <h6 >
               <span>
                 <b>Criterios de aceptación:</b>
               </span>
             </h6>
+            <!-- Acceptance criterias by long and regulation -->
             <p style="text-align: justify;">
               Los valores de caudal recomendados para cada longitud de vitrina/guillotina según las difrentes normativas son:
             </p>
+            <!-- DIN EN 14175 -->
             <table class="table table-borderless caption-top mt-2">
               <caption>Requerimiento según norma DIN EN 14175</caption>
               <thead>
@@ -686,6 +717,7 @@
                 </tr>
               </tbody>
             </table>
+            <!-- British Standard 7258 -->
             <table class="table table-borderless caption-top mt-2">
               <caption>Requerimiento según British Standard 7258, con volumen de extracción constante</caption>
               <thead>
@@ -729,6 +761,7 @@
                 </tr>
               </tbody>
             </table>
+            <!-- AFNOR XP X15-203 -->
             <table class="table table-borderless caption-top mt-2">
               <caption>Requerimiento según AFNOR XP X15-203, con volumen de extracción constante</caption>
               <thead>
@@ -772,20 +805,25 @@
                 </tr>
               </tbody>
             </table>
+
             <p style="page-break-after: always;"></p>
 
-            <br/>
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Homogeneity in air velocity title -->
             <h6>
               <span>
                 <b>Homogeneidad de la velocidad en el plano de la guillotina:</b>
               </span>
             </h6>
+            <!-- Homogenity in air velocity content -->
             <p style="text-align: justify;">
               Otro aspecto a comprobar, de cara al buen funcionamiento de la vitrina es la homogeneidad en
               las velocidades medidas en el plano de la vitrina, recomendándose unos valores mínimos que se
               indican en la <b>Tabla 1</b>.
             </p>
-             <table class="table table-borderless caption-top">
+            <!-- Table 1 - Air inlet velocity -->
+            <table class="table table-borderless caption-top">
               <caption><b>Tabla 1.</b> <i>Velocidad de entrada de la vitrina (m/s)</i></caption>
               <thead>
                 <tr>
@@ -825,42 +863,50 @@
                 </tr>
               </tbody>
             </table>
+            <!-- Acceptance criteria of velocity - title -->
             <h6>
               <span>
                 <b>Criterios de aceptación:</b>
               </span>
             </h6>
+            <!-- Acceptance criteria of velocity - content -->
             <p style="text-align: justify;">
               Para Vitrinas de aspiración y cabinas de extracción: <b>INFORMATIVO</b>. Se recomienda un valor superior a 0,4m/s.
             </p>
-
+            <!-- Test of sound - title -->
             <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.2. TEST DE SONIDO</b>
+                <b>4.2. TEST DE SONIDO</b>
               </span>
             </h5>
+            <!-- Test of sound objective - title -->
             <h6>
               <span>
                 <b>Objetivo:</b>
               </span>
             </h6>
+            <!-- Test of sound objective - content -->
             <p style="text-align: justify;">
               Determinar la medida de la presión acústica es proporcionar al usuario los niveles de presión
               acústica de la vitrina de gases cuando esté en uso.
             </p>
+            <!-- Test of sound equipment - title -->
             <h6>
               <span>
                 <b>Equipo:</b>
               </span>
             </h6>
+            <!-- Test of sound equipment - content -->
             <p style="text-align: justify;">
               Sonómetro.
             </p>
+            <!-- Test of sound equipment - procedure title -->
             <h6>
               <span>
                 <b>Procedimiento:</b>
               </span>
             </h6>
+            <!-- Test of sound equipment - procedure content -->
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
               en las siguientes normativas: <b>EN ISO 3740</b>, <b>EN ISO 11204</b>, <b>EN 61672-1</b>.<br/>
@@ -868,6 +914,7 @@
               acústica ponderado A en dB(A), situado delante de la vitrina de gases, que conviene que esté equipada
               para el uso previsto, en la posición siguiente:
             </p>
+            <!-- Test of sound equipment - procedure contente positions -->
             <ul>
               <li class="py-1">
                 a una altura de 150 cm respecto del suelo,
@@ -879,54 +926,67 @@
                 en el centro del plano paralelo al plano de la guillotina.
               </li>
             </ul>
+            <!-- Test of sound equipment - acceptance criteria - title -->
             <h6>
               <span>
                 <b>Criterios de aceptación:</b>
               </span>
             </h6>
+            <!-- Test of sound equipment - acceptance criteria - content -->
             <p style="text-align: justify;">
               <b>INFORMATIVO</b>. Se recomienda un nivel de ruido igual o inferior a70 db(A).
             </p>
+
             <p style="page-break-after: always;"></p>
 
-            <br/>
-            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Test lumonsity - title -->
+            <h5 name="test_luminosity" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.3. TEST DE LUMINOSIDAD</b>
+                <b>4.3. TEST DE LUMINOSIDAD</b>
               </span>
             </h5>
+            <!-- Test lumonsity - objective title -->
             <h6>
               <span>
                 <b>Objetivo:</b>
               </span>
             </h6>
+            <!-- Test lumonsity - objective content -->
             <p style="text-align: justify;">
               Determinar los niveles de luminosidad que se alcanzan en el interior del equipo.
             </p>
+            <!-- Test lumonsity - equipment title -->
             <h6>
               <span>
                 <b>Equipo:</b>
               </span>
             </h6>
+            <!-- Test lumonsity - equipment content -->
             <p style="text-align: justify;">
               Luxómetro.
             </p>
+            <!-- Test lumonsity - procedure title -->
             <h6>
               <span>
                 <b>Procedimiento:</b>
               </span>
             </h6>
+            <!-- Test lumonsity - procedure content -->
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
               en las siguientes normativas: <b>EN ISO 14175</b>, <b>EN 126665</b>.<br/>
               La iluminación debe medirse en, al menos, 8 puntos por metro cuadrado de la superficie de trabajo,
               homogéneamente distribuidos. Se calcula el valor medio y la uniformidad.
             </p>
+            <!-- Test lumonsity - acceptance criteria - title -->
             <h6>
               <span>
                 <b>Criterios de aceptación:</b>
               </span>
             </h6>
+            <!-- Test lumonsity - acceptance criteria - content -->
             <p style="text-align: justify;">
               El fabricante debe indicar el <b>Indice Ra</b> y éste se hará constar en el informe.<br/>
               El nivel de iluminación en la superficie de trabajo no debe ser inferior a 400 lux. Las luminarias
@@ -934,34 +994,42 @@
               de superficie de la luminaria debe estar por debajo de la temperatura de ignición o inflamación de
               los vapores que pueden estar presente en el interior de la vitrina.
             </p>
+
+            <!-- Tests guillotine displacement - title -->
             <h5 name="test_desplaz_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.4. TEST DE DESPLAZAMIENTO DE GUILLOTINA</b>
+                <b>4.4. TEST DE DESPLAZAMIENTO DE GUILLOTINA</b>
               </span>
             </h5>
+            <!-- Tests guillotine displacement - objective title -->
             <h6>
               <span>
                 <b>Objetivo:</b>
               </span>
             </h6>
+            <!-- Tests guillotine displacement - objective content -->
             <p style="text-align: justify;">
               Evaluar el correcto funcionamiento de la guillotina, incluyendo la determinación de la fuerza necesaria
               para su apertura y cierre. Además en los casos en que proceda, se evaluarán los sistemas de protección
               asociados: stop de la guillotina y alarma.
             </p>
+            <!-- Tests guillotine displacement - equipment title -->
             <h6>
               <span>
                 <b>Equipo:</b>
               </span>
             </h6>
+            <!-- Tests guillotine displacement - equipment content -->
             <p style="text-align: justify;">
               Dinamómetro.
             </p>
+            <!-- Tests guillotine displacement - procedure title -->
             <h6>
               <span>
                 <b>Procedimiento:</b>
               </span>
             </h6>
+            <!-- Tests guillotine displacement - procedure content -->
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
               en las siguientes normativas: <b>EN ISO 12543</b>, <b>EN 14174</b>.
@@ -969,56 +1037,68 @@
 
             <p style="page-break-after: always;"></p>
 
-            <br/>
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Tests guillotine - title -->
             <h5 name="ensayos_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.4.1. ENSAYOS DE LA GUILLOTINA</b>
+                <b>4.4.1. ENSAYOS DE LA GUILLOTINA</b>
               </span>
             </h5>
+            <!-- Test suspencion guillotine - title -->
             <h5 name="suspension_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.4.1.1. ENSAYO DE SUSPENCIÓN DE LA GUILLOTINA</b>
+                <b>4.4.1.1. ENSAYO DE SUSPENCIÓN DE LA GUILLOTINA</b>
               </span>
             </h5>
+            <!-- Test suspencion guillotine - content -->
             <p style="text-align: justify;">
               Se coloca la guillotina en la posición de ensayo. Se desconecta uno de los dispositivos
               de suspensión de la guillotina. La guillotina debe permanecer próxima a su posición
               inicial. Se repite el ensayo con los otros dispositivos de suspensión.
             </p>
+            <!-- Test desplacement guillotine - title -->
             <h5 name="ensayo_desplaz_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.4.1.2. ENSAYO DE DESPLAZAMIENTO DE LA GUILLOTINA</b>
+                <b>4.4.1.2. ENSAYO DE DESPLAZAMIENTO DE LA GUILLOTINA</b>
               </span>
             </h5>
+            <!-- Test desplacement guillotine - content -->
             <p style="text-align: justify;">
               Se mide la fuerza de desplazamiento de la guillotina en tres posiciones equidistantes,
               a lo largo del(de los) borde(s) de la guillotina, en cualquier posible dirección de
               movimiento.
             </p>
+            <!-- Test suspension guillotine - title -->
             <h5 name="ensayo_suspension_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.4.1.3. PROTECCIÓN FRENTE A LAS SALPICADURAS</b>
+                <b>4.4.1.3. PROTECCIÓN FRENTE A LAS SALPICADURAS</b>
               </span>
             </h5>
+            <!-- Test suspension guillotine - content -->
             <p style="text-align: justify;">
               Debe realizarse una inspección visual para comprobar si están las protecciones frente
               a salpicaduras.
             </p>
+            <!-- Test stop guillotine - title -->
             <h5 name="stop_guillotina_ensayo_alarma" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.4.1.4. STOP DE LA GUILLOTINA Y ENSAYO DE LA ALARMA</b>
+                <b>4.4.1.4. STOP DE LA GUILLOTINA Y ENSAYO DE LA ALARMA</b>
               </span>
             </h5>
+            <!-- Test stop guillotine - content -->
             <p style="text-align: justify;">
               Debe inspeccionarse el stop de la guillotina y probar su funcionamiento.<br/>
               Si la vitrina está provista de una alarma sonora y visual, debe inspeccionarse durante
               el funcionamiento de la guillotina.
             </p>
+            <!-- Suspension guillotine - title -->
             <h5 name="suspension_guillotina" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.4.1.5. SUSPENCIÓN DE LA GUILLOTINA</b>
+                <b>4.4.1.5. SUSPENCIÓN DE LA GUILLOTINA</b>
               </span>
             </h5>
+            <!-- Suspension guillotine - content -->
             <p style="text-align: justify;">
               Cuando una guillotina vertical se ensaya no debe caer cuando un dispositivo de suspensión
               falla. La acción de abrir y cerrar la guillotina no debe provocar riesgo de daños. La
@@ -1028,71 +1108,87 @@
               atmósferas corrosivas.<br/>
               Se comprobará la integridad de la protección y el estado de los elementos.
             </p>
+            <!-- Test air flow (visual) - title -->
             <h5 name="test_visual_flujo_aire" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE</b>
+                <b>4.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE</b>
               </span>
             </h5>
+            <!-- Test air flow (visual) - objective title -->
             <h6>
               <span>
                 <b>Objetivo:</b>
               </span>
             </h6>
+            <!-- Test air flow (visual) - objective content -->
             <p style="text-align: justify;">
               Estudiar la direccionalidad del aire mediante el comportamiento del humo generado en
               la cabina, con el fin de comprobar su estanqueidad o de localizar posibles
               <b>“zonas muertas”</b> en su interior.
             </p>
+            <!-- Test air flow (visual) - equipment title -->
             <h6>
               <span>
                 <b>Equipo:</b>
               </span>
             </h6>
+            <!-- Test air flow (visual) - equipment content -->
             <p style="text-align: justify;">
               Trazador de corrientes de aire tipo Dräger o similar.
             </p>
+            <!-- Test air flow (visual) - procedure title -->
             <h6>
               <span>
                 <b>Procedimiento:</b>
               </span>
             </h6>
+            <!-- Test air flow (visual) - procedure content -->
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
               en las siguientes normativas: <b>EN 14175</b>.
             </p>
+
             <p style="page-break-after: always;"></p>
 
-            <br/>
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Test work temperature alarm - title -->
             <h5 name="test_alarma_temp" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>5.6. TEST ALARMA DE TEMPERATURA DE TRABAJO</b>
+                <b>4.6. TEST ALARMA DE TEMPERATURA DE TRABAJO</b>
               </span>
             </h5>
+            <!-- Test work temperature alarm - objective title -->
             <h6>
               <span>
                 <b>Objetivo:</b>
               </span>
             </h6>
+            <!-- Test work temperature alarm - objective content -->
             <p style="text-align: justify;">
               Las vitrinas de gases para alta temperatura deben estar provistas de un sensor de temperatura en
               la parte superior de la vitrina, con una alarma que indique cuando se ha sobrepasado la temperatura
               máxima del aire extraído especificada en el manual de instrucciones. La alarma debería poderse
               transmitir.
             </p>
+            <!-- Test work temperature alarm - equipment title -->
             <h6>
               <span>
                 <b>Equipo:</b>
               </span>
             </h6>
+            <!-- Test work temperature alarm - equipment content -->
             <p style="text-align: justify;">
               PLACA CALEFACTORA Ø 150 MM. 1500W.<br/>
               Mechero.
             </p>
+            <!-- Test work temperature alarm - procedure title -->
             <h6>
               <span>
                 <b>Procedimiento:</b>
               </span>
             </h6>
+            <!-- Test work temperature alarm - procedure content -->
             <p style="text-align: justify;">
               Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
               en las siguientes normativas: <b>EN 14175</b>.<br/>
@@ -1100,61 +1196,75 @@
               gases. Se encienden las placas calefactoras y se deja estabilizar la temperatura de la zona de
               trabajo de la vitrina  alrededor de 1 h.
             </p>
+
+            <!-- Obteined values details - title -->
             <h5 name="detalles_valores_obtenidos" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>6. DETALLE DE LOS VALORES OBTENIDOS</b>
+                <b>5. DETALLE DE LOS VALORES OBTENIDOS</b>
               </span>
             </h5>
+            <!-- Results details - title -->
             <h5 name="detalles_resultados" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>6.1. DETALLES DE LOS RESULTADOS</b>
+                <b>5.1. DETALLES DE LOS RESULTADOS</b>
               </span>
             </h5>
+            <!-- Results details - content -->
             <p style="text-align: justify;">
               Los resultados obtenidos durante la realización de los ensayos de cualificación de los equipos de
               tratamiento de Aire están registrados en las correspondientes hojas de datos que se adjuntan como
               <b><i>Anexo B</i></b> del presente informe.
             </p>
-            <h5 name="dictamen final" class="alert-heading text-left mt-4 py-0">
+            <!-- Final opinion - title -->
+            <h5 name="final_opinion" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>6.2. DICTAMEN FINAL</b>
+                <b>5.2. DICTAMEN FINAL</b>
               </span>
             </h5>
+            <!-- Final opinion - content -->
             <p style="text-align: justify;">
               La interpretación de los resultados obtenidos son evaluados en el informe de emisiones de datos
               de cada equipo <b><i>Anexo B</i></b> del presente informe.
             </p>
-            <h5 name="observaciones" class="alert-heading text-left mt-4 py-0">
+            <!-- Observations - title -->
+            <h5 name="observations" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>7. OBSERVACIONES</b>
+                <b>6. OBSERVACIONES</b>
               </span>
             </h5>
+            <!-- Observations - content -->
             <p style="text-align: justify;">
               Si durante la cualificación se detecta alguna observación que se considere oportuna, se adjuntará
               a modo de resumen del presente informe como <b><i>Anexo C</i></b>. En caso contrario no existirá
               dicho anexo.
             </p>
+            <!-- Non-conformity - title -->
             <h5 name="no_conformidades" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>8. LISTADO DE NO CONFORMIDADES</b>
+                <b>7. LISTADO DE NO CONFORMIDADES</b>
               </span>
             </h5>
+            <!-- Non-conformity - content -->
             <p style="text-align: justify;">
               Si durante la cualificación se detecta alguna No Conformidad, se adjuntará al presente informe
               como  <b><i>Anexo D</i></b>. En caso contrario no existirá dicho anexo.
             </p>
+
             <p style="page-break-after: always;"></p>
 
-            <br/>
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Anexos - title -->
             <h5 name="anexos" class="alert-heading text-left mt-4 py-0">
               <span>
-                <b>9. LISTADO DE ANEXOS</b>
+                <b>8. LISTADO DE ANEXOS</b>
               </span>
             </h5>
+            <!-- Anexos - table of content -->
             <ul class="list-unstyled">
               <li class="py-1">
                 <span>
-                  <b><i>Anexo A:</i></b> <i>Hoja de datos correspondientes a los equipos cualificados.</i>
+                  <b><i>Anexo A:</i></b> <i>Tabla resumen de datos correspondientes a los equipos cualificados.</i>
                 </span>
               </li>
               <li class="py-2">
@@ -1169,7 +1279,7 @@
               </li>
               <li class="py-2">
                 <span>  
-                  <b><i>Anexo D:</i></b> <i>Tabla resumen No  conformidades encontradas durante los ensayos.</i>
+                  <b><i>Anexo D:</i></b> <i>Tabla resumen de No conformidades encontradas durante los ensayos.</i>
                 </span> 
               </li>
               <li class="py-2">
@@ -1192,8 +1302,15 @@
                 </span> 
               </li>
             </ul>     
-            <p style="page-break-after: always;"></p>
+            <!-- <p style="page-break-after: always;"></p> -->
+          </t> <!-- End of introduction common block -->
+        </div>
+      </t> <!-- End of introduction -->
 
+      <!-- Anexo A -->
+      <t t-call="web.basic_layout">
+        <div class="page">
+          <t t-if="maintenance_request_first">
             <br/>
             <div class="container my-5 p-5" style="height: 150px;">
               <br/>
@@ -1205,11 +1322,17 @@
                   <p class="mb-0"><i>Hoja de datos correspondientes a los equipos cualificadas.</i></p>
               </div>
             </div>
-            <p style="page-break-after: always;"></p>
-
+          </t>
+          <!-- <p style="page-break-after: always;"></p> -->
+        </div>
+      </t> <!-- End of anexo A title page -->
+      <t t-call="web.external_layout">
+        <div class="page">
+          <t t-if="maintenance_request_first">
+            <
             <br/>
-            <table class="table table-borderless caption-top mt-2">
-              <caption><b>Tabla:</b> Hoja de Datos correspondientes a los equipos cualificadas.</caption>
+            <table class="table table-bordered caption-top mt-2">
+              <caption><b>Tabla:</b> Resumen de datos correspondientes a los equipos cualificados.</caption>
               <thead>
                 <tr>
                   <th scope="col" class="text-center">Marca</th>
@@ -1233,10 +1356,33 @@
                 </t>
               </tbody>
             </table>
-            <p style="page-break-after: always;"></p>
-          </t> <!-- End common block -->
+          </t> 
+          <!-- <p style="page-break-after: always;"></p> -->
+        </div>
+      </t> <!-- End of anexo A -->
 
-          <!-- Begining the measurements for each individual equipment -->
+      <!-- Anexo B -->
+      <t t-call="web.basic_layout">
+        <div class="page">
+          <t t-if="maintenance_request_first">
+            <br/>
+            <div class="container my-5 p-5" style="height: 150px;">
+              <br/>
+            </div>
+            <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
+              <div class="alert alert-success" role="alert">
+                  <h1 class="alert-heading text-center my-5 py-5"><b>Anexo B</b></h1>
+                  <hr/>
+                  <p class="mb-0"><i>Hojas de toma de datos correspondiente a las mediciones realizadas.</i></p>
+              </div>
+            </div>
+            <!-- <p style="page-break-after: always;"></p> -->
+          </t>
+        </div>
+      </t> <!-- End the anexo B title page -->
+      <t t-call="web.external_layout">
+        <div class="page">
+          <!-- Begining the measurements for each individual equipment for anexo B -->
           <!-- Equipment info -->
           <br/>
           <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
@@ -1432,8 +1578,66 @@
               </tr>
             </tbody>
           </table>
+          <!-- <p style="page-break-after: always;"></p> -->
         </div>
-      </t>
+      </t> <!-- End of anexo B -->
+
+      <!-- Anexo C -->
+      <t t-call="web.basic_layout">
+        <div class="page">
+          <t t-if="maintenance_request_last">
+            <br/>
+            <div class="container my-5 p-5" style="height: 150px;">
+              <br/>
+            </div>
+            <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
+              <div class="alert alert-success" role="alert">
+                  <h1 class="alert-heading text-center my-5 py-5"><b>Anexo C</b></h1>
+                  <hr/>
+                  <p class="mb-0"><i>Tabla resumen de observaciones por equipo.</i></p>
+              </div>
+            </div>
+            <!-- <p style="page-break-after: always;"></p> -->
+          </t>
+        </div>
+      </t> <!-- End of anexo C title page -->
+      <t t-call="web.external_layout">
+        <div class="page"> 
+          <t t-if="maintenance_request_last"> 
+            <br/>
+            <table class="table table-striped caption-top mt-2">
+              <caption><b>Tabla:</b> Resumen de observaciones por equipo cualificado.</caption>
+              <thead class="text-center">
+                <tr>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Modelo</th>
+                  <th scope="col">Referencia</th>
+                  <th scope="col">Observaciones</th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <t t-foreach="docs" t-as="mr">
+                  <tr>
+                    <td class="align-midle">
+                      <span t-field="mr.partner_id" class="mx-2" />
+                    </td>
+                    <td class="align-midle">
+                      <span t-field="mr.partner_ref" class="mx-2" />
+                    </td>
+                    <td class="align-midle">
+                      <span t-field="mr.lot_id" class="mx-2" />
+                    </td>
+                    <td class="align-midle">
+                      <span t-field="mr.observations" class="mx-2"/>
+                    </td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+            <!-- <p style="page-break-after: always;"></p> -->
+          </t> <!-- End of the anexo B common block -->
+        </div>
+      </t> <!-- End of anexo C -->
     </template>
 
   </data>
