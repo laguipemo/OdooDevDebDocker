@@ -19,12 +19,19 @@
       <t t-call="web.html_container">
         <t t-foreach="docs" t-as="maintenance_request">
           <t t-set="lang" t-value="maintenance_request.equipment_id.partner_id.lang" />
-          <t t-call="lgpm_maintenance.request_vg_report_document" t-lang="lang"/>
+          <t t-call="lgpm_maintenance.request_vg_report_introduction" t-lang="lang"/>
+          <t t-call="lgpm_maintenance.request_vg_report_anexo_a_title" t-lang="lang"/>
+          <t t-call="lgpm_maintenance.request_vg_report_anexo_a_content" t-lang="lang"/>
+          <t t-call="lgpm_maintenance.request_vg_report_anexo_b_title" t-lang="lang"/>
+          <t t-call="lgpm_maintenance.request_vg_report_anexo_b_content" t-lang="lang"/>
+          <t t-call="lgpm_maintenance.request_vg_report_anexo_c_title" t-lang="lang"/>
+          <t t-call="lgpm_maintenance.request_vg_report_anexo_c_content" t-lang="lang"/>
         </t>
       </t>
     </template>
 
-    <template id="lgpm_maintenance.request_vg_report_document">
+    <!-- Template for theoretical introduction in the VG report -->
+    <template id="lgpm_maintenance.request_vg_report_introduction">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.external_layout">
         <div class="page">
@@ -1302,16 +1309,17 @@
                 </span> 
               </li>
             </ul>     
-            <!-- <p style="page-break-after: always;"></p> -->
           </t> <!-- End of introduction common block -->
         </div>
       </t> <!-- End of introduction -->
+    </template>
 
-      <!-- Anexo A -->
+    <!-- Template for the anexo A title page (without header and footer)-->
+    <template id="lgpm_maintenance.request_vg_report_anexo_a_title">
+      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.basic_layout">
         <div class="page">
           <t t-if="maintenance_request_first">
-            <br/>
             <div class="container my-5 p-5" style="height: 150px;">
               <br/>
             </div>
@@ -1323,14 +1331,16 @@
               </div>
             </div>
           </t>
-          <!-- <p style="page-break-after: always;"></p> -->
         </div>
-      </t> <!-- End of anexo A title page -->
-      <t t-call="web.external_layout">
+      </t>
+    </template>
+
+    <!-- Template for the anexo A content  -->
+    <template id="lgpm_maintenance.request_vg_report_anexo_a_content">
+      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+      <t t-call="web.basic_layout" >
         <div class="page">
           <t t-if="maintenance_request_first">
-            <
-            <br/>
             <table class="table table-bordered caption-top mt-2">
               <caption><b>Tabla:</b> Resumen de datos correspondientes a los equipos cualificados.</caption>
               <thead>
@@ -1356,16 +1366,17 @@
                 </t>
               </tbody>
             </table>
-          </t> 
-          <!-- <p style="page-break-after: always;"></p> -->
+          </t>     
         </div>
-      </t> <!-- End of anexo A -->
+      </t>
+    </template>
 
-      <!-- Anexo B -->
+    <!-- Template for the anexo B title page (without header and footer) -->
+    <template id="lgpm_maintenance.request_vg_report_anexo_b_title">
+      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.basic_layout">
         <div class="page">
           <t t-if="maintenance_request_first">
-            <br/>
             <div class="container my-5 p-5" style="height: 150px;">
               <br/>
             </div>
@@ -1373,18 +1384,21 @@
               <div class="alert alert-success" role="alert">
                   <h1 class="alert-heading text-center my-5 py-5"><b>Anexo B</b></h1>
                   <hr/>
-                  <p class="mb-0"><i>Hojas de toma de datos correspondiente a las mediciones realizadas.</i></p>
+                  <p class="mb-0"><i>Hoja de datos correspondientes a los equipos cualificados.</i></p>
               </div>
             </div>
-            <!-- <p style="page-break-after: always;"></p> -->
           </t>
         </div>
-      </t> <!-- End the anexo B title page -->
-      <t t-call="web.external_layout">
+      </t>
+    </template>
+
+    <!-- Template for the anexo B content -->
+    <template id="lgpm_maintenance.request_vg_report_anexo_b_content">
+      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+      <t t-call="web.basic_layout" >
         <div class="page">
           <!-- Begining the measurements for each individual equipment for anexo B -->
           <!-- Equipment info -->
-          <br/>
           <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
             <h1 class="alert-heading text-center my-0 py-0">
               <span class="badge bg-light border border-success text-dark py-3 px=5">
@@ -1483,7 +1497,7 @@
               </b>
             </span>
           </h6>
-          <table class="table table-borderless mt-2">
+          <table class="table table-bordered table-striped mt-2">
             <thead>
               <tr>
                 <th scope="col">
@@ -1499,15 +1513,11 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              <!-- <t t-set="length_in_meters" t-value="maintenance_request.convert_to_meters(maintenance_request.work_length)" />
-                <t t-set="height_in_meters" t-value="maintenance_request.work_height/1000" /> -->
               <tr>
                 <td>
-                  <!-- <span t-esc="length_in_meters" class="mx-2" /> -->
                   <span t-field="maintenance_request.work_length_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
                 <td>
-                  <!-- <span t-esc="height_in_meters" class="mx-2" /> -->
                   <span t-field="maintenance_request.work_height_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                 </td>
                 <td>
@@ -1524,7 +1534,7 @@
               <b>Velocidades en frontal (m/s)</b>
             </span>
           </h6>
-          <table class="table table-bordered">
+          <table class="table table-bordered table-striped mt-2">
             <thead>
               <tr>
                 <th scope="col"></th>
@@ -1577,16 +1587,17 @@
                 </td>
               </tr>
             </tbody>
-          </table>
-          <!-- <p style="page-break-after: always;"></p> -->
+          </table>  
         </div>
-      </t> <!-- End of anexo B -->
+      </t>
+    </template>
 
-      <!-- Anexo C -->
+    <!-- Template for anexo C title page (without header and footer) -->
+    <template id="lgpm_maintenance.request_vg_report_anexo_c_title">
+      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.basic_layout">
         <div class="page">
           <t t-if="maintenance_request_last">
-            <br/>
             <div class="container my-5 p-5" style="height: 150px;">
               <br/>
             </div>
@@ -1597,17 +1608,20 @@
                   <p class="mb-0"><i>Tabla resumen de observaciones por equipo.</i></p>
               </div>
             </div>
-            <!-- <p style="page-break-after: always;"></p> -->
           </t>
         </div>
-      </t> <!-- End of anexo C title page -->
-      <t t-call="web.external_layout">
-        <div class="page"> 
+      </t>
+    </template>
+
+    <!-- Template for anexo C content -->
+    <template id="lgpm_maintenance.request_vg_report_anexo_c_content">
+      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+      <t t-call="web.basic_layout">
+        <div class="page">
           <t t-if="maintenance_request_last"> 
-            <br/>
-            <table class="table table-striped caption-top mt-2">
+            <table class="table table-bordered table-striped caption-top mt-2">
               <caption><b>Tabla:</b> Resumen de observaciones por equipo cualificado.</caption>
-              <thead class="text-center">
+              <thead>
                 <tr>
                   <th scope="col">Marca</th>
                   <th scope="col">Modelo</th>
@@ -1615,29 +1629,28 @@
                   <th scope="col">Observaciones</th>
                 </tr>
               </thead>
-              <tbody class="text-center">
+              <tbody>
                 <t t-foreach="docs" t-as="mr">
                   <tr>
-                    <td class="align-midle">
+                    <td class="text-center align-middle">
                       <span t-field="mr.partner_id" class="mx-2" />
                     </td>
-                    <td class="align-midle">
+                    <td class="text-center align-middle">
                       <span t-field="mr.partner_ref" class="mx-2" />
                     </td>
-                    <td class="align-midle">
+                    <td class="text-center align-middle">
                       <span t-field="mr.lot_id" class="mx-2" />
                     </td>
-                    <td class="align-midle">
-                      <span t-field="mr.observations" class="mx-2"/>
+                    <td class="text-left align-middle my-0 py-0">
+                      <span t-field="mr.observations" class="mx-2 my-0 py-0"/>
                     </td>
                   </tr>
                 </t>
               </tbody>
             </table>
-            <!-- <p style="page-break-after: always;"></p> -->
           </t> <!-- End of the anexo B common block -->
         </div>
-      </t> <!-- End of anexo C -->
+      </t>
     </template>
 
   </data>
