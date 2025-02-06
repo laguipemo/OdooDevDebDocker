@@ -1319,6 +1319,9 @@
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.basic_layout">
         <div class="page">
+          <div class="header o_header">
+            <t t-out="0" /> 
+          </div>
           <t t-if="maintenance_request_first">
             <div class="container my-5 p-5" style="height: 150px;">
               <br/>
@@ -1331,6 +1334,9 @@
               </div>
             </div>
           </t>
+          <div class="footer o_footer">
+            <t t-out="0" /> 
+          </div>
         </div>
       </t>
     </template>
@@ -1338,9 +1344,10 @@
     <!-- Template for the anexo A content  -->
     <template id="lgpm_maintenance.request_vg_report_anexo_a_content">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout" >
+      <t t-call="web.external_layout" >
         <div class="page">
           <t t-if="maintenance_request_first">
+            <br/> <!-- Initial space for begining of the new page -->
             <table class="table table-bordered caption-top mt-2">
               <caption><b>Tabla:</b> Resumen de datos correspondientes a los equipos cualificados.</caption>
               <thead>
@@ -1376,6 +1383,9 @@
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.basic_layout">
         <div class="page">
+          <div class="header o_header">
+            <t t-out="0" />
+          </div>
           <t t-if="maintenance_request_first">
             <div class="container my-5 p-5" style="height: 150px;">
               <br/>
@@ -1388,6 +1398,9 @@
               </div>
             </div>
           </t>
+          <div class="footer o_footer">
+            <t t-out="0" />
+          </div>
         </div>
       </t>
     </template>
@@ -1395,10 +1408,11 @@
     <!-- Template for the anexo B content -->
     <template id="lgpm_maintenance.request_vg_report_anexo_b_content">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout" >
+      <t t-call="web.external_layout" >
         <div class="page">
+          <br/> <!-- Initial space for begining of the new page -->
           <!-- Begining the measurements for each individual equipment for anexo B -->
-          <!-- Equipment info -->
+          <!-- Equipment serial number -->
           <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
             <h1 class="alert-heading text-center my-0 py-0">
               <span class="badge bg-light border border-success text-dark py-3 px=5">
@@ -1406,6 +1420,7 @@
               </span>
             </h1>
           </div>
+          <!-- Equipment info: Manufacturer, type of use, reference, etc -->
           <div class="container m-0 p-0">
             <div class="d-flex flex-row justify-content-between my-3 border border-success bg-light">
               <div class="col-7 p-3">
@@ -1447,12 +1462,13 @@
             </span>
           </h5>
 
-          <!-- Verifications -->
+          <!-- Visual Verifications title -->
           <h5 class="alert-heading text-left mt-5 py-0" colspan="4">
             <span>
               <b>Comprobación y ajuste del sistema de extracción</b>
             </span>
           </h5>
+          <!-- Visual verification content -->
           <div class="d-flex flex-row">
             <div class="col-m-12 p2">
               <p>
@@ -1474,12 +1490,13 @@
             </div>
           </div>
 
-          <!-- Measurements -->
+          <!-- Measurements title -->
           <h5 class="alert-heading text-left mt-5 py-0">
             <span>
               <b>Medición volumen de extracción</b>
             </span>
           </h5>
+          <!-- Info about measurement area -->
           <div class="mt-2">
             <p>
               <b>Longitud guillotina (mm):</b>
@@ -1497,6 +1514,7 @@
               </b>
             </span>
           </h6>
+          <!-- Table of area info -->
           <table class="table table-bordered table-striped mt-2">
             <thead>
               <tr>
@@ -1526,14 +1544,18 @@
               </tr>
             </tbody>
           </table>
+
           <p style="page-break-after: always;"></p>
 
-          <br/>
+          <br/> <!-- Initial space for begining of the new page -->
+
+          <!-- Frontal velocity title -->
           <h6 name="mediciones" class="alert-heading text-left mt-4 py-0">
             <span>
               <b>Velocidades en frontal (m/s)</b>
             </span>
           </h6>
+          <!-- Table of frontal velocity values -->
           <table class="table table-bordered table-striped mt-2">
             <thead>
               <tr>
@@ -1597,6 +1619,9 @@
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.basic_layout">
         <div class="page">
+          <div class="header o_header">
+            <t t-out="0" />
+          </div>
           <t t-if="maintenance_request_last">
             <div class="container my-5 p-5" style="height: 150px;">
               <br/>
@@ -1609,6 +1634,9 @@
               </div>
             </div>
           </t>
+          <div class="footer o_footer">
+            <t t-out="0" />
+          </div>
         </div>
       </t>
     </template>
@@ -1616,8 +1644,9 @@
     <!-- Template for anexo C content -->
     <template id="lgpm_maintenance.request_vg_report_anexo_c_content">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
+      <t t-call="web.external_layout">
         <div class="page">
+          <br/> <!-- Initial space for begining of the new page -->
           <t t-if="maintenance_request_last"> 
             <table class="table table-bordered table-striped caption-top mt-2">
               <caption><b>Tabla:</b> Resumen de observaciones por equipo cualificado.</caption>
