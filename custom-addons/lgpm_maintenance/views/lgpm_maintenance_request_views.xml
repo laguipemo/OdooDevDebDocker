@@ -98,6 +98,13 @@
                 nolabel="1" 
                 colspan="12" />
             </group>
+            <group name="no_conformities_group" string="No conformidades" col="12">
+              <field 
+                name="non_conformities" 
+                widget="html" 
+                nolabel="1" 
+                colspan="12" />
+            </group>
             <!-- <div class="d-flex flex-row justify-content-between"> -->
             <group name="signatures" string="Firma de responsabilidad" col="12">
               <group colspan="3" class="d-flex flex-row align-items-center">

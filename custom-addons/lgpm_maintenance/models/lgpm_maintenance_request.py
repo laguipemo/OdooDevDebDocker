@@ -158,6 +158,10 @@ class LgpmMaintenanceRequest(models.Model):
         string="Observaciones",
         placeholder="Introduce las observaciones a reflejar en el informe"
     )
+    non_conformities = fields.Html(
+        string="No conformidades",
+        placeholder="Introduce las No conformidades a reflejar en el informe"
+    )
 
 
     sign_admin = fields.Image(
