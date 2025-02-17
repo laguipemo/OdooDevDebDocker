@@ -214,6 +214,26 @@ class LgpmMaintenanceRequest(models.Model):
         default='N',
         string='Alarma de temperatura'
     )
+    guillotine_force = fields.Float(
+        string='Valor fuerza guillotina',
+        default=0.0
+    )
+    lighting_v1 = fields.Float(
+        default=0.0
+    )
+    lighting_v2 = fields.Float(
+        default=0.0
+    )
+    lighting_v3 = fields.Float(
+        default=0.0
+    )
+    lighting_v_media = fields.Float(
+        compute='_compute_lighting_v_media'
+    )
+    noise_level = fields.Float(
+        string='Sonido',
+        default=0.0
+    )
     observations = fields.Html(
         string="Observaciones",
         placeholder="Introduce las observaciones a reflejar en el informe"
@@ -334,6 +354,21 @@ class LgpmMaintenanceRequest(models.Model):
     def _compute_extraction_volume(self):
         for maintenance_request in self:
             maintenance_request.extraction_volume = maintenance_request.measurement_area * maintenance_request.frontal_v_media * 3600
+    
+    @api.depends(
+        'lighting_v1',
+        'lighting_v2',
+        'lighting_v3',
+        )
+    def _compute_lighting_v_media(self):
+        for maintenance_request in self:
+            values = [
+                maintenance_request.lighting_v1,
+                maintenance_request.lighting_v2,
+                maintenance_request.lighting_v3
+            ]
+            maintenance_request.lighting_v_media = sum(values)/len(values)
+
 
     def convert_to_meters(self, value):
         return value/1000.0

@@ -131,6 +131,45 @@
                 <field name="sat_temp_alarm" />
               </group>
             </group>
+            <group name="guillotine_force" string="Medida fuerza de la guillotina" col="12">
+              <field name="guillotine_force" widget="float" colspan="4" />
+            </group>
+            <group name="lighting_noise" string="Comprobación de niveles de iluminación y ruido" col="12">
+              <group string="Iluminación" colspan="7">
+                <table class="table table-bordered text-center" colspan="2">
+                  <thead>
+                    <tr>
+                      <th scope="col">Izquierda</th>
+                      <th scope="col">Centro</th>
+                      <th scope="col">Derecha</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <field name="lighting_v1" />
+                      </td>
+                      <td>
+                        <field name="lighting_v2" />
+                      </td>
+                      <td>
+                        <field name="lighting_v3" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="2" style="text-align:right;">Media</th>
+                      <td>
+                        <field name="lighting_v_media" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </group>
+              <group string="Sonido" colspan="5">
+                <field name="noise_level" />
+              </group>
+            </group>
+
             <group name="observations_group" string="Observaciones" col="12">
               <field name="observations" widget="html" nolabel="1" colspan="12" />
             </group>
