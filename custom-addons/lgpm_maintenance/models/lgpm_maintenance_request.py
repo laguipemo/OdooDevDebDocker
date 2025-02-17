@@ -204,10 +204,10 @@ class LgpmMaintenanceRequest(models.Model):
         default='N',
         string='Estado grifos'
     )
-    sat_monoreductors_function = fields.Selection(
+    sat_manoreductors_function = fields.Selection(
         selection=VERIFICATION_SELECTION,
         default='N',
-        string='Estado monoreductores'
+        string='Estado manoreductores'
     )
     sat_temp_alarm = fields.Selection(
         selection=VERIFICATION_SELECTION,

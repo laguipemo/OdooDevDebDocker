@@ -127,7 +127,7 @@
                 <field name="sat_presence_ctrl" />
                 <field name="sat_autoprotec" />
                 <field name="sat_faucets_function" />
-                <field name="sat_monoreductors_function" />
+                <field name="sat_manoreductors_function" />
                 <field name="sat_temp_alarm" />
               </group>
             </group>
