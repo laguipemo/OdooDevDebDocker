@@ -36,9 +36,7 @@
                 <field name="lot_id" />
               </group>
             </group>
-            <group name="sat_check_extraction"
-                   string="Comprobación y ajuste del sistema de extracción"
-                   col="12">
+            <group name="sat_check_extraction" string="Comprobación y ajuste del sistema de extracción" col="12">
               <group colspan="5" string="Inspección Visual">
                 <field name="sat_digital_ctrl" />
                 <field name="sat_extraction_sys" />
@@ -67,89 +65,98 @@
                   <tbody>
                     <tr>
                       <th>Arriba</th>
-                      <td><field name="frontal_v1" /></td>
-                      <td><field name="frontal_v2" /></td>
-                      <td><field name="frontal_v3" /></td>
+                      <td>
+                        <field name="frontal_v1" />
+                      </td>
+                      <td>
+                        <field name="frontal_v2" />
+                      </td>
+                      <td>
+                        <field name="frontal_v3" />
+                      </td>
                     </tr>
                     <tr>
                       <th>Centro</th>
-                      <td><field name="frontal_v4" /></td>
-                      <td><field name="frontal_v5" /></td>
-                      <td><field name="frontal_v6" /></td>
+                      <td>
+                        <field name="frontal_v4" />
+                      </td>
+                      <td>
+                        <field name="frontal_v5" />
+                      </td>
+                      <td>
+                        <field name="frontal_v6" />
+                      </td>
                     </tr>
                     <tr>
                       <th>Abajo</th>
-                      <td><field name="frontal_v7" /></td>
-                      <td><field name="frontal_v8" /></td>
-                      <td><field name="frontal_v9" /></td>
+                      <td>
+                        <field name="frontal_v7" />
+                      </td>
+                      <td>
+                        <field name="frontal_v8" />
+                      </td>
+                      <td>
+                        <field name="frontal_v9" />
+                      </td>
                     </tr>
                     <tr>
                       <th colspan="3" style="text-align:right;">Media</th>
-                      <td><field name="frontal_v_media" /></td>
+                      <td>
+                        <field name="frontal_v_media" />
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </group>
             </group>
+            <group name="extraction_volume" string="Cálculo volumen de extracción" col="12">
+              <group colspan="4" name="volume">
+                <field name="extraction_volume" />
+              </group>
+            </group>
+            <group name="sat_check_components" string="Comprobación y ajuste de componentes mecánicos y medios" col="12">
+              <group colspan="6">
+                <field name="sat_surface_protection" />
+                <field name="sat_fixed_parts" />
+                <field name="sat_insulation_joints" />
+                <field name="sat_guillotine_function" />
+                <field name="sat_guillotine_gnrl_state" />
+                <field name="sat_guillotine_v_force" />
+              </group>
+              <group colspan="6">
+                <field name="sat_presence_ctrl" />
+                <field name="sat_autoprotec" />
+                <field name="sat_faucets_function" />
+                <field name="sat_monoreductors_function" />
+                <field name="sat_temp_alarm" />
+              </group>
+            </group>
             <group name="observations_group" string="Observaciones" col="12">
-              <field 
-                name="observations" 
-                widget="html" 
-                nolabel="1" 
-                colspan="12" />
+              <field name="observations" widget="html" nolabel="1" colspan="12" />
             </group>
             <group name="no_conformities_group" string="No conformidades" col="12">
-              <field 
-                name="non_conformities" 
-                widget="html" 
-                nolabel="1" 
-                colspan="12" />
+              <field name="non_conformities" widget="html" nolabel="1" colspan="12" />
             </group>
-            <!-- <div class="d-flex flex-row justify-content-between"> -->
             <group name="signatures" string="Firma de responsabilidad" col="12">
               <group colspan="3" class="d-flex flex-row align-items-center">
-                <field
-                  name="sign_admin"
-                  widget="image"
-                  class="img img-fluid o_we_custom_image o_modified_image_to_save"
-                  style="max-width: 60px;" />
+                <field name="sign_admin" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
               </group>
               <group colspan="3" class="d-flex flex-row align-items-center">
-                <field
-                  name="sign_sat"
-                  widget="image"
-                  class="img img-fluid o_we_custom_image o_modified_image_to_save"
-                  style="max-width: 60px;" />
+                <field name="sign_sat" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
               </group>
               <group colspan="3" class="d-flex flex-row align-items-center">
-                <field
-                  name="sign_prev"
-                  widget="image"
-                  class="img img-fluid o_we_custom_image o_modified_image_to_save"
-                  style="max-width: 60px;" />
+                <field name="sign_prev" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
               </group>
             </group>
             <group name="images_intro" string="Imágenes para intro" col="12">
               <group colspan="3" class="d-flex flex-row align-items-center">
-                <field
-                  name="fig1_intro_vg"
-                  widget="image"
-                  class="img img-fluid o_we_custom_image o_modified_image_to_save"
-                  style="max-width: 60px;" />
+                <field name="fig1_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
               </group>
               <group colspan="3" class="d-flex flex-row align-items-center">
-                <field
-                  name="fig2_intro_vg"
-                  widget="image"
-                  class="img img-fluid o_we_custom_image o_modified_image_to_save"
-                  style="max-width: 60px;" />
+                <field name="fig2_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
               </group>
               <group colspan="3" class="d-flex flex-row align-items-center">
-                <field
-                  name="fig3_intro_vg"
-                  widget="image"
-                  class="img img-fluid o_we_custom_image o_modified_image_to_save"
-                  style="max-width: 60px;" />
+                <field name="fig3_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
               </group>
             </group>
             <!-- </div> -->
