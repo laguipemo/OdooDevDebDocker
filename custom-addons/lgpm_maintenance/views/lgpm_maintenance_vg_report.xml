@@ -1729,6 +1729,49 @@
               </p>
             </div>
           </div>
+          <!-- Guillotine force measurement -->
+          <h5 class="alert-heading text-left mt-5 py-0">
+            <span>
+              <b>Medida de la fuerza de la guillotina</b>
+            </span>
+          </h5>
+          <!-- Force value -->
+          <div class="d-flex flex-row">
+            <div class="col-m-12 p2">
+              <p>
+                <b>Valor (N):</b>
+                <span t-field="maintenance_request.guillotine_force" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+              </p>
+            </div>
+          </div>
+          
+          <p style="page-break-after: always;"></p>
+
+          <br/> <!-- Initial space for begining of the new page -->
+
+          <!-- Lighting and Noise -->
+          <h5 class="alert-heading text-left mt-4 py-0">
+            <span>
+              <b>Comprobación de niveles de iluminación y ruido</b>
+            </span>
+          </h5>
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <div class="col-m-5 p2 me-4">
+              <p>
+                <b>Iluminación (&gt; 400 lux):</b>
+                <span t-field="maintenance_request.lighting_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+              </p>
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-4"> </p>
+            </div>
+            <div class="col-m-5 p2 ms-4">
+              <p>
+                <b>Sonido (&lt; 70 dBA):</b>
+                <span t-field="maintenance_request.noise_level" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+              </p>
+            </div>
+          </div>
 
         </div>
       </t>
