@@ -176,6 +176,34 @@
             <group name="no_conformities_group" string="No conformidades" col="12">
               <field name="non_conformities" widget="html" nolabel="1" colspan="12" />
             </group>
+
+            <group name="results" string="Resultado" col="12">
+              <table class="table table-bordered text-left" colspan="8" >
+                <thead>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>¿ El equipo está de acuerdo con las normas / regulaciones petinentes ?</p>
+                    </td>
+                    <td>
+                      <field name="complies_regulation" nolabel="1" widget="boolean_toggle" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>¿ Por cuestiones de seguridad es necesaria la intervención del equipo ?</p>
+                    </td>
+                    <td>
+                      <field name="needs_intervention" nolabel="1" widget="boolean_toggle" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </group>
+
+            
+
             <group name="signatures" string="Firma de responsabilidad" col="12">
               <group colspan="3" class="d-flex flex-row align-items-center">
                 <field name="sign_admin" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />

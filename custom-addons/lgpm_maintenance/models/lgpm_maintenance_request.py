@@ -242,6 +242,12 @@ class LgpmMaintenanceRequest(models.Model):
         string="No conformidades",
         placeholder="Introduce las No conformidades a reflejar en el informe"
     )
+    complies_regulation = fields.Boolean(
+        string="El equipo está de acuerdo con las normas / regulaciones petinentes"
+    )
+    needs_intervention = fields.Boolean(
+        string="Por cuestiones de seguridad es necesaria la intervención del equipo"
+    )
 
 
     sign_admin = fields.Image(

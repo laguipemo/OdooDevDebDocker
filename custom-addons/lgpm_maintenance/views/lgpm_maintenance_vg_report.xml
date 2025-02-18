@@ -1758,7 +1758,7 @@
           <div class="d-flex flex-row col-m-12 mt-4">
             <div class="col-m-5 p2 me-4">
               <p>
-                <b>Iluminación (&gt; 400 lux):</b>
+                <b>Iluminación (&#x2265; 400 lux):</b>
                 <span t-field="maintenance_request.lighting_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
               </p>
             </div>
@@ -1767,10 +1767,30 @@
             </div>
             <div class="col-m-5 p2 ms-4">
               <p>
-                <b>Sonido (&lt; 70 dBA):</b>
+                <b>Sonido (&#x2264; 70 dBA):</b>
                 <span t-field="maintenance_request.noise_level" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
               </p>
             </div>
+          </div>
+
+          <!-- Observations -->
+          <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+            <span>
+              <b>Observaciones</b>
+            </span>
+          </h5>
+          <div class="d-flex flex-row col-m-12 mt-2 mb-0 py-0" style="minHeight: 100px;">
+            <span t-field="maintenance_request.observations" class="mx-2 my-0 py-0"/>
+          </div>
+
+          <!-- Non conformities -->
+          <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+            <span>
+              <b>No conformidades</b>
+            </span>
+          </h5>
+          <div class="d-flex flex-row col-m-12 mt-2 mb-0 py-0" style="minHeight: 100px;">
+            <span t-field="maintenance_request.non_conformities" class="mx-2 my-0 py-0"/>
           </div>
 
         </div>
