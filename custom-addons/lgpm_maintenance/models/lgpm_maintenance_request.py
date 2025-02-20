@@ -5,8 +5,6 @@ import os
 import base64
 
 
-
-
 class LgpmMaintenanceRequest(models.Model):
     _name = 'maintenance.request'
     _inherit = ['maintenance.request']
@@ -22,7 +20,6 @@ class LgpmMaintenanceRequest(models.Model):
             ('F', 'FALTA LEVE'),
             ('RR', 'REQUIERE REPARACIÓN')
         ]
-
     def get_default_image(self, image_name):
         image_path = os.path.join(
             os.path.dirname(__file__), '../static/src/img', image_name)
@@ -89,13 +86,13 @@ class LgpmMaintenanceRequest(models.Model):
     sat_digital_ctrl = fields.Selection(
         string='Control digital',
         selection=VERIFICATION_SELECTION,
-        default='NO'
+        default='N'
     )
 
     sat_extraction_sys = fields.Selection(
         string='Sistema de extracción',
         selection=VERIFICATION_SELECTION,
-        default='NO'
+        default='N'
     )
     requirements_partner = fields.Text(
         string='Requerimientos fabricante',
