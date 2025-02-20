@@ -5,6 +5,8 @@ import os
 import base64
 
 
+
+
 class LgpmMaintenanceRequest(models.Model):
     _name = 'maintenance.request'
     _inherit = ['maintenance.request']
@@ -12,7 +14,14 @@ class LgpmMaintenanceRequest(models.Model):
 
     """ def maintenance_request_report_button(self):
         return self.env.ref('lgpm_maintenance_request_vg_action_report').report_action(self) """
-
+    
+    VERIFICATION_SELECTION = [
+            ('N', ''),
+            ('NP', 'NO PROCEDE'),
+            ('C', 'CORRECTO'),
+            ('F', 'FALTA LEVE'),
+            ('RR', 'REQUIERE REPARACIÓN')
+        ]
 
     def get_default_image(self, image_name):
         image_path = os.path.join(
@@ -79,21 +88,13 @@ class LgpmMaintenanceRequest(models.Model):
 
     sat_digital_ctrl = fields.Selection(
         string='Control digital',
-        selection=[
-            ('NO', ''),
-            ('C', 'CORRECTO'),
-            ('RR', 'REQUIERE REPARACIÓN')
-        ],
+        selection=VERIFICATION_SELECTION,
         default='NO'
     )
 
     sat_extraction_sys = fields.Selection(
         string='Sistema de extracción',
-        selection=[
-            ('NO', ''),
-            ('C', 'CORRECTO'),
-            ('RR', 'REQUIERE REPARACIÓN')
-        ],
+        selection=VERIFICATION_SELECTION,
         default='NO'
     )
     requirements_partner = fields.Text(
@@ -154,6 +155,85 @@ class LgpmMaintenanceRequest(models.Model):
     frontal_v_media = fields.Float(
         compute='_compute_frontal_v_media'
     )
+    extraction_volume = fields.Float(
+        string='Volumen de extracción',
+        compute='_compute_extraction_volume'
+    )
+    sat_surface_protection = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Protección de la superficie'
+    )
+    sat_insulation_joints = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Aislamiento de juntas'
+    )
+    sat_fixed_parts = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Sujeción partes fijas'
+    )
+    sat_guillotine_function = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Funcionamiento guillotina'
+    )
+    sat_guillotine_gnrl_state = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado general guillotina'
+    )
+    sat_guillotine_v_force = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Fuerza vertical guillotina'
+    )
+    sat_presence_ctrl = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Control de presencia'
+    )
+    sat_autoprotec = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Autoprotec'
+    )
+    sat_faucets_function = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado grifos'
+    )
+    sat_manoreductors_function = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado manoreductores'
+    )
+    sat_temp_alarm = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Alarma de temperatura'
+    )
+    guillotine_force = fields.Float(
+        string='Valor fuerza guillotina',
+        default=0.0
+    )
+    lighting_v1 = fields.Float(
+        default=0.0
+    )
+    lighting_v2 = fields.Float(
+        default=0.0
+    )
+    lighting_v3 = fields.Float(
+        default=0.0
+    )
+    lighting_v_media = fields.Float(
+        compute='_compute_lighting_v_media'
+    )
+    noise_level = fields.Float(
+        string='Sonido',
+        default=0.0
+    )
     observations = fields.Html(
         string="Observaciones",
         placeholder="Introduce las observaciones a reflejar en el informe"
@@ -161,6 +241,12 @@ class LgpmMaintenanceRequest(models.Model):
     non_conformities = fields.Html(
         string="No conformidades",
         placeholder="Introduce las No conformidades a reflejar en el informe"
+    )
+    complies_regulation = fields.Boolean(
+        string="El equipo está de acuerdo con las normas / regulaciones petinentes"
+    )
+    needs_intervention = fields.Boolean(
+        string="Por cuestiones de seguridad es necesaria la intervención del equipo"
     )
 
 
@@ -269,6 +355,26 @@ class LgpmMaintenanceRequest(models.Model):
                     maintenance_request.frontal_v3
                 ]
             maintenance_request.frontal_v_media = sum(values)/len(values)
+
+    @api.depends('frontal_v_media', 'measurement_area')
+    def _compute_extraction_volume(self):
+        for maintenance_request in self:
+            maintenance_request.extraction_volume = maintenance_request.measurement_area * maintenance_request.frontal_v_media * 3600
+    
+    @api.depends(
+        'lighting_v1',
+        'lighting_v2',
+        'lighting_v3',
+        )
+    def _compute_lighting_v_media(self):
+        for maintenance_request in self:
+            values = [
+                maintenance_request.lighting_v1,
+                maintenance_request.lighting_v2,
+                maintenance_request.lighting_v3
+            ]
+            maintenance_request.lighting_v_media = sum(values)/len(values)
+
 
     def convert_to_meters(self, value):
         return value/1000.0

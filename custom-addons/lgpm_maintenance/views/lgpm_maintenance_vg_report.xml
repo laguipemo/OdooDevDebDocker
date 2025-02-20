@@ -20,17 +20,51 @@
         <t t-foreach="docs" t-as="maintenance_request">
           <t t-set="lang" t-value="maintenance_request.equipment_id.partner_id.lang" />
           <t t-if="maintenance_request_first" t-call="lgpm_maintenance.request_vg_report_introduction" t-lang="lang"/>
-          <t t-if="maintenance_request_first"  t-call="lgpm_maintenance.request_vg_report_anexo_a_title" t-lang="lang"/>
+          <!-- Call and show Anexo A -->
+          <t t-if="maintenance_request_first"  t-call="lgpm_maintenance.request_vg_report_anexo_title" t-lang="lang">
+            <t t-set="anexo" t-value="'Anexo A'" />
+            <t t-set="title" t-value="'Hoja de datos correspondientes a los equipos cualificados.'" />
+          </t>
           <t t-if="maintenance_request_first" t-call="lgpm_maintenance.request_vg_report_anexo_a_content" t-lang="lang"/>
-          <t t-if="maintenance_request_first" t-call="lgpm_maintenance.request_vg_report_anexo_b_title" t-lang="lang"/>
+
+          <!-- Call and show Anexo B -->
+          <t t-if="maintenance_request_first" t-call="lgpm_maintenance.request_vg_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo B'" />
+            <t t-set="title" t-value="'Hojas de toma de datos correspondiente a las mediciones realizadas.'" />
+          </t>
           <t t-call="lgpm_maintenance.request_vg_report_anexo_b_content" t-lang="lang"/>
-          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_c_title" t-lang="lang"/>
+
+          <!-- Call and show Anexo C -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo C'" />
+            <t t-set="title" t-value="'Tabla resumen de observaciones por equipo.'" />
+          </t>
           <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_c_content" t-lang="lang"/>
-          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_d_title" t-lang="lang"/>
+
+          <!-- Call and show Anexo D -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo D'" />
+            <t t-set="title" t-value="'Tabla resumen NO conformidades encontradas durnate los ensayos.'" />
+          </t>
           <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_d_content" t-lang="lang"/>
-          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_e_title" t-lang="lang"/>
-          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_f_title" t-lang="lang"/>
-          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_g_title" t-lang="lang"/>
+
+          <!-- Call and show Anexo E -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo E'" />
+            <t t-set="title" t-value="'Fotocopias validadas de los Certificados de calibración correspondientes a los equipos que han sido utilizados durante los ensayos de cualificación.'" />
+          </t>
+
+          <!-- Call and show Anexo F -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo F'" />
+            <t t-set="title" t-value="'Fotocopias de los Documentos de verificación y control de otros equipos utilizados.'" />
+          </t>
+
+          <!-- Call and show Anexo G -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo G'" />
+            <t t-set="title" t-value="'Archivo fotográfico completo de los equipos analizados. (Bajo petición).'" />
+          </t>
           <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_vg_report_anexo_g_content" t-lang="lang"/>
         </t>
       </t>
@@ -1318,8 +1352,8 @@
       </t> <!-- End of introduction -->
     </template>
 
-    <!-- Template for the anexo A title page (without header and footer)-->
-    <template id="lgpm_maintenance.request_vg_report_anexo_a_title">
+    <!-- Template for the anexos title page (without header and footer)-->
+    <template id="lgpm_maintenance.request_vg_report_anexo_title">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.basic_layout">
         <div class="page">
@@ -1331,9 +1365,9 @@
           </div>
           <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
             <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b>Anexo A</b></h1>
+                <h1 class="alert-heading text-center my-5 py-5"><b><t t-out="anexo"/></b></h1>
                 <hr/>
-                <p class="mb-0"><i>Hoja de datos correspondientes a los equipos cualificadas.</i></p>
+                <p class="mb-0"><i><t t-out="title"/></i></p>
             </div>
           </div>
           <div class="footer o_footer">
@@ -1378,38 +1412,15 @@
       </t>
     </template>
 
-    <!-- Template for the anexo B title page (without header and footer) -->
-    <template id="lgpm_maintenance.request_vg_report_anexo_b_title">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
-        <div class="page">
-          <div class="header o_header">
-            <t t-out="0" />
-          </div>
-          <div class="container my-5 p-5" style="height: 150px;">
-            <br/>
-          </div>
-          <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
-            <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b>Anexo B</b></h1>
-                <hr/>
-                <p class="mb-0"><i>Hoja de datos correspondientes a los equipos cualificados.</i></p>
-            </div>
-          </div>
-          <div class="footer o_footer">
-            <t t-out="0" />
-          </div>
-        </div>
-      </t>
-    </template>
-
     <!-- Template for the anexo B content -->
     <template id="lgpm_maintenance.request_vg_report_anexo_b_content">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
       <t t-call="web.external_layout" >
         <div class="page">
           <br/> <!-- Initial space for begining of the new page -->
+
           <!-- Begining the measurements for each individual equipment for anexo B -->
+
           <!-- Equipment serial number -->
           <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
             <h1 class="alert-heading text-center my-0 py-0">
@@ -1466,6 +1477,7 @@
               <b>Comprobación y ajuste del sistema de extracción</b>
             </span>
           </h5>
+
           <!-- Visual verification content -->
           <div class="d-flex flex-row">
             <div class="col-m-12 p2">
@@ -1607,32 +1619,211 @@
                 </td>
               </tr>
             </tbody>
-          </table>  
-        </div>
-      </t>
-    </template>
+          </table> 
 
-    <!-- Template for anexo C title page (without header and footer) -->
-    <template id="lgpm_maintenance.request_vg_report_anexo_c_title">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
-        <div class="page">
-          <div class="header o_header">
-            <t t-out="0" />
-          </div>
-          <div class="container my-5 p-5" style="height: 150px;">
-            <br/>
-          </div>
-          <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
-            <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b>Anexo C</b></h1>
-                <hr/>
-                <p class="mb-0"><i>Tabla resumen de observaciones por equipo.</i></p>
+          <!-- Extraction volume title -->
+          <h5 class="alert-heading text-left mt-5 py-0">
+            <span>
+              <b>Cálculo del volumen de extracción</b>
+            </span>
+          </h5> 
+          <h6 class="alert-heading text-left mt-3 py-0">
+            <span>
+              <b>
+                <i>Volumen de extracción (m<sup>3</sup>/h) = Superficie de medición(m<sup>2</sup>) x Velocidad del Aire (m/s) x 3600 (s) </i>
+              </b>
+            </span>
+          </h6>
+          <!-- Table of extraction volume calculation -->
+          <table class="table table-bordered table-striped mt-2">
+            <thead>
+              <tr>
+                <th scope="col">
+                  <b>Superficie de medición(m<sup>2</sup>)</b>
+                </th>
+                <th scope="col">
+                  <b>Velocidad del Aire (m/s)</b>
+                </th>
+                <th scope="col">
+                  <b>Factor conversión (s)</b>
+                </th>
+                <th scope="col">
+                  <b>Volumen de extracción (m<sup>3</sup>/h)</b>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td>
+                  <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                </td>
+                <td>
+                  <span t-field="maintenance_request.frontal_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                </td>
+                <td>
+                  <span t-out="3600" class="mx-2" />
+                </td>
+                <td>
+                  <span t-field="maintenance_request.extraction_volume" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Components and medias comprobations -->
+          <h5 class="alert-heading text-left mt-5 py-0">
+            <span>
+              <b>Comprobación y ajuste de componentes mecánicos y medios (grifos / manoreductores)</b>
+            </span>
+          </h5> 
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <div class="col-m-5 p2">
+              <p>
+                <b>Protección de la superficie:</b>
+                <span t-field="maintenance_request.sat_surface_protection" class="mx-2" />
+              </p>
+              <p>
+                <b>Aislamiento y juntas:</b>
+                <span t-field="maintenance_request.sat_fixed_parts" class="mx-2" />
+              </p>
+              <p>
+                <b>Sujeción piezas fijas:</b>
+                <span t-field="maintenance_request.sat_insulation_joints" class="mx-2" />
+              </p>
+              <p>
+                <b>Funcionamiento guillotina:</b>
+                <span t-field="maintenance_request.sat_guillotine_function" class="mx-2" />
+              </p>
+              <p>
+                <b>Estado general guillotina:</b>
+                <span t-field="maintenance_request.sat_guillotine_gnrl_state" class="mx-2" />
+              </p>
+              <p>
+                <b>Fuerza movimiento guillotina:</b>
+                <span t-field="maintenance_request.sat_guillotine_v_force" class="mx-2" />
+              </p>
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-3"> </p>
+            </div>
+            <div class="col-m-5 p2">
+              <p>
+                <b>Control de presencia:</b>
+                <span t-field="maintenance_request.sat_presence_ctrl" class="mx-2" />
+              </p>
+              <p>
+                <b>Autoprotec:</b>
+                <span t-field="maintenance_request.sat_autoprotec" class="mx-2" />
+              </p>
+              <p>
+                <b>Estado grifería:</b>
+                <span t-field="maintenance_request.sat_faucets_function" class="mx-2" />
+              </p>
+              <p>
+                <b>Estado manoreductores:</b>
+                <span t-field="maintenance_request.sat_manoreductors_function" class="mx-2" />
+              </p>
+              <p>
+                <b>Alarma temperatura:</b>
+                <span t-field="maintenance_request.sat_temp_alarm" class="mx-2" />
+              </p>
             </div>
           </div>
-          <div class="footer o_footer">
-            <t t-out="0" />
+          <!-- Guillotine force measurement -->
+          <h5 class="alert-heading text-left mt-5 py-0">
+            <span>
+              <b>Medida de la fuerza de la guillotina</b>
+            </span>
+          </h5>
+          <!-- Force value -->
+          <div class="d-flex flex-row">
+            <div class="col-m-12 p2">
+              <p>
+                <b>Valor (N):</b>
+                <span t-field="maintenance_request.guillotine_force" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+              </p>
+            </div>
           </div>
+          
+          <p style="page-break-after: always;"></p>
+
+          <br/> <!-- Initial space for begining of the new page -->
+
+          <!-- Lighting and Noise -->
+          <h5 class="alert-heading text-left mt-4 py-0">
+            <span>
+              <b>Comprobación de niveles de iluminación y ruido</b>
+            </span>
+          </h5>
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <div class="col-m-5 p2 me-4">
+              <p>
+                <b>Iluminación (&#x2265; 400 lux):</b>
+                <span t-field="maintenance_request.lighting_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+              </p>
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-4"> </p>
+            </div>
+            <div class="col-m-5 p2 ms-4">
+              <p>
+                <b>Sonido (&#x2264; 70 dBA):</b>
+                <span t-field="maintenance_request.noise_level" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+              </p>
+            </div>
+          </div>
+
+          <!-- Observations -->
+          <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+            <span>
+              <b>Observaciones</b>
+            </span>
+          </h5>
+          <div class="d-flex flex-row col-m-12 mt-2 mb-0 py-0" style="minHeight: 100px;">
+            <span t-field="maintenance_request.observations" class="mx-2 my-0 py-0"/>
+          </div>
+
+          <!-- Non conformities -->
+          <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+            <span>
+              <b>No conformidades</b>
+            </span>
+          </h5>
+          <div class="d-flex flex-row col-m-12 mt-2 mb-0 py-0" style="minHeight: 100px;">
+            <span t-field="maintenance_request.non_conformities" class="mx-2 my-0 py-0"/>
+          </div>
+
+          <!-- Final result -->
+          <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+            <span>
+              <b>Resultado</b>
+            </span>
+          </h5>
+          <div class="d-flex flex-row">
+            <div class="col-m-12 p2">
+              <p>
+                <b>El equipo está de acuerdo con las normas / regulaciones petinentes: </b>
+                <t t-if="maintenance_request.complies_regulation == True">
+                  <b><span class="mx-2" >CONFORME</span></b>
+                </t>
+                <t t-else="">
+                  <b><span class="mx-2" style="color:Red; font-weight:bold;" >NO CONFORME</span></b>
+                </t>
+              </p>
+              <p>
+                <b>Por cuestiones de seguridad es necesaria la intervención del equipo: </b>
+                <t t-if="maintenance_request.complies_regulation == True">
+                  <b><span class="mx-2" style="color:Red; font-weight:bold;" >REQUIERE INTERVENCIÓN</span></b>
+                </t>
+                <t t-else="">
+                  <b><span class="mx-2" >NO REQUIERE ITERVENCIÓN</span></b>
+                </t>
+              </p>
+              
+            </div>
+          </div>
+
+
         </div>
       </t>
     </template>
@@ -1676,31 +1867,6 @@
       </t>
     </template>
 
-    <!-- Template for anexo D title page (without header and footer) -->
-    <template id="lgpm_maintenance.request_vg_report_anexo_d_title">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
-        <div class="page">
-          <div class="header o_header">
-            <t t-out="0" />
-          </div>
-          <div class="container my-5 p-5" style="height: 150px;">
-            <br/>
-          </div>
-          <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
-            <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b>Anexo D</b></h1>
-                <hr/>
-                <p class="mb-0"><i>Tabla resumen NO conformidades encontradas durnate los ensayos.</i></p>
-            </div>
-          </div>
-          <div class="footer o_footer">
-            <t t-out="0" />
-          </div>
-        </div>
-      </t>
-    </template>
-
     <!-- Template for anexo D content -->
     <template id="lgpm_maintenance.request_vg_report_anexo_d_content">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
@@ -1736,88 +1902,6 @@
               </t>
             </tbody>
           </table>
-        </div>
-      </t>
-    </template>
-
-    <!-- Template for anexo E title page (without header and footer) -->
-    <template id="lgpm_maintenance.request_vg_report_anexo_e_title">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
-        <div class="page">
-          <div class="header o_header">
-            <t t-out="0" />
-          </div>
-          <div class="container my-5 p-5" style="height: 150px;">
-            <br/>
-          </div>
-          <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
-            <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b>Anexo E</b></h1>
-                <hr/>
-                <p class="mb-0">
-                  <i>Fotocopias validadas de los Certificados de calibración correspondientes
-                     a los equipos que han sido utilizados durante los ensayos de cualificación.</i>
-                </p>
-            </div>
-          </div>
-          <div class="footer o_footer">
-            <t t-out="0" />
-          </div>
-        </div>
-      </t>
-    </template>
-
-    <!-- Template for anexo F title page (without header and footer) -->
-    <template id="lgpm_maintenance.request_vg_report_anexo_f_title">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
-        <div class="page">
-          <div class="header o_header">
-            <t t-out="0" />
-          </div>
-          <div class="container my-5 p-5" style="height: 150px;">
-            <br/>
-          </div>
-          <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
-            <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b>Anexo F</b></h1>
-                <hr/>
-                <p class="mb-0">
-                  <i>Fotocopias de los Documentos de verificación y control de otros equipos utilizados.</i>
-                </p>
-            </div>
-          </div>
-          <div class="footer o_footer">
-            <t t-out="0" />
-          </div>
-        </div>
-      </t>
-    </template>
-
-    <!-- Template for anexo G title page (without header and footer) -->
-    <template id="lgpm_maintenance.request_vg_report_anexo_g_title">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
-        <div class="page">
-          <div class="header o_header">
-            <t t-out="0" />
-          </div>
-          <div class="container my-5 p-5" style="height: 150px;">
-            <br/>
-          </div>
-          <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
-            <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b>Anexo G</b></h1>
-                <hr/>
-                <p class="mb-0">
-                  <i>Archivo fotográfico completo de los equipos analizados. (Bajo petición).</i>
-                </p>
-            </div>
-          </div>
-          <div class="footer o_footer">
-            <t t-out="0" />
-          </div>
         </div>
       </t>
     </template>
