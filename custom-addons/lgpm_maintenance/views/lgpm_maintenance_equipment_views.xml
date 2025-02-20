@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="lgpm_maintenance_hr_equipment_view_form_inherited">
+      <field name="name">lgpm_maintenance.hr_equipment.form.inherit</field>
+      <field name="model">maintenance.equipment</field>
+      <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='model']" position="before">
+          <field name="manufacture_date" />
+          <field name="equipment_type" />
+          <field name="equipment_use" attrs="{'invisible': [('equipment_type', '!=', 'VG')]}" />
+        </xpath>
+        <xpath expr="//field[@name='effective_date']" position="before">
+          <field name="inventary_number" />
+        </xpath>
+        <xpath expr="//field[@name='warranty_date']" position="after">
+          <field name="owner_id"  domain="[('is_company', '=', True)]"/>
+          <field name="contact_id" domain="[('parent_id', '=', owner_id)]"/>
+        </xpath>
+
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+   <record id="lgpm_maintenance_hr_equipment_action_inherited" model="ir.actions.act_window">
+        <field name="name">Equipments</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="maintenance.hr_equipment_view_kanban"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new equipment
+            </p><p>
+                Track equipments and link it to an employee or department.
+                You will be able to manage allocations, issues and maintenance of your equipment.
+            </p>
+        </field>
+    </record>
+
+
+    <!-- actions -->
+    <menuitem
+      id="maintenance.menu_equipment_form"
+      name="Equipments"
+      parent="maintenance.menu_maintenance_title"
+      action="lgpm_maintenance_hr_equipment_action_inherited"
+      groups="maintenance.group_equipment_manager,base.group_user"
+      sequence="2" />
+
+  </data>
+</odoo>
