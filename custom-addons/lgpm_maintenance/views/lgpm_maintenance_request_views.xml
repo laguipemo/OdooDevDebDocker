@@ -184,7 +184,7 @@
                 <tbody>
                   <tr>
                     <td>
-                      <p>¿ El equipo está de acuerdo con las normas / regulaciones petinentes ?</p>
+                      <p>El equipo está de acuerdo con las normas / regulaciones petinentes: </p>
                     </td>
                     <td>
                       <field name="complies_regulation" nolabel="1" widget="boolean_toggle" />
@@ -192,7 +192,7 @@
                   </tr>
                   <tr>
                     <td>
-                      <p>¿ Por cuestiones de seguridad es necesaria la intervención del equipo ?</p>
+                      <p>Por cuestiones de seguridad es necesaria la intervención del equipo:</p>
                     </td>
                     <td>
                       <field name="needs_intervention" nolabel="1" widget="boolean_toggle" />
