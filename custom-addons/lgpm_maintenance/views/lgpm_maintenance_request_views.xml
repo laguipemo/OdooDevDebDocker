@@ -202,7 +202,18 @@
               </table>
             </group>
 
-            
+            <group name="photos" string="Fotos del equipo" col="12">
+              <group colspan="3" class="d-flex flex-row align-items-center p-4">
+                <field name="photo1" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+              <group colspan="3" class="d-flex flex-row align-items-center p-4">
+                <field name="photo2" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+              <group colspan="3" class="d-flex flex-row align-items-center p-4">
+                <field name="photo3" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+            </group>
+
 
             <group name="signatures" string="Firma de responsabilidad" col="12">
               <group colspan="3" class="d-flex flex-row align-items-center">

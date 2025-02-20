@@ -245,6 +245,30 @@ class LgpmMaintenanceRequest(models.Model):
     needs_intervention = fields.Boolean(
         string="Por cuestiones de seguridad es necesaria la intervención del equipo"
     )
+    photo1 = fields.Image(
+        max_width=200,
+        max_height=200
+    )
+    photo2 = fields.Image(
+        max_width=200,
+        max_height=200
+    )
+    photo3 = fields.Image(
+        max_width=200,
+        max_height=200
+    )
+    photo4 = fields.Image(
+        max_width=200,
+        max_height=200
+    )
+    photo5 = fields.Image(
+        max_width=200,
+        max_height=200
+    )
+    photo6 = fields.Image(
+        max_width=200,
+        max_height=200
+    )
 
 
     sign_admin = fields.Image(
