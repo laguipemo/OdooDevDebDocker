@@ -1822,6 +1822,63 @@
               
             </div>
           </div>
+                    
+          <p style="page-break-after: always;"></p>
+
+          <br/> <!-- Initial space for begining of the new page -->
+
+          <!-- Equipment photos -->
+          <h5 class="alert-heading text-left mt-4 py-0">
+            <span>
+              <b>Fotos del equipo</b>
+            </span>
+          </h5> 
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <div class="col-m-5 p2">
+              <center>
+                <img 
+                  t-attf-src="data:image/*;base64,{{maintenance_request.photo1}}"
+                  t-alt="Foto 1 del equipo"
+                  class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                  style="height: 400px; width: 400px;"/>
+              </center>
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-3"> </p>
+            </div>
+            <div class="col-m-5 p2">
+              <center>
+                <img 
+                  t-attf-src="data:image/*;base64,{{maintenance_request.photo2}}"
+                  t-alt="Foto 1 del equipo"
+                  class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                  style="height: 400px; width: 400px;"/>
+              </center>
+            </div>
+          </div>
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <div class="col-m-5 p2">
+              <center>
+                <img 
+                  t-attf-src="data:image/*;base64,{{maintenance_request.photo3}}"
+                  t-alt="Foto 1 del equipo"
+                  class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                  style="height: 400px; width: 400px;"/>
+              </center>
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-3"> </p>
+            </div>
+            <div class="col-m-5 p2">
+              <center>
+                <img 
+                  t-attf-src="data:image/*;base64,{{maintenance_request.photo4}}"
+                  t-alt="Foto 1 del equipo"
+                  class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                  style="height: 400px; width: 400px;"/>
+              </center>
+            </div>
+          </div>
 
 
         </div>
