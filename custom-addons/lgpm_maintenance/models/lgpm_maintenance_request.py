@@ -284,24 +284,6 @@ class LgpmMaintenanceRequest(models.Model):
         max_height=200
     )
 
-
-    fig1_intro_vg = fields.Image(
-        max_width=200,
-        max_height=200,
-        default=lambda self:self.get_default_image('fig1_intro_vg.png')
-    )
-    fig2_intro_vg = fields.Image(
-        max_width=200,
-        max_height=200,
-        default=lambda self:self.get_default_image('fig2_intro_vg.png')
-    )
-    fig3_intro_vg = fields.Image(
-        max_width=200,
-        max_height=200,
-        default=lambda self:self.get_default_image('fig3_intro_vg.png')
-    )
-
-
     @api.depends('equipment_id')
     def _compute_equipment_type(self):
         for maintenance_request in self:

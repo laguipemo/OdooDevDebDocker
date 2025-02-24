@@ -217,17 +217,6 @@
               </group>
             </group>
 
-            <group name="images_intro" string="Imágenes para intro" col="12">
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="fig1_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="fig2_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="fig3_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-            </group>
             <!-- </div> -->
           </page>
         </xpath>
