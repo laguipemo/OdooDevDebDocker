@@ -234,6 +234,11 @@
                 <td>
                   <div>
                     <center>
+                      <!-- <img
+                        t-attf-src="data:image/*;base64,{{maintenance_request.sign_sat}}"
+                        t-alt="Firma del responsable SAT" 
+                        class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                        height="90" width="90" /> -->
                       <img
                         t-attf-src="data:image/*;base64,{{maintenance_request.sign_sat}}"
                         t-alt="Firma del responsable SAT" 

@@ -1,1 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lgpm_maintenance_sat_signatures,lgpm_maintenance.sat_signatures,model_lgpm_maintenance_sat_signatures,base.group_user,1,1,1,1
