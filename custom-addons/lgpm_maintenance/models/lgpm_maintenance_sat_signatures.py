@@ -7,7 +7,7 @@ class LgpmMaintenanceSatSignatures(models.Model):
     _name = 'lgpm_maintenance.sat_signatures'
     _description = 'Sat resposabilities signatures'
 
-    RESPONSABILITIES = [
+    POSITIONS = [
         ('admin', 'Administración'),
         ('sat', 'Responsable SAT'),
         ('prev', 'Responsable Prevención'),
@@ -17,9 +17,9 @@ class LgpmMaintenanceSatSignatures(models.Model):
         string='Nombre del firmante',
         required=True,
     )
-    responsability = fields.Selection(
-        string='Responsabilidad',
-        selection=RESPONSABILITIES,
+    position = fields.Selection(
+        string='Cargo',
+        selection=POSITIONS,
         required=True
     )
     signature = fields.Image(

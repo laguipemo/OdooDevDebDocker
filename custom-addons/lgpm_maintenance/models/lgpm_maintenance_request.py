@@ -20,6 +20,20 @@ class LgpmMaintenanceRequest(models.Model):
             ('F', 'FALTA LEVE'),
             ('RR', 'REQUIERE REPARACIÓN')
         ]
+
+    def get_info_about(self, position):
+        record_info=self.env['lgpm_maintenance.sat_signatures'].search(
+            [('position', '=', position)]
+        )
+        return (record_info.name, record_info.signature)
+
+    def get_resource_of(self, name):
+        record_info=self.env['lgpm_maintenance.sat_report_resources'].search(
+            [('name', '=', name)]
+        )
+        return (record_info.name, record_info.title, record_info.figure)
+
+
     def get_default_image(self, image_name):
         image_path = os.path.join(
             os.path.dirname(__file__), '../static/src/img', image_name)
@@ -271,24 +285,6 @@ class LgpmMaintenanceRequest(models.Model):
     )
 
 
-    sign_admin = fields.Image(
-        string='Firma administrador',
-        max_width=200,
-        max_height=200,
-        default=lambda self: self.get_default_image('sign_admin.png')
-    )
-    sign_sat = fields.Image(
-        string='Firma SAT',
-        max_width=200,
-        max_height=200,
-        default=lambda self: self.get_default_image('sign_sat.png')
-    )
-    sign_prev = fields.Image(
-        string='Firma prevención',
-        max_width=200,
-        max_height=200,
-        default=lambda self: self.get_default_image('sign_prev.png')
-    )
     fig1_intro_vg = fields.Image(
         max_width=200,
         max_height=200,
