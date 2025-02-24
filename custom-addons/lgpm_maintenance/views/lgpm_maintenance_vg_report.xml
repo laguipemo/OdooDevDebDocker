@@ -1812,7 +1812,7 @@
               </p>
               <p>
                 <b>Por cuestiones de seguridad es necesaria la intervención del equipo: </b>
-                <t t-if="maintenance_request.complies_regulation == True">
+                <t t-if="maintenance_request.needs_intervention == True">
                   <b><span class="mx-2" style="color:Red; font-weight:bold;" >REQUIERE INTERVENCIÓN</span></b>
                 </t>
                 <t t-else="">
