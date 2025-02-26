@@ -28,6 +28,7 @@
     <menuitem id="lgpm_maintenance_menu_sat_signatures"
         action="lgpm_maintenance.sat_signatures_action_window"
         parent="maintenance.menu_maintenance_configuration"
-        sequence="20" />
+        sequence="20"
+        groups="lgpm_maintenance.lgpm_maintenance_group_admins" />
   </data>
 </odoo>

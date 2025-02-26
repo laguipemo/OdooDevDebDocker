@@ -3,7 +3,7 @@
         <!-- New category for the Soporte module, specifically for users access -->
         <record id="lgpm_maintenance_category_users_access" model="ir.module.category">
             <field name="name">Mantenimineto SAT</field>
-            <field name="description">Gestión de usuarios para el los mantenimiento SAT</field>
+            <field name="description">Gestión de usuarios para los informes mantenimiento SAT</field>
             <field name="sequence">100</field>
         </record>
 
@@ -22,7 +22,7 @@
         <record id="lgpm_maintenance_group_admins" model="res.groups">
             <field name="name">Usuarios administradores informes</field>
             <field name="category_id" ref="lgpm_maintenance_category_users_access"/>
-            <field name="comment">Usuarios administadores para Soporte</field>
+            <field name="comment">Usuarios administadores para los informes</field>
             <!-- Add the same permissions that have the users of the group "base.user_admin" -->
             <field name="users" eval="[(4,ref('base.user_admin'))]"/>
             <!-- Add the same permissions that have the users of the group "soporte_group_users" -->
