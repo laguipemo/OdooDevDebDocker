@@ -17,8 +17,8 @@
 
     <!-- actions opening views on models -->
 
-    <record model="ir.actions.act_window" id="lgpm_maintenance.sat_signatures_action_window">
-      <field name="name">Firmas Mantenimiento SAT</field>
+    <record model="ir.actions.act_window" id="lgpm_maintenance_sat_signatures_action_window">
+      <field name="name">Firmas Informe Mantenimiento SAT</field>
       <field name="res_model">lgpm_maintenance.sat_signatures</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -26,9 +26,9 @@
     <!-- actions -->
     
     <menuitem id="lgpm_maintenance_menu_sat_signatures"
-        action="lgpm_maintenance.sat_signatures_action_window"
+        action="lgpm_maintenance_sat_signatures_action_window"
         parent="maintenance.menu_maintenance_configuration"
         sequence="20"
-        groups="lgpm_maintenance.lgpm_maintenance_group_admins" />
+        groups="lgpm_maintenance_group_admin" />
   </data>
 </odoo>
