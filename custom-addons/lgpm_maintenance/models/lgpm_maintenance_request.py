@@ -5,8 +5,6 @@ import os
 import base64
 
 
-
-
 class LgpmMaintenanceRequest(models.Model):
     _name = 'maintenance.request'
     _inherit = ['maintenance.request']
@@ -22,6 +20,19 @@ class LgpmMaintenanceRequest(models.Model):
             ('F', 'FALTA LEVE'),
             ('RR', 'REQUIERE REPARACIÓN')
         ]
+
+    def get_info_about(self, position):
+        record_info=self.env['lgpm_maintenance.sat_signatures'].search(
+            [('position', '=', position)]
+        )
+        return (record_info.name, record_info.signature)
+
+    def get_resource_of(self, name):
+        record_info=self.env['lgpm_maintenance.sat_report_resources'].search(
+            [('name', '=', name)]
+        )
+        return (record_info.name, record_info.title, record_info.figure)
+
 
     def get_default_image(self, image_name):
         image_path = os.path.join(
@@ -89,13 +100,13 @@ class LgpmMaintenanceRequest(models.Model):
     sat_digital_ctrl = fields.Selection(
         string='Control digital',
         selection=VERIFICATION_SELECTION,
-        default='NO'
+        default='N'
     )
 
     sat_extraction_sys = fields.Selection(
         string='Sistema de extracción',
         selection=VERIFICATION_SELECTION,
-        default='NO'
+        default='N'
     )
     requirements_partner = fields.Text(
         string='Requerimientos fabricante',
@@ -248,42 +259,30 @@ class LgpmMaintenanceRequest(models.Model):
     needs_intervention = fields.Boolean(
         string="Por cuestiones de seguridad es necesaria la intervención del equipo"
     )
-
-
-    sign_admin = fields.Image(
-        string='Firma administrador',
+    photo1 = fields.Image(
         max_width=200,
-        max_height=200,
-        default=lambda self: self.get_default_image('sign_admin.png')
+        max_height=200
     )
-    sign_sat = fields.Image(
-        string='Firma SAT',
+    photo2 = fields.Image(
         max_width=200,
-        max_height=200,
-        default=lambda self: self.get_default_image('sign_sat.png')
+        max_height=200
     )
-    sign_prev = fields.Image(
-        string='Firma prevención',
+    photo3 = fields.Image(
         max_width=200,
-        max_height=200,
-        default=lambda self: self.get_default_image('sign_prev.png')
+        max_height=200
     )
-    fig1_intro_vg = fields.Image(
+    photo4 = fields.Image(
         max_width=200,
-        max_height=200,
-        default=lambda self:self.get_default_image('fig1_intro_vg.png')
+        max_height=200
     )
-    fig2_intro_vg = fields.Image(
+    photo5 = fields.Image(
         max_width=200,
-        max_height=200,
-        default=lambda self:self.get_default_image('fig2_intro_vg.png')
+        max_height=200
     )
-    fig3_intro_vg = fields.Image(
+    photo6 = fields.Image(
         max_width=200,
-        max_height=200,
-        default=lambda self:self.get_default_image('fig3_intro_vg.png')
+        max_height=200
     )
-
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):

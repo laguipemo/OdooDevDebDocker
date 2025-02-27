@@ -199,11 +199,12 @@
             </thead>
             <tbody class="text-center">
               <tr>
+                <t t-set="admin_info" t-value="maintenance_request.get_info_about('admin')" />
                 <td class="align-middle">
                   <b>Redacción</b>
                 </td>
                 <td class="align-middle">
-                  <b>Marisa Villar Neo</b>
+                  <b><span t-out="admin_info[0]" /></b>
                 </td>
                 <td class="align-middle">
                   <b>Administración</b>
@@ -212,7 +213,7 @@
                   <div>
                     <center>
                       <img 
-                        t-attf-src="data:image/*;base64,{{maintenance_request.sign_admin}}"
+                        t-attf-src="data:image/*;base64,{{admin_info[1]}}"
                         t-alt="Firma de la administración"
                         class="img img-fluid o_we_custom_image o_modified_image_to_save" 
                         style="max-height: 90px;"/>
@@ -222,11 +223,12 @@
                 </td>
               </tr>
               <tr>
+                <t t-set="sat_info" t-value="maintenance_request.get_info_about('sat')" />
                 <td class="align-middle">
                   <b>Revisión</b>
                 </td>
                 <td class="align-middle">
-                  <b>Lázaro Guillermo Pérez Montoto</b>
+                  <b><span t-out="sat_info[0]" /></b>
                 </td>
                 <td class="align-middle">
                   <b>Responsable SAT</b>
@@ -235,7 +237,7 @@
                   <div>
                     <center>
                       <img
-                        t-attf-src="data:image/*;base64,{{maintenance_request.sign_sat}}"
+                        t-attf-src="data:image/*;base64,{{sat_info[1]}}"
                         t-alt="Firma del responsable SAT" 
                         class="img img-fluid o_we_custom_image o_modified_image_to_save"
                         height="90" width="90" />
@@ -245,11 +247,12 @@
                 </td>
               </tr>
               <tr>
+                <t t-set="prev_info" t-value="maintenance_request.get_info_about('prev')" />
                 <td class="align-middle">
                   <b>Revisión</b>
                 </td>
                 <td class="align-middle">
-                  <b>Rafael Romero</b>
+                  <b><span t-out="prev_info[0]" /></b>
                 </td>
                 <td class="align-middle">
                   <b>Técnico Prevención</b>
@@ -258,7 +261,7 @@
                   <div>
                     <center>
                       <img
-                        t-attf-src="data:image/*;base64,{{maintenance_request.sign_prev}}"
+                        t-attf-src="data:image/*;base64,{{prev_info[1]}}"
                         t-alt="Firma del responsable prevención" 
                         class="img img-fluid o_we_custom_image o_modified_image_to_save"
                         height="90" width="90" />
@@ -621,14 +624,15 @@
           </p>
           <!-- Figure 1 Anemometer reading -->
           <figure class="figure col-12">
+            <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 1')" />
             <center>
-              <img t-attf-src="data:image/*;base64,{{maintenance_request.fig1_intro_vg}}"
-                t-alt="Figutra 1: Lectura con anemómetro"
+              <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
+                t-alt="Figura 1: Lectura con anemómetro"
                 class="img img-fluid o_we_custom_image o_modified_image_to_save"
                 style="width: 60%; height: 300px" />
             </center>
             <figcaption class="figure-caption text-center mt-2">
-              <b>Figura 1:</b> <i>Lectura con anemómetro</i>
+              <b><span t-out="figura_info[0]" /> :</b> <i><span t-out="figura_info[1]" /></i>
             </figcaption>
           </figure>
           <!-- Test with anemometer, more precedure info -->
@@ -648,27 +652,29 @@
           <div class="d-flex flex-row justify-content-between col-12 p-2" >
             <div class="col-8 p-2">
               <figure class="figure w-100" >
+                <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 2')" />
                 <center>  
-                  <img t-attf-src="data:image/*;base64,{{maintenance_request.fig2_intro_vg}}"
+                  <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
                     t-alt="Figura 2: Distribución de puntos de lectrua frontal"
                     class="img img-fluid o_we_custom_image o_modified_image_to_save"
                     style="width: 100%; height: 300px" />
                 </center>
                 <figcaption class="figure-caption text-center mt-2">
-                  <b>Figura 2:</b> <i>Distribución de puntos de lectrua frontal</i>
+                  <b><span t-out="figura_info[0]" />:</b> <i><span t-out="figura_info[1]" /></i>
                 </figcaption>
               </figure>
             </div>
             <div class="col-4 p-2">
               <figure class="figure w-100">
+                <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 3')" /> 
                 <center>  
-                  <img t-attf-src="data:image/*;base64,{{maintenance_request.fig3_intro_vg}}"
+                  <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
                     t-alt="Figura 3: Detalle de trípode con anemómetro"
                     class="img img-fluid o_we_custom_image o_modified_image_to_save"
                     style="width: 100%; height: 300px" />
                 </center>
                 <figcaption class="figure-caption text-center mt-2">
-                  <b>Figura 3:</b> <i>Trípode con anemómetro</i>
+                  <b><span t-out="figura_info[0]" />:</b> <i><span t-out="figura_info[1]" /></i>
                 </figcaption>
               </figure>
             </div>
@@ -1812,7 +1818,7 @@
               </p>
               <p>
                 <b>Por cuestiones de seguridad es necesaria la intervención del equipo: </b>
-                <t t-if="maintenance_request.complies_regulation == True">
+                <t t-if="maintenance_request.needs_intervention == True">
                   <b><span class="mx-2" style="color:Red; font-weight:bold;" >REQUIERE INTERVENCIÓN</span></b>
                 </t>
                 <t t-else="">
@@ -1822,7 +1828,88 @@
               
             </div>
           </div>
+                    
+          <p style="page-break-after: always;"></p>
 
+          <br/> <!-- Initial space for begining of the new page -->
+
+          <!-- Equipment photos -->
+          <h5 class="alert-heading text-left mt-3 py-0">
+            <span>
+              <b>Fotos del equipo</b>
+            </span>
+          </h5> 
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <t t-if="maintenance_request.photo1">
+              <t t-set="photo1" t-value="maintenance_request.photo1"/>
+            </t>
+            <t t-else="">
+              <t t-set="photo1" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+            </t>
+            <div class="col-m-5 p2 border border-success">
+              <div t-attf-style="background-image: url(data:image/*;base64,{{photo1}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-3"> </p>
+            </div>
+            <t t-if="maintenance_request.photo2">
+              <t t-set="photo2" t-value="maintenance_request.photo2"/>
+            </t>
+            <t t-else="">
+              <t t-set="photo2" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+            </t>
+            <div class="col-m-5 p2 border border-success">
+              <div t-attf-style="background-image: url(data:image/*;base64,{{photo2}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+            </div>
+          </div>
+
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <t t-if="maintenance_request.photo3">
+              <t t-set="photo3" t-value="maintenance_request.photo3"/>
+            </t>
+            <t t-else="">
+              <t t-set="photo3" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+            </t>
+            <div class="col-m-5 p2 border border-success">
+              <div t-attf-style="background-image: url(data:image/*;base64,{{photo3}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-3"> </p>
+            </div>
+            <t t-if="maintenance_request.photo4">
+              <t t-set="photo4" t-value="maintenance_request.photo4"/>
+            </t>
+            <t t-else="">
+              <t t-set="photo4" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+            </t>
+            <div class="col-m-5 p2 border border-success">
+              <div t-attf-style="background-image: url(data:image/*;base64,{{photo4}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+            </div>
+          </div>
+
+          <div class="d-flex flex-row col-m-12 mt-4">
+            <t t-if="maintenance_request.photo5">
+              <t t-set="photo5" t-value="maintenance_request.photo5"/>
+            </t>
+            <t t-else="">
+              <t t-set="photo5" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+            </t>
+            <div class="col-m-5 p2 border border-success">
+              <div t-attf-style="background-image: url(data:image/*;base64,{{photo5}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+            </div>
+            <div class="col-m-2 p2">
+              <p class="mx-3"> </p>
+            </div>
+            <t t-if="maintenance_request.photo6">
+              <t t-set="photo6" t-value="maintenance_request.photo6"/>
+            </t>
+            <t t-else="">
+              <t t-set="photo6" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+            </t>
+            <div class="col-m-5 p2 border border-success">
+              <div t-attf-style="background-image: url(data:image/*;base64,{{photo6}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+            </div>
+          </div>
 
         </div>
       </t>
