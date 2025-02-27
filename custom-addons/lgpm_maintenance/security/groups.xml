@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <!-- New category for the Soporte module, specifically for users access -->
+        <record id="lgpm_maintenance_category_users_access" model="ir.module.category">
+            <field name="name">Mantenimineto SAT</field>
+            <field name="description">Gestión de usuarios para los informes mantenimiento SAT</field>
+            <field name="sequence">100</field>
+        </record>
+
+        <!-- New group of users for he Soporte module, specifically for users
+        that only have access for consulting the information -->
+        <record id="lgpm_maintenance_group_user" model="res.groups">
+            <field name="name">Usuario generandor informes</field>
+            <field name="category_id" ref="lgpm_maintenance_category_users_access"/>
+            <field name="comment">Usuarios que solo pueden generar informes de manteniento</field>
+            <!-- Add the same permissions that have the users of the group "base.group_user" -->
+            <field name="users" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+        <!-- New group of users for he Soporte module, specifically for users
+        that can make changes to the information (e.g. create, update, delete) -->
+        <record id="lgpm_maintenance_group_admin" model="res.groups">
+            <field name="name">Usuario administrador de informes</field>
+            <field name="category_id" ref="lgpm_maintenance_category_users_access"/>
+            <field name="comment">Usuarios que pueden generar firmas y recursos para los informes</field>
+            <!-- Add the same permissions that have the users of the group "base.user_admin" -->
+            <field name="users" eval="[(4,ref('base.user_admin'))]"/>
+            <!-- Add the same permissions that have the users of the group "soporte_group_users" -->
+            <field name="implied_ids" eval="[(4,ref('lgpm_maintenance_group_user'))]"/>
+        </record>
+    </data>
+</odoo>

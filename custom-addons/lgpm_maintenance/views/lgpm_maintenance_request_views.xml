@@ -178,7 +178,7 @@
             </group>
 
             <group name="results" string="Resultado" col="12">
-              <table class="table table-bordered text-left" colspan="8" >
+              <table class="table table-bordered text-left" colspan="10" >
                 <thead>
                 </thead>
                 <tbody>
@@ -202,30 +202,27 @@
               </table>
             </group>
 
-            
+            <group name="photos" string="Fotos del equipo" col="12">
+              <group colspan="2" class="d-flex flex-row align-items-center p-4">
+                <field name="photo1" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+              <group colspan="2" class="d-flex flex-row align-items-center p-4">
+                <field name="photo2" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+              <group colspan="2" class="d-flex flex-row align-items-center p-4">
+                <field name="photo3" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+              <group colspan="2" class="d-flex flex-row align-items-center p-4">
+                <field name="photo4" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+              <group colspan="2" class="d-flex flex-row align-items-center p-4">
+                <field name="photo5" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+              <group colspan="2" class="d-flex flex-row align-items-center p-4">
+                <field name="photo6" widget="image" nolabel="1" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 100px;" />
+              </group>
+            </group>
 
-            <group name="signatures" string="Firma de responsabilidad" col="12">
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="sign_admin" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="sign_sat" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="sign_prev" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-            </group>
-            <group name="images_intro" string="Imágenes para intro" col="12">
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="fig1_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="fig2_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-              <group colspan="3" class="d-flex flex-row align-items-center">
-                <field name="fig3_intro_vg" widget="image" class="img img-fluid o_we_custom_image o_modified_image_to_save" style="max-width: 60px;" />
-              </group>
-            </group>
             <!-- </div> -->
           </page>
         </xpath>
