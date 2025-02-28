@@ -246,12 +246,10 @@ class LgpmMaintenanceRequest(models.Model):
         default=0.0
     )
     observations = fields.Html(
-        string="Observaciones",
-        placeholder="Introduce las observaciones a reflejar en el informe"
+        string="Observaciones"
     )
     non_conformities = fields.Html(
-        string="No conformidades",
-        placeholder="Introduce las No conformidades a reflejar en el informe"
+        string="No conformidades"
     )
     complies_regulation = fields.Boolean(
         string="El equipo está de acuerdo con las normas / regulaciones petinentes"
