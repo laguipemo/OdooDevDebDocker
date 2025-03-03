@@ -11,7 +11,7 @@ class LgpmMaintenanceRequest(models.Model):
     _description = 'lgpm_maintenance.request'
 
     """ def maintenance_request_report_button(self):
-        return self.env.ref('lgpm_maintenance_request_vg_action_report').report_action(self) """
+        return self.env.ref('lgpm_maintenance_request_final_action_report').report_action(self) """
     
     VERIFICATION_SELECTION = [
             ('N', ''),
