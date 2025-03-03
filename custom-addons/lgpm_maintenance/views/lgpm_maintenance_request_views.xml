@@ -171,10 +171,20 @@
             </group>
 
             <group name="observations_group" string="Observaciones" col="12">
-              <field name="observations" widget="html" nolabel="1" colspan="12" />
+              <field 
+                  name="observations" 
+                  widget="html" 
+                  placeholder="Introduce las observaciones a reflejar en el informe" 
+                  nolabel="1" 
+                  colspan="12" />
             </group>
             <group name="no_conformities_group" string="No conformidades" col="12">
-              <field name="non_conformities" widget="html" nolabel="1" colspan="12" />
+              <field 
+                  name="non_conformities" 
+                  widget="html"
+                  placeholder="Introduce las No conformidades a reflejar en el informe" 
+                  nolabel="1" 
+                  colspan="12" />
             </group>
 
             <group name="results" string="Resultado" col="12">
