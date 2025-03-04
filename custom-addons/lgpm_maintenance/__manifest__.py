@@ -29,9 +29,9 @@
         'views/lgpm_maintenance_equipment_views.xml',
         'views/lgpm_maintenance_request_views.xml',
         'views/lgpm_maintenance_request_purchase_views.xml',
-        'views/lgpm_maintenance_final_report.xml',
         'views/lgpm_maintenance_sat_signatures_views.xml',
         'views/lgpm_maintenance_sat_report_resources_views.xml',
+        'reports/lgpm_maintenance_final_report.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
