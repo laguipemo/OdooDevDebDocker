@@ -31,6 +31,7 @@
         'views/lgpm_maintenance_request_purchase_views.xml',
         'views/lgpm_maintenance_sat_signatures_views.xml',
         'views/lgpm_maintenance_sat_report_resources_views.xml',
+        'reports/template_theoretical_intro_vg_report.xml',
         'reports/lgpm_maintenance_final_report.xml',
         'views/templates.xml',
     ],
