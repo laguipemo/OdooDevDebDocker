@@ -566,9 +566,9 @@
             <p style="text-align: justify;">
                 Demostrar la ausencia de fugas en los filtros absolutos:
                 <ul>
-                    <li>En la junta situada entre el marco del filtro y el módulo.</li>
-                    <li>Entre el medio filtrante y el marco del filtro</li> 
-                    <li>En el medio filtrante.</li>
+                    <li class="py-1">En la junta situada entre el marco del filtro y el módulo.</li>
+                    <li class="py-1">Entre el medio filtrante y el marco del filtro</li> 
+                    <li class="py-1">En el medio filtrante.</li>
                 </ul>
             </p>
             <!-- Test of filters integrity equipment title -->
@@ -580,9 +580,9 @@
             <!-- Test of filters integrity equipment content -->
             <p style="text-align: justify;">
                 <ul>
-                    <li>Generador de partículas.</li>
-                    <li>Fotómetro detector.</li>
-                    <li>Aceite Emery 3004 o Di-Ethyl-Hexyl-Sebacat.</li>
+                    <li class="py-1">Generador de partículas.</li>
+                    <li class="py-1">Fotómetro detector.</li>
+                    <li class="py-1">Aceite Emery 3004 o Di-Ethyl-Hexyl-Sebacat.</li>
                 </ul>
             </p>
             <!-- Test of filters integrity procedure title -->
@@ -596,11 +596,11 @@
                 Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0007-Cabinas de flujo Laminar y
                 Seguridad Biológica basado en las siguientes normativas: UNE EN 12469.<br/>
                 <ul>
-                    <li>Inyectar aerosol en la corriente de aire antes del filtro y ajustar la escala del 100% con
+                    <li class="py-1">Inyectar aerosol en la corriente de aire antes del filtro y ajustar la escala del 100% con
                         este aerosol
                      </li>
-                    <li>Medir con el fotómetro detector la concentración del aerosol después del filtro.</li>
-                    <li>Medir alrededor de toda la periferia del filtro, juntas y rastrear su superficie.</li>
+                    <li class="py-1">Medir con el fotómetro detector la concentración del aerosol después del filtro.</li>
+                    <li class="py-1">Medir alrededor de toda la periferia del filtro, juntas y rastrear su superficie.</li>
                 </ul>
             </p>
             <!-- Test of filters integrity acceptance criterias title -->
@@ -761,7 +761,7 @@
             </h6>
             <!-- Acceptance criterias by long and regulation -->
             <ul>
-                <li>
+                <li class="py-1">
                     Para las cabinas de seguridad biológica (CSM), según normativa ISO 12469:<br/>
                     La velocidad será la indicada en la siguiente tabla en función de la clase de cabina de seguridad.
                     <table class="table table-borderless caption-top mt-2">
@@ -798,17 +798,17 @@
                         </tbody>
                     </table>
                 </li>
-                <li>
+                <li class="py-1">
                     Para las cabinas y módulos de flujo laminar (excepto CSM):<br/>
                     Si se debe cumplir con GMP, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
                     Si no se requiere cumplir con GMP. Criterio <b>INFORMATIVO</b>
                 </li>
-                <li>
+                <li class="py-1">
                     Para cabinas de exgtracción con filtro de carbón activo, según normativa AFNOR NFX 15-215:<br/>
                     La velocidad media de extracción estará dentro del intervalo 0,4m/s y 0,6 m/s, de acuerdo con
                     lo establecido en la Norma NFX 15-211.
                 </li>
-                <li>
+                <li class="py-1">
                     Para vitrinas de aspiración y cabinas de extracción:<br/>
                     La velocidad frontal del aire debería estar entre los valores 0,3m/s y 2m/S basado en lo
                     establecido en la Norma ISO 14175-3 y otras normas similares.
@@ -858,16 +858,16 @@
                 y Seguridad Biológica basado en las siguientes normativas: ISO 14644-1, une 100713 y la revisión
                 vigente del Anexo 1 delas GMP:<br/>
                 <ul>
-                    <li>
+                    <li class="py-1">
                         Se realizará el montaje de partículas en condiciones “en reposo”. Se entiende por situación
                         del equipo “en reposo” cuando todo el sistema de aire está funcionando pero sin presencia del
                         personal de producción.
                     </li>
-                    <li>
+                    <li class="py-1">
                         El número de localizaciones y el volumen de muestreo se determinarán según lo establecido
                         en la normativa y en el procedimiento interno.
                     </li>
-                    <li>Los montajes se realizarán a la altura de trabajo.</li>
+                    <li class="py-1">Los montajes se realizarán a la altura de trabajo.</li>
                 </ul>
             </p>
             <p style="text-align: justify;">
