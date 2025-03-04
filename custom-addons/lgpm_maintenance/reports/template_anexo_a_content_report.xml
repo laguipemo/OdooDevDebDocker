@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data >
+        <!-- Template for the anexo A content  -->
+        <template id="lgpm_maintenance.request_maintenance_final_report_anexo_a_content">
+        <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+        <t t-call="web.external_layout" >
+            <div class="page">
+            <br/> <!-- Initial space for begining of the new page -->
+            <table class="table table-bordered caption-top mt-2">
+                <caption><b>Tabla:</b> Resumen de datos correspondientes a los equipos cualificados.</caption>
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">Marca</th>
+                    <th scope="col" class="text-center">Modelo</th>
+                    <th scope="col" class="text-center">Referencia</th>
+                </tr>
+                </thead>
+                <tbody>
+                <t t-foreach="docs" t-as="mr">
+                    <tr>
+                    <td class="text-center">
+                        <span t-field="mr.partner_id" class="mx-2" />
+                    </td>
+                    <td class="text-center">
+                        <span  t-field="mr.partner_ref" class="mx-2" />
+                    </td>
+                    <td class="text-center">
+                        <span   t-field="mr.lot_id" class="mx-2" />
+                    </td>
+                    </tr>
+                </t>
+                </tbody>
+            </table>
+            </div>
+        </t>
+        </template>
+
+    </data>
+</odoo>
