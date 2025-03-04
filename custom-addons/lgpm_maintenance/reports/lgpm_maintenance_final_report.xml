@@ -10,7 +10,7 @@
       <field name="report_file">lgpm_maintenance.request_maintenance_final_report</field>
       <field name="binding_model_id" ref="model_maintenance_request" />
 
-      <field name="print_report_name">'Informe VG - %s' %(object.name)</field>
+      <field name="print_report_name">'Informe - %s' %(object.name)</field>
     </record>
 
 
