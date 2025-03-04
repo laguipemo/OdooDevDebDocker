@@ -70,31 +70,6 @@
       </t>
     </template>
 
-    <!-- Template for the anexos title page (without header and footer)-->
-    <template id="lgpm_maintenance.request_maintenance_final_report_anexo_title">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.basic_layout">
-        <div class="page">
-          <div class="header o_header">
-            <t t-out="0" /> 
-          </div>
-          <div class="container my-5 p-5" style="height: 150px;">
-            <br/>
-          </div>
-          <div class="d-flex row justify-content-center align-items-center col-m-4 my-5 py-5 text-center">
-            <div class="alert alert-success" role="alert">
-                <h1 class="alert-heading text-center my-5 py-5"><b><t t-out="anexo"/></b></h1>
-                <hr/>
-                <p class="mb-0"><i><t t-out="title"/></i></p>
-            </div>
-          </div>
-          <div class="footer o_footer">
-            <t t-out="0" /> 
-          </div>
-        </div>
-      </t>
-    </template>
-
     <!-- Template for the anexo A content  -->
     <template id="lgpm_maintenance.request_maintenance_final_report_anexo_a_content">
       <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
