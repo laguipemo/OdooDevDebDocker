@@ -236,7 +236,7 @@
                 </li>
                 <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN </span>N</div>
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN </span></div>
                     <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
                     </div>
                 </li>
@@ -250,31 +250,31 @@
                     <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
                             <div class="col-11 ps-2"><span class="ms-2 ps-0">4.2. TEST DE INTEGRIDAD EN FILTROS ABSOLUTOS HEPA/ULPA </span></div>
-                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
                             <div class="col-11 ps-2"><span class="ms-2 ps-0">4.3. ENSAYO DE VELOCIDAD Y UNIFORMIDAD DEL AIRE </span></div>
-                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">5</span></div>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
                             <div class="col-11 ps-2"><span class="ms-2 ps-0">4.4. CONTAJE DE PARTÍCULAS </span></div>
-                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">10</span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">8</span></div>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
                             <div class="col-11 ps-2"><span class="ms-2 ps-0">4.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE </span></div>
-                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">10</span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
                         </div>
                     </li>
                     <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
                             <div class="col-11 ps-2"><span class="ms-2 ps-0">4.6. TEMPERATURA </span></div>
-                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">10</span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
                         </div>
                     </li>
                     <li>
@@ -293,39 +293,39 @@
                 <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
                     <div class="col-11 ps-0"><span class="ms-0 ps-0">5. DETALLES DE LOS VALORES OBTENIDOS</span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">14</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                     </div>
                 </li>
                 <ul class="list-unstyled">
                     <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
                         <div class="col-11 ps-2"><span class="ms-2 ps-0">5.1. DETALLES DE LOS RESULTADOS </span></div>
-                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">15</span></div>
+                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                     </div>
                     </li>
                     <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
                         <div class="col-11 ps-2"><span class="ms-2 ps-0">5.2. DICTAMEN FINAL </span></div>
-                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">15</span></div>
+                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                     </div>
                     </li>
                 </ul>
                 <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
                     <div class="col-11 ps-0"><span class="ms-0 ps-0">6. OBSERVACIONES </span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">16</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                     </div>
                 </li>
                 <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
                     <div class="col-11 ps-0"><span class="ms-0 ps-0">7. LISTADO DE NO CONFORMIDADES </span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">16</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                     </div>
                 </li>
                 <li>
                     <div class="d-flex flex-row justify-content-between col-12 py-1">
                     <div class="col-11 ps-0"><span class="ms-0 ps-0">8. LISTADO DE ANEXOS </span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">17</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
                     </div>
                 </li>
                 </ul>
@@ -487,7 +487,7 @@
             <!-- Tests performed title -->
             <h5 name="ensayos_criterios" class="alert-heading text-left mt-4 py-0">
                 <span>
-                <b>4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN</b>
+                    <b>4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN</b>
                 </span>
             </h5>
             <!-- Tests performed content -->
@@ -502,7 +502,7 @@
             <!-- Test visual verification of the general physical condition of the equipment -->
             <h5 name="uniformidad_aire" class="alert-heading text-left mt-4 py-0">
                 <span>
-                <b>4.1. VERIFICACIÓN FÍSICA GENERAL DEL EQUIPO</b>
+                    <b>4.1. VERIFICACIÓN FÍSICA GENERAL DEL EQUIPO</b>
                 </span>
             </h5>
             <!-- Test visual verification ... objective -->
@@ -553,7 +553,7 @@
             <!-- Test of filters integrity title -->
             <h5 name="uniformidad_aire" class="alert-heading text-left mt-4 py-0">
                 <span>
-                <b>4.2. TEST DE INTEGRIDAD EN FILTROS ABSOLUTOS HEPA/ULPA</b>
+                 <b>4.2. TEST DE INTEGRIDAD EN FILTROS ABSOLUTOS HEPA/ULPA</b>
                 </span>
             </h5>
             <!-- Test of filters integrity objective title -->
@@ -585,8 +585,13 @@
                     <li class="py-1">Aceite Emery 3004 o Di-Ethyl-Hexyl-Sebacat.</li>
                 </ul>
             </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
             <!-- Test of filters integrity procedure title -->
-            <h6>
+            <h6 class="alert-heading text-left mt-4 py-0">
                 <span>
                 <b>Procedimiento:</b>
                 </span>
@@ -718,8 +723,12 @@
                 </div>
             </div>
 
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
             <!-- Caudal measurement tile -->
-            <h6>
+            <h6 class="alert-heading text-left mt-4 py-0">
                 <span>
                 <b>Medida del caudal de extracción:</b>
                 </span>
@@ -749,10 +758,6 @@
                 con cinta u otro material apropiado dicho hueco mientras se ejecuta el ensayo.
             </p>
 
-            <p style="page-break-after: always;"></p>
-            
-            <br/> <!-- Initial space for begining of the new page -->
-
             <!-- Acceptance criterias title -->
             <h6 >
                 <span>
@@ -763,7 +768,10 @@
             <ul>
                 <li class="py-1">
                     Para las cabinas de seguridad biológica (CSM), según normativa ISO 12469:<br/>
-                    La velocidad será la indicada en la siguiente tabla en función de la clase de cabina de seguridad.
+                    <p>
+                        La velocidad será la indicada en la siguiente tabla en función de la clase de cabina de seguridad.
+                    </p>
+                    
                     <table class="table table-borderless caption-top mt-2">
                         <caption>Requerimientos según tipo de cabina (ISO 12469)</caption>
                         <thead>
@@ -799,19 +807,25 @@
                     </table>
                 </li>
                 <li class="py-1">
-                    Para las cabinas y módulos de flujo laminar (excepto CSM):<br/>
-                    Si se debe cumplir con GMP, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
-                    Si no se requiere cumplir con GMP. Criterio <b>INFORMATIVO</b>
+                    Para las cabinas y módulos de flujo laminar (excepto CSM):
+                    <p class="py-1">
+                        Si se debe cumplir con GMP, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
+                        Si no se requiere cumplir con GMP. Criterio <b>INFORMATIVO</b>
+                    </p>
                 </li>
                 <li class="py-1">
-                    Para cabinas de exgtracción con filtro de carbón activo, según normativa AFNOR NFX 15-215:<br/>
-                    La velocidad media de extracción estará dentro del intervalo 0,4m/s y 0,6 m/s, de acuerdo con
-                    lo establecido en la Norma NFX 15-211.
+                    Para cabinas de exgtracción con filtro de carbón activo, según normativa AFNOR NFX 15-215:
+                    <p class="py-1">
+                        La velocidad media de extracción estará dentro del intervalo 0,4m/s y 0,6 m/s, de acuerdo con
+                        lo establecido en la Norma NFX 15-211.
+                    </p>
                 </li>
                 <li class="py-1">
-                    Para vitrinas de aspiración y cabinas de extracción:<br/>
-                    La velocidad frontal del aire debería estar entre los valores 0,3m/s y 2m/S basado en lo
-                    establecido en la Norma ISO 14175-3 y otras normas similares.
+                    Para vitrinas de aspiración y cabinas de extracción:
+                    <p class="py-1">
+                        La velocidad frontal del aire debería estar entre los valores 0,3m/s y 2m/S basado en lo
+                        establecido en la Norma ISO 14175-3 y otras normas similares.
+                    </p>
                 </li>
             </ul>
             
@@ -859,13 +873,18 @@
                 vigente del Anexo 1 delas GMP:<br/>
                 <ul>
                     <li class="py-1">
-                        Se realizará el montaje de partículas en condiciones “en reposo”. Se entiende por situación
-                        del equipo “en reposo” cuando todo el sistema de aire está funcionando pero sin presencia del
-                        personal de producción.
+                        <p>
+                            Se realizará el montaje de partículas en condiciones “en reposo”. Se entiende por situación
+                            del equipo “en reposo” cuando todo el sistema de aire está funcionando pero sin presencia del
+                            personal de producción.
+                        </p>
                     </li>
                     <li class="py-1">
-                        El número de localizaciones y el volumen de muestreo se determinarán según lo establecido
-                        en la normativa y en el procedimiento interno.
+                        <p>
+                            El número de localizaciones y el volumen de muestreo se determinarán según lo establecido
+                            en la normativa y en el procedimiento interno.
+                        </p>
+                        
                     </li>
                     <li class="py-1">Los montajes se realizarán a la altura de trabajo.</li>
                 </ul>
@@ -985,8 +1004,13 @@
                     </tr>
                 </tbody>
             </table>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
             <!-- Particles counting - acceptance criteria - title -->
-            <h6>
+            <h6 class="alert-heading text-left mt-3 py-0">
                 <span>
                 <b>Criterios de aceptación:</b>
                 </span>
@@ -995,6 +1019,7 @@
             <p style="text-align: justify;">
                 La clase de limpieza de aire es la esperada según la normativa ISO 14644-1.
             </p>
+
             <!-- Air flow visual test - title -->
             <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
                 <span>
@@ -1047,10 +1072,6 @@
                 La direccionalidad del aire es la correcta.<br/>
             </p>
 
-            <p style="page-break-after: always;"></p>
-
-            <br/> <!-- Initial space for begining of the new page -->
-
             <!-- Test of temperature - title -->
             <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
                 <span>
@@ -1102,6 +1123,10 @@
                 como orientativos entre 22-26ºC. No debe aumentar más de 8ºC or encima de la temperatura ambiente
                 de la sala.
             </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
 
             <!-- Test of sound - title -->
             <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
@@ -1166,10 +1191,6 @@
             <p style="text-align: justify;">
                 <b>INFORMATIVO</b>. Se recomienda un nivel de ruido &#x2264; 85 db(A).
             </p>
-
-            <p style="page-break-after: always;"></p>
-
-            <br/> <!-- Initial space for begining of the new page -->
 
             <!-- Test lumonsity - title -->
             <h5 name="test_luminosity" class="alert-heading text-left mt-4 py-0">
@@ -1278,10 +1299,6 @@
                 Si durante la cualificación se detecta alguna No Conformidad, se adjuntará al presente informe
                 como  <b><i>Anexo D</i></b>. En caso contrario no existirá dicho anexo.
             </p>
-
-            <p style="page-break-after: always;"></p>
-
-            <br/> <!-- Initial space for begining of the new page -->
 
             <!-- Anexos - index title -->
             <h5 name="anexos" class="alert-heading text-left mt-4 py-0">
