@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <!-- Template for anexo D content -->
+        <template id="lgpm_maintenance.request_maintenance_final_report_anexo_d_content">
+        <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+        <t t-call="web.external_layout">
+            <div class="page">
+            <br/> <!-- Initial space for begining of the new page -->
+            <table class="table table-bordered table-striped caption-top mt-2">
+                <caption><b>Tabla:</b> Resumen de No conformidades encontradas durnate los ensayos.</caption>
+                <thead>
+                <tr>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Referencia</th>
+                    <th scope="col">Observaciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <t t-foreach="docs" t-as="mr">
+                    <tr>
+                    <td class="text-center align-middle">
+                        <span t-field="mr.partner_id" class="mx-2" />
+                    </td>
+                    <td class="text-center align-middle">
+                        <span t-field="mr.partner_ref" class="mx-2" />
+                    </td>
+                    <td class="text-center align-middle">
+                        <span t-field="mr.lot_id" class="mx-2" />
+                    </td>
+                    <td class="text-left align-middle my-0 py-0">
+                        <span t-field="mr.non_conformities" class="mx-2 my-0 py-0"/>
+                    </td>
+                    </tr>
+                </t>
+                </tbody>
+            </table>
+            </div>
+        </t>
+        </template>
+        
+    </data>
+</odoo>
