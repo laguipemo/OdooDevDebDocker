@@ -35,6 +35,7 @@
         'reports/template_anexo_b_content_report.xml',
         'reports/template_anexo_c_content_report.xml',
         'reports/template_anexo_d_content_report.xml',
+        'reports/template_anexo_g_content_report.xml',
         'reports/template_title_page_of_anexos_report.xml',
         'reports/template_theoretical_intro_vg_report.xml',
         'reports/lgpm_maintenance_final_report.xml',

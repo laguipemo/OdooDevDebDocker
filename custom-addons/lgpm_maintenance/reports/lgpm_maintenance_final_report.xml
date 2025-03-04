@@ -70,24 +70,5 @@
       </t>
     </template>
 
-    <!-- Template for anexo G content -->
-    <template id="lgpm_maintenance.request_maintenance_final_report_anexo_g_content">
-      <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
-      <t t-call="web.external_layout">
-        <div class="page">
-          <br/> <!-- Initial space for begining of the new page -->
-          <h5>
-            <span>
-              <b>Archivo fotográfico de los equipos analizados.</b>
-            </span>
-          </h5>
-          <!-- Test of air equipment -->
-          <p style="text-align: justify;">
-            Ruta de archivos on-line: Bajo solicitud.<br/>
-          </p>
-        </div>
-      </t>
-    </template>
-
   </data>
 </odoo>
