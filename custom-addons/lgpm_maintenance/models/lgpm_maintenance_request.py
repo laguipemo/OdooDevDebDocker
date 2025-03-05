@@ -95,17 +95,27 @@ class LgpmMaintenanceRequest(models.Model):
         related='equipment_id.contact_id.phone'
     )
 
-    # Equipment special requirements
-    requirements_partner = fields.Text(
-        string='Requerimientos fabricante',
-        help='Requerimientos del fabricante'
+
+    # General verification parameters
+    sat_is_working = fields.Boolean(
+        string='¿El equipo está funcionando?',
+        help='Indica si el equipo está funcionando'
     )
-    requirements_client = fields.Text(
-        string='Requerimientos cliente',
-        help='Requerimientos del cliente'
+    sat_equipment_stability = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='NP',
+        string='Estabilidad del equipo'
     )
-    
-    # Commons verification parameters
+    sat_glass_wiring_state = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado cristales y cableado'
+    )
+    sat_operating_hours = fields.Integer(
+        string='Horas de funcionamiento',
+        help='Horas de funcionamiento del equipo'
+    )
+
     sat_digital_ctrl = fields.Selection(
         string='Control digital',
         selection=VERIFICATION_SELECTION,
@@ -116,20 +126,72 @@ class LgpmMaintenanceRequest(models.Model):
         selection=VERIFICATION_SELECTION,
         default='N'
     )
+    sat_var_speed = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='NP',
+        string='Posición variador'
+    )
+    # Equipment special requirements
+    requirements_partner = fields.Text(
+        string='Requerimientos fabricante',
+        help='Requerimientos del fabricante'
+    )
+    requirements_client = fields.Text(
+        string='Requerimientos cliente',
+        help='Requerimientos del cliente'
+    )
+
+    # Verification and adjustments of components and medias
+    sat_visual_acustic_ctrls = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Controles visuales y acústicos'
+    )
+    sat_temp_alarm = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Alarma de temperatura'
+    )
     sat_surface_protection = fields.Selection(
         selection=VERIFICATION_SELECTION,
         default='N',
         string='Protección de la superficie'
+    )
+    sat_fixed_parts = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Sujeción partes fijas'
     )
     sat_insulation_joints = fields.Selection(
         selection=VERIFICATION_SELECTION,
         default='N',
         string='Aislamiento de juntas'
     )
-    sat_fixed_parts = fields.Selection(
+    sat_faucets_function = fields.Selection(
         selection=VERIFICATION_SELECTION,
         default='N',
-        string='Sujeción partes fijas'
+        string='Estado grifos'
+    )
+    sat_manoreductors_function = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado manoreductores'
+    )
+    sat_presence_ctrl = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='NP',
+        string='Control de presencia'
+    )
+    sat_autoprotec = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='NP',
+        string='Autoprotec'
+    )
+
+    sat_alarm_trigger = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Disparo de la alarma'
     )
     sat_guillotine_function = fields.Selection(
         selection=VERIFICATION_SELECTION,
@@ -143,81 +205,13 @@ class LgpmMaintenanceRequest(models.Model):
     )
     sat_guillotine_v_force = fields.Selection(
         selection=VERIFICATION_SELECTION,
-        default='N',
+        default='NP',
         string='Fuerza vertical guillotina'
-    )
-    sat_faucets_function = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Estado grifos'
-    )
-    sat_manoreductors_function = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Estado manoreductores'
-    )
-    sat_temp_alarm = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Alarma de temperatura'
-    )
-
-    # Only VG verification parameters
-    sat_presence_ctrl = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Control de presencia'
-    )
-    sat_autoprotec = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Autoprotec'
-    )
-    
-    
-    # Only CF verification parameters
-    sat_alarm_trigger = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Disparo de la alarma'
-    )
-    sat_var_speed = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Posición variador de velocidad'
-    )
-    sat_operating_hours = fields.Integer(
-        string='Horas de funcionamiento',
-        help='Horas de funcionamiento del equipo'
-    )
-    sat_is_working = fields.Boolean(
-        string='¿El equipo está funcionando?',
-        help='Indica si el equipo está funcionando'
-    )
-    sat_visual_acustic_ctrls = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Controles visuales y acústicos'
     )
     sat_airflow_sensors = fields.Selection(
         selection=VERIFICATION_SELECTION,
         default='N',
         string='Sensores flujo de aire'
-    )
-    sat_glass_wiring_state = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Estado cristales y cableado'
-    )
-    sat_filters_state = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Montaje de filtros'
-    )
-    sat_equipment_stability = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Estabilidad del equipo'
     )
     sat_airflow_direction = fields.Boolean(
         string='¿La dirección del flujo de aire es correcta?',
@@ -227,7 +221,12 @@ class LgpmMaintenanceRequest(models.Model):
         string='¿El flujo de aire es uniforme?',
         help='Es uniforme si no hay turbulencias o zonas muertas en el flujo de aire'
     )
-
+    sat_filters_state = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Montaje de filtros'
+    )
+    
 
     # Parameters to measure
     work_length = fields.Integer(
@@ -250,6 +249,7 @@ class LgpmMaintenanceRequest(models.Model):
         store=True,
         help='Superficie de medición en metros cuadrados'
     )
+
     frontal_v1 = fields.Float(
         default=0.0
     )
@@ -284,10 +284,22 @@ class LgpmMaintenanceRequest(models.Model):
         string='Volumen de extracción',
         compute='_compute_extraction_volume'
     )
+    
+    # Only CF paramaters to measure
+    diff_press = fields.Float(
+        string='Presión diferencial',
+        default=0.0
+    )
     temperature = fields.Float(
         string='Temperatura',
         default=0.0
     )
+    # Only if guillotine vertical is not N or NP
+    guillotine_force = fields.Float(
+        string='Valor fuerza guillotina',
+        default=0.0
+    )
+    
     lighting_v1 = fields.Float(
         default=0.0
     )
@@ -305,17 +317,7 @@ class LgpmMaintenanceRequest(models.Model):
         default=0.0
     )
 
-    # Only VG paramaters to measure
-    guillotine_force = fields.Float(
-        string='Valor fuerza guillotina',
-        default=0.0
-    )
-
-    # Only CF paramaters to measure
-    sat_diff_press = fields.Float(
-        string='Presión diferencial',
-        default=0.0
-    )
+    
 
     # Related info ONLY for internal equipment
     purchase_order_id = fields.Many2one(

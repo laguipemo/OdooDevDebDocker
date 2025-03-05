@@ -17,10 +17,13 @@
         </xpath>
         <xpath expr="//page[@name='description_page']" position="after">
           <page name="sat" string="SAT" attrs="{'invisible': [('equipment_type', '=', '')]}">
+            <!-- Equipment type -->
             <h1>
               <field name="equipment_type" />
             </h1>
+            <!-- General and technical information -->
             <group>
+              <!-- General information -->
               <group name="sat_equipment_gnrl" string="Información general">
                 <field name="maintenance_date" />
                 <field name="owner_name" />
@@ -28,6 +31,7 @@
                 <field name="contact_phone" />
                 <field name="contact_email" />
               </group>
+              <!-- Equipment information -->
               <group name="sat_equipment_info" string="Información del equipo">
                 <field name="partner_id" />
                 <field name="equipment_use" />
@@ -36,16 +40,59 @@
                 <field name="lot_id" />
               </group>
             </group>
-            <group name="sat_check_extraction" string="Comprobación y ajuste del sistema de extracción" col="12">
-              <group colspan="5" string="Inspección Visual">
+            <!-- SAT check and adjustment of extraction system -->
+            <group name="sat_general_check" string="Estado general del equipo y del sistema de extracción" col="12">
+              <group colspan="6">
+                <field name="sat_is_working" widget="boolean_toggle" />
+                <field name="sat_equipment_stability" />
+                <field name="sat_glass_wiring_state" />
+                <field name="sat_operating_hours" />
+              </group>
+              <group colspan="6">
                 <field name="sat_digital_ctrl" />
                 <field name="sat_extraction_sys" />
+                <field name="sat_var_speed" />
               </group>
-              <group colspan="7" string="Requerimientos">
+            </group>
+            <group name="sat_requirements" string="Requerimientos específicos" col="12">
+              <group colspan="10">
                 <field name="requirements_partner" />
                 <field name="requirements_client" />
               </group>
             </group>
+            <!-- SAT check and adjustment of mechanical components and means -->
+            <group name="sat_check_components" string="Comprobación y ajuste de componentes mecánicos y medios" col="12">
+              <group colspan="6">
+                <field name="sat_visual_acustic_ctrls" />
+                <field name="sat_temp_alarm" />
+                <field name="sat_surface_protection" />
+                <field name="sat_fixed_parts" />
+                <field name="sat_insulation_joints" />
+                <field name="sat_faucets_function" />
+                <field name="sat_manoreductors_function" />
+                <field name="sat_presence_ctrl" />
+                <field name="sat_autoprotec" />
+              </group>
+              <group colspan="6">
+                <field name="sat_alarm_trigger" />
+                
+                <field name="sat_guillotine_function" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="sat_guillotine_function" string="Funcionamiento puerta" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}"/>
+
+                <field name="sat_guillotine_gnrl_state" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="sat_guillotine_gnrl_state" string="Estado general puerta" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}" />
+
+                <field name="sat_guillotine_v_force" attrs="{'invisible':[('equipment_type', '!=', 'Vitrina de Gases')]}"/>
+                <field name="sat_guillotine_v_force" string="Fuerza apertura puerta" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}"/>
+
+                <field name="sat_airflow_sensors" />
+                <field name="sat_airflow_direction" widget="boolean_toggle" />
+                <field name="sat_airflow_uniformity" widget="boolean_toggle" />
+                <field name="sat_filters_state" />
+              </group>
+            </group>
+
+            <!-- Extraction volume measurement and calculation -->
             <group name="measurements" string="Medición volumen de extracción" col="12">
               <group string="Dimensiones" colspan="4">
                 <field name="work_length" />
@@ -114,26 +161,16 @@
                 <field name="extraction_volume" />
               </group>
             </group>
-            <group name="sat_check_components" string="Comprobación y ajuste de componentes mecánicos y medios" col="12">
-              <group colspan="6">
-                <field name="sat_surface_protection" />
-                <field name="sat_fixed_parts" />
-                <field name="sat_insulation_joints" />
-                <field name="sat_guillotine_function" />
-                <field name="sat_guillotine_gnrl_state" />
-                <field name="sat_guillotine_v_force" />
+            
+            <group name="other_measures" string="Otras Medidas" col="12">
+              <group name="others" colspan="6">
+                <field name="diff_press" widget="float" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}"/>
+                <field name="temperature" widget="float" />
+                <field name="guillotine_force" widget="float" attrs="{'invisible': ['|', ('sat_guillotine_v_force', '=', 'N'),('sat_guillotine_v_force','=', 'NP')]}"/>
               </group>
-              <group colspan="6">
-                <field name="sat_presence_ctrl" />
-                <field name="sat_autoprotec" />
-                <field name="sat_faucets_function" />
-                <field name="sat_manoreductors_function" />
-                <field name="sat_temp_alarm" />
-              </group>
+              
             </group>
-            <group name="guillotine_force" string="Medida fuerza de la guillotina" col="12">
-              <field name="guillotine_force" widget="float" colspan="4" />
-            </group>
+            <!-- Lighting and noise levels check -->
             <group name="lighting_noise" string="Comprobación de niveles de iluminación y ruido" col="12">
               <group string="Iluminación" colspan="7">
                 <table class="table table-bordered text-center" colspan="2">
