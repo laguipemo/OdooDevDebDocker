@@ -344,7 +344,7 @@
             <p style="text-align: justify;">
                 El objetivo del presente Informe es reflejar los resultados obtenidos durante la
                 cualificación de los equipos de tratamiento de aire detallados en cada hoja de 
-                trabajo incluida en el Anexo B del presente informe, con el fin de demostrar 
+                trabajo incluida en el <b><i>Anexo B</i></b> del presente informe, con el fin de demostrar 
                 documentalmente que son adecuados para su uso previsto dentro de los rangos de
                 trabajo definidos por la Normativa Vigente.
             </p>
@@ -399,7 +399,8 @@
             <!-- Equipment content -->
             <p style="text-align: justify;">
                 Los equipos utilizados en la cualificación son los indicados en la siguiente tabla, adjuntándose
-                una copia de sus certificados de calibración en el Anexos E y F del presente informe.<br/>
+                una copia de sus certificados de calibración en los <b><i>Anexos E</i></b> y <b><i>F</i></b>  del
+                presente informe.<br/>
                 Los instrumentos utilizados para realizar los tests se encontraban calibrados durante la ejecución
                 de las pruebas de cualificación. Todos ellos están sujetos a un plan anual de calibración en el que
                 se especifica su periodo de validez, y en el que como norma general para todos los equipos se
@@ -495,7 +496,7 @@
                 A continuación se detallan los ensayos principales a realizar en los equipos de tratamiento de aire
                 y una pequeña descripción de los procedimientos internos que les aplican a cada uno de ellos. Todos
                 los procedimientos se ajustan a la Normativa vigente y son revisados periódicamente por el Departamento
-                de Calidad de <b>Atlas Romero</b>.<br/>
+                de Calidad de <b>Atlas Romero S.L.U.</b>.<br/>
                 De los ensayos detallados en este apartado, se han realizado únicamente aquellos acordados previamente
                 con el cliente.
             </p>
@@ -534,8 +535,8 @@
             </h6>
             <!-- Test visual verification ... procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0007-Cabinas de flujo Laminar y
-                Seguridad Biológica basado en las siguientes normativas: UNE EN 12469.<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0007</b>-Cabinas de flujo Laminar y
+                Seguridad Biológica</i> basado en las siguientes normativas: <b>UNE EN 12469</b>.<br/>
                 Se sigue listado de las hojas de campo de <b>Atlas Romero S.L.U.</b> con la realción de los componentes
                 a comprobar. Se accionan todos los interruptores del equipo verificando el correcto funcionamiento de
                 los mismos, así como el de los diferentes indicadores existentes.
@@ -582,7 +583,7 @@
                 <ul>
                     <li class="py-1">Generador de partículas.</li>
                     <li class="py-1">Fotómetro detector.</li>
-                    <li class="py-1">Aceite Emery 3004 o Di-Ethyl-Hexyl-Sebacat.</li>
+                    <li class="py-1">Aceite <i>Emery 3004</i> o <i>Di-Ethyl-Hexyl-Sebacat</i>.</li>
                 </ul>
             </p>
 
@@ -598,8 +599,8 @@
             </h6>
             <!-- Test of filters integrity procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0007-Cabinas de flujo Laminar y
-                Seguridad Biológica basado en las siguientes normativas: UNE EN 12469.<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0007</b>-Cabinas de flujo Laminar y
+                Seguridad Biológica</i> basado en las siguientes normativas: <b>UNE EN 12469</b>.<br/>
                 <ul>
                     <li class="py-1">Inyectar aerosol en la corriente de aire antes del filtro y ajustar la escala del 100% con
                         este aerosol
@@ -654,8 +655,8 @@
             </h6>
             <!-- Test of air procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0003-Vitrinas de gases basado
-                en las siguientes normativas: EN ISO 5167-1, EN 14175-3, AFNOR NF X 15-211.<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0003</b>-Vitrinas de gases</i> basado
+                en las siguientes normativas: <b>EN ISO 5167-1</b>, <b>EN 14175-3</b>, <b>AFNOR NF X 15-211</b>.<br/>
                 La vitrina deberá estar funcionando en las condiciones teóricas de trabajo, realizando las mediciones
                 a la altura operacional de trabajo de la vitrina con el interior de la misma vacío. El anemómetro
                 será omnidireccional capaz de medir velocidades de aire entre 0,1 m/s y 2,0 m/s. El tiempo de respuesta
@@ -767,7 +768,7 @@
             <!-- Acceptance criterias by long and regulation -->
             <ul>
                 <li class="py-1">
-                    Para las cabinas de seguridad biológica (CSM), según normativa ISO 12469:<br/>
+                    Para las cabinas de seguridad biológica (<b>CSM</b>), según normativa <b>ISO 12469</b>:<br/>
                     <p>
                         La velocidad será la indicada en la siguiente tabla en función de la clase de cabina de seguridad.
                     </p>
@@ -807,24 +808,24 @@
                     </table>
                 </li>
                 <li class="py-1">
-                    Para las cabinas y módulos de flujo laminar (excepto CSM):
+                    Para las cabinas y módulos de flujo laminar (excepto <b>CSM</b>):
                     <p class="py-1">
-                        Si se debe cumplir con GMP, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
-                        Si no se requiere cumplir con GMP. Criterio <b>INFORMATIVO</b>
+                        Si se debe cumplir con <b>GMP</b>, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
+                        Si no se requiere cumplir con <b>GMP</b>. Criterio <b>INFORMATIVO</b>
                     </p>
                 </li>
                 <li class="py-1">
-                    Para cabinas de exgtracción con filtro de carbón activo, según normativa AFNOR NFX 15-215:
+                    Para cabinas de exgtracción con filtro de carbón activo, según normativa <b>AFNOR NFX 15-215</b>:
                     <p class="py-1">
                         La velocidad media de extracción estará dentro del intervalo 0,4m/s y 0,6 m/s, de acuerdo con
-                        lo establecido en la Norma NFX 15-211.
+                        lo establecido en la Norma <b>NFX 15-211</b>.
                     </p>
                 </li>
                 <li class="py-1">
                     Para vitrinas de aspiración y cabinas de extracción:
                     <p class="py-1">
                         La velocidad frontal del aire debería estar entre los valores 0,3m/s y 2m/S basado en lo
-                        establecido en la Norma ISO 14175-3 y otras normas similares.
+                        establecido en la Norma <b>ISO 14175-3</b> y otras normas similares.
                     </p>
                 </li>
             </ul>
@@ -868,14 +869,14 @@
             </h6>
             <!-- Particles counting - procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0007-Cabinas de Flujo Laminar
-                y Seguridad Biológica basado en las siguientes normativas: ISO 14644-1, une 100713 y la revisión
-                vigente del Anexo 1 delas GMP:<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0007</b>-Cabinas de Flujo Laminar
+                y Seguridad Biológica</i> basado en las siguientes normativas: <b>ISO 14644-1</b>, <b>UNE 100713</b> y la revisión
+                vigente del <b><i>Anexo 1</i></b> delas <b>GMP</b>:<br/>
                 <ul>
                     <li class="py-1">
                         <p>
-                            Se realizará el montaje de partículas en condiciones “en reposo”. Se entiende por situación
-                            del equipo “en reposo” cuando todo el sistema de aire está funcionando pero sin presencia del
+                            Se realizará el montaje de partículas en condiciones <i>“en reposo”</i>. Se entiende por situación
+                            del equipo <i>“en reposo”</i> cuando todo el sistema de aire está funcionando pero sin presencia del
                             personal de producción.
                         </p>
                     </li>
@@ -891,10 +892,10 @@
             </p>
             <p style="text-align: justify;">
                 Para la clasificación de las cabinas se seguirán los criterios de aceptación establecidos en la norma
-                ISO 14644-1:
+                <b>ISO 14644-1</b>:
             </p>
             <table class="table table-borderless caption-top mt-2">
-                <caption>Límite de partículas de igual o mayor por m<sup>3</sup> de aire (ISO 14644-1)</caption>
+                <caption>Límite de partículas de igual o mayor por m<sup>3</sup> de aire (<b>ISO 14644-1</b>)</caption>
                 <thead>
                     <tr>
                         <th scope="col">
@@ -1017,7 +1018,7 @@
             </h6>
             <!-- Particles counting - acceptance criteria - content -->
             <p style="text-align: justify;">
-                La clase de limpieza de aire es la esperada según la normativa ISO 14644-1.
+                La clase de limpieza de aire es la esperada según la normativa <b>ISO 14644-1</b>.
             </p>
 
             <!-- Air flow visual test - title -->
@@ -1055,8 +1056,8 @@
             </h6>
             <!-- Air flow visual test - procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0007-Cabinas de Flujo Laminar
-                y Seguridad Biológica basado en las siguientes normativas: ISO 14644-3, ISO 12469.<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0007</b>-Cabinas de Flujo Laminar
+                y Seguridad Biológica</i> basado en las siguientes normativas: <b>ISO 14644-3</b>, <b>ISO 12469</b>.<br/>
                 Insuflar humo con un trazador de corrientes de aire para estudiar el comportamiento y la direccionalidad del aire.<br/>
                 También se detectarán las posibles zonas muertas, que serán aquellas en las que el humo quede estancado.
             </p>
@@ -1106,8 +1107,8 @@
             </h6>
             <!-- Test of temperature - procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0007-Cabinas de Flujo Laminar
-                y Seguridad Biológica basado en las siguientes normativas: UNE EN 12469.<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0007</b>-Cabinas de Flujo Laminar
+                y Seguridad Biológica</i> basado en las siguientes normativas: <b>UNE EN 12469</b>.<br/>
                 Se realizarán una serie de medidas de la temperatura distribuidas homogéneamente en la cabina
                 y se calcula la media aritmética.
             </p>
@@ -1163,9 +1164,9 @@
             </h6>
             <!-- Test of sound equipment - procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT PNT 0007-Cabinas de Flujo
-                Laminar y Seguridad Biológica basado en las siguientes normativas: BS 5295, IES-RP-CC-006-84T,
-                IES-RP-CC-002.2.<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0007</b>-Cabinas de Flujo
+                Laminar y Seguridad Biológica</i> basado en las siguientes normativas: <b>BS 5295</b>, <b>IES-RP-CC-006-84T</b>,
+                <b>IES-RP-CC-002.2</b>.<br/>
                 Es conveniente que la medida del nivel de presión acústica se lleve a cabo como nivel de presión
                 acústica ponderado A en dB(A), a partir de medidas situadas delante de la cabina:
             </p>
@@ -1226,8 +1227,8 @@
             </h6>
             <!-- Test lumonsity - procedure content -->
             <p style="text-align: justify;">
-                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código PNT 0007-Cabinas de Flujo
-                Laminar y Seguridad Biológica basado en las siguientes normativas: UNE-EN 12469.<br/>
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <i><b>PNT 0007</b>-Cabinas de Flujo
+                Laminar y Seguridad Biológica</i> basado en las siguientes normativas: <b>UNE-EN 12469</b>.<br/>
                 La iluminación debe medirse en, al menos, 8 puntos por metro cuadrado de la superficie de trabajo,
                 homogéneamente distribuidos. Se calcula el valor medio y la uniformidad.
             </p>
