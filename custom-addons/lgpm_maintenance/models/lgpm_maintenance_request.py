@@ -41,14 +41,29 @@ class LgpmMaintenanceRequest(models.Model):
             base64_image = base64.b64encode(image_file.read())
         return base64_image
 
+    # Mantenance data
     maintenance_date = fields.Date(
         string='Fecha',
         help='Fecha de la realización del mantenimiento'
+    )
+
+    # Equipment data
+    partner_id = fields.Char(
+        string='Fabricante',
+        related='equipment_id.partner_id.name'
     )
     manufacture_date = fields.Date(
         string='Fecha de fabricación',
         related='equipment_id.manufacture_date'
     )
+    partner_ref = fields.Char(
+        string='Referencia',
+        related='equipment_id.partner_ref'
+    )
+    lot_id = fields.Char(
+        string='Número de serie',
+        related='equipment_id.lot_id.name'
+        )
     equipment_type = fields.Char(
         string='Tipo',
         compute='_compute_equipment_type'
@@ -57,57 +72,30 @@ class LgpmMaintenanceRequest(models.Model):
         string='Tipo de Uso',
         compute='_compute_equipment_use'
     )
-    owner_name = fields.Char(
-        string='Propietario',
-        related='equipment_id.owner_id.name'
-        )
-    lot_id = fields.Char(
-        string='Número de serie',
-        related='equipment_id.lot_id.name'
-        )
     inventary_number = fields.Char(
         string='Nº Inventario',
         related='equipment_id.inventary_number'
     )
+
+    # Owner and contact data
+    owner_name = fields.Char(
+        string='Propietario',
+        related='equipment_id.owner_id.name'
+    )
     contact_name = fields.Char(
         string='Contacto',
         related='equipment_id.contact_id.name'
-        )
+    )
     contact_email = fields.Char(
         string='Correo',
         related='equipment_id.contact_id.email'
-        )
+    )
     contact_phone = fields.Char(
         string='Teléfono',
         related='equipment_id.contact_id.phone'
-        )
-    partner_id = fields.Char(
-        string='Fabricante',
-        related='equipment_id.partner_id.name'
-    )
-    partner_ref = fields.Char(
-        string='Referencia',
-        related='equipment_id.partner_ref'
-    )
-    
-
-    purchase_order_id = fields.Many2one(
-        string='Orden de compra',
-        comodel_name='purchase.order', 
-        ondelete='cascade'
     )
 
-    sat_digital_ctrl = fields.Selection(
-        string='Control digital',
-        selection=VERIFICATION_SELECTION,
-        default='N'
-    )
-
-    sat_extraction_sys = fields.Selection(
-        string='Sistema de extracción',
-        selection=VERIFICATION_SELECTION,
-        default='N'
-    )
+    # Equipment special requirements
     requirements_partner = fields.Text(
         string='Requerimientos fabricante',
         help='Requerimientos del fabricante'
@@ -116,6 +104,132 @@ class LgpmMaintenanceRequest(models.Model):
         string='Requerimientos cliente',
         help='Requerimientos del cliente'
     )
+    
+    # Commons verification parameters
+    sat_digital_ctrl = fields.Selection(
+        string='Control digital',
+        selection=VERIFICATION_SELECTION,
+        default='N'
+    )
+    sat_extraction_sys = fields.Selection(
+        string='Sistema de extracción',
+        selection=VERIFICATION_SELECTION,
+        default='N'
+    )
+    sat_surface_protection = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Protección de la superficie'
+    )
+    sat_insulation_joints = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Aislamiento de juntas'
+    )
+    sat_fixed_parts = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Sujeción partes fijas'
+    )
+    sat_guillotine_function = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Funcionamiento guillotina'
+    )
+    sat_guillotine_gnrl_state = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado general guillotina'
+    )
+    sat_guillotine_v_force = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Fuerza vertical guillotina'
+    )
+    sat_faucets_function = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado grifos'
+    )
+    sat_manoreductors_function = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado manoreductores'
+    )
+    sat_temp_alarm = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Alarma de temperatura'
+    )
+
+    # Only VG verification parameters
+    sat_presence_ctrl = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Control de presencia'
+    )
+    sat_autoprotec = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Autoprotec'
+    )
+    
+    
+    # Only CF verification parameters
+    sat_alarm_trigger = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Disparo de la alarma'
+    )
+    sat_var_speed = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Posición variador de velocidad'
+    )
+    sat_operating_hours = fields.Integer(
+        string='Horas de funcionamiento',
+        help='Horas de funcionamiento del equipo'
+    )
+    sat_is_working = fields.Boolean(
+        string='¿El equipo está funcionando?',
+        help='Indica si el equipo está funcionando'
+    )
+    sat_visual_acustic_ctrls = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Controles visuales y acústicos'
+    )
+    sat_airflow_sensors = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Sensores flujo de aire'
+    )
+    sat_glass_wiring_state = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estado cristales y cableado'
+    )
+    sat_filters_state = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Montaje de filtros'
+    )
+    sat_equipment_stability = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Estabilidad del equipo'
+    )
+    sat_airflow_direction = fields.Boolean(
+        string='¿La dirección del flujo de aire es correcta?',
+        help='Indica si la dirección del flujo de aire es correcta'
+    )
+    sat_airflow_uniformity = fields.Boolean(
+        string='¿El flujo de aire es uniforme?',
+        help='Es uniforme si no hay turbulencias o zonas muertas en el flujo de aire'
+    )
+
+
+    # Parameters to measure
     work_length = fields.Integer(
         string='Longitud de trabajo',
         help='Longitud de trabajo del equipo en mm'
@@ -170,63 +284,8 @@ class LgpmMaintenanceRequest(models.Model):
         string='Volumen de extracción',
         compute='_compute_extraction_volume'
     )
-    sat_surface_protection = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Protección de la superficie'
-    )
-    sat_insulation_joints = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Aislamiento de juntas'
-    )
-    sat_fixed_parts = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Sujeción partes fijas'
-    )
-    sat_guillotine_function = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Funcionamiento guillotina'
-    )
-    sat_guillotine_gnrl_state = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Estado general guillotina'
-    )
-    sat_guillotine_v_force = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Fuerza vertical guillotina'
-    )
-    sat_presence_ctrl = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Control de presencia'
-    )
-    sat_autoprotec = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Autoprotec'
-    )
-    sat_faucets_function = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Estado grifos'
-    )
-    sat_manoreductors_function = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Estado manoreductores'
-    )
-    sat_temp_alarm = fields.Selection(
-        selection=VERIFICATION_SELECTION,
-        default='N',
-        string='Alarma de temperatura'
-    )
-    guillotine_force = fields.Float(
-        string='Valor fuerza guillotina',
+    temperature = fields.Float(
+        string='Temperatura',
         default=0.0
     )
     lighting_v1 = fields.Float(
@@ -245,6 +304,27 @@ class LgpmMaintenanceRequest(models.Model):
         string='Sonido',
         default=0.0
     )
+
+    # Only VG paramaters to measure
+    guillotine_force = fields.Float(
+        string='Valor fuerza guillotina',
+        default=0.0
+    )
+
+    # Only CF paramaters to measure
+    sat_diff_press = fields.Float(
+        string='Presión diferencial',
+        default=0.0
+    )
+
+    # Related info ONLY for internal equipment
+    purchase_order_id = fields.Many2one(
+        string='Orden de compra',
+        comodel_name='purchase.order', 
+        ondelete='cascade'
+    )
+    
+    # Observations and final considerations
     observations = fields.Html(
         string="Observaciones"
     )
@@ -257,6 +337,8 @@ class LgpmMaintenanceRequest(models.Model):
     needs_intervention = fields.Boolean(
         string="Por cuestiones de seguridad es necesaria la intervención del equipo"
     )
+
+    # Photos
     photo1 = fields.Image(
         max_width=200,
         max_height=200
@@ -281,6 +363,8 @@ class LgpmMaintenanceRequest(models.Model):
         max_width=200,
         max_height=200
     )
+
+    # Methods to compute fields and
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):
