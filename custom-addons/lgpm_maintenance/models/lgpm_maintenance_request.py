@@ -317,8 +317,6 @@ class LgpmMaintenanceRequest(models.Model):
         default=0.0
     )
 
-    
-
     # Related info ONLY for internal equipment
     purchase_order_id = fields.Many2one(
         string='Orden de compra',

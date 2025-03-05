@@ -46,7 +46,7 @@
                 <field name="sat_is_working" widget="boolean_toggle" />
                 <field name="sat_equipment_stability" />
                 <field name="sat_glass_wiring_state" />
-                <field name="sat_operating_hours" />
+                <field name="sat_operating_hours" attrs="{'invisible':[('equipment_type','!=','Cabina de Flujo')]}" />
               </group>
               <group colspan="6">
                 <field name="sat_digital_ctrl" />
