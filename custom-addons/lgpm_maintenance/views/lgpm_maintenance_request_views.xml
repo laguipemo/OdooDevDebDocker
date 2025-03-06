@@ -100,14 +100,14 @@
               <table class="table table-bordered text-center" colspan="12">
                 <thead>
                   <tr>
-                    <th scope="col">Nº de filtro</th>
-                    <th scope="col">Nº de serie/Identificación</th>
-                    <th scope="col">Dimensiones(mm)</th>
-                    <th scope="col">Concentración aerosol (&#xB5;g/L)</th>
-                    <th scope="col">Valor obtenido (&#x2264; 0,01%)</th>
-                    <th scope="col">C</th>
-                    <th scope="col">NC</th>
-                    <th class="col-mb-1">INF</th>
+                    <th scope="col" style="width: 20%;">Nº de filtro</th>
+                    <th scope="col" style="width: 20%;">Nº de serie/Identificación</th>
+                    <th scope="col" style="width: 15%;">Dimensiones(mm)</th>
+                    <th scope="col" style="width: 15%;">Concentración aerosol (&#xB5;g/L)</th>
+                    <th scope="col" style="width: 15%;">Valor obtenido (&#x2264; 0,01%)</th>
+                    <th scope="col" style="width: 5%;">C</th>
+                    <th scope="col" style="width: 5%;">NC</th>
+                    <th scope="col" style="width: 5%;">INF</th>
                   </tr>
                 </thead>
                 <tbody>
