@@ -1,0 +1,1357 @@
+<odoo>
+    <data>
+        <!-- Template for theoretical introduction in the VG report -->
+        <template id="lgpm_maintenance.request_maintenance_cf_report_introduction">
+        <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+        <t t-call="web.external_layout">
+            <div class="page">
+            <!-- Common for all docs. Show only in first doc -->
+
+            <!-- Title, code and date of maintenance document  -->
+            <div class="alert alert-light mb-0 pb-0" role="alert">
+                <h2 class="alert-heading text-center mx-0 py-5">
+                <span>
+                    <b>
+                    Informe <span t-field="maintenance_request.equipment_type" />
+                    </b>
+                </span>
+                </h2>
+                <div class="d-flex flex-row justify-content-end m-0 p-0">
+                <div class="d-fex flex-column align-content-center col-5 p-2 border border-light bg-light">
+                    <p class="m-0 p-0">
+                    <b>Código del documento:</b>
+                    <span t-field="maintenance_request.name" class="mx-2"/>
+                    </p>
+                    <p class="m-0 p-0">
+                    <b>Fecha del informe:</b>
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')" class="mx-2"/>
+                    </p>
+                </div>
+                </div>
+                <hr/>
+            </div>
+
+            <!-- Customer -->
+            <h5 class="alert-heading text-left mt-5 py-0">
+                <span>
+                <b>Datos del cliente</b>
+                </span>
+            </h5>
+            <!-- Customer data info -->
+            <div class="d-flex flex-row justify-content-between mt-2 p-0 border border-light bg-light">
+                <!-- Name, address info -->
+                <div class="col-6 p-2">
+                <p>
+                    <b>Empresa:</b>
+                    <span t-field="maintenance_request.owner_name" class="mx-2"/>
+                </p>
+                <div class="d-flex flex-row">
+                    <div>
+                    <p class="m-0 p-0">
+                        <b>Dirección:</b>
+                    </p>
+                    </div>
+                    <div class="flex-grow-1 m-0 p-0">
+                    <div class="m-0 p-0">
+                        <p class="m-0 p-0">
+                        <span t-field="maintenance_request.equipment_id.owner_id.street" t-options="{}" class="mx-2"/>
+                        </p>
+                    </div>
+                    <div t-if="maintenance_request.equipment_id.owner_id.street2 != ''" class="m-0 p-0">
+                        <p class="m-0 p-0">
+                        <span t-field="maintenance_request.equipment_id.owner_id.street2" class="mx-2"/>
+                        </p>
+                    </div>
+                    <div class="d-flex flex-wrap m-0 p-0">
+                        <div>
+                        <p>
+                            <span t-field="maintenance_request.equipment_id.owner_id.state_id" class="mx-2"/>
+                        </p>
+                        </div>
+                        <div>
+                        <p>
+                            <span t-field="maintenance_request.equipment_id.owner_id.zip" class="mx-2"/>
+                        </p>
+                        </div>
+                        <div>
+                        <p>
+                            <span t-field="maintenance_request.equipment_id.owner_id.city" class="mx-2"/>
+                        </p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="m-0 p-0">
+                        <span t-field="maintenance_request.equipment_id.owner_id.country_id" class="mx-2"/>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Contact info -->
+                <div class="col-6 p-2">
+                <p>
+                    <b>Contacto:</b>
+                    <span t-field="maintenance_request.contact_name" class="mx-2"/>
+                </p>
+                <p>
+                    <b>Telefono:</b>
+                    <span t-field="maintenance_request.contact_phone" class="mx-2"/>
+                </p>
+                <p>
+                    <b>Correo:</b>
+                    <span t-field="maintenance_request.contact_email" class="mx-2"/>
+                </p>
+                </div>
+            </div>
+
+            <!-- Responsibility signatures -->
+            <h5 class="alert-heading text-left mt-5 py-0">
+                <span>
+                <b>Firmas de responsabilidad</b>
+                </span>
+            </h5>
+            <table class="table table-striped mt-2">
+                <thead>
+                <tr>
+                    <th>
+                    <b>Resposabilidad</b>
+                    </th>
+                    <th>
+                    <b>Nombre</b>
+                    </th>
+                    <th>
+                    <b>Cargo</b>
+                    </th>
+                    <th>
+                    <b>Firma</b>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                <tr>
+                    <t t-set="admin_info" t-value="maintenance_request.get_info_about('admin')" />
+                    <td class="align-middle">
+                    <b>Redacción</b>
+                    </td>
+                    <td class="align-middle">
+                    <b><span t-out="admin_info[0]" /></b>
+                    </td>
+                    <td class="align-middle">
+                    <b>Administración</b>
+                    </td>
+                    <td>
+                    <div>
+                        <center>
+                        <img 
+                            t-attf-src="data:image/*;base64,{{admin_info[1]}}"
+                            t-alt="Firma de la administración"
+                            class="img img-fluid o_we_custom_image o_modified_image_to_save" 
+                            style="max-height: 90px;"/>
+                        </center>
+                    </div>
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <t t-set="sat_info" t-value="maintenance_request.get_info_about('sat')" />
+                    <td class="align-middle">
+                    <b>Revisión</b>
+                    </td>
+                    <td class="align-middle">
+                    <b><span t-out="sat_info[0]" /></b>
+                    </td>
+                    <td class="align-middle">
+                    <b>Responsable SAT</b>
+                    </td>
+                    <td>
+                    <div>
+                        <center>
+                        <img
+                            t-attf-src="data:image/*;base64,{{sat_info[1]}}"
+                            t-alt="Firma del responsable SAT" 
+                            class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                            height="90" width="90" />
+                        </center>
+                    </div>
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <t t-set="prev_info" t-value="maintenance_request.get_info_about('prev')" />
+                    <td class="align-middle">
+                    <b>Revisión</b>
+                    </td>
+                    <td class="align-middle">
+                    <b><span t-out="prev_info[0]" /></b>
+                    </td>
+                    <td class="align-middle">
+                    <b>Técnico Prevención</b>
+                    </td>
+                    <td>
+                    <div>
+                        <center>
+                        <img
+                            t-attf-src="data:image/*;base64,{{prev_info[1]}}"
+                            t-alt="Firma del responsable prevención" 
+                            class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                            height="90" width="90" />
+                        </center>
+                    </div>
+                    
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p style="page-break-after: always;" />
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Index title -->
+            <h5 class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>ÍNDICE</b>
+                </span>
+            </h5>
+            <!-- Index table of content -->
+            <div>
+                <ul class="list-unstyled">
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">1. OBJETIVO</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">2. PERSONAL</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">3. INSTRUMENTACIÓN UTILIZADA</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">3</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN </span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
+                    </div>
+                </li>
+                <ul class="list-unstyled">
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.1. VERIFICACIÓN FÍSICA GENERAL DEL EQUIPO </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.2. TEST DE INTEGRIDAD EN FILTROS ABSOLUTOS HEPA/ULPA </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">4</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.3. ENSAYO DE VELOCIDAD Y UNIFORMIDAD DEL AIRE </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">5</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.4. CONTAJE DE PARTÍCULAS </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">8</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.6. TEMPERATURA </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">9</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.7. TEST DE SONIDO </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">10</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">4.8. TEST DE LUMINOSIDAD </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">10</span></div>
+                        </div>
+                    </li>
+                </ul>
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">5. DETALLES DE LOS VALORES OBTENIDOS</span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
+                    </div>
+                </li>
+                <ul class="list-unstyled">
+                    <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                        <div class="col-11 ps-2"><span class="ms-2 ps-0">5.1. DETALLES DE LOS RESULTADOS </span></div>
+                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
+                    </div>
+                    </li>
+                    <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                        <div class="col-11 ps-2"><span class="ms-2 ps-0">5.2. DICTAMEN FINAL </span></div>
+                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
+                    </div>
+                    </li>
+                </ul>
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">6. OBSERVACIONES </span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">7. LISTADO DE NO CONFORMIDADES </span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="d-flex flex-row justify-content-between col-12 py-1">
+                    <div class="col-11 ps-0"><span class="ms-0 ps-0">8. LISTADO DE ANEXOS </span></div>
+                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">11</span></div>
+                    </div>
+                </li>
+                </ul>
+            </div>
+            <p style="page-break-after: always;"></p>
+
+            <br/><!-- Initial space for begining of the new page -->
+
+            <!-- Objective title-->
+            <h5 name="objetivo" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>1. OBJETIVO</b>
+                </span>
+            </h5>
+            <!-- Objective content -->
+            <p style="text-align: justify;">
+                El objetivo del presente Informe es reflejar los resultados obtenidos durante la
+                cualificación de los equipos de tratamiento de aire detallados en cada hoja de 
+                trabajo incluida en el <b>Anexo B</b> del presente informe, con el fin de demostrar 
+                documentalmente que son adecuados para su uso previsto dentro de los rangos de
+                trabajo definidos por la Normativa Vigente.
+            </p>
+
+            <!-- Personnel title -->
+            <h5 name="personal" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>2. PERSONAL</b>
+                </span>
+            </h5>
+            <!-- Personnel content -->
+            <p style="text-align: justify;">
+                Las pruebas se han realizado por el personal Técnico de <b>ATLAS ROMERO Services</b> que
+                se refleja a continuación:
+            </p>
+            <!-- Personnel list -->
+            <table class="table table-striped mt-2">
+                <thead>  
+                <tr>
+                    <th scope="col">
+                    <b>Nombre</b>
+                    </th>
+                    <th scope="col">
+                    <b>Cargo</b>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                <tr>
+                    <td>
+                    Rafael Romero
+                    </td>
+                    <td>
+                    Técnico Prevención en Nivel Intermedio
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- Personnel more info -->
+            <p style="text-align: justify;">
+                Todo el personal del Servicio Técnico de <b>ATLAS ROMERO Services</b> se encuentra sujeto
+                a un plan de formación anual, que comprende todas las áreas de conocimiento en función de
+                su trabajo a realizar.
+            </p>
+
+            <!-- Equipment title -->
+            <h5 name="instrumentacion" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>3. INSTRUMENTACIÓN UTILIZADA</b>
+                </span>
+            </h5>
+            <!-- Equipment content -->
+            <p style="text-align: justify;">
+                Los equipos utilizados en la cualificación son los indicados en la siguiente tabla, adjuntándose
+                una copia de sus certificados de calibración en los <b>Anexos E</b> y <b>F</b>  del
+                presente informe.<br/>
+                Los instrumentos utilizados para realizar los tests se encontraban calibrados durante la ejecución
+                de las pruebas de cualificación. Todos ellos están sujetos a un plan anual de calibración en el que
+                se especifica su periodo de validez, y en el que como norma general para todos los equipos se
+                establece en un máximo de 24 meses.
+            </p>
+            <!-- Equipment list -->
+            <table class="table table-striped caption-top mt-2">
+                <caption>Equipos utilizdos en la cualificación</caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                    <b>Equipo</b>
+                    </th>
+                    <th scope="col">
+                    <b>Marca</b>
+                    </th>
+                    <th scope="col">
+                    <b>Modelo</b>
+                    </th>
+                    <th scope="col">
+                    <b>Referencia Interna</b>
+                    </th>
+                    <th scope="col">
+                    <b>Nº de Serie</b>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                <tr>
+                    <td>Anemómetro</td>
+                    <td>PCE</td>
+                    <td>423</td>
+                    <td>AT02</td>
+                    <td>150107658</td>
+                </tr>
+                <tr>
+                    <td>Luxómetro</td>
+                    <td>PCE</td>
+                    <td>174</td>
+                    <td>AT04</td>
+                    <td>150206366</td>
+                </tr>
+                <tr>
+                    <td>Medidor de partículas</td>
+                    <td>XXXXX</td>
+                    <td>###</td>
+                    <td>AT0#</td>
+                    <td>###########</td>
+                </tr>
+                <tr>
+                    <td>Sonómetro</td>
+                    <td>PCE</td>
+                    <td>322A</td>
+                    <td>AT06</td>
+                    <td>2015097392</td>
+                </tr>
+                <tr>
+                    <td>Detector de corrientes</td>
+                    <td>DRAGER</td>
+                    <td>###</td>
+                    <td>AT09</td>
+                    <td>#######</td>
+                </tr>
+                <tr>
+                    <td>Medidor de temperaruta sin contacto</td>
+                    <td>TESTO</td>
+                    <td>735</td>
+                    <td>AT12</td>
+                    <td>62679091</td>
+                </tr>
+                <tr>
+                    <td>Regla</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>AT56</td>
+                    <td>-</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Tests performed title -->
+            <h5 name="ensayos_criterios" class="alert-heading text-left mt-4 py-0">
+                <span>
+                    <b>4. ENSAYOS REALIZADOS Y CRITERIOS DE ACEPTACIÓN</b>
+                </span>
+            </h5>
+            <!-- Tests performed content -->
+            <p style="text-align: justify;">
+                A continuación se detallan los ensayos principales a realizar en los equipos de tratamiento de aire
+                y una pequeña descripción de los procedimientos internos que les aplican a cada uno de ellos. Todos
+                los procedimientos se ajustan a la Normativa vigente y son revisados periódicamente por el Departamento
+                de Calidad de <b>Atlas Romero S.L.U.</b>.<br/>
+                De los ensayos detallados en este apartado, se han realizado únicamente aquellos acordados previamente
+                con el cliente.
+            </p>
+            <!-- Test visual verification of the general physical condition of the equipment -->
+            <h5 name="uniformidad_aire" class="alert-heading text-left mt-4 py-0">
+                <span>
+                    <b>4.1. VERIFICACIÓN FÍSICA GENERAL DEL EQUIPO</b>
+                </span>
+            </h5>
+            <!-- Test visual verification ... objective -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Test visual verification ... content -->
+            <p style="text-align: justify;">
+                Inspeccionar los diferentes componentes de la cabina como mandos, controles, horas funcionamiento lámparas
+                UVA, materiales y vidrios, montaje de filtros, abertura de guantes y guantes si los tuviera.
+            </p>
+            <!-- Test visual verification ... equipment title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Test visual verification ... equipment content -->
+            <p style="text-align: justify;">
+                Ninguno. Se sigue el criterio visual del técnico.
+            </p>
+            <!-- Test visual verification ... procedure title -->
+            <h6>
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Test visual verification ... procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de flujo Laminar y
+                Seguridad Biológica</i></b> basado en las siguientes normativas: <b>UNE EN 12469</b>.<br/>
+                Se sigue listado de las hojas de campo de <b>Atlas Romero S.L.U.</b> con la realción de los componentes
+                a comprobar. Se accionan todos los interruptores del equipo verificando el correcto funcionamiento de
+                los mismos, así como el de los diferentes indicadores existentes.
+            </p>
+            <!-- Test visual verification ... acceptance criterias title -->
+            <h6>
+                <span>
+                <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Test visual verification ... acceptance critarias content -->
+            <p style="text-align: justify;">
+                Los componentes, el sistema y todos los servicios eléctricos a él conectados funcionan correctamente.
+            </p>
+            <!-- Test of filters integrity title -->
+            <h5 name="uniformidad_aire" class="alert-heading text-left mt-4 py-0">
+                <span>
+                 <b>4.2. TEST DE INTEGRIDAD EN FILTROS ABSOLUTOS HEPA/ULPA</b>
+                </span>
+            </h5>
+            <!-- Test of filters integrity objective title -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Test of filters integrity objective content -->
+            <p style="text-align: justify;">
+                Demostrar la ausencia de fugas en los filtros absolutos:
+                <ul>
+                    <li class="py-1">En la junta situada entre el marco del filtro y el módulo.</li>
+                    <li class="py-1">Entre el medio filtrante y el marco del filtro</li> 
+                    <li class="py-1">En el medio filtrante.</li>
+                </ul>
+            </p>
+            <!-- Test of filters integrity equipment title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Test of filters integrity equipment content -->
+            <p style="text-align: justify;">
+                <ul>
+                    <li class="py-1">Generador de partículas.</li>
+                    <li class="py-1">Fotómetro detector.</li>
+                    <li class="py-1">Aceite <i>Emery 3004</i> o <i>Di-Ethyl-Hexyl-Sebacat</i>.</li>
+                </ul>
+            </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Test of filters integrity procedure title -->
+            <h6 class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Test of filters integrity procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de flujo Laminar y
+                Seguridad Biológica</i></b> basado en las siguientes normativas: <b>UNE EN 12469</b>.<br/>
+                <ul>
+                    <li class="py-1">Inyectar aerosol en la corriente de aire antes del filtro y ajustar la escala del 100% con
+                        este aerosol
+                     </li>
+                    <li class="py-1">Medir con el fotómetro detector la concentración del aerosol después del filtro.</li>
+                    <li class="py-1">Medir alrededor de toda la periferia del filtro, juntas y rastrear su superficie.</li>
+                </ul>
+            </p>
+            <!-- Test of filters integrity acceptance criterias title -->
+            <h6>
+                <span>
+                <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Test of filters integrity acceptance critarias content -->
+            <p style="text-align: justify;">
+                La concentración después del filtro debe se inferior o igual a un 0,01% de la concentración de aerosol
+                antes del filtro
+            </p>
+            <!-- Test of air title -->
+            <h5 name="uniformidad_aire" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>4.3. ENSAYO DE VELOCIDAD Y UNIFORMIDAD DEL AIRE</b>
+                </span>
+            </h5>
+            <!-- Test of air objective -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Test of air content -->
+            <p style="text-align: justify;">
+                Determinar la velocidad promedio del aire de impulsión, la uniformidad del flujo del aire en el
+                interior de la cabina y cuando sea aplicable la velocidad frontal y de extracción.
+            </p>
+            <!-- Test of ait equipment title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Test of air equipment -->
+            <p style="text-align: justify;">
+                Anemómetro de filamento caliente.
+            </p>
+            <!-- Test of air procedure title -->
+            <h6>
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Test of air procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0003-Vitrinas de gases</i></b> basado
+                en las siguientes normativas: <b>EN ISO 5167-1</b>, <b>EN 14175-3</b>, <b>AFNOR NF X 15-211</b>.<br/>
+                La vitrina deberá estar funcionando en las condiciones teóricas de trabajo, realizando las mediciones
+                a la altura operacional de trabajo de la vitrina con el interior de la misma vacío. El anemómetro
+                será omnidireccional capaz de medir velocidades de aire entre 0,1 m/s y 2,0 m/s. El tiempo de respuesta
+                del sensor no debe ser superior a 1 s. La precisión de una lectura individual debe ser superior al 15 % a
+                las velocidades de aire entre 0,2 m/s y 0,15 m/s. Se utilizará un anemómetro con certificado de
+                calibración en vigor. El factor de corrección es el propio de cada aparato de media.<br/>
+                La sonda del anemómetro se situará en los puntos determinados por la intersección de las siguientes líneas
+                en el plano interior de medida (ver <b>Figura 1</b>):
+            </p>
+            <!-- Figure 1 Anemometer reading -->
+            <figure class="figure col-12">
+                <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 1')" />
+                <center>
+                <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
+                    t-alt="Figura 1: Lectura con anemómetro"
+                    class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                    style="width: 60%; height: 300px" />
+                </center>
+                <figcaption class="figure-caption text-center mt-2">
+                <b><span t-out="figura_info[0]" /> :</b> <i><span t-out="figura_info[1]" /></i>
+                </figcaption>
+            </figure>
+            <!-- Test with anemometer, more precedure info -->
+            <p style="text-align: justify;">
+                Una serie de, al menos, tres líneas equidistantes situadas entre los límites horizontales del plano
+                interior de medida. Las dos líneas exteriores de la serie estarán situadas a (100 ± 5) mm de los límites
+                horizontales. Las líneas intermedias estarán a una distancia menor o igual a 400 mm, entre sí y respecto a
+                las líneas exteriores (ver <b>Figura 2</b>). <br/>
+                Las medidas se realizarán situando la sonda del anemómetro en cada punto de medida. La medida se hará
+                perpendicular al plano interior de medida ajustando para ello la orientación del sensor. El anemómetro
+                se soportará en los puntos de medida por una sola persona o bien mediante un trípode que debe situarse de
+                forma que provoque la menor perturbación posible en el flujo de aire (ver <b>Figura 3</b>).<br/>
+                Medir y registrar la velocidad perpendicular al plano de la guillotina a intervalos regulares menores
+                o iguales a 1 s, durante un periodo de, al menos, 60 s.
+            </p>
+            <!-- Figures 2 and 3 anemometer reading lacation -->
+            <div class="d-flex flex-row justify-content-between col-12 p-2" >
+                <div class="col-8 p-2">
+                <figure class="figure w-100" >
+                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 2')" />
+                    <center>  
+                    <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
+                        t-alt="Figura 2: Distribución de puntos de lectrua frontal"
+                        class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                        style="width: 100%; height: 300px" />
+                    </center>
+                    <figcaption class="figure-caption text-center mt-2">
+                    <b><span t-out="figura_info[0]" />:</b> <i><span t-out="figura_info[1]" /></i>
+                    </figcaption>
+                </figure>
+                </div>
+                <div class="col-4 p-2">
+                <figure class="figure w-100">
+                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 3')" /> 
+                    <center>  
+                    <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
+                        t-alt="Figura 3: Detalle de trípode con anemómetro"
+                        class="img img-fluid o_we_custom_image o_modified_image_to_save"
+                        style="width: 100%; height: 300px" />
+                    </center>
+                    <figcaption class="figure-caption text-center mt-2">
+                    <b><span t-out="figura_info[0]" />:</b> <i><span t-out="figura_info[1]" /></i>
+                    </figcaption>
+                </figure>
+                </div>
+            </div>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Caudal measurement tile -->
+            <h6 class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>Medida del caudal de extracción:</b>
+                </span>
+            </h6>
+            <!-- Caudal measurement content -->
+            <p style="text-align: justify;">
+                Una vez calculada la velocidad media en el plano de la guillotina se calcula el caudal aplicando la
+                fórmula que se indica a continuación: 
+            </p>
+            <!-- Caudal calculation expresion -->
+            <h6 class="mx-2">
+                <span class="fw-bold ff-italic mx-4">
+                Q = V(m<sup>3</sup>/h) * S(m<sup>3</sup>)
+                </span>
+            </h6>
+            <!-- Caudal calculation expression details -->
+            <p>
+                Donde:<br/>
+                <span class="fw-bold ff-italic mx-4">Q = Caudal de aspiración</span><br/>
+                <span class="fw-bold ff-italic mx-4">V = Velocidad media en el plano máximo de entrada de la vitrina (m/s)</span><br/>
+                <span class="fw-bold ff-italic mx-4">S = Superficie del plano máximo den entrada de la vitrina (m<sup>2</sup>)</span><br/>
+            </p>
+            <!-- Caudal calculation more info -->
+            <p style="text-align: justify;">
+                Cuando, por diseño, existe un hueco significativo de paso de aire en la vitrina al margen de la
+                guillotina, se puede proceder buscando la corrección al mismo o realizando el ensayo tras sellar
+                con cinta u otro material apropiado dicho hueco mientras se ejecuta el ensayo.
+            </p>
+
+            <!-- Acceptance criterias title -->
+            <h6 >
+                <span>
+                <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Acceptance criterias by long and regulation -->
+            <ul>
+                <li class="py-1">
+                    Para las cabinas de seguridad biológica (<b>CSM</b>), según normativa <b>ISO 12469</b>:<br/>
+                    <p>
+                        La velocidad será la indicada en la siguiente tabla en función de la clase de cabina de seguridad.
+                    </p>
+                    
+                    <table class="table table-borderless caption-top mt-2">
+                        <caption>Requerimientos según tipo de cabina (<b>ISO 12469</b>)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                <b>Clase</b>
+                                </th>
+                                <th scope="col">
+                                <b>Velocidad media del aire entrante para conseguir la protección del operador</b>
+                                </th>
+                                <th scope="col">
+                                <b>Velocidad media de la corriente de aire descendente para conseguir la protección del producto</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>I</td>
+                                <td>&gt; 0,7m/s - 1,0m/s</td>
+                                <td>No applicable</td>
+                            </tr>
+                            <tr>
+                                <td>II</td>
+                                <td>&#x2265; 0,4m/s </td>
+                                <td>2,25m/s - 0,50m/s</td>
+                            </tr>
+                            <tr>
+                                <td>III</td>
+                                <td>&#x2265; 0,7m/s con guante quitado</td>
+                                <td>No aplicable</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="py-1">
+                    Para las cabinas y módulos de flujo laminar (excepto <b>CSM</b>):
+                    <p class="py-1">
+                        Si se debe cumplir con <b>GMP</b>, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
+                        Si no se requiere cumplir con <b>GMP</b>. Criterio <b>INFORMATIVO</b>
+                    </p>
+                </li>
+                <li class="py-1">
+                    Para cabinas de exgtracción con filtro de carbón activo, según normativa <b>AFNOR NFX 15-215</b>:
+                    <p class="py-1">
+                        La velocidad media de extracción estará dentro del intervalo 0,4m/s y 0,6 m/s, de acuerdo con
+                        lo establecido en la Norma <b>NFX 15-211</b>.
+                    </p>
+                </li>
+                <li class="py-1">
+                    Para vitrinas de aspiración y cabinas de extracción:
+                    <p class="py-1">
+                        La velocidad frontal del aire debería estar entre los valores 0,3m/s y 2m/S basado en lo
+                        establecido en la Norma <b>ISO 14175-3</b> y otras normas similares.
+                    </p>
+                </li>
+            </ul>
+            
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Particles counting title -->
+            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>4.4. CONTAJE DE PARTÍCULAS</b>
+                </span>
+            </h5>
+            <!-- Particles counting - title -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Particles counting - content -->
+            <p style="text-align: justify;">
+                Verificar el grado de limpieza del aire en el equipo. En las cabinas, el montaje de
+                las partículas nos indica la eficiencia del filtro colocado.
+            </p>
+            <!-- Particles counting - title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Particles counting - content -->
+            <p style="text-align: justify;">
+                Contador óptico de partículas en aire.
+            </p>
+            <!-- Test of sound equipment - procedure title -->
+            <h6>
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Particles counting - procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de Flujo Laminar
+                y Seguridad Biológica</i></b> basado en las siguientes normativas: <b>ISO 14644-1</b>, <b>UNE 100713</b> y la revisión
+                vigente del <b>Anexo 1</b> delas <b>GMP</b>:<br/>
+                <ul>
+                    <li class="py-1">
+                        <p>
+                            Se realizará el montaje de partículas en condiciones <i>“en reposo”</i>. Se entiende por situación
+                            del equipo <i>“en reposo”</i> cuando todo el sistema de aire está funcionando pero sin presencia del
+                            personal de producción.
+                        </p>
+                    </li>
+                    <li class="py-1">
+                        <p>
+                            El número de localizaciones y el volumen de muestreo se determinarán según lo establecido
+                            en la normativa y en el procedimiento interno.
+                        </p>
+                        
+                    </li>
+                    <li class="py-1">Los montajes se realizarán a la altura de trabajo.</li>
+                </ul>
+            </p>
+            <p style="text-align: justify;">
+                Para la clasificación de las cabinas se seguirán los criterios de aceptación establecidos en la norma
+                <b>ISO 14644-1</b>:
+            </p>
+            <table class="table table-borderless caption-top mt-2">
+                <caption>Límite de partículas de igual o mayor por m<sup>3</sup> de aire (<b>ISO 14644-1</b>)</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <b> Clase </b>
+                        </th>
+                        <th scope="col">
+                            <b>0,1&#x3BC;m</b>
+                        </th>
+                        <th scope="col">
+                            <b>0,2&#x3BC;m </b>
+                        </th>
+                        <th scope="col">
+                            <b>0,3&#x3BC;m</b>
+                        </th>
+                        <th scope="col">
+                            <b>0,5&#x3BC;m</b>
+                        </th>
+                        <th scope="col">
+                            <b>1&#x3BC;m</b>
+                        </th>
+                        <th scope="col">
+                            <b>5&#x3BC;m</b>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr>
+                        <td>ISO 1</td>
+                        <td>10</td>
+                        <td>2</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 2</td>
+                        <td>100</td>
+                        <td>24</td>
+                        <td>10</td>
+                        <td>4</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 3</td>
+                        <td>1000</td>
+                        <td>237</td>
+                        <td>102</td>
+                        <td>35</td>
+                        <td>8</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 4</td>
+                        <td>10000</td>
+                        <td>2370</td>
+                        <td>1020</td>
+                        <td>352</td>
+                        <td>83</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 5</td>
+                        <td>100000</td>
+                        <td>23700</td>
+                        <td>10200</td>
+                        <td>3520</td>
+                        <td>832</td>
+                        <td>29</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 6</td>
+                        <td>1000000</td>
+                        <td>237000</td>
+                        <td>102000</td>
+                        <td>35200</td>
+                        <td>8320</td>
+                        <td>293</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 7</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>352000</td>
+                        <td>83200</td>
+                        <td>2930</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 8</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>3520000</td>
+                        <td>832000</td>
+                        <td>29300</td>
+                    </tr>
+                    <tr>
+                        <td>ISO 9</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>35200000</td>
+                        <td>8320000</td>
+                        <td>293000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Particles counting - acceptance criteria - title -->
+            <h6 class="alert-heading text-left mt-3 py-0">
+                <span>
+                <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Particles counting - acceptance criteria - content -->
+            <p style="text-align: justify;">
+                La clase de limpieza de aire es la esperada según la normativa <b>ISO 14644-1</b>.
+            </p>
+
+            <!-- Air flow visual test - title -->
+            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>4.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE</b>
+                </span>
+            </h5>
+            <!-- Air flow visual test - title -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Air flow visual test - content -->
+            <p style="text-align: justify;">
+                Estudiar la direccionalidad del aire mediante el comportamiento del humo
+                generado en la cabina, con el fin de localizar las posibles zonas muertas.
+            </p>
+            <!-- Air flow visual test - title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Particles counting - content -->
+            <p style="text-align: justify;">
+                Trazador de corrientes de aire tipo Dräger o similar.
+            </p>
+            <!-- Air flow visual test - procedure title -->
+            <h6>
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Air flow visual test - procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de Flujo Laminar
+                y Seguridad Biológica</i></b> basado en las siguientes normativas: <b>ISO 14644-3</b>, <b>ISO 12469</b>.<br/>
+                Insuflar humo con un trazador de corrientes de aire para estudiar el comportamiento y la direccionalidad del aire.<br/>
+                También se detectarán las posibles zonas muertas, que serán aquellas en las que el humo quede estancado.
+            </p>
+            <!-- Air flow visual test - acceptance criteria - title -->
+            <h6>
+                <span>
+                    <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Air flow visual test - acceptance criteria - content -->
+            <p style="text-align: justify;">
+                No deben existir zonas muertas en el área estudiada.<br/>
+                La direccionalidad del aire es la correcta.<br/>
+            </p>
+
+            <!-- Test of temperature - title -->
+            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>4.6. TEMPERATURA</b>
+                </span>
+            </h5>
+            <!-- Test of temperature objective - title -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Test of temperature objective - content -->
+            <p style="text-align: justify;">
+                Verificar la temperatura existente con el/los ventilador/es funcionando y las luces encendidas.
+            </p>
+            <!-- Test of temperature equipment - title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Test of temperature equipment - content -->
+            <p style="text-align: justify;">
+                Sonda de temperatura.
+            </p>
+            <!-- Test of temperture - procedure title -->
+            <h6>
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Test of temperature - procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de Flujo Laminar
+                y Seguridad Biológica</i></b> basado en las siguientes normativas: <b>UNE EN 12469</b>.<br/>
+                Se realizarán una serie de medidas de la temperatura distribuidas homogéneamente en la cabina
+                y se calcula la media aritmética.
+            </p>
+            <!-- Test of temperature - acceptance criteria - title -->
+            <h6>
+                <span>
+                <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Test of temperature - acceptance criteria - content -->
+            <p style="text-align: justify;">
+                Los criterios de aceptación son particulares de cada cabina y dependen de su uso. Se definen
+                como orientativos entre 22-26ºC. No debe aumentar más de 8ºC or encima de la temperatura ambiente
+                de la sala.
+            </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Test of sound - title -->
+            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>4.7. TEST DE SONIDO</b>
+                </span>
+            </h5>
+            <!-- Test of sound objective - title -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Test of sound objective - content -->
+            <p style="text-align: justify;">
+                Determinar la medida de la presión acústica es proporcionar al usuario los niveles de presión
+                acústica de la vitrina de gases cuando esté en uso.
+            </p>
+            <!-- Test of sound equipment - title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Test of sound equipment - content -->
+            <p style="text-align: justify;">
+                Sonómetro.
+            </p>
+            <!-- Test of sound equipment - procedure title -->
+            <h6>
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Test of sound equipment - procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de Flujo
+                Laminar y Seguridad Biológica</i></b> basado en las siguientes normativas: <b>BS 5295</b>, <b>IES-RP-CC-006-84T</b>,
+                <b>IES-RP-CC-002.2</b>.<br/>
+                Es conveniente que la medida del nivel de presión acústica se lleve a cabo como nivel de presión
+                acústica ponderado A en dB(A), a partir de medidas situadas delante de la cabina:
+            </p>
+            <!-- Test of sound equipment - procedure contente positions -->
+            <ul>
+                <li class="py-1">
+                    a una altura de 150 cm respecto del suelo,
+                </li>
+                <li class="py-1">
+                    30 cm por delante del plano de la guillotina,
+                </li>
+                <li class="py-1">
+                    en el centro del plano paralelo al plano de la guillotina.
+                </li>
+            </ul>
+            <!-- Test of sound equipment - acceptance criteria - title -->
+            <h6>
+                <span>
+                <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Test of sound equipment - acceptance criteria - content -->
+            <p style="text-align: justify;">
+                <b>INFORMATIVO</b>. Se recomienda un nivel de ruido &#x2264; 85 db(A).
+            </p>
+
+            <!-- Test lumonsity - title -->
+            <h5 name="test_luminosity" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>4.8. TEST DE LUMINOSIDAD</b>
+                </span>
+            </h5>
+            <!-- Test lumonsity - objective title -->
+            <h6>
+                <span>
+                <b>Objetivo:</b>
+                </span>
+            </h6>
+            <!-- Test lumonsity - objective content -->
+            <p style="text-align: justify;">
+                Determinar los niveles de luminosidad que se alcanzan en el interior del equipo.
+            </p>
+            <!-- Test lumonsity - equipment title -->
+            <h6>
+                <span>
+                <b>Equipo:</b>
+                </span>
+            </h6>
+            <!-- Test lumonsity - equipment content -->
+            <p style="text-align: justify;">
+                Luxómetro.
+            </p>
+            <!-- Test lumonsity - procedure title -->
+            <h6>
+                <span>
+                <b>Procedimiento:</b>
+                </span>
+            </h6>
+            <!-- Test lumonsity - procedure content -->
+            <p style="text-align: justify;">
+                Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de Flujo
+                Laminar y Seguridad Biológica</i></b> basado en las siguientes normativas: <b>UNE-EN 12469</b>.<br/>
+                La iluminación debe medirse en, al menos, 8 puntos por metro cuadrado de la superficie de trabajo,
+                homogéneamente distribuidos. Se calcula el valor medio y la uniformidad.
+            </p>
+            <!-- Test lumonsity - acceptance criteria - title -->
+            <h6>
+                <span>
+                <b>Criterios de aceptación:</b>
+                </span>
+            </h6>
+            <!-- Test lumonsity - acceptance criteria - content -->
+            <p style="text-align: justify;">
+                El fabricante debe indicar el <b>Indice Ra</b> y éste se hará constar en el informe.<br/>
+                <b>INFORMATIVO</b>. El nivel de iluminación en la superficie de trabajo no debe ser inferior a 500 lux. 
+            </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
+            <!-- Obteined values details - title -->
+            <h5 name="detalles_valores_obtenidos" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>5. DETALLE DE LOS VALORES OBTENIDOS</b>
+                </span>
+            </h5>
+            <!-- Results details - title -->
+            <h5 name="detalles_resultados" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>5.1. DETALLES DE LOS RESULTADOS</b>
+                </span>
+            </h5>
+            <!-- Results details - content -->
+            <p style="text-align: justify;">
+                Los resultados obtenidos durante la realización de los ensayos de cualificación de los equipos de
+                tratamiento de Aire están registrados en las correspondientes hojas de datos que se adjuntan como
+                <b>Anexo B</b> del presente informe.
+            </p>
+            <!-- Final opinion - title -->
+            <h5 name="final_opinion" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>5.2. DICTAMEN FINAL</b>
+                </span>
+            </h5>
+            <!-- Final opinion - content -->
+            <p style="text-align: justify;">
+                La interpretación de los resultados obtenidos son evaluados en el informe de emisiones de datos
+                de cada equipo <b><i>Anexo B</i></b> del presente informe.
+            </p>
+            <!-- Observations - title -->
+            <h5 name="observations" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>6. OBSERVACIONES</b>
+                </span>
+            </h5>
+            <!-- Observations - content -->
+            <p style="text-align: justify;">
+                Si durante la cualificación se detecta alguna observación que se considere oportuna, se adjuntará
+                a modo de resumen del presente informe como <b>Anexo C</b>. En caso contrario no existirá
+                dicho anexo.
+            </p>
+            <!-- Non-conformity - title -->
+            <h5 name="no_conformidades" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>7. LISTADO DE NO CONFORMIDADES</b>
+                </span>
+            </h5>
+            <!-- Non-conformity - content -->
+            <p style="text-align: justify;">
+                Si durante la cualificación se detecta alguna No Conformidad, se adjuntará al presente informe
+                como  <b>Anexo D</b>. En caso contrario no existirá dicho anexo.
+            </p>
+
+            <!-- Anexos - index title -->
+            <h5 name="anexos" class="alert-heading text-left mt-4 py-0">
+                <span>
+                <b>8. LISTADO DE ANEXOS</b>
+                </span>
+            </h5>
+            <!-- Anexos - table of content -->
+            <ul class="list-unstyled">
+                <li class="py-1">
+                <span>
+                    <b><i>Anexo A:</i></b> <i>Tabla resumen de datos correspondientes a los equipos cualificados.</i>
+                </span>
+                </li>
+                <li class="py-2">
+                <span>
+                    <b><i>Anexo B:</i></b> <i>Hojas de toma de datos correspondiente a las mediciones realizadas.</i>
+                </span>
+                </li>
+                <li class="py-2">
+                <span>
+                    <b><i>Anexo C:</i></b> <i>Tabla resumen de observaciones por equipos.</i>
+                </span>
+                </li>
+                <li class="py-2">
+                <span>  
+                    <b><i>Anexo D:</i></b> <i>Tabla resumen de No conformidades encontradas durante los ensayos.</i>
+                </span> 
+                </li>
+                <li class="py-2">
+                <span>  
+                    <b><i>Anexo E:</i></b> 
+                    <i>
+                    Fotocopias validadas de los Certificados de calibración correspondientes a los
+                    equipos que han sido utilizados durante los ensayos de cualificación.
+                    </i>
+                </span> 
+                </li>
+                <li class="py-2">
+                <span>  
+                    <b><i>Anexo F:</i></b> <i>Fotocopias de los Documentos de verificación y control de otros equipos utilizados.</i>
+                </span> 
+                </li>
+                <li class="py-2">
+                <span>  
+                    <b><i>Anexo G:</i></b> <i>Archivo fotográfico completo de los equipos analizados. (Bajo petición).</i>
+                </span> 
+                </li>
+            </ul>     
+            </div>
+        </t> <!-- End of introduction -->
+        </template>
+    
+    </data>
+</odoo>
