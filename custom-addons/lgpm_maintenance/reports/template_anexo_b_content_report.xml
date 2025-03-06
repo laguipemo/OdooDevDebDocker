@@ -72,7 +72,8 @@
                         <div class="col-m-12 p2">
                             <p>
                                 <b>¿El equipo está funcionando?:</b>
-                                <span t-field="maintenance_request.sat_is_working" class="mx-2" />
+                                <t t-if="maintenance_request.sat_is_working">SI</t>
+                                <t t-else="">NO</t>
                             </p>
                             <p>
                                 <b>Estabilidad del equipo:</b>
@@ -309,41 +310,26 @@
                     <div class="d-flex flex-row col-m-12 mt-4">
                         <div class="col-m-5">
                             <p>
+                                <b>Controles visuales y acústicos:</b>
+                                <span t-field="maintenance_request.sat_visual_acustic_ctrls" class="mx-2" />
+                            </p>
+                            <t t-if="maintenance_request.equipment_use == 'Ácidos Concentrados'">
+                                <p>
+                                    <b>Alarma de temperatura:</b>
+                                    <span t-field="maintenance_request.sat_temp_alarm" class="mx-2" />
+                                </p>
+                            </t>
+                            <p>
                                 <b>Protección de la superficie:</b>
                                 <span t-field="maintenance_request.sat_surface_protection" class="mx-2" />
-                            </p>
-                            <p>
-                                <b>Aislamiento y juntas:</b>
-                                <span t-field="maintenance_request.sat_fixed_parts" class="mx-2" />
                             </p>
                             <p>
                                 <b>Sujeción piezas fijas:</b>
                                 <span t-field="maintenance_request.sat_insulation_joints" class="mx-2" />
                             </p>
                             <p>
-                                <b>Funcionamiento guillotina:</b>
-                                <span t-field="maintenance_request.sat_guillotine_function" class="mx-2" />
-                            </p>
-                            <p>
-                                <b>Estado general guillotina:</b>
-                                <span t-field="maintenance_request.sat_guillotine_gnrl_state" class="mx-2" />
-                            </p>
-                            <p>
-                                <b>Fuerza movimiento guillotina:</b>
-                                <span t-field="maintenance_request.sat_guillotine_v_force" class="mx-2" />
-                            </p>
-                        </div>
-                        <div class="col-m-2">
-                            <p class="mx-3"></p>
-                        </div>
-                        <div class="col-m-5">
-                            <p>
-                                <b>Control de presencia:</b>
-                                <span t-field="maintenance_request.sat_presence_ctrl" class="mx-2" />
-                            </p>
-                            <p>
-                                <b>Autoprotec:</b>
-                                <span t-field="maintenance_request.sat_autoprotec" class="mx-2" />
+                                <b>Aislamiento y juntas:</b>
+                                <span t-field="maintenance_request.sat_fixed_parts" class="mx-2" />
                             </p>
                             <p>
                                 <b>Estado grifería:</b>
@@ -353,9 +339,68 @@
                                 <b>Estado manoreductores:</b>
                                 <span t-field="maintenance_request.sat_manoreductors_function" class="mx-2" />
                             </p>
+                            <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                <p>
+                                    <b>Control de presencia:</b>
+                                    <span t-field="maintenance_request.sat_presence_ctrl" class="mx-2" />
+                                </p>
+                                <p>
+                                    <b>Autoprotec:</b>
+                                    <span t-field="maintenance_request.sat_autoprotec" class="mx-2" />
+                                </p>
+                            </t>
+                            
+                        </div>
+                        <div class="col-m-2">
+                            <p class="mx-3"></p>
+                        </div>
+                        <div class="col-m-5">
                             <p>
-                                <b>Alarma temperatura:</b>
-                                <span t-field="maintenance_request.sat_temp_alarm" class="mx-2" />
+                                <b>Disparo de la alarma:</b>
+                                <span t-field="maintenance_request.sat_alarm_trigger" class="mx-2" />
+                            </p>
+                            <p>
+                                <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                    <b>Funcionamiento guillotina:</b>
+                                </t>
+                                <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                    <b>Funcionamiento puerta:</b>
+                                </t>
+                                <span t-field="maintenance_request.sat_guillotine_function" class="mx-2" />
+                            </p>
+                            <p>
+                                <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                    <b>Estado general guillotina:</b>
+                                </t>
+                                <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                    <b>Estado general puerta:</b>
+                                </t>
+                                <span t-field="maintenance_request.sat_guillotine_gnrl_state" class="mx-2" />
+                            </p>
+                            <p>
+                                <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                    <b>Fuerza movimiento guillotina:</b>
+                                </t>
+                                <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                    <b>Fuerza apertura puerta:</b>
+                                </t>
+                                <span t-field="maintenance_request.sat_guillotine_v_force" class="mx-2" />
+                            </p>
+                            <p>
+                                <t t-if="maintenance_request.equipment_type == 'Cabina de flujos'">
+                                    <b>Sensores flujo de aire:</b>
+                                    <span t-field="maintenance_request.sat_temp_alarm" class="mx-2" />
+                                </t>
+                            </p>
+                            <p>
+                                <b>Dirección flujo de aire correcto:</b>
+                                <t t-if="maintenance_request.sat_airflow_direction">SI</t>
+                                <t t-else="">NO</t>
+                            </p>
+                            <p>
+                                <b>Flujo de aire uniforme:</b>
+                                <t t-if="maintenance_request.sat_airflow_uniformity">SI</t>
+                                <t t-else="">NO</t>
                             </p>
                         </div>
                     </div>
@@ -379,7 +424,12 @@
                         <div class="d-flex flex-row">
                             <div class="col-m-12 my-1">
                                 <p>
-                                    <b>Valor fuerza de la guillotina (N):</b>
+                                    <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                        <b>Valor fuerza de la guillotina:</b>
+                                    </t>
+                                    <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                        <b>Valor fuerza de la puerta:</b>
+                                    </t>
                                     <span t-field="maintenance_request.guillotine_force" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
                                 </p>
                             </div>

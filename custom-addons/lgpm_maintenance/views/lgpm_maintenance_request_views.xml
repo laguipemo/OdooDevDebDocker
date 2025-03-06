@@ -54,6 +54,7 @@
                 <field name="sat_var_speed" />
               </group>
             </group>
+            
             <group name="sat_requirements" string="Requerimientos específicos" col="12">
               <group colspan="10">
                 <field name="requirements_partner" />
@@ -70,8 +71,8 @@
                 <field name="sat_insulation_joints" />
                 <field name="sat_faucets_function" />
                 <field name="sat_manoreductors_function" />
-                <field name="sat_presence_ctrl" />
-                <field name="sat_autoprotec" />
+                <field name="sat_presence_ctrl" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="sat_autoprotec" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
               </group>
               <group colspan="6">
                 <field name="sat_alarm_trigger" />
