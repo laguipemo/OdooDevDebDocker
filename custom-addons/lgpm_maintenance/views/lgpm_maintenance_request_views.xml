@@ -54,7 +54,7 @@
                 <field name="sat_var_speed" />
               </group>
             </group>
-            
+            <!-- SAT specific requirements -->
             <group name="sat_requirements" string="Requerimientos específicos" col="12">
               <group colspan="10">
                 <field name="requirements_partner" />
@@ -92,6 +92,109 @@
                 <field name="sat_filters_state" attrs="{'invisible': ['|',('equipment_type', '!=', 'Armario de Seguridad'), ('equipment_type', '!=', 'Cabina de Flujo'), ('equipment_type', '!=', 'Cabina de Pesadas')]}"/>
               </group>
             </group>
+            <group 
+                  name="particules_counting" 
+                  string="Ensayo de verificación de integridad y estanquedad en filtros absolutos HEPA/ULPA" 
+                  col="12"
+                  attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo'),('equipment_type', '!=', 'Cabina de Pesadas')]}">
+              <table class="table table-bordered text-center" colspan="12">
+                <thead>
+                  <tr>
+                    <th scope="col">Nº de filtro</th>
+                    <th scope="col">Nº de serie/Identificación</th>
+                    <th scope="col">Dimensiones(mm)</th>
+                    <th scope="col">Concentración aerosol (&#xB5;g/L)</th>
+                    <th scope="col">Valor obtenido (&#x2264; 0,01%)</th>
+                    <th scope="col">C</th>
+                    <th scope="col">NC</th>
+                    <th class="col-mb-1">INF</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <field name="frontal_v1" />
+                    </td>
+                    <td>
+                      <field name="frontal_v2" />
+                    </td>
+                    <td>
+                      <field name="frontal_v3" />
+                    </td>
+                    <td>
+                      <field name="frontal_v1" />
+                    </td>
+                    <td>
+                      <field name="frontal_v2" />
+                    </td>
+                    <td>
+                      <field name="frontal_v3" />
+                    </td>
+                    <td>
+                      <field name="frontal_v3" />
+                    </td>
+                    <td>
+                      <field name="frontal_v3" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <field name="frontal_v4" />
+                    </td>
+                    <td>
+                      <field name="frontal_v5" />
+                    </td>
+                    <td>
+                      <field name="frontal_v6" />
+                    </td>
+                    <td>
+                      <field name="frontal_v6" />
+                    </td>
+                    <td>
+                      <field name="frontal_v6" />
+                    </td>
+                    <td>
+                      <field name="frontal_v6" />
+                    </td>
+                    <td>
+                      <field name="frontal_v6" />
+                    </td>
+                    <td>
+                      <field name="frontal_v6" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <field name="frontal_v7" />
+                    </td>
+                    <td>
+                      <field name="frontal_v8" />
+                    </td>
+                    <td>
+                      <field name="frontal_v9" />
+                    </td>
+                    <td>
+                      <field name="frontal_v9" />
+                    </td>
+                    <td>
+                      <field name="frontal_v9" />
+                    </td>
+                    <td>
+                      <field name="frontal_v9" />
+                    </td>
+                    <td>
+                      <field name="frontal_v9" />
+                    </td>
+                    <td>
+                      <field name="frontal_v9" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </group>
+          
+
 
             <!-- Extraction volume measurement and calculation -->
             <group name="measurements" string="Medición volumen de extracción" col="12">
