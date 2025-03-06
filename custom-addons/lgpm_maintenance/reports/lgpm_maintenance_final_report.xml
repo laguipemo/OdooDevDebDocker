@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.report" id="lgpm_maintenance_request_final_action_report">
+      <field name="name">Informe Final Mantenimiento</field>
+      <field name="model">maintenance.request</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">lgpm_maintenance.request_maintenance_final_report</field>
+      <field name="report_file">lgpm_maintenance.request_maintenance_final_report</field>
+      <field name="binding_model_id" ref="model_maintenance_request" />
+
+      <field name="print_report_name">'Informe - %s' %(object.name)</field>
+    </record>
+
+
+    <!-- explicit template definition -->
+    <template id="lgpm_maintenance.request_maintenance_final_report">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="maintenance_request">
+          <t t-set="lang" t-value="maintenance_request.equipment_id.partner_id.lang" />
+          <t t-if="maintenance_request_first">
+            <t t-if="maintenance_request.equipment_type=='Vitrina de Gases'" t-call="lgpm_maintenance.request_maintenance_vg_report_introduction" t-lang="lang"/>
+            <t t-if="maintenance_request.equipment_type=='Cabina de Flujo'" t-call="lgpm_maintenance.request_maintenance_cf_report_introduction" t-lang="lang"/>
+          </t>
+          <!-- Call and show Anexo A -->
+          <t t-if="maintenance_request_first"  t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang">
+            <t t-set="anexo" t-value="'Anexo A'" />
+            <t t-set="title" t-value="'Hoja de datos correspondientes a los equipos cualificados.'" />
+          </t>
+          <t t-if="maintenance_request_first" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_a_content" t-lang="lang"/>
+
+          <!-- Call and show Anexo B -->
+          <t t-if="maintenance_request_first" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo B'" />
+            <t t-set="title" t-value="'Hojas de toma de datos correspondiente a las mediciones realizadas.'" />
+          </t>
+          <t t-call="lgpm_maintenance.request_maintenance_final_report_anexo_b_content" t-lang="lang"/>
+
+          <!-- Call and show Anexo C -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo C'" />
+            <t t-set="title" t-value="'Tabla resumen de observaciones por equipo.'" />
+          </t>
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_c_content" t-lang="lang"/>
+
+          <!-- Call and show Anexo D -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo D'" />
+            <t t-set="title" t-value="'Tabla resumen NO conformidades encontradas durnate los ensayos.'" />
+          </t>
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_d_content" t-lang="lang"/>
+
+          <!-- Call and show Anexo E -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo E'" />
+            <t t-set="title" t-value="'Fotocopias validadas de los Certificados de calibración correspondientes a los equipos que han sido utilizados durante los ensayos de cualificación.'" />
+          </t>
+
+          <!-- Call and show Anexo F -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo F'" />
+            <t t-set="title" t-value="'Fotocopias de los Documentos de verificación y control de otros equipos utilizados.'" />
+          </t>
+
+          <!-- Call and show Anexo G -->
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang" >
+            <t t-set="anexo" t-value="'Anexo G'" />
+            <t t-set="title" t-value="'Archivo fotográfico completo de los equipos analizados. (Bajo petición).'" />
+          </t>
+          <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_g_content" t-lang="lang"/>
+        </t>
+      </t>
+    </template>
+
+  </data>
+</odoo>
