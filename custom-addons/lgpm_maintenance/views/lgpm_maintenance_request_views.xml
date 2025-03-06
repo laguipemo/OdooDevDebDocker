@@ -64,7 +64,7 @@
             <group name="sat_check_components" string="Comprobación y ajuste de componentes mecánicos y medios" col="12">
               <group colspan="6">
                 <field name="sat_visual_acustic_ctrls" />
-                <field name="sat_temp_alarm" />
+                <field name="sat_temp_alarm" attrs="{'invisible':[('equipment_use', '!=', 'Ácidos Concentrados')]}"/>
                 <field name="sat_surface_protection" />
                 <field name="sat_fixed_parts" />
                 <field name="sat_insulation_joints" />
@@ -85,10 +85,10 @@
                 <field name="sat_guillotine_v_force" attrs="{'invisible':[('equipment_type', '!=', 'Vitrina de Gases')]}"/>
                 <field name="sat_guillotine_v_force" string="Fuerza apertura puerta" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}"/>
 
-                <field name="sat_airflow_sensors" />
+                <field name="sat_airflow_sensors" attrs="{'invisible': ['|',('equipment_type', '!=', 'Cabina de Pesadas'), ('equipment_type', '!=', 'Cabina de Flujo')]}"/>
                 <field name="sat_airflow_direction" widget="boolean_toggle" />
                 <field name="sat_airflow_uniformity" widget="boolean_toggle" />
-                <field name="sat_filters_state" />
+                <field name="sat_filters_state" attrs="{'invisible': ['|',('equipment_type', '!=', 'Armario de Seguridad'), ('equipment_type', '!=', 'Cabina de Flujo'), ('equipment_type', '!=', 'Cabina de Pesadas')]}"/>
               </group>
             </group>
 
