@@ -103,90 +103,71 @@
                     <th scope="col" style="width: 20%;">Nº de filtro</th>
                     <th scope="col" style="width: 20%;">Nº de serie/Identificación</th>
                     <th scope="col" style="width: 15%;">Dimensiones(mm)</th>
-                    <th scope="col" style="width: 15%;">Concentración aerosol (&#xB5;g/L)</th>
-                    <th scope="col" style="width: 15%;">Valor obtenido (&#x2264; 0,01%)</th>
-                    <th scope="col" style="width: 5%;">C</th>
-                    <th scope="col" style="width: 5%;">NC</th>
-                    <th scope="col" style="width: 5%;">INF</th>
+                    <th scope="col" style="width: 10%;">Concentración aerosol (&#xB5;g/L)</th>
+                    <th scope="col" style="width: 20%;">Valor obtenido (&#x2264; 0,01%)</th>
+                    <th scope="col" style="width: 15%;">Resultado</th>
+                  
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <field name="frontal_v1" />
+                      <field name="filter1_number" />
                     </td>
                     <td>
-                      <field name="frontal_v2" />
+                      <field name="filter1_serial_id" />
                     </td>
                     <td>
-                      <field name="frontal_v3" />
+                      <field name="filter1_dimensions" />
                     </td>
                     <td>
-                      <field name="frontal_v1" />
+                      <field name="aerosol1_conc" />
                     </td>
                     <td>
-                      <field name="frontal_v2" />
+                      <field name="integrity1_value" />
                     </td>
                     <td>
-                      <field name="frontal_v3" />
-                    </td>
-                    <td>
-                      <field name="frontal_v3" />
-                    </td>
-                    <td>
-                      <field name="frontal_v3" />
+                      <field name="integrity1_result" />
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <field name="frontal_v4" />
+                      <field name="filter2_number" />
                     </td>
                     <td>
-                      <field name="frontal_v5" />
+                      <field name="filter2_serial_id" />
                     </td>
                     <td>
-                      <field name="frontal_v6" />
+                      <field name="filter2_dimensions" />
                     </td>
                     <td>
-                      <field name="frontal_v6" />
+                      <field name="aerosol2_conc" />
                     </td>
                     <td>
-                      <field name="frontal_v6" />
+                      <field name="integrity2_value" />
                     </td>
                     <td>
-                      <field name="frontal_v6" />
-                    </td>
-                    <td>
-                      <field name="frontal_v6" />
-                    </td>
-                    <td>
-                      <field name="frontal_v6" />
+                      <field name="integrity2_result" />
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <field name="frontal_v7" />
+                      <field name="filter3_number" />
                     </td>
                     <td>
-                      <field name="frontal_v8" />
+                      <field name="filter3_serial_id" />
                     </td>
                     <td>
-                      <field name="frontal_v9" />
+                      <field name="filter3_dimensions" />
                     </td>
                     <td>
-                      <field name="frontal_v9" />
+                      <field name="aerosol3_conc" />
                     </td>
                     <td>
-                      <field name="frontal_v9" />
+                      <field name="integrity3_value" />
                     </td>
                     <td>
-                      <field name="frontal_v9" />
-                    </td>
-                    <td>
-                      <field name="frontal_v9" />
-                    </td>
-                    <td>
-                      <field name="frontal_v9" />
+                      <field name="integrity3_result" />
                     </td>
                   </tr>
                 </tbody>

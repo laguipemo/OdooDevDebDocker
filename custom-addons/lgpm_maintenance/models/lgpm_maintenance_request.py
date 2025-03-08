@@ -21,6 +21,13 @@ class LgpmMaintenanceRequest(models.Model):
             ('RR', 'REQUIERE REPARACIÓN')
         ]
 
+    INTEGRITY_RESULT = [
+        ('N', ''),
+        ('C', 'CUMPLE'),
+        ('NC', 'NO CUMPLE'),
+        ('INF', 'INSUFICIENTE')
+    ]
+
     def get_info_about(self, position):
         record_info=self.env['lgpm_maintenance.sat_signatures'].search(
             [('position', '=', position)]
@@ -283,6 +290,47 @@ class LgpmMaintenanceRequest(models.Model):
     extraction_volume = fields.Float(
         string='Volumen de extracción',
         compute='_compute_extraction_volume'
+    )
+
+    # Only CF filter integrity, etc
+    filter1_number = fields.Char()
+    filter2_number = fields.Char()
+    filter3_number = fields.Char()
+    filter1_serial_id = fields.Char()
+    filter2_serial_id = fields.Char()
+    filter3_serial_id = fields.Char()
+    filter1_dimensions = fields.Char()
+    filter2_dimensions = fields.Char()
+    filter3_dimensions = fields.Char()
+    aerosol1_conc = fields.Float(
+        default=0.0
+    )
+    aerosol2_conc = fields.Float(
+        default=0.0
+    )
+    aerosol3_conc = fields.Float(
+        default=0.0
+    )
+    integrity1_value = fields.Float(
+        default=0.0
+    )
+    integrity2_value = fields.Float(
+        default=0.0
+    )
+    integrity3_value = fields.Float(
+        default=0.0
+    )
+    integrity1_result = fields.Selection(
+        selection=INTEGRITY_RESULT,
+        default='N'
+    )
+    integrity2_result = fields.Selection(
+        selection=INTEGRITY_RESULT,
+        default='N'
+    )
+    integrity3_result = fields.Selection(
+        selection=INTEGRITY_RESULT,
+        default='N'
     )
     
     # Only CF paramaters to measure
