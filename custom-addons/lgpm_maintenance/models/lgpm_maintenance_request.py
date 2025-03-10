@@ -233,64 +233,6 @@ class LgpmMaintenanceRequest(models.Model):
         default='N',
         string='Montaje de filtros'
     )
-    
-
-    # Parameters to measure
-    work_length = fields.Integer(
-        string='Longitud de trabajo',
-        help='Longitud de trabajo del equipo en mm'
-    )
-    work_length_m = fields.Float(
-        compute='_compute_work_length_m',
-    )
-    work_height = fields.Integer(
-        string='Altura de trabajo',
-        help='Atura de trabajo para a gillotina en mm'
-    )
-    work_height_m = fields.Float(
-        compute='_compute_work_height_m'
-    )
-    measurement_area = fields.Float(
-        string='Superficie de medición',
-        compute='_compute_measurement_area',
-        store=True,
-        help='Superficie de medición en metros cuadrados'
-    )
-
-    frontal_v1 = fields.Float(
-        default=0.0
-    )
-    frontal_v2 = fields.Float(
-        default=0.0
-    )
-    frontal_v3 = fields.Float(
-        default=0.0
-    )
-    frontal_v4 = fields.Float(
-        default=0.0
-    )
-    frontal_v5 = fields.Float(
-        default=0.0
-    )
-    frontal_v6 = fields.Float(
-        default=0.0
-    )
-    frontal_v7 = fields.Float(
-        default=0.0
-    )
-    frontal_v8 = fields.Float(
-        default=0.0
-    )
-    frontal_v9 = fields.Float(
-        default=0.0
-    )
-    frontal_v_media = fields.Float(
-        compute='_compute_frontal_v_media'
-    )
-    extraction_volume = fields.Float(
-        string='Volumen de extracción',
-        compute='_compute_extraction_volume'
-    )
 
     # Only CF filter integrity, etc
     filter1_number = fields.Char()
@@ -332,6 +274,125 @@ class LgpmMaintenanceRequest(models.Model):
         selection=INTEGRITY_RESULT,
         default='N'
     )
+    particles_counting_03um = fields.Integer(
+        default=0
+    )
+    particles_counting_05um = fields.Integer(
+        default=0
+    )
+    particles_counting_5um = fields.Integer(
+        default=0
+    )
+
+    # Frontal Velocity measurements
+    # Parameters to measure
+    work_length = fields.Integer(
+        string='Longitud de trabajo',
+        help='Longitud de trabajo del equipo en mm'
+    )
+    work_length_m = fields.Float(
+        compute='_compute_work_length_m',
+    )
+    work_height = fields.Integer(
+        string='Altura de trabajo',
+        help='Atura de trabajo para a gillotina en mm'
+    )
+    work_height_m = fields.Float(
+        compute='_compute_work_height_m'
+    )
+    measurement_area = fields.Float(
+        string='Superficie de medición',
+        compute='_compute_measurement_area',
+        store=True,
+        help='Superficie de medición en metros cuadrados'
+    )
+    # Frontal Velocity values
+    frontal_v1 = fields.Float(
+        default=0.0
+    )
+    frontal_v2 = fields.Float(
+        default=0.0
+    )
+    frontal_v3 = fields.Float(
+        default=0.0
+    )
+    frontal_v4 = fields.Float(
+        default=0.0
+    )
+    frontal_v5 = fields.Float(
+        default=0.0
+    )
+    frontal_v6 = fields.Float(
+        default=0.0
+    )
+    frontal_v7 = fields.Float(
+        default=0.0
+    )
+    frontal_v8 = fields.Float(
+        default=0.0
+    )
+    frontal_v9 = fields.Float(
+        default=0.0
+    )
+    frontal_v_media = fields.Float(
+        compute='_compute_frontal_v_media'
+    )
+    extraction_volume = fields.Float(
+        string='Volumen de extracción',
+        compute='_compute_extraction_volume'
+    )
+
+    #Only CF - Descendent airflow velocity
+    integrity_03um = fields.Boolean()
+    work_depth = fields.Integer(
+        string='Profundidad de la cabina',
+        help='Profundidad del equipo en mm'
+    )
+    work_depth_m = fields.Float(
+        compute='_compute_work_depth_m',
+    )
+    measurement_area_desc = fields.Float(
+        string='Superficie de medición descendiente',
+        compute='_compute_measurement_area_desc',
+        store=True,
+        help='Superficie de medición flujo de aire descendiente en metros cuadrados'
+    )
+    # Frontal Velocity values
+    descendent_v1 = fields.Float(
+        default=0.0
+    )
+    descendent_v2 = fields.Float(
+        default=0.0
+    )
+    descendent_v3 = fields.Float(
+        default=0.0
+    )
+    descendent_v4 = fields.Float(
+        default=0.0
+    )
+    descendent_v5 = fields.Float(
+        default=0.0
+    )
+    descendent_v6 = fields.Float(
+        default=0.0
+    )
+    descendent_v7 = fields.Float(
+        default=0.0
+    )
+    descendent_v8 = fields.Float(
+        default=0.0
+    )
+    descendent_v9 = fields.Float(
+        default=0.0
+    )
+    descendent_v_media = fields.Float(
+        compute='_compute_descendent_v_media'
+    )
+    descendent_volume = fields.Float(
+        string='Volumen de flujo descendente',
+        compute='_compute_descendent_volume'
+    )
+
     
     # Only CF paramaters to measure
     diff_press = fields.Float(
@@ -451,6 +512,16 @@ class LgpmMaintenanceRequest(models.Model):
                 )
             else:
                 maintenance_request.measurement_area = 0.0
+    
+    @api.depends('work_length', 'work_depth')
+    def _compute_measurement_area_desc(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_type.lower() in ['cabina de flujo', 'cabina de pesadas']:
+                maintenance_request.measurement_area_desc = (
+                    (maintenance_request.work_length/1000) * (maintenance_request.work_depth/1000)
+                )
+            else:
+                maintenance_request.measurement_area_desc = 0.0
 
     @api.depends(
         'frontal_v1',
@@ -485,10 +556,48 @@ class LgpmMaintenanceRequest(models.Model):
                 ]
             maintenance_request.frontal_v_media = sum(values)/len(values)
 
+    @api.depends(
+        'descendent_v1',
+        'descendent_v2',
+        'descendent_v3',
+        'descendent_v4',
+        'descendent_v5',
+        'descendent_v6',
+        'descendent_v7',
+        'descendent_v8',
+        'descendent_v9',
+        )
+    def _compute_descendent_v_media(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_type.lower() in ['cabina de flujo', 'cabina de pesadas']:
+                values = [
+                    maintenance_request.descendent_v1,
+                    maintenance_request.descendent_v2,
+                    maintenance_request.descendent_v3,
+                    maintenance_request.descendent_v4,
+                    maintenance_request.descendent_v5,
+                    maintenance_request.descendent_v6,
+                    maintenance_request.descendent_v7,
+                    maintenance_request.descendent_v8,
+                    maintenance_request.descendent_v9
+                ]
+            else:
+                values = [
+                    maintenance_request.descendent_v1,
+                    maintenance_request.descendent_v2,
+                    maintenance_request.descendent_v3
+                ]
+            maintenance_request.descendent_v_media = sum(values)/len(values)
+
     @api.depends('frontal_v_media', 'measurement_area')
     def _compute_extraction_volume(self):
         for maintenance_request in self:
             maintenance_request.extraction_volume = maintenance_request.measurement_area * maintenance_request.frontal_v_media * 3600
+    
+    @api.depends('descendent_v_media', 'measurement_area_desc')
+    def _compute_descendent_volume(self):
+        for maintenance_request in self:
+            maintenance_request.descendent_volume = maintenance_request.measurement_area_desc * maintenance_request.descendent_v_media * 3600
     
     @api.depends(
         'lighting_v1',
@@ -517,3 +626,8 @@ class LgpmMaintenanceRequest(models.Model):
     def _compute_work_height_m(self):
         for maintenance_request in self:
             maintenance_request.work_height_m = self.convert_to_meters(maintenance_request.work_height)
+    
+    @api.depends('work_depth')
+    def _compute_work_depth_m(self):
+        for maintenance_request in self:
+            maintenance_request.work_depth_m = self.convert_to_meters(maintenance_request.work_depth)
