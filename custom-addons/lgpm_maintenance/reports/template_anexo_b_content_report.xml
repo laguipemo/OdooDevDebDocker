@@ -129,7 +129,134 @@
                     <br/>
                     <!-- Initial space for begining of the new page -->
 
-                    <!-- Measurements title -->
+                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">
+                        <!-- Integrity test title -->
+                        <h5 class="alert-heading text-left mt-5 py-0">
+                            <span>
+                                <b>Ensayo de verificación de integridad y estanquedad de los filtros HEPA/ULPA</b>
+                            </span>
+                        </h5>
+                        <!-- Table of filters integration info -->
+                        <table class="table table-bordered table-striped mt-2">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 20%;"><b>Nº de filtro</b></th>
+                                    <th scope="col" style="width: 20%;"><b>Nº de serie/Identificación</b></th>
+                                    <th scope="col" style="width: 15%;"><b>Dimensiones(mm)</b></th>
+                                    <th scope="col" style="width: 10%;"><b>Concentración aerosol (&#xB5;g/L)</b></th>
+                                    <th scope="col" style="width: 20%;"><b>Valor obtenido <br/> (&#x2264; 0,01%)</b></th>
+                                    <th scope="col" style="width: 15%;"><b>Resultado</b></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <span t-field="maintenance_request.filter1_number" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.filter1_serial_id" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.filter1_dimensions" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.aerosol1_conc" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.integrity1_value" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.integrity1_result" class="mx-2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-field="maintenance_request.filter2_number" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.filter2_serial_id" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.filter2_dimensions" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.aerosol2_conc" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.integrity2_value" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.integrity2_result" class="mx-2" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-field="maintenance_request.filter3_number" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.filter3_serial_id" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.filter3_dimensions" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.aerosol3_conc" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.integrity3_value" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.integrity3_result" class="mx-2" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Particles counting mesurement title -->
+                        <h5 class="alert-heading text-left mt-5 py-0">
+                            <span>
+                                <b>Conteo de partículas</b>
+                            </span>
+                        </h5>
+                        <!-- Table of particles counting measurement values -->
+                        <table class="table table-bordered table-striped mt-2">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 15%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
+                                    <th scope="col" style="width: 15%;">Alcanza norma</th>
+                                    <th scope="col" style="width: 15%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
+                                    <th scope="col" style="width: 15%;">Alcanza norma</th>
+                                    <th scope="col" style="width: 15%;"><p>5 &#xB5;m <br/> (ISO 5 &lt; 29)</p></th>
+                                    <th scope="col" style="width: 15%;">Alcanza norma</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <span t-field="maintenance_request.particles_counting_03um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.standard_03um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.particles_counting_05um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.standard_05um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.particles_counting_5um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.standard_5um" class="mx-2" />
+                                    </td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </t>
+                    
+                    <!-- Extraction volume measurement title -->
                     <h5 class="alert-heading text-left mt-5 py-0">
                         <span>
                             <b>Medición volumen de extracción</b>
@@ -183,6 +310,13 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">    
+                        <p style="page-break-after: always;"></p>
+
+                        <br/>
+                        <!-- Initial space for begining of the new page -->
+                    </t>
 
                     <!-- Frontal velocity title -->
                     <h6 name="mediciones" class="alert-heading text-left mt-4 py-0">
@@ -295,6 +429,52 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">
+                        <!-- Final Airflow velocities mesurement title -->
+                        <h5 class="alert-heading text-left mt-5 py-0">
+                            <span>
+                                <b>Velocidades del flujo de aire medias y valores de aceptación</b>
+                            </span>
+                        </h5>
+                        <!-- Table of final Airflow velocities measurement values -->
+                        <table class="table table-bordered table-striped mt-2">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 25%;"><b>Integridad <br/> (Sin hallazgos &gt; 0,3 &#xB5;m)</b></th>
+                                    <th scope="col" style="width: 25%;"><b>Velocidad <br/> Flujo descendente <br/> (0,36-0,54 m/s)</b></th>
+                                    <th scope="col" style="width: 25%;"><b>Velocidad <br/> Uniformidad <br/> (&#xB1; 20% vel. media)</b></th>
+                                    <th scope="col" style="width: 25%;"><b>Velocidad <br/> Flujo Entrante <br/> (0,36-0,54 m/s)</b></th>
+                                    <th scope="col" style="width: 25%;"><b>Velocidad <br/> Uniformidad <br/> (&#xB1; 20% vel. media)</b></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                        <span t-field="maintenance_request.particles_counting_03um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.standard_03um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.particles_counting_05um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.standard_05um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.particles_counting_5um" class="mx-2" />
+                                    </td>
+                                    <td>
+                                        <span t-field="maintenance_request.standard_5um" class="mx-2" />
+                                    </td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+                        </table>    
+                        
+                    </t>
 
                     <p style="page-break-after: always;"></p>
 
