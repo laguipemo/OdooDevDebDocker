@@ -69,7 +69,7 @@
 
                     <!-- Visual verification content -->
                     <div class="d-flex flex-row">
-                        <div class="col-m-12 p2">
+                        <div>
                             <p>
                                 <b>¿El equipo está funcionando?:</b>
                                 <t t-if="maintenance_request.sat_is_working">SI</t>
