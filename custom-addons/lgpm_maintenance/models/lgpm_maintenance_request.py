@@ -692,21 +692,21 @@ class LgpmMaintenanceRequest(models.Model):
     @api.depends('particles_counting_05um')
     def _compute_standard_05um(self):
         for maintenance_request in self:
-            if maintenance_request.particles_counting_03um <= 4:
+            if maintenance_request.particles_counting_05um <= 4:
                 standard = 'ISO 2'
-            elif maintenance_request.particles_counting_03um <= 35:
+            elif maintenance_request.particles_counting_05um <= 35:
                 standard = 'ISO 3'
-            elif maintenance_request.particles_counting_03um <= 352:
+            elif maintenance_request.particles_counting_05um <= 352:
                 standard = 'ISO 4'
-            elif maintenance_request.particles_counting_03um <= 3520:
+            elif maintenance_request.particles_counting_05um <= 3520:
                 standard = 'ISO 5'
-            elif maintenance_request.particles_counting_03um <= 35200:
+            elif maintenance_request.particles_counting_05um <= 35200:
                 standard = 'ISO 6'
-            elif maintenance_request.particles_counting_03um <= 352000:
+            elif maintenance_request.particles_counting_05um <= 352000:
                 standard = 'ISO 7'
-            elif maintenance_request.particles_counting_03um <= 3520000:
+            elif maintenance_request.particles_counting_05um <= 3520000:
                 standard = 'ISO 8'
-            elif maintenance_request.particles_counting_03um <= 35200000:
+            elif maintenance_request.particles_counting_05um <= 35200000:
                 standard = 'ISO 9'
             else:
                 standard = ''
@@ -715,15 +715,15 @@ class LgpmMaintenanceRequest(models.Model):
     @api.depends('particles_counting_5um')
     def _compute_standard_5um(self):
         for maintenance_request in self:
-            if maintenance_request.particles_counting_03um <= 9:
+            if maintenance_request.particles_counting_5um <= 9:
                 standard = 'ISO 5'
-            elif maintenance_request.particles_counting_03um <= 293:
+            elif maintenance_request.particles_counting_5um <= 293:
                 standard = 'ISO 6'
-            elif maintenance_request.particles_counting_03um <= 2930:
+            elif maintenance_request.particles_counting_5um <= 2930:
                 standard = 'ISO 7'
-            elif maintenance_request.particles_counting_03um <= 29300:
+            elif maintenance_request.particles_counting_5um <= 29300:
                 standard = 'ISO 8'
-            elif maintenance_request.particles_counting_03um <= 293000:
+            elif maintenance_request.particles_counting_5um <= 293000:
                 standard = 'ISO 9'
             else:
                 standard = ''
