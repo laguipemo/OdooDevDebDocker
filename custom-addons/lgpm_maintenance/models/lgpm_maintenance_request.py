@@ -75,6 +75,9 @@ class LgpmMaintenanceRequest(models.Model):
         with open(image_path, 'rb') as image_file:
             base64_image = base64.b64encode(image_file.read())
         return base64_image
+    
+    def get_uniformity_20_percent(self, value):
+        return value * 0.20
 
     # Mantenance data
     maintenance_date = fields.Date(
