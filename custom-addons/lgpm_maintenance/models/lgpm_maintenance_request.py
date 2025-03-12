@@ -715,7 +715,7 @@ class LgpmMaintenanceRequest(models.Model):
     @api.depends('particles_counting_5um')
     def _compute_standard_5um(self):
         for maintenance_request in self:
-            if maintenance_request.particles_counting_5um <= 9:
+            if maintenance_request.particles_counting_5um <= 29:
                 standard = 'ISO 5'
             elif maintenance_request.particles_counting_5um <= 293:
                 standard = 'ISO 6'
