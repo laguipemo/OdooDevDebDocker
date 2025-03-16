@@ -62,7 +62,7 @@
               </group>
             </group>
             <!-- SAT check and adjustment of mechanical components and means -->
-            <group name="sat_check_components" string="Comprobación y ajuste de componentes mecánicos y medios" col="12">
+            <group name="sat_check_components" string="Comprobación visual y ajuste de componentes mecánicos y medios" col="12">
               <group colspan="6">
                 <field name="sat_visual_acustic_ctrls" />
                 <field name="sat_temp_alarm" attrs="{'invisible':[('equipment_use', '!=', 'Ácidos Concentrados')]}"/>
