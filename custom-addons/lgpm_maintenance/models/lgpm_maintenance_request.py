@@ -275,12 +275,24 @@ class LgpmMaintenanceRequest(models.Model):
     filter1_dimensions = fields.Char()
     filter2_dimensions = fields.Char()
     filter3_dimensions = fields.Char()
-    aerosol1_conc = fields.Float()
-    aerosol2_conc = fields.Float()
-    aerosol3_conc = fields.Float()
-    integrity1_value = fields.Float()
-    integrity2_value = fields.Float()
-    integrity3_value = fields.Float()
+    aerosol1_conc = fields.Float(
+        default=0.0
+    )
+    aerosol2_conc = fields.Float(
+        default=0.0
+    )
+    aerosol3_conc = fields.Float(
+        default=0.0
+    )
+    integrity1_value = fields.Float(
+        default=0.0
+    )
+    integrity2_value = fields.Float(
+        default=0.0
+    )
+    integrity3_value = fields.Float(
+        default=0.0
+    )
     integrity1_result = fields.Selection(
         selection=INTEGRITY_RESULT,
         default='N'

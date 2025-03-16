@@ -160,13 +160,14 @@
                                         <span t-field="maintenance_request.filter1_dimensions" class="mx-2" />
                                     </td>
                                     <td>
-                                        <t t-if="maintenance_request.filter1_number != ''">
+                                        <t t-if="maintenance_request.filter1_number != False ">
                                             <span t-field="maintenance_request.aerosol1_conc" class="mx-2" />
                                         </t>
-                                        
                                     </td>
                                     <td>
-                                        <span t-field="maintenance_request.integrity1_value" class="mx-2" />
+                                        <t t-if="maintenance_request.filter1_serial_id != False ">
+                                            <span t-field="maintenance_request.integrity1_value" class="mx-2" />
+                                        </t>
                                     </td>
                                     <td>
                                         <span t-field="maintenance_request.integrity1_result" class="mx-2" />
@@ -183,10 +184,14 @@
                                         <span t-field="maintenance_request.filter2_dimensions" class="mx-2" />
                                     </td>
                                     <td>
-                                        <span t-field="maintenance_request.aerosol2_conc" class="mx-2" />
+                                        <t t-if="maintenance_request.filter2_number != False ">
+                                            <span t-field="maintenance_request.aerosol2_conc" class="mx-2" />
+                                        </t>
                                     </td>
                                     <td>
-                                        <span t-field="maintenance_request.integrity2_value" class="mx-2" />
+                                        <t t-if="maintenance_request.filter2_serial_id != False ">
+                                            <span t-field="maintenance_request.integrity2_value" class="mx-2" />
+                                        </t>
                                     </td>
                                     <td>
                                         <span t-field="maintenance_request.integrity2_result" class="mx-2" />
@@ -203,10 +208,14 @@
                                         <span t-field="maintenance_request.filter3_dimensions" class="mx-2" />
                                     </td>
                                     <td>
-                                        <span t-field="maintenance_request.aerosol3_conc" class="mx-2" />
+                                        <t t-if="maintenance_request.filter3_number != False ">
+                                            <span t-field="maintenance_request.aerosol3_conc" class="mx-2" />
+                                        </t>
                                     </td>
                                     <td>
-                                        <span t-field="maintenance_request.integrity3_value" class="mx-2" />
+                                        <t t-if="maintenance_request.filter3_number != False ">
+                                            <span t-field="maintenance_request.integrity3_value" class="mx-2" />
+                                        </t>
                                     </td>
                                     <td>
                                         <span t-field="maintenance_request.integrity3_result" class="mx-2" />
