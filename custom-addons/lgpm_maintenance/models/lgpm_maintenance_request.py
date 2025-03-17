@@ -111,9 +111,9 @@ class LgpmMaintenanceRequest(models.Model):
         string='Tipo',
         compute='_compute_equipment_type'
     )
-    equipment_use = fields.Char(
+    vg_type_use = fields.Char(
         string='Tipo de Uso',
-        compute='_compute_equipment_use'
+        compute='_compute_vg_type_use'
     )
     inventary_number = fields.Char(
         string='Nº Inventario',
@@ -538,18 +538,18 @@ class LgpmMaintenanceRequest(models.Model):
                 maintenance_request.equipment_type = ''
 
     @api.depends('equipment_id')
-    def _compute_equipment_use(self):
+    def _compute_vg_type_use(self):
         for maintenance_request in self:
             if maintenance_request.equipment_id:
-                key = maintenance_request.equipment_id.equipment_use
-                maintenance_request.equipment_use = dict(
+                key = maintenance_request.equipment_id.vg_type_use
+                maintenance_request.vg_type_use = dict(
                     self.env[
                         'maintenance.equipment'
                         ]._fields[
-                            'equipment_use'
+                            'vg_type_use'
                             ].selection).get(key)
             else:
-                maintenance_request.equipment_use = ''
+                maintenance_request.vg_type_use = ''
 
     @api.depends('work_length', 'work_height')
     def _compute_measurement_area(self):

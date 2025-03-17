@@ -25,7 +25,7 @@ class LgpmMaintenanceEquipment(models.Model):
         ],
         default='NO'
     )
-    equipment_use = fields.Selection(
+    vg_type_use = fields.Selection(
         string = 'Tipo de Uso',
         selection=[
             ('NO', ''),
@@ -33,6 +33,15 @@ class LgpmMaintenanceEquipment(models.Model):
             ('AC', 'Ácidos Concentrados'),
         ],
         default='NO',
+    )
+    as_type_use = fields.Selection(
+        string= 'Tipo de armario',
+        selection=[
+            ('NO', ''),
+            ('QG', 'Químicos Generales'),
+
+        ],
+        default='NO'
     )
     inventary_number = fields.Char(
         string='Nº Inventario',

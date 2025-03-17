@@ -37,7 +37,7 @@
               <!-- Equipment information -->
               <group name="sat_equipment_info" string="Información del equipo">
                 <field name="partner_id" />
-                <field name="equipment_use" />
+                <field name="vg_type_use" />
                 <field name="partner_ref" />
                 <field name="manufacture_date" />
                 <field name="lot_id" />
@@ -68,7 +68,7 @@
             <group name="sat_check_components" string="Comprobación visual y ajuste de componentes mecánicos y medios" col="12">
               <group colspan="6">
                 <field name="sat_visual_acustic_ctrls" />
-                <field name="sat_temp_alarm" attrs="{'invisible':[('equipment_use', '!=', 'Ácidos Concentrados')]}"/>
+                <field name="sat_temp_alarm" attrs="{'invisible':[('vg_type_use', '!=', 'Ácidos Concentrados')]}"/>
                 <field name="sat_surface_protection" />
                 <field name="sat_fixed_parts" />
                 <field name="sat_insulation_joints" />

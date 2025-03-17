@@ -28,7 +28,7 @@
                                 </p>
                                 <p>
                                     <b>Tipo de uso:</b>
-                                    <span t-field="maintenance_request.equipment_use" class="mx-2"/>
+                                    <span t-field="maintenance_request.vg_type_use" class="mx-2"/>
                                 </p>
                                 <p>
                                     <b>Referencia:</b>
@@ -678,7 +678,7 @@
                                 <b>Controles visuales y acústicos:</b>
                                 <span t-field="maintenance_request.sat_visual_acustic_ctrls" class="mx-2" />
                             </p>
-                            <t t-if="maintenance_request.equipment_use == 'Ácidos Concentrados'">
+                            <t t-if="maintenance_request.vg_type_use == 'Ácidos Concentrados'">
                                 <p>
                                     <b>Alarma de temperatura:</b>
                                     <span t-field="maintenance_request.sat_temp_alarm" class="mx-2" />
