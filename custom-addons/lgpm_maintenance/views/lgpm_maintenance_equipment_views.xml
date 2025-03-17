@@ -12,6 +12,9 @@
           <field name="manufacture_date" />
           <field name="equipment_type" />
           <field name="vg_type_use" attrs="{'invisible': [('equipment_type', '!=', 'VG')]}" />
+          <field name="cf_type_use" attrs="{'invisible': [('equipment_type', '!=', 'CF')]}" />
+          <field name="cp_type_use" attrs="{'invisible': [('equipment_type', '!=', 'CP')]}" />
+          <field name="as_type_use" attrs="{'invisible': [('equipment_type', '!=', 'AS')]}" />
         </xpath>
         <xpath expr="//field[@name='effective_date']" position="before">
           <field name="inventary_number" />

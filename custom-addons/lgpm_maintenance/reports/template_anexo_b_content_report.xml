@@ -26,9 +26,23 @@
                                     <b>Fabricante:</b>
                                     <span t-field="maintenance_request.partner_id" class="mx-2"/>
                                 </p>
-                                <p>
-                                    <b>Tipo de uso:</b>
+                                <p t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                    <b>Tipo de vitrina:</b>
                                     <span t-field="maintenance_request.vg_type_use" class="mx-2"/>
+                                </p>
+                                <p t-elif="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                    <b>Tipo de cabina:</b>
+                                    <span t-field="maintenance_request.cf_type_use" class="mx-2"/>
+                                </p>
+                                <p t-elif="maintenance_request.equipment_type == 'Cabina de Pesadas'">
+                                    <b>Tipo de uso:</b>
+                                    <span t-field="maintenance_request.cp_type_use" class="mx-2"/>
+                                </p>
+                                <p t-elif="maintenance_request.equipment_type == 'Armario de Seguridad'">
+                                    <b>Tipo de vitrina:</b>
+                                    <span t-field="maintenance_request.as_type_use" class="mx-2"/>
+                                </p>
+                                <p t-else="">
                                 </p>
                                 <p>
                                     <b>Referencia:</b>

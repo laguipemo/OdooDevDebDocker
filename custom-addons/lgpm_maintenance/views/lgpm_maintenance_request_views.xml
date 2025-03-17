@@ -37,7 +37,10 @@
               <!-- Equipment information -->
               <group name="sat_equipment_info" string="Información del equipo">
                 <field name="partner_id" />
-                <field name="vg_type_use" />
+                <field name="vg_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="cf_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}" />
+                <field name="cp_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Pesadas')]}" />
+                <field name="as_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
                 <field name="partner_ref" />
                 <field name="manufacture_date" />
                 <field name="lot_id" />

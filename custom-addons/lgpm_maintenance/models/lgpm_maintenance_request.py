@@ -112,8 +112,20 @@ class LgpmMaintenanceRequest(models.Model):
         compute='_compute_equipment_type'
     )
     vg_type_use = fields.Char(
-        string='Tipo de Uso',
+        string='Tipo de Vitrina',
         compute='_compute_vg_type_use'
+    )
+    cf_type_use = fields.Char(
+        string='Tipo de Cabina',
+        compute='_compute_cf_type_use'
+    )
+    cp_type_use = fields.Char(
+        string='Tipo de Cabina',
+        compute='_compute_cp_type_use'
+    )
+    as_type_use = fields.Char(
+        string='Tipo de armario',
+        compute='_compute_as_type_use'
     )
     inventary_number = fields.Char(
         string='Nº Inventario',
@@ -536,7 +548,7 @@ class LgpmMaintenanceRequest(models.Model):
                             ].selection).get(key)
             else:
                 maintenance_request.equipment_type = ''
-
+            
     @api.depends('equipment_id')
     def _compute_vg_type_use(self):
         for maintenance_request in self:
@@ -550,6 +562,48 @@ class LgpmMaintenanceRequest(models.Model):
                             ].selection).get(key)
             else:
                 maintenance_request.vg_type_use = ''
+                
+    @api.depends('equipment_id')
+    def _compute_cf_type_use(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_id:
+                key = maintenance_request.equipment_id.cf_type_use
+                maintenance_request.cf_type_use = dict(
+                    self.env[
+                        'maintenance.equipment'
+                        ]._fields[
+                            'cf_type_use'
+                            ].selection).get(key)
+            else:
+                maintenance_request.cf_type_use = ''
+
+    @api.depends('equipment_id')
+    def _compute_cp_type_use(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_id:
+                key = maintenance_request.equipment_id.cp_type_use
+                maintenance_request.cp_type_use = dict(
+                    self.env[
+                        'maintenance.equipment'
+                        ]._fields[
+                            'cp_type_use'
+                            ].selection).get(key)
+            else:
+                maintenance_request.cp_type_use = ''
+
+    @api.depends('equipment_id')
+    def _compute_as_type_use(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_id:
+                key = maintenance_request.equipment_id.as_type_use
+                maintenance_request.as_type_use = dict(
+                    self.env[
+                        'maintenance.equipment'
+                        ]._fields[
+                            'as_type_use'
+                            ].selection).get(key)
+            else:
+                maintenance_request.as_type_use = ''
 
     @api.depends('work_length', 'work_height')
     def _compute_measurement_area(self):

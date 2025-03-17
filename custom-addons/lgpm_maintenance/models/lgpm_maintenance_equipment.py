@@ -31,7 +31,7 @@ class LgpmMaintenanceEquipment(models.Model):
             ('NO', ''),
             ('G', 'Uso General'),
             ('AC', 'Ácidos Concentrados'),
-            ('W', 'Working'),
+            ('W', 'Walk-in'),
         ],
         default='NO',
     )
