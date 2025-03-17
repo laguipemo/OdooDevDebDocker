@@ -26,20 +26,41 @@ class LgpmMaintenanceEquipment(models.Model):
         default='NO'
     )
     vg_type_use = fields.Selection(
+        string = 'Tipo de vitrina',
+        selection=[
+            ('NO', ''),
+            ('G', 'Uso General'),
+            ('AC', 'Ácidos Concentrados'),
+            ('W', 'Working'),
+        ],
+        default='NO',
+    )
+    cf_type_use = fields.Selection(
+        string = 'Tipo de Cabina',
+        selection=[
+            ('NO', ''),
+            ('QG', 'Flujo Laminar'),
+            ('SB', 'Seguridad Biológica')
+        ],
+        default='NO'
+    )
+    cp_type_use = fields.Selection(
         string = 'Tipo de Uso',
         selection=[
             ('NO', ''),
-            ('G', 'General'),
-            ('AC', 'Ácidos Concentrados'),
+            ('G', 'Uso General'),
+            ('SP','Uso Especial')
         ],
-        default='NO',
+        default='NO'
     )
     as_type_use = fields.Selection(
         string= 'Tipo de armario',
         selection=[
             ('NO', ''),
             ('QG', 'Químicos Generales'),
-
+            ('INFL', 'Inflamables'),
+            ('BG', 'Bombonas de Gas'),
+            ('AB', 'Ácidos y Bases')
         ],
         default='NO'
     )
