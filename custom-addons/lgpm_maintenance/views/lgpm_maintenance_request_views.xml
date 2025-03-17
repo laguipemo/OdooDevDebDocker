@@ -9,6 +9,9 @@
       <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
       <field name="priority">999</field>
       <field name="arch" type="xml">
+        <xpath expr="//button[@name='archive_equipment_request']" position="after">
+          <button string="Imprimir datos SAT" name="print_sat_data" type="object" attrs="{'invisible': [('equipment_type', '=', '')]}"/>          
+        </xpath>
         <xpath expr="//field[@name='equipment_id']" position="after">
           <field name="equipment_type" invisible="1"/>
         </xpath>

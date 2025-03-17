@@ -56,6 +56,11 @@ class LgpmMaintenanceRequest(models.Model):
         'ISO 9': 'ISO 9 < 293000'
     }
 
+    def print_sat_data(self):
+        return self.env.ref(
+            'lgpm_maintenance.lgpm_maintenance_request_data_action_report'
+            ).report_action(self)
+
     def get_info_about(self, position):
         record_info=self.env['lgpm_maintenance.sat_signatures'].search(
             [('position', '=', position)]
