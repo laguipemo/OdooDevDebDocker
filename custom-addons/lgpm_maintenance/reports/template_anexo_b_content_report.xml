@@ -784,7 +784,7 @@
                         </div>
                     </div>
                     <!-- Other measurements -->
-                    <h5 class="alert-heading text-left mt-5 py-0">
+                    <h5 class="alert-heading text-left mt-4 py-0">
                         <span>
                             <b>Otras Mediciones</b>
                         </span>
@@ -845,7 +845,7 @@
                     </div>
 
                     <!-- Observations -->
-                    <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+                    <h5 class="alert-heading text-left mt-4 mb-0 py-0">
                         <span>
                             <b>Observaciones</b>
                         </span>
@@ -855,7 +855,7 @@
                     </div>
 
                     <!-- Non conformities -->
-                    <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+                    <h5 class="alert-heading text-left mt-4 mb-0 py-0">
                         <span>
                             <b>No conformidades</b>
                         </span>
@@ -865,7 +865,7 @@
                     </div>
 
                     <!-- Final result -->
-                    <h5 class="alert-heading text-left mt-5 mb-0 py-0">
+                    <h5 class="alert-heading text-left mt-4 mb-0 py-0">
                         <span>
                             <b>Resultado</b>
                         </span>

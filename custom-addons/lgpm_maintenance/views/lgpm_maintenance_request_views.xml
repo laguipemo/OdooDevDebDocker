@@ -189,12 +189,12 @@
               <table class="table table-bordered text-center" colspan="12">
                 <thead>
                   <tr>
-                    <th scope="col" style="width: 10%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
-                    <th scope="col" style="width: 22%;">Alcanza norma</th>
-                    <th scope="col" style="width: 10%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
-                    <th scope="col" style="width: 22%;">Alcanza norma</th>
-                    <th scope="col" style="width: 10%;"><p>5 &#xB5;m <br/> (ISO 5 &lt; 29)</p></th>
-                    <th scope="col" style="width: 22%;">Alcanza norma</th>
+                    <th scope="col" style="width: 14%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
+                    <th scope="col" style="width: 19%;">Alcanza norma</th>
+                    <th scope="col" style="width: 14%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
+                    <th scope="col" style="width: 19%;">Alcanza norma</th>
+                    <th scope="col" style="width: 14%;"><p>5 &#xB5;m <br/> (ISO 5 &lt; 29)</p></th>
+                    <th scope="col" style="width: 19%;">Alcanza norma</th>
                   </tr>
                 </thead>
                 <tbody>
