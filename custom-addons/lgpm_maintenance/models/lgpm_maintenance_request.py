@@ -344,6 +344,33 @@ class LgpmMaintenanceRequest(models.Model):
         compute='_compute_standard_5um'
     )
 
+    # Only security cabinets, Localized aspiration points
+    work_diameter = fields.Integer(
+        string='Diámetro de trabajo',
+        help='Diámetro de trabajo del equipo en mm'
+    )
+    work_diameter_m = fields.Float(
+        compute='_compute_work_diameter_m',
+    )
+    # Frontal Velocity values
+    conduct_v1 = fields.Float(
+        default=0.0
+    )
+    conduct_v2 = fields.Float(
+        default=0.0
+    )
+    conduct_v3 = fields.Float(
+        default=0.0
+    )
+    conduct_v_media = fields.Float(
+        compute='_compute_conduct_v_media'
+    )
+    conduct_volume = fields.Float(
+        string='Volumen de extracción',
+        compute='_compute_conduct_volume'
+    )
+
+
     # Frontal Velocity measurements
     # Parameters to measure
     work_length = fields.Integer(
@@ -612,6 +639,12 @@ class LgpmMaintenanceRequest(models.Model):
                 maintenance_request.measurement_area = (
                     (maintenance_request.work_length/1000) * (maintenance_request.work_height/1000)
                 )
+            elif maintenance_request.equipment_type.lower() in ['armario de seguridad', 
+                                                                'punto de aspiración localizada pared', 
+                                                                'punto de aspiración localizada brazo']:
+                maintenance_request.measurement_area = (
+                    (3.1416) * (maintenance_request.work_diameter/1000)**2
+                )
             else:
                 maintenance_request.measurement_area = 0.0
     
@@ -624,6 +657,20 @@ class LgpmMaintenanceRequest(models.Model):
                 )
             else:
                 maintenance_request.measurement_area_desc = 0.0
+
+    @api.depends(
+        'conduct_v1',
+        'conduct_v2',
+        'conduct_v3',
+        )
+    def _compute_conduct_v_media(self):
+        for maintenance_request in self:
+            values = [
+                    maintenance_request.conduct_v1,
+                    maintenance_request.conduct_v2,
+                    maintenance_request.conduct_v3
+                ]
+            maintenance_request.conduct_v_media = sum(values)/len(values)
 
     @api.depends(
         'frontal_v1',
@@ -691,6 +738,11 @@ class LgpmMaintenanceRequest(models.Model):
                 ]
             maintenance_request.descendent_v_media = sum(values)/len(values)
 
+    @api.depends('conduct_v_media', 'measurement_area')
+    def _compute_conduct_volume(self):
+        for maintenance_request in self:
+            maintenance_request.conduct_volume = maintenance_request.measurement_area * maintenance_request.conduct_v_media
+
     @api.depends('frontal_v_media', 'measurement_area')
     def _compute_extraction_volume(self):
         for maintenance_request in self:
@@ -718,6 +770,11 @@ class LgpmMaintenanceRequest(models.Model):
 
     def convert_to_meters(self, value):
         return value/1000.0
+
+    @api.depends('work_diameter')
+    def _compute_work_diameter_m(self):
+        for maintenance_request in self:
+            maintenance_request.work_diameter_m = self.convert_to_meters(maintenance_request.work_diameter)
 
     @api.depends('work_length')
     def _compute_work_length_m(self):
