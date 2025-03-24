@@ -894,7 +894,7 @@
                                 </t>
                                 <t t-else="">
                                     <b>
-                                        <span class="mx-2">NO REQUIERE ITERVENCIÓN</span>
+                                        <span class="mx-2">NO REQUIERE INTERVENCIÓN</span>
                                     </b>
                                 </t>
                             </p>
