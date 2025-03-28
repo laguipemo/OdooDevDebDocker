@@ -281,6 +281,29 @@ class LgpmMaintenanceRequest(models.Model):
         default='N',
         string='Montaje de filtros'
     )
+    sat_doors_and_hinges = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Puertas y bisagras'
+    )
+    sat_trays_and_shelves = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Bandejas y estantes'
+    )
+    sat_fire_safety = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Seguridad contra incendios'
+    )
+    sat_spill_containment = fields.Selection(
+        selection=VERIFICATION_SELECTION,
+        default='N',
+        string='Contención de derrames'
+    )
+    sat_labeling_documentation = fields.Boolean(
+        string='Etiquetado y documentación'
+    )
 
     # Only CF filter integrity, etc
     filter1_number = fields.Char()

@@ -75,13 +75,15 @@
                 <field name="sat_surface_protection" />
                 <field name="sat_fixed_parts" />
                 <field name="sat_insulation_joints" />
+                <field name="sat_doors_and_hinges" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_trays_and_shelves" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
                 <field name="sat_faucets_function" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
                 <field name="sat_manoreductors_function" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
                 <field name="sat_presence_ctrl" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
                 <field name="sat_autoprotec" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
               </group>
               <group colspan="6">
-                <field name="sat_alarm_trigger" />
+                <field name="sat_alarm_trigger" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
                 
                 <field name="sat_guillotine_function" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
                 <field name="sat_guillotine_function" string="Funcionamiento puerta" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}"/>
@@ -93,8 +95,11 @@
                 <field name="sat_guillotine_v_force" string="Fuerza apertura puerta" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}"/>
 
                 <field name="sat_airflow_sensors" attrs="{'invisible': ['|',('equipment_type', '!=', 'Cabina de Pesadas'), ('equipment_type', '!=', 'Cabina de Flujo')]}"/>
-                <field name="sat_airflow_direction" widget="boolean_toggle" />
-                <field name="sat_airflow_uniformity" widget="boolean_toggle" />
+                <field name="sat_airflow_direction" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
+                <field name="sat_airflow_uniformity" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
+                <field name="sat_fire_safety" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_spill_containment" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_labeling_documentation" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
                 <field name="sat_filters_state" attrs="{'invisible': [('equipment_type', 'not in', ['Armario de Seguridad', 'Cabina de Flujo', 'Cabina de Pesadas'])]}"/>
               </group>
             </group>

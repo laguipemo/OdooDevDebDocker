@@ -779,10 +779,12 @@
                     </h5>
                     <div class="d-flex flex-row col-m-12 mt-4">
                         <div class="col-m-5">
-                            <p>
-                                <b>Controles visuales y acústicos:</b>
-                                <span t-field="maintenance_request.sat_visual_acustic_ctrls" class="mx-2" />
-                            </p>
+                            <t t-if="maintenance_request.equipment_type in ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas']">
+                                <p>
+                                    <b>Controles visuales y acústicos:</b>
+                                    <span t-field="maintenance_request.sat_visual_acustic_ctrls" class="mx-2" />
+                                </p>
+                            </t>
                             <t t-if="maintenance_request.vg_type_use == 'Ácidos Concentrados'">
                                 <p>
                                     <b>Alarma de temperatura:</b>
@@ -801,14 +803,28 @@
                                 <b>Aislamiento y juntas:</b>
                                 <span t-field="maintenance_request.sat_fixed_parts" class="mx-2" />
                             </p>
-                            <p>
-                                <b>Estado grifería:</b>
-                                <span t-field="maintenance_request.sat_faucets_function" class="mx-2" />
-                            </p>
-                            <p>
-                                <b>Estado manoreductores:</b>
-                                <span t-field="maintenance_request.sat_manoreductors_function" class="mx-2" />
-                            </p>
+                            <t t-if="maintenance_request.equipment_type == 'Armario de Seguridad'">
+                                <p>
+                                    <b>Puertas y bisagras:</b>
+                                    <span t-field="maintenance_request.sat_doors_and_hinges" class="mx-2" />
+                                </p>
+                            </t>
+                            <t t-if="maintenance_request.equipment_type == 'Armario de Seguridad'">
+                                <p>
+                                    <b>Bandejas y estantes:</b>
+                                    <span t-field="maintenance_request.sat_trays_and_shelves" class="mx-2" />
+                                </p>
+                            </t>
+                            <t t-if="maintenance_request.equipment_type in ['Vitrina de Gases', 'Cabina de Flujo']">
+                                <p>
+                                    <b>Estado grifería:</b>
+                                    <span t-field="maintenance_request.sat_faucets_function" class="mx-2" />
+                                </p>
+                                <p>
+                                    <b>Estado manoreductores:</b>
+                                    <span t-field="maintenance_request.sat_manoreductors_function" class="mx-2" />
+                                </p>
+                            </t>
                             <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
                                 <p>
                                     <b>Control de presencia:</b>
@@ -825,115 +841,147 @@
                             <p class="mx-3"></p>
                         </div>
                         <div class="col-m-5">
-                            <p>
-                                <b>Disparo de la alarma:</b>
-                                <span t-field="maintenance_request.sat_alarm_trigger" class="mx-2" />
-                            </p>
-                            <p>
-                                <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
-                                    <b>Funcionamiento guillotina:</b>
-                                </t>
-                                <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                    <b>Funcionamiento puerta:</b>
-                                </t>
-                                <span t-field="maintenance_request.sat_guillotine_function" class="mx-2" />
-                            </p>
-                            <p>
-                                <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
-                                    <b>Estado general guillotina:</b>
-                                </t>
-                                <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                    <b>Estado general puerta:</b>
-                                </t>
-                                <span t-field="maintenance_request.sat_guillotine_gnrl_state" class="mx-2" />
-                            </p>
-                            <p>
-                                <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
-                                    <b>Fuerza movimiento guillotina:</b>
-                                </t>
-                                <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                    <b>Fuerza apertura puerta:</b>
-                                </t>
-                                <span t-field="maintenance_request.sat_guillotine_v_force" class="mx-2" />
-                            </p>
+                            <t t-if="maintenance_request.equipment_type in ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas']">
+                                <p>
+                                    <b>Disparo de la alarma:</b>
+                                    <span t-field="maintenance_request.sat_alarm_trigger" class="mx-2" />
+                                </p>
+                            </t>
+                            <t t-if="maintenance_request.equipment_type in ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas']">
+                                <p>
+                                    <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                        <b>Funcionamiento guillotina:</b>
+                                    </t>
+                                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">
+                                        <b>Funcionamiento puerta:</b>
+                                    </t>
+                                    <span t-field="maintenance_request.sat_guillotine_function" class="mx-2" />
+                                </p>
+                                <p>
+                                    <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                        <b>Estado general guillotina:</b>
+                                    </t>
+                                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">
+                                        <b>Estado general puerta:</b>
+                                    </t>
+                                    <span t-field="maintenance_request.sat_guillotine_gnrl_state" class="mx-2" />
+                                </p>
+                                <p>
+                                    <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                        <b>Fuerza movimiento guillotina:</b>
+                                    </t>
+                                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">
+                                        <b>Fuerza apertura puerta:</b>
+                                    </t>
+                                    <span t-field="maintenance_request.sat_guillotine_v_force" class="mx-2" />
+                                </p>
+                            </t>
                             <p>
                                 <t t-if="maintenance_request.equipment_type == 'Cabina de flujos'">
                                     <b>Sensores flujo de aire:</b>
                                     <span t-field="maintenance_request.sat_temp_alarm" class="mx-2" />
                                 </t>
                             </p>
-                            <p>
-                                <b>Dirección flujo de aire correcto:</b>
-                                <t t-if="maintenance_request.sat_airflow_direction">SI</t>
-                                <t t-else="">NO</t>
-                            </p>
-                            <p>
-                                <b>Flujo de aire uniforme:</b>
-                                <t t-if="maintenance_request.sat_airflow_uniformity">SI</t>
-                                <t t-else="">NO</t>
-                            </p>
+                            <t t-if="maintenance_request.equipment_type in ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas']">
+                                <p>
+                                    <b>Dirección flujo de aire correcto:</b>
+                                    <t t-if="maintenance_request.sat_airflow_direction">SI</t>
+                                    <t t-else="">NO</t>
+                                </p>
+                                <p>
+                                    <b>Flujo de aire uniforme:</b>
+                                    <t t-if="maintenance_request.sat_airflow_uniformity">SI</t>
+                                    <t t-else="">NO</t>
+                                </p>
+                            </t>
+                            <t t-if="maintenance_request.equipment_type == 'Armario de Seguridad'">
+                                <p>
+                                    <b>Seguridad contra incendios:</b>
+                                    <span t-field="maintenance_request.sat_fire_safety" class="mx-2" />
+                                </p>
+                                <p>
+                                    <b>Contención de derrames:</b>
+                                    <span t-field="maintenance_request.sat_spill_containment" class="mx-2" />
+                                </p>
+                                <p>
+                                    <b>Etiquetado y documentación:</b>
+                                    <t t-if="maintenance_request.sat_labeling_documentation" >SI</t>
+                                    <t t-else="">NO</t>
+                                </p>
+                            </t>
+                            <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas', 'Armario de Seguridad']">
+                                <p>
+                                    <b>Estado de los filtros:</b>
+                                    <span t-field="maintenance_request.sat_filters_state" class="mx-2" />
+                                </p>
+                            </t>
+                            
                         </div>
                     </div>
                     <!-- Other measurements -->
-                    <h5 class="alert-heading text-left mt-4 py-0">
-                        <span>
-                            <b>Otras Mediciones</b>
-                        </span>
-                    </h5>
-                    <!-- Temperature value -->
-                    <div class="d-flex flex-row">
-                        <div class="col-m-12 my-1">
-                            <p>
-                                <b>Temperatura (ºC):</b>
-                                <span t-field="maintenance_request.temperature" t-options="{'widget': 'float', 'precision': 1}" class="mx-2" />
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Guillotine force value -->
-                    <t t-if="maintenance_request.sat_guillotine_v_force in ['C', 'F', 'RR']">
+                    <t t-if="maintenance_request.equipment_type not in ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo']">>
+                        <h5 class="alert-heading text-left mt-4 py-0">
+                            <span>
+                                <b>Otras Mediciones</b>
+                            </span>
+                        </h5>
+                        <!-- Temperature value -->
                         <div class="d-flex flex-row">
                             <div class="col-m-12 my-1">
                                 <p>
-                                    <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
-                                        <b>Valor fuerza de la guillotina:</b>
-                                    </t>
-                                    <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                        <b>Valor fuerza de la puerta:</b>
-                                    </t>
-                                    <span t-field="maintenance_request.guillotine_force" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                    <b>Temperatura (ºC):</b>
+                                    <span t-field="maintenance_request.temperature" t-options="{'widget': 'float', 'precision': 1}" class="mx-2" />
                                 </p>
                             </div>
                         </div>
-                    </t>
-                    <!-- Differential pressure value -->
-                    <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                        <div class="d-flex flex-row">
-                            <div class="col-m-12 my-1">
-                                <p>
-                                    <b>Presión diferencial (Pa):</b>
-                                    <span t-field="maintenance_request.diff_press" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                </p>
+                        <!-- Guillotine force value -->
+                        <t t-if="maintenance_request.sat_guillotine_v_force in ['C', 'F', 'RR']">
+                            <div class="d-flex flex-row">
+                                <div class="col-m-12 my-1">
+                                    <p>
+                                        <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                            <b>Valor fuerza de la guillotina:</b>
+                                        </t>
+                                        <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                            <b>Valor fuerza de la puerta:</b>
+                                        </t>
+                                        <span t-field="maintenance_request.guillotine_force" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </t>
+                        <!-- Differential pressure value -->
+                        <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                            <div class="d-flex flex-row">
+                                <div class="col-m-12 my-1">
+                                    <p>
+                                        <b>Presión diferencial (Pa):</b>
+                                        <span t-field="maintenance_request.diff_press" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                    </p>
+                                </div>
+                            </div>
+                        </t>
+                        <!-- Lighting level -->
+                        <t t-if="maintenance_request.equipment_type not in ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo']">
+                            <div class="d-flex flex-row">
+                                <div class="col-m-12 my-1">
+                                    <p>
+                                        <b>Iluminación (&#x2265; 400 lux):</b>
+                                        <span t-field="maintenance_request.lighting_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Noise level -->
+                            <div class="d-flex flex-row">
+                                <div class="col-m-12 my-1">
+                                    <p>
+                                        <b>Sonido (&#x2264; 70 dBA):</b>
+                                        <span t-field="maintenance_request.noise_level" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                    </p>
+                                </div>
+                            </div>
+                        </t>
                     </t>
-                    <!-- Lighting level -->
-                    <div class="d-flex flex-row">
-                        <div class="col-m-12 my-1">
-                            <p>
-                                <b>Iluminación (&#x2265; 400 lux):</b>
-                                <span t-field="maintenance_request.lighting_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Noise level -->
-                    <div class="d-flex flex-row">
-                        <div class="col-m-12 my-1">
-                            <p>
-                                <b>Sonido (&#x2264; 70 dBA):</b>
-                                <span t-field="maintenance_request.noise_level" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                            </p>
-                        </div>
-                    </div>
 
                     <!-- Observations -->
                     <h5 class="alert-heading text-left mt-4 mb-0 py-0">
