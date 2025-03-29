@@ -321,7 +321,7 @@
                         <t t-if="maintenance_request.equipment_type in ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo']">
                             <span>
                                 <b>
-                                    <i>Superficie de medición(m<sup>2</sup>) = &#x3A0; x (Diámetro del conducto/2)<sup>2</sup> </i>
+                                    <i>Superficie de medición(m<sup>2</sup>) = &#x3C0; x (Diámetro del conducto/2)<sup>2</sup> </i>
                                 </b>
                             </span>
                         </t>
