@@ -810,8 +810,8 @@
                 <li class="py-1">
                     Para las cabinas y módulos de flujo laminar (excepto <b>CSM</b>):
                     <p class="py-1">
-                        Si se debe cumplir con <b>GMP</b>, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
-                        Si no se requiere cumplir con <b>GMP</b>. Criterio <b>INFORMATIVO</b>
+                        Si se debe cumplir con <b>cGMP</b>, la velocidad del aire de impulsión será de 0,45m/s ± 20%.<br/>
+                        Si no se requiere cumplir con <b>cGMP</b>. Criterio <b>INFORMATIVO</b>
                     </p>
                 </li>
                 <li class="py-1">
@@ -871,7 +871,7 @@
             <p style="text-align: justify;">
                 Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0007-Cabinas de Flujo Laminar
                 y Seguridad Biológica</i></b> basado en las siguientes normativas: <b>ISO 14644-1</b>, <b>UNE 100713</b> y la revisión
-                vigente del <b>Anexo 1</b> delas <b>GMP</b>:<br/>
+                vigente del <b>Anexo 1</b> delas <b>cGMP</b>:<br/>
                 <ul>
                     <li class="py-1">
                         <p>
