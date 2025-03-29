@@ -36,7 +36,10 @@
             <t t-set="anexo" t-value="'Anexo B'" />
             <t t-set="title" t-value="'Hojas de toma de datos correspondiente a las mediciones realizadas.'" />
           </t>
-          <t t-call="lgpm_maintenance.request_maintenance_final_report_anexo_b_content" t-lang="lang"/>
+          <t t-if="maintenance_request.equipment_type=='Vitrina de Gases'" t-call="lgpm_maintenance.request_maintenance_final_report_vg_anexo_b_content" t-lang="lang"/>
+          <t t-elif="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']" t-call="lgpm_maintenance.request_maintenance_final_report_cf_anexo_b_content" t-lang="lang"/>
+          <t t-elif="maintenance_request.equipment_type=='Armario de Seguridad'" t-call="lgpm_maintenance.request_maintenance_final_report_as_anexo_b_content" t-lang="lang"/>
+          <t t-else="" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_b_content" t-lang="lang"/>
 
           <!-- Call and show Anexo C -->
           <t t-if="maintenance_request_last" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang" >

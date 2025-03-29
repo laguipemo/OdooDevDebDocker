@@ -1,0 +1,449 @@
+<odoo>
+    <data>
+        <!-- Template for the anexo B content -->
+        <template id="lgpm_maintenance.request_maintenance_final_report_as_anexo_b_content">
+            <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <br/>
+                    <!-- Initial space for begining of the new page -->
+
+                    <!-- Begining the measurements for each individual equipment for anexo B -->
+
+                    <!-- Equipment serial number -->
+                    <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
+                        <h1 class="alert-heading text-center my-0 py-0">
+                            <span class="badge bg-light border border-success text-dark py-3 px=5">
+                                <span t-field="maintenance_request.lot_id" class="px-5" />
+                            </span>
+                        </h1>
+                    </div>
+                    <!-- Equipment info: Manufacturer, type of use, reference, etc -->
+                    <div class="container m-0 p-0">
+                        <div class="d-flex flex-row justify-content-between my-3 border border-success bg-light">
+                            <div class="col-7 p-3">
+                                <p>
+                                    <b>Fabricante:</b>
+                                    <span t-field="maintenance_request.partner_id" class="mx-2"/>
+                                </p>
+                                <p>
+                                    <b>Tipo de armario:</b>
+                                    <span t-field="maintenance_request.as_type_use" class="mx-2"/>
+                                </p>
+                                <p>
+                                    <b>Referencia:</b>
+                                    <span t-field="maintenance_request.partner_ref" class="mx-2"/>
+                                </p>
+                            </div>
+                            <div class="col-5 p-3">
+                                <p>
+                                    <b>Año construcción:</b>
+                                    <span t-field="maintenance_request.manufacture_date" class="mx-2"/>
+                                </p>
+                                <p>
+                                    <b>Nº de Serie:</b>
+                                    <span t-field="maintenance_request.lot_id" class="mx-2"/>
+                                </p>
+                                <p>
+                                    <b>Nº Inventario:</b>
+                                    <span t-field="maintenance_request.inventary_number" class="mx-2"/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Maintenance info -->
+                    <h5 class="alert-heading text-left mt-5 py-0">
+                        <span>
+                            <b>Fecha de la actuación:</b>
+                            <span t-field="maintenance_request.maintenance_date" class="mx-2"/>
+                        </span>
+                    </h5>
+
+                    <!-- Visual Verifications title -->
+                    <h5 class="alert-heading text-left mt-5 py-0" colspan="4">
+                        <span>
+                            <b>Estado general del armario y del sistema de extracción</b>
+                        </span>
+                    </h5>
+
+                    <!-- Visual verification content -->
+                    <div class="d-flex flex-row">
+                        <div>
+                            <p>
+                                <b>¿El equipo está funcionando?:</b>
+                                <t t-if="maintenance_request.sat_is_working">SI</t>
+                                <t t-else="">NO</t>
+                            </p>
+                            <p>
+                                <b>Estabilidad del equipo:</b>
+                                <span t-field="maintenance_request.sat_equipment_stability" class="mx-2" />
+                            </p>
+                            <p>
+                                <b>Inspección visual del sistema de extracción:</b>
+                                <span t-field="maintenance_request.sat_extraction_sys" class="mx-2" />
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Especific requirements -->
+                    <h5 class="alert-heading text-left mt-5 py-0">
+                        <span>
+                            <b>Requerimientos específicos</b>
+                        </span>
+                    </h5>
+                    <!-- Especific requirements content -->
+                    <div class="mt-2">
+                        <p>
+                            <b>Requerimiento fabricante:</b>
+                            <span t-field="maintenance_request.requirements_partner" class="mx-2" />
+                        </p>
+                        <p>
+                            <b>Requerimiento cliente:</b>
+                            <span t-field="maintenance_request.requirements_client" class="mx-2" />
+                        </p>
+                    </div>
+
+                    <p style="page-break-after: always;"></p>
+
+                    <br/>
+                    <!-- Initial space for begining of the new page -->
+
+                    <!-- Extraction volume measurement title -->
+                    <h5 class="alert-heading text-left mt-5 py-0">
+                        <span>
+                            <b>Medición volumen de extracción</b>
+                        </span>
+                    </h5>
+                    <!-- Info about measurement area -->
+                    <div class="mt-2">
+                        <p>
+                            <b>Diámetro del conducto (mm):</b>
+                            <span t-field="maintenance_request.work_diameter" class="mx-2" />
+                        </p>
+                    </div>
+                    <h6 class="alert-heading text-left mt-3 py-0">
+                        <span>
+                            <b>
+                                <i>Superficie de medición(m<sup>2</sup>) = (&#x3C0; x (Diámetro del conducto/2)<sup>2</sup>) </i>
+                            </b>
+                        </span>
+                    </h6>
+                    <!-- Table of area info -->
+                    <table class="table table-bordered table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <b>Diámetro del conducto (mm)
+                                    </b>
+                                </th>
+                                <th scope="col">
+                                    <b>Superficie de medición (m<sup>2</sup>)
+                                    </b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <span t-field="maintenance_request.work_diameter_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 4}" class="mx-2" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Conduct velocity title -->
+                    <h6 name="mediciones" class="alert-heading text-left mt-4 py-0">
+                        <!-- Conduct velocity title -->
+                        <span>
+                            <b>Velocidades en el conducto (m/s)</b>
+                        </span>
+                    </h6>
+                    <!-- Table of conduct velocity values -->
+                    <table class="table table-bordered table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Medida 1</th>
+                                <th scope="col">Medida 2</th>
+                                <th scope="col">Medida 3</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" class="align-middle" style="text-align:right;">Media</th>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Extraction volume title -->
+                    <h5 class="alert-heading text-left mt-5 py-0">
+                        <span>
+                            <b>Cálculo del volumen de extracción</b>
+                        </span>
+                    </h5>
+                    <h6 class="alert-heading text-left mt-3 py-0">
+                        <span>
+                            <b>
+                                <i>Volumen de extracción (m<sup>3</sup>/h) = Superficie de medición(m<sup>2</sup>) x Velocidad del Aire (m/s) x 3600 (s) </i>
+                            </b>
+                        </span>
+                    </h6>
+                    <!-- Table of extraction volume calculation -->
+                    <table class="table table-bordered table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <b>Superficie de medición(m<sup>2</sup>)
+                                    </b>
+                                </th>
+                                <th scope="col">
+                                    <b>Velocidad del Aire (m/s)</b>
+                                </th>
+                                <th scope="col">
+                                    <b>Factor conversión (s)</b>
+                                </th>
+                                <th scope="col">
+                                    <b>Volumen de extracción (m<sup>3</sup>/h)</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.conduct_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-out="3600" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.conduct_volume" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="page-break-after: always;"></p>
+
+                    <br/>
+                    <!-- Initial space for begining of the new page -->
+
+                    <!-- Components and medias comprobations -->
+                    <h5 class="alert-heading text-left mt-4 py-0">
+                        <span>
+                            <b>Comprobación visual y ajuste de componentes mecánicos y medios</b>
+                        </span>
+                    </h5>
+                    <div class="d-flex flex-row col-m-12 mt-4">
+                        <div class="col-m-5">
+                            <p>
+                                <b>Protección de la superficie:</b>
+                                <span t-field="maintenance_request.sat_surface_protection" class="mx-2" />
+                            </p>
+                            <p>
+                                <b>Sujeción piezas fijas:</b>
+                                <span t-field="maintenance_request.sat_insulation_joints" class="mx-2" />
+                            </p>
+                            <p>
+                                <b>Aislamiento y juntas:</b>
+                                <span t-field="maintenance_request.sat_fixed_parts" class="mx-2" />
+                            </p>
+                            <p>
+                                <b>Puertas y bisagras:</b>
+                                <span t-field="maintenance_request.sat_doors_and_hinges" class="mx-2" />
+                            </p>
+                            <p>
+                                <b>Bandejas y estantes:</b>
+                                <span t-field="maintenance_request.sat_trays_and_shelves" class="mx-2" />
+                            </p>
+                        </div>
+                        <div class="col-m-2">
+                            <p class="mx-4"></p>
+                        </div>
+                        <div class="col-m-5">
+                            <p>
+                                <b>Seguridad contra incendios:</b>
+                                <span t-field="maintenance_request.sat_fire_safety" class="mx-2" />
+                            </p>
+                            <p>
+                                <b>Contención de derrames:</b>
+                                <span t-field="maintenance_request.sat_spill_containment" class="mx-2" />
+                            </p>
+                            <p>
+                                <b>Etiquetado y documentación:</b>
+                                <t t-if="maintenance_request.sat_labeling_documentation" >SI</t>
+                                <t t-else="">NO</t>
+                            </p>
+                            <p>
+                                <b>Estado de los filtros:</b>
+                                <span t-field="maintenance_request.sat_filters_state" class="mx-2" />
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Observations -->
+                    <h5 class="alert-heading text-left mt-4 mb-0 py-0">
+                        <span>
+                            <b>Observaciones</b>
+                        </span>
+                    </h5>
+                    <div class="d-flex flex-row col-m-12 mt-2 mb-0 py-0" style="minHeight: 100px;">
+                        <span t-field="maintenance_request.observations" class="mx-2 my-0 py-0"/>
+                    </div>
+
+                    <!-- Non conformities -->
+                    <h5 class="alert-heading text-left mt-4 mb-0 py-0">
+                        <span>
+                            <b>No conformidades</b>
+                        </span>
+                    </h5>
+                    <div class="d-flex flex-row col-m-12 mt-2 mb-0 py-0" style="minHeight: 100px;">
+                        <span t-field="maintenance_request.non_conformities" class="mx-2 my-0 py-0"/>
+                    </div>
+
+                    <!-- Final result -->
+                    <h5 class="alert-heading text-left mt-4 mb-0 py-0">
+                        <span>
+                            <b>Resultado</b>
+                        </span>
+                    </h5>
+                    <div class="d-flex flex-row">
+                        <div class="col-m-12">
+                            <p>
+                                <b>El equipo está de acuerdo con las normas / regulaciones petinentes: </b>
+                                <t t-if="maintenance_request.complies_regulation == True">
+                                    <b>
+                                        <span class="mx-2">CONFORME</span>
+                                    </b>
+                                </t>
+                                <t t-else="">
+                                    <b>
+                                        <span class="mx-2" style="color:Red; font-weight:bold;">NO CONFORME</span>
+                                    </b>
+                                </t>
+                            </p>
+                            <p>
+                                <b>Por cuestiones de seguridad es necesaria la intervención del equipo: </b>
+                                <t t-if="maintenance_request.needs_intervention == True">
+                                    <b>
+                                        <span class="mx-2" style="color:Red; font-weight:bold;">REQUIERE INTERVENCIÓN</span>
+                                    </b>
+                                </t>
+                                <t t-else="">
+                                    <b>
+                                        <span class="mx-2">NO REQUIERE INTERVENCIÓN</span>
+                                    </b>
+                                </t>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <p style="page-break-after: always;"></p>
+
+                    <br/>
+                    <!-- Initial space for begining of the new page -->
+
+                    <!-- Equipment photos -->
+                    <h5 class="alert-heading text-left mt-3 py-0">
+                        <span>
+                            <b>Fotos del equipo</b>
+                        </span>
+                    </h5>
+                    <div class="d-flex flex-row col-m-12 mt-4">
+                        <t t-if="maintenance_request.photo1">
+                            <t t-set="photo1" t-value="maintenance_request.photo1"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="photo1" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                        </t>
+                        <div class="col-m-5 p2 border border-success">
+                            <div t-attf-style="background-image: url(data:image/*;base64,{{photo1}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+                        </div>
+                        <div class="col-m-2 p2">
+                            <p class="mx-3"></p>
+                        </div>
+                        <t t-if="maintenance_request.photo2">
+                            <t t-set="photo2" t-value="maintenance_request.photo2"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="photo2" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                        </t>
+                        <div class="col-m-5 p2 border border-success">
+                            <div t-attf-style="background-image: url(data:image/*;base64,{{photo2}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row col-m-12 mt-4">
+                        <t t-if="maintenance_request.photo3">
+                            <t t-set="photo3" t-value="maintenance_request.photo3"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="photo3" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                        </t>
+                        <div class="col-m-5 p2 border border-success">
+                            <div t-attf-style="background-image: url(data:image/*;base64,{{photo3}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+                        </div>
+                        <div class="col-m-2 p2">
+                            <p class="mx-3"></p>
+                        </div>
+                        <t t-if="maintenance_request.photo4">
+                            <t t-set="photo4" t-value="maintenance_request.photo4"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="photo4" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                        </t>
+                        <div class="col-m-5 p2 border border-success">
+                            <div t-attf-style="background-image: url(data:image/*;base64,{{photo4}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row col-m-12 mt-4">
+                        <t t-if="maintenance_request.photo5">
+                            <t t-set="photo5" t-value="maintenance_request.photo5"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="photo5" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                        </t>
+                        <div class="col-m-5 p2 border border-success">
+                            <div t-attf-style="background-image: url(data:image/*;base64,{{photo5}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+                        </div>
+                        <div class="col-m-2 p2">
+                            <p class="mx-3"></p>
+                        </div>
+                        <t t-if="maintenance_request.photo6">
+                            <t t-set="photo6" t-value="maintenance_request.photo6"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="photo6" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                        </t>
+                        <div class="col-m-5 p2 border border-success">
+                            <div t-attf-style="background-image: url(data:image/*;base64,{{photo6}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
+                        </div>
+                    </div>
+
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
