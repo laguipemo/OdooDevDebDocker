@@ -1,0 +1,29 @@
+<odoo>
+  <data>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.report" id="lgpm_maintenance_request_data_action_report">
+      <field name="name">Datos SAT</field>
+      <field name="model">maintenance.request</field>
+      <field name="report_type">qweb-pdf</field>
+      <field name="report_name">lgpm_maintenance.request_maintenance_data_report</field>
+      <field name="report_file">lgpm_maintenance.request_maintenance_data_report</field>
+      <field name="binding_model_id" ref="model_maintenance_request" />
+
+      <field name="print_report_name">'Datos - %s' %(object.name)</field>
+    </record>
+
+
+    <!-- explicit template definition -->
+    <template id="lgpm_maintenance.request_maintenance_data_report">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="maintenance_request">
+          <t t-set="lang" t-value="maintenance_request.equipment_id.partner_id.lang" />
+          <!-- Call data of sat maintenance (contendt of Anexo B in final report) -->
+          <t t-call="lgpm_maintenance.request_maintenance_final_report_anexo_b_content" t-lang="lang"/>
+        </t>
+      </t>
+    </template>
+
+  </data>
+</odoo>

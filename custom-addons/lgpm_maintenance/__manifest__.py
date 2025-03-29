@@ -39,7 +39,9 @@
         'reports/template_title_page_of_anexos_report.xml',
         'reports/template_theoretical_intro_vg_report.xml',
         'reports/template_theoretical_intro_cf_report.xml',
+        'reports/template_theoretical_intro_as_report.xml',
         'reports/lgpm_maintenance_final_report.xml',
+        'reports/lgpm_maintenance_data_report.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

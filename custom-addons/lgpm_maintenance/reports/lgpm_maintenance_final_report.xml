@@ -21,7 +21,8 @@
           <t t-set="lang" t-value="maintenance_request.equipment_id.partner_id.lang" />
           <t t-if="maintenance_request_first">
             <t t-if="maintenance_request.equipment_type=='Vitrina de Gases'" t-call="lgpm_maintenance.request_maintenance_vg_report_introduction" t-lang="lang"/>
-            <t t-if="maintenance_request.equipment_type=='Cabina de Flujo'" t-call="lgpm_maintenance.request_maintenance_cf_report_introduction" t-lang="lang"/>
+            <t t-elif="maintenance_request.equipment_type=='Cabina de Flujo'" t-call="lgpm_maintenance.request_maintenance_cf_report_introduction" t-lang="lang"/>
+            <t t-elif="maintenance_request.equipment_type=='Armario de Seguridad'" t-call="lgpm_maintenance.request_maintenance_as_report_introduction" t-lang="lang"/>
           </t>
           <!-- Call and show Anexo A -->
           <t t-if="maintenance_request_first"  t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang">

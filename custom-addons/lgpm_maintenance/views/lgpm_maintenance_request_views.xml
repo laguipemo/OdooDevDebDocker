@@ -9,6 +9,9 @@
       <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form" />
       <field name="priority">999</field>
       <field name="arch" type="xml">
+        <xpath expr="//button[@name='archive_equipment_request']" position="after">
+          <button string="Imprimir datos SAT" name="print_sat_data" type="object" attrs="{'invisible': [('equipment_type', '=', '')]}"/>          
+        </xpath>
         <xpath expr="//field[@name='equipment_id']" position="after">
           <field name="equipment_type" invisible="1"/>
         </xpath>
@@ -34,7 +37,10 @@
               <!-- Equipment information -->
               <group name="sat_equipment_info" string="Información del equipo">
                 <field name="partner_id" />
-                <field name="equipment_use" />
+                <field name="vg_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="cf_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}" />
+                <field name="cp_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Pesadas')]}" />
+                <field name="as_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
                 <field name="partner_ref" />
                 <field name="manufacture_date" />
                 <field name="lot_id" />
@@ -45,15 +51,16 @@
               <group colspan="6">
                 <field name="sat_is_working" widget="boolean_toggle" />
                 <field name="sat_equipment_stability" />
-                <field name="sat_glass_wiring_state" />
+                <field name="sat_glass_wiring_state" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo','Punto de Aspiración Localizada Pared'])]}" />
                 <field name="sat_operating_hours" attrs="{'invisible':[('equipment_type','!=','Cabina de Flujo')]}" />
               </group>
               <group colspan="6">
-                <field name="sat_digital_ctrl" />
+                <field name="sat_digital_ctrl" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
                 <field name="sat_extraction_sys" />
-                <field name="sat_var_speed" />
+                <field name="sat_var_speed" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
               </group>
             </group>
+            <!-- SAT specific requirements -->
             <group name="sat_requirements" string="Requerimientos específicos" col="12">
               <group colspan="10">
                 <field name="requirements_partner" />
@@ -61,20 +68,22 @@
               </group>
             </group>
             <!-- SAT check and adjustment of mechanical components and means -->
-            <group name="sat_check_components" string="Comprobación y ajuste de componentes mecánicos y medios" col="12">
+            <group name="sat_check_components" string="Comprobación visual y ajuste de componentes mecánicos y medios" col="12">
               <group colspan="6">
-                <field name="sat_visual_acustic_ctrls" />
-                <field name="sat_temp_alarm" />
+                <field name="sat_visual_acustic_ctrls" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
+                <field name="sat_temp_alarm" attrs="{'invisible':[('vg_type_use', '!=', 'Ácidos Concentrados')]}"/>
                 <field name="sat_surface_protection" />
                 <field name="sat_fixed_parts" />
                 <field name="sat_insulation_joints" />
-                <field name="sat_faucets_function" />
-                <field name="sat_manoreductors_function" />
-                <field name="sat_presence_ctrl" />
-                <field name="sat_autoprotec" />
+                <field name="sat_doors_and_hinges" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_trays_and_shelves" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_faucets_function" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
+                <field name="sat_manoreductors_function" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
+                <field name="sat_presence_ctrl" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="sat_autoprotec" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
               </group>
               <group colspan="6">
-                <field name="sat_alarm_trigger" />
+                <field name="sat_alarm_trigger" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
                 
                 <field name="sat_guillotine_function" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
                 <field name="sat_guillotine_function" string="Funcionamiento puerta" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}"/>
@@ -85,15 +94,198 @@
                 <field name="sat_guillotine_v_force" attrs="{'invisible':[('equipment_type', '!=', 'Vitrina de Gases')]}"/>
                 <field name="sat_guillotine_v_force" string="Fuerza apertura puerta" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}"/>
 
-                <field name="sat_airflow_sensors" />
-                <field name="sat_airflow_direction" widget="boolean_toggle" />
-                <field name="sat_airflow_uniformity" widget="boolean_toggle" />
-                <field name="sat_filters_state" />
+                <field name="sat_airflow_sensors" attrs="{'invisible': ['|',('equipment_type', '!=', 'Cabina de Pesadas'), ('equipment_type', '!=', 'Cabina de Flujo')]}"/>
+                <field name="sat_airflow_direction" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
+                <field name="sat_airflow_uniformity" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
+                <field name="sat_fire_safety" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_spill_containment" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_labeling_documentation" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
+                <field name="sat_filters_state" attrs="{'invisible': [('equipment_type', 'not in', ['Armario de Seguridad', 'Cabina de Flujo', 'Cabina de Pesadas'])]}"/>
+              </group>
+            </group>
+            <!-- Filters integrity verification -->
+            <group 
+                  name="filter_integrity" 
+                  string="Ensayo de verificación de integridad y estanquedad en filtros absolutos HEPA/ULPA" 
+                  col="12"
+                  attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo'),('equipment_type', '!=', 'Cabina de Pesadas')]}">
+              <table class="table table-bordered text-center" colspan="12">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 20%;">Nº de filtro</th>
+                    <th scope="col" style="width: 20%;">Nº de serie/Identificación</th>
+                    <th scope="col" style="width: 15%;">Dimensiones(mm)</th>
+                    <th scope="col" style="width: 10%;">Concentración aerosol (&#xB5;g/L)</th>
+                    <th scope="col" style="width: 20%;">Valor obtenido (&#x2264; 0,01%)</th>
+                    <th scope="col" style="width: 15%;">Resultado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <field name="filter1_number" />
+                    </td>
+                    <td>
+                      <field name="filter1_serial_id" />
+                    </td>
+                    <td>
+                      <field name="filter1_dimensions" />
+                    </td>
+                    <td>
+                      <field name="aerosol1_conc" />
+                    </td>
+                    <td>
+                      <field name="integrity1_value" />
+                    </td>
+                    <td>
+                      <field name="integrity1_result" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <field name="filter2_number" />
+                    </td>
+                    <td>
+                      <field name="filter2_serial_id" />
+                    </td>
+                    <td>
+                      <field name="filter2_dimensions" />
+                    </td>
+                    <td>
+                      <field name="aerosol2_conc" />
+                    </td>
+                    <td>
+                      <field name="integrity2_value" />
+                    </td>
+                    <td>
+                      <field name="integrity2_result" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <field name="filter3_number" />
+                    </td>
+                    <td>
+                      <field name="filter3_serial_id" />
+                    </td>
+                    <td>
+                      <field name="filter3_dimensions" />
+                    </td>
+                    <td>
+                      <field name="aerosol3_conc" />
+                    </td>
+                    <td>
+                      <field name="integrity3_value" />
+                    </td>
+                    <td>
+                      <field name="integrity3_result" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </group>
+            <!-- Particles counting -->
+            <group 
+                  name="particles_counting" 
+                  string="Conteo de partículas" 
+                  col="12"
+                  attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo'),('equipment_type', '!=', 'Cabina de Pesadas')]}">
+              <table class="table table-bordered text-center" colspan="12">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 14%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
+                    <th scope="col" style="width: 19%;">Alcanza norma</th>
+                    <th scope="col" style="width: 14%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
+                    <th scope="col" style="width: 19%;">Alcanza norma</th>
+                    <th scope="col" style="width: 14%;"><p>5 &#xB5;m <br/> (ISO 5 &lt; 29)</p></th>
+                    <th scope="col" style="width: 19%;">Alcanza norma</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <field name="particles_counting_03um" />
+                    </td>
+                    <td>
+                      <field name="standard_03um" />
+                    </td>
+                    <td>
+                      <field name="particles_counting_05um" />
+                    </td>
+                    <td>
+                      <field name="standard_05um" />
+                    </td>
+                    <td>
+                      <field name="particles_counting_5um" />
+                    </td>
+                    <td>
+                      <field name="standard_5um" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </group>
+          
+            <!-- Extraction volume measurement and calculation -->
+
+            <group 
+                name="extraction_measurements" 
+                string="Medición volumen de extracción" 
+                col="12"
+                attrs="{'invisible':[('equipment_type','not in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" >
+              <group string="Dimensiones" colspan="4">
+                <field name="work_diameter" />
+                <field name="measurement_area" />
+              </group>
+              <group string="Velocidades conducto" colspan="8">
+                <table class="table table-bordered text-center" colspan="2">
+                  <thead>
+                    <tr>
+                      <th scope="col">Medición 1</th>
+                      <th scope="col">Medición 2</th>
+                      <th scope="col">Medición 3</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <field name="conduct_v1" />
+                      </td>
+                      <td>
+                        <field name="conduct_v2" />
+                      </td>
+                      <td>
+                        <field name="conduct_v3" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3" style="text-align:right;">Media</th>
+                      <td>
+                        <field name="conduct_v_media" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </group>
+            </group>
+            <group 
+                name="extraction_volume" 
+                string="Cálculo volumen de extracción" 
+                col="12"
+                attrs="{'invisible':[('equipment_type','not in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}">
+              <group colspan="4" name="volume">
+                <field name="conduct_volume" />
               </group>
             </group>
 
-            <!-- Extraction volume measurement and calculation -->
-            <group name="measurements" string="Medición volumen de extracción" col="12">
+
+            <group 
+                name="extraction_measurements" 
+                string="Medición volumen de extracción" 
+                col="12"
+                attrs="{'invisible':[('equipment_type','not in',['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" >
               <group string="Dimensiones" colspan="4">
                 <field name="work_length" />
                 <field name="work_height" />
@@ -156,22 +348,112 @@
                 </table>
               </group>
             </group>
-            <group name="extraction_volume" string="Cálculo volumen de extracción" col="12">
+            <group 
+                name="extraction_volume" 
+                string="Cálculo volumen de extracción" 
+                col="12"
+                attrs="{'invisible':[('equipment_type','not in',['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" >
               <group colspan="4" name="volume">
                 <field name="extraction_volume" />
               </group>
             </group>
+
+            <!-- Descendent volume measurement and calculation -->
+            <group 
+                name="descendent_measurements" 
+                string="Medición volumen de flujo descendente" 
+                col="12"
+                attrs="{'invisible':[('equipment_type', 'not in', ['Cabina de Flujo', 'Cabina de Pesadas'])]}">
+              <group string="Dimensiones" colspan="4">
+                <field name="work_length" />
+                <field name="work_depth" />
+                <field name="measurement_area_desc" />
+              </group>
+              <group string="Velocidades aire descendente" colspan="8">
+                <table class="table table-bordered text-center" colspan="2">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Izquierda</th>
+                      <th scope="col">Centro</th>
+                      <th scope="col">Derecha</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Delante</th>
+                      <td>
+                        <field name="descendent_v1" />
+                      </td>
+                      <td>
+                        <field name="descendent_v2" />
+                      </td>
+                      <td>
+                        <field name="descendent_v3" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Centro</th>
+                      <td>
+                        <field name="descendent_v4" />
+                      </td>
+                      <td>
+                        <field name="descendent_v5" />
+                      </td>
+                      <td>
+                        <field name="descendent_v6" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Detrás</th>
+                      <td>
+                        <field name="descendent_v7" />
+                      </td>
+                      <td>
+                        <field name="descendent_v8" />
+                      </td>
+                      <td>
+                        <field name="descendent_v9" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th colspan="3" style="text-align:right;">Media</th>
+                      <td>
+                        <field name="descendent_v_media" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </group>
+            </group>
+            <group 
+                name="descendent_volume" 
+                string="Cálculo volumen de flujo descendente" 
+                col="12"
+                attrs="{'invisible':[('equipment_type', 'not in', ['Cabina de Flujo', 'Cabina de Pesadas'])]}" >
+              <group colspan="4" name="volume">
+                <field name="descendent_volume" />
+              </group>
+            </group>
             
-            <group name="other_measures" string="Otras Medidas" col="12">
+            <group 
+                name="other_measures" 
+                string="Otras Medidas" 
+                col="12"
+                attrs="{'invisible':[('equipment_type', 'in', ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" >
               <group name="others" colspan="6">
-                <field name="diff_press" widget="float" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}"/>
+                <field name="diff_press" widget="float" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}" />
                 <field name="temperature" widget="float" />
-                <field name="guillotine_force" widget="float" attrs="{'invisible': ['|', ('sat_guillotine_v_force', '=', 'N'),('sat_guillotine_v_force','=', 'NP')]}"/>
+                <field name="guillotine_force" widget="float" attrs="{'invisible': [('sat_guillotine_v_force', 'in', ['N', 'NP'])]}" />
               </group>
               
             </group>
             <!-- Lighting and noise levels check -->
-            <group name="lighting_noise" string="Comprobación de niveles de iluminación y ruido" col="12">
+            <group 
+                name="lighting_noise" 
+                string="Comprobación de niveles de iluminación y ruido" 
+                col="12"
+                attrs="{'invisible':[('equipment_type', 'in', ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" >
               <group string="Iluminación" colspan="7">
                 <table class="table table-bordered text-center" colspan="2">
                   <thead>
@@ -202,7 +484,10 @@
                   </tbody>
                 </table>
               </group>
-              <group string="Sonido" colspan="5">
+              <group 
+                  string="Sonido" 
+                  colspan="5"
+                  attrs="{'invisible':[('equipment_type', 'in', ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" >
                 <field name="noise_level" />
               </group>
             </group>
