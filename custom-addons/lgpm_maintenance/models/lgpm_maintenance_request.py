@@ -413,7 +413,6 @@ class LgpmMaintenanceRequest(models.Model):
     measurement_area = fields.Float(
         string='Superficie de medición',
         compute='_compute_measurement_area',
-        store=True,
         help='Superficie de medición en metros cuadrados'
     )
     # Frontal Velocity values
@@ -464,7 +463,6 @@ class LgpmMaintenanceRequest(models.Model):
     measurement_area_desc = fields.Float(
         string='Superficie de medición descendiente',
         compute='_compute_measurement_area_desc',
-        store=True,
         help='Superficie de medición flujo de aire descendiente en metros cuadrados'
     )
     # Frontal Velocity values
@@ -655,7 +653,7 @@ class LgpmMaintenanceRequest(models.Model):
             else:
                 maintenance_request.as_type_use = ''
 
-    @api.depends('work_length', 'work_height')
+    @api.depends('work_length', 'work_height', 'work_diameter')
     def _compute_measurement_area(self):
         for maintenance_request in self:
             if maintenance_request.equipment_type.lower() in ['vitrina de gases', 'cabina de flujo', 'cabina de pesadas']:
@@ -666,7 +664,7 @@ class LgpmMaintenanceRequest(models.Model):
                                                                 'punto de aspiración localizada pared', 
                                                                 'punto de aspiración localizada brazo']:
                 maintenance_request.measurement_area = (
-                    (3.1416) * (maintenance_request.work_diameter/1000)**2
+                    (3.1416/4) * (maintenance_request.work_diameter/1000)**2
                 )
             else:
                 maintenance_request.measurement_area = 0.0
@@ -764,7 +762,7 @@ class LgpmMaintenanceRequest(models.Model):
     @api.depends('conduct_v_media', 'measurement_area')
     def _compute_conduct_volume(self):
         for maintenance_request in self:
-            maintenance_request.conduct_volume = maintenance_request.measurement_area * maintenance_request.conduct_v_media
+            maintenance_request.conduct_volume = maintenance_request.measurement_area * maintenance_request.conduct_v_media * 3600
 
     @api.depends('frontal_v_media', 'measurement_area')
     def _compute_extraction_volume(self):

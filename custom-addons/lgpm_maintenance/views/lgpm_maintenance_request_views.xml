@@ -237,7 +237,7 @@
                 attrs="{'invisible':[('equipment_type','not in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" >
               <group string="Dimensiones" colspan="4">
                 <field name="work_diameter" />
-                <field name="measurement_area" />
+                <field name="measurement_area" digits="[10,4]"/>
               </group>
               <group string="Velocidades conducto" colspan="8">
                 <table class="table table-bordered text-center" colspan="2">
@@ -289,7 +289,7 @@
               <group string="Dimensiones" colspan="4">
                 <field name="work_length" />
                 <field name="work_height" />
-                <field name="measurement_area" />
+                <field name="measurement_area" digits="[10,4]"/>
               </group>
               <group string="Velocidades frontal" colspan="8">
                 <table class="table table-bordered text-center" colspan="2">
@@ -367,7 +367,7 @@
               <group string="Dimensiones" colspan="4">
                 <field name="work_length" />
                 <field name="work_depth" />
-                <field name="measurement_area_desc" />
+                <field name="measurement_area_desc" digits="[10,4]"/>
               </group>
               <group string="Velocidades aire descendente" colspan="8">
                 <table class="table table-bordered text-center" colspan="2">
