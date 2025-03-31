@@ -35,7 +35,7 @@
                                 <p>
                                     <b>Tipo de cabina:</b>
                                     <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                        <span t-field="maintenance_request.cf_type" class="mx-2"/>
+                                        <span t-field="maintenance_request.cf_type_use" class="mx-2"/>
                                     </t>
                                     <t t-elif="maintenance_request.equipment_type == 'Cabina de Pesadas'">
                                         <span t-field="maintenance_request.cp_type_use" class="mx-2"/>
