@@ -115,6 +115,10 @@ class LgpmMaintenanceRequest(models.Model):
         string='Tipo de Vitrina',
         compute='_compute_vg_type_use'
     )
+    cp_type_use = fields.Char(
+        string='Tipo de Capotaje',
+        compute='_compute_ca_type_use'
+    )
     cf_type_use = fields.Char(
         string='Tipo de Cabina',
         compute='_compute_cf_type_use'
@@ -607,6 +611,20 @@ class LgpmMaintenanceRequest(models.Model):
                         'maintenance.equipment'
                         ]._fields[
                             'vg_type_use'
+                            ].selection).get(key)
+            else:
+                maintenance_request.vg_type_use = ''
+                
+    @api.depends('equipment_id')
+    def _compute_ca_type_use(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_id:
+                key = maintenance_request.equipment_id.ca_type_use
+                maintenance_request.vg_type_use = dict(
+                    self.env[
+                        'maintenance.equipment'
+                        ]._fields[
+                            'ca_type_use'
                             ].selection).get(key)
             else:
                 maintenance_request.vg_type_use = ''

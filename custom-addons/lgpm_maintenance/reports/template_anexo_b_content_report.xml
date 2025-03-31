@@ -12,6 +12,13 @@
 
                     <!-- Equipment serial number -->
                     <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
+                        <h2 class="alert-heading text-center mx-0 py-5">
+                            <span>
+                                <b>
+                                    <span t-field="maintenance_request.equipment_type" />
+                                </b>
+                            </span>
+                        </h2>
                         <h1 class="alert-heading text-center my-0 py-0">
                             <span class="badge bg-light border border-success text-dark py-3 px=5">
                                 <span t-field="maintenance_request.lot_id" class="px-5" />

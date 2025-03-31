@@ -1,5 +1,8 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class LgpmMaintenanceRequestMaintenanceFinalReport(models.AbstractModel):
     _name = 'report.lgpm_maintenance.request_maintenance_final_report'
@@ -14,7 +17,10 @@ class LgpmMaintenanceRequestMaintenanceFinalReport(models.AbstractModel):
         # raise an error if user select more than one type of equipment
         equipment_types = set(docs.mapped('equipment_id.equipment_type'))
         if len(equipment_types) > 1:
-            raise UserError(_('Solo se puede seleccionar mantenimientos del mismo tipo de equipo'))
+            if equipment_types != {'PALB', 'PALP'} and equipment_types != {'VG', 'CA'}:
+                _logger.info(equipment_types)
+                raise UserError(_('Solo se puede seleccionar mantenimientos del mismo tipo de equipo'))
+            
         # return a custom rendering context
         return {
             'doc_ids': docids,

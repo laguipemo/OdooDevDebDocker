@@ -11,9 +11,7 @@
             <div class="alert alert-light mb-0 pb-0" role="alert">
                 <h2 class="alert-heading text-center mx-0 py-5">
                 <span>
-                    <b>
-                    Informe <span t-field="maintenance_request.equipment_type" />
-                    </b>
+                    <b>Informe de Cualificación</b>
                 </span>
                 </h2>
                 <div class="d-flex flex-row justify-content-end m-0 p-0">

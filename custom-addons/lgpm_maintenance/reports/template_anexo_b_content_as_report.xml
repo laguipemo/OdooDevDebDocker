@@ -11,9 +11,15 @@
                     <!-- Begining the measurements for each individual equipment for anexo B -->
 
                     <!-- Equipment serial number -->
-                    <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
+                    <div class="d-flex row justify-content-center align-items-center col-mb-4 my-4 text-center ">
                         <h1 class="alert-heading text-center my-0 py-0">
-                            <span class="badge bg-light border border-success text-dark py-3 px=5">
+                            <span>
+                                <b>
+                                    <span t-field="maintenance_request.equipment_type" />
+                                </b>
+                            </span>
+                            <br/>
+                            <span class="badge bg-light border border-success text-dark mt-3 py-3 px-5">
                                 <span t-field="maintenance_request.lot_id" class="px-5" />
                             </span>
                         </h1>
@@ -146,7 +152,7 @@
                         <tbody class="text-center">
                             <tr>
                                 <td>
-                                    <span t-field="maintenance_request.work_diameter_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                    <span t-field="maintenance_request.work_diameter_m" t-options="{'widget': 'float', 'precision': 4}" class="mx-2" />
                                 </td>
                                 <td>
                                     <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 4}" class="mx-2" />
@@ -227,7 +233,7 @@
                         <tbody class="text-center">
                             <tr>
                                 <td>
-                                    <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                    <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 4}" class="mx-2" />
                                 </td>
                                 <td>
                                     <span t-field="maintenance_request.conduct_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />

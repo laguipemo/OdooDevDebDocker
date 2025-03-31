@@ -11,9 +11,15 @@
                     <!-- Begining the measurements for each individual equipment for anexo B -->
 
                     <!-- Equipment serial number -->
-                    <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
+                    <div class="d-flex row justify-content-center align-items-center col-mb-4 my-4 text-center ">
                         <h1 class="alert-heading text-center my-0 py-0">
-                            <span class="badge bg-light border border-success text-dark py-3 px=5">
+                            <span>
+                                <b>
+                                    <span t-field="maintenance_request.equipment_type" />
+                                </b>
+                            </span>
+                            <br/>
+                            <span class="badge bg-light border border-success text-dark mt-3 py-3 px-5">
                                 <span t-field="maintenance_request.lot_id" class="px-5" />
                             </span>
                         </h1>
@@ -27,8 +33,14 @@
                                     <span t-field="maintenance_request.partner_id" class="mx-2"/>
                                 </p>
                                 <p>
-                                    <b>Tipo de vitrina:</b>
-                                    <span t-field="maintenance_request.vg_type_use" class="mx-2"/>
+                                    <t t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
+                                        <b>Tipo de vitrina:</b>
+                                        <span t-field="maintenance_request.vg_type_use" class="mx-2"/>
+                                    </t>
+                                    <t t-elif="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                        <b>Tipo de capotaje:</b>
+                                        <span t-field="maintenance_request.ca_type_use" class="mx-2"/>
+                                    </t>
                                 </p>
                                 <p>
                                     <b>Referencia:</b>

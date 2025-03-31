@@ -19,6 +19,7 @@ class LgpmMaintenanceEquipment(models.Model):
             ('AS', 'Armario de Seguridad'),
             ('CF', 'Cabina de Flujo'),
             ('CP', 'Cabina de Pesadas'),
+            ('CA', 'Capotaje'),
             ('PALP', 'Punto de Aspiración Localizada Pared'),
             ('PALB', 'Punto de Aspiración Localizada Brazo'),
             ('VG', 'Vitrina de Gases'),
@@ -27,6 +28,16 @@ class LgpmMaintenanceEquipment(models.Model):
     )
     vg_type_use = fields.Selection(
         string = 'Tipo de vitrina',
+        selection=[
+            ('NO', ''),
+            ('G', 'Uso General'),
+            ('AC', 'Ácidos Concentrados'),
+            ('W', 'Walk-in'),
+        ],
+        default='NO',
+    )
+    ca_type_use = fields.Selection(
+        string = 'Tipo de Capotaje',
         selection=[
             ('NO', ''),
             ('G', 'Uso General'),

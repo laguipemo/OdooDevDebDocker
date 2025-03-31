@@ -38,6 +38,7 @@
               <group name="sat_equipment_info" string="Información del equipo">
                 <field name="partner_id" />
                 <field name="vg_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="cp_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Capotaje')]}" />
                 <field name="cf_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}" />
                 <field name="cp_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Pesadas')]}" />
                 <field name="as_type_use" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
@@ -79,24 +80,24 @@
                 <field name="sat_trays_and_shelves" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
                 <field name="sat_faucets_function" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
                 <field name="sat_manoreductors_function" attrs="{'invisible':[('equipment_type','in',['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared'])]}" />
-                <field name="sat_presence_ctrl" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="sat_presence_ctrl" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Capotaje'])]}" />
                 <field name="sat_autoprotec" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
               </group>
               <group colspan="6">
-                <field name="sat_alarm_trigger" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
+                <field name="sat_alarm_trigger" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Capotaje', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
                 
-                <field name="sat_guillotine_function" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="sat_guillotine_function" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Capotaje'])]}" />
                 <field name="sat_guillotine_function" string="Funcionamiento puerta" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}"/>
 
-                <field name="sat_guillotine_gnrl_state" attrs="{'invisible': [('equipment_type', '!=', 'Vitrina de Gases')]}" />
+                <field name="sat_guillotine_gnrl_state" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Capotaje'])]}" />
                 <field name="sat_guillotine_gnrl_state" string="Estado general puerta" attrs="{'invisible': [('equipment_type', '!=', 'Cabina de Flujo')]}" />
 
                 <field name="sat_guillotine_v_force" attrs="{'invisible':[('equipment_type', '!=', 'Vitrina de Gases')]}"/>
                 <field name="sat_guillotine_v_force" string="Fuerza apertura puerta" attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo')]}"/>
 
-                <field name="sat_airflow_sensors" attrs="{'invisible': ['|',('equipment_type', '!=', 'Cabina de Pesadas'), ('equipment_type', '!=', 'Cabina de Flujo')]}"/>
-                <field name="sat_airflow_direction" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
-                <field name="sat_airflow_uniformity" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
+                <field name="sat_airflow_sensors" attrs="{'invisible': [('equipment_type', 'not in', ['Cabina de Pesadas', 'Cabina de Flujo'])]}"/>
+                <field name="sat_airflow_direction" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Capotaje', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
+                <field name="sat_airflow_uniformity" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', 'not in', ['Vitrina de Gases', 'Capotaje', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" />
                 <field name="sat_fire_safety" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
                 <field name="sat_spill_containment" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
                 <field name="sat_labeling_documentation" widget="boolean_toggle" attrs="{'invisible': [('equipment_type', '!=', 'Armario de Seguridad')]}" />
@@ -108,7 +109,7 @@
                   name="filter_integrity" 
                   string="Ensayo de verificación de integridad y estanquedad en filtros absolutos HEPA/ULPA" 
                   col="12"
-                  attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo'),('equipment_type', '!=', 'Cabina de Pesadas')]}">
+                  attrs="{'invisible':[('equipment_type', 'not in', ['Cabina de Flujo', 'Cabina de Pesadas'])]}">
               <table class="table table-bordered text-center" colspan="12">
                 <thead>
                   <tr>
@@ -190,7 +191,7 @@
                   name="particles_counting" 
                   string="Conteo de partículas" 
                   col="12"
-                  attrs="{'invisible':[('equipment_type', '!=', 'Cabina de Flujo'),('equipment_type', '!=', 'Cabina de Pesadas')]}">
+                  attrs="{'invisible':[('equipment_type', 'not in', ['Cabina de Flujo', 'Cabina de Pesadas'])]}">
               <table class="table table-bordered text-center" colspan="12">
                 <thead>
                   <tr>
@@ -285,7 +286,7 @@
                 name="extraction_measurements" 
                 string="Medición volumen de extracción" 
                 col="12"
-                attrs="{'invisible':[('equipment_type','not in',['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" >
+                attrs="{'invisible':[('equipment_type','not in',['Vitrina de Gases', 'Capotaje', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" >
               <group string="Dimensiones" colspan="4">
                 <field name="work_length" />
                 <field name="work_height" />
@@ -352,7 +353,7 @@
                 name="extraction_volume" 
                 string="Cálculo volumen de extracción" 
                 col="12"
-                attrs="{'invisible':[('equipment_type','not in',['Vitrina de Gases', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" >
+                attrs="{'invisible':[('equipment_type','not in',['Vitrina de Gases', 'Capotaje', 'Cabina de Flujo', 'Cabina de Pesadas'])]}" >
               <group colspan="4" name="volume">
                 <field name="extraction_volume" />
               </group>
