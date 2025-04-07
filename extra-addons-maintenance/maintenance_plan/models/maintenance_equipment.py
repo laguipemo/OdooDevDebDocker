@@ -4,6 +4,7 @@
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from datetime import date
 
 
 class MaintenanceEquipment(models.Model):
@@ -178,10 +179,10 @@ class MaintenanceEquipment(models.Model):
     def _compute_next_maintenance(self):
         """Redefine the function to display next_action_date in kanban view"""
         for equipment in self:
-            next_plan_dates = equipment.maintenance_plan_ids.mapped(
+            next_plan_dates: list[date] = equipment.maintenance_plan_ids.mapped(
                 "next_maintenance_date"
             )
-            next_unplanned_dates = (
+            next_unplanned_dates: list[date] = (
                 self.env["maintenance.request"]
                 .search(
                     [
