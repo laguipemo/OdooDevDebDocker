@@ -195,33 +195,60 @@
               <table class="table table-bordered text-center" colspan="12">
                 <thead>
                   <tr>
-                    <th scope="col" style="width: 14%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
-                    <th scope="col" style="width: 19%;">Alcanza norma</th>
-                    <th scope="col" style="width: 14%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
-                    <th scope="col" style="width: 19%;">Alcanza norma</th>
-                    <th scope="col" style="width: 14%;"><p>5 &#xB5;m <br/> (ISO 5 &lt; 29)</p></th>
-                    <th scope="col" style="width: 19%;">Alcanza norma</th>
+                    <th scope="col" style="width: 7%;"><p>Lectura</p></th>
+                    <th scope="col" style="width: 13%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
+                    <th scope="col" style="width: 18%;">Alcanza norma</th>
+                    <th scope="col" style="width: 13%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
+                    <th scope="col" style="width: 18%;">Alcanza norma</th>
+                    <th scope="col" style="width: 13%;"><p>5 &#xB5;m <br/> (ISO 5 &lt; 29)</p></th>
+                    <th scope="col" style="width: 18%;">Alcanza norma</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <field name="particles_counting_03um" />
+                      Dentro
                     </td>
                     <td>
-                      <field name="standard_03um" />
+                      <field name="particles_counting_03um_in" />
                     </td>
                     <td>
-                      <field name="particles_counting_05um" />
+                      <field name="standard_03um_in" />
                     </td>
                     <td>
-                      <field name="standard_05um" />
+                      <field name="particles_counting_05um_in" />
                     </td>
                     <td>
-                      <field name="particles_counting_5um" />
+                      <field name="standard_05um_in" />
                     </td>
                     <td>
-                      <field name="standard_5um" />
+                      <field name="particles_counting_5um_in" />
+                    </td>
+                    <td>
+                      <field name="standard_5um_in" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Salida
+                    </td>
+                    <td>
+                      <field name="particles_counting_03um_out" />
+                    </td>
+                    <td>
+                      <field name="standard_03um_out" />
+                    </td>
+                    <td>
+                      <field name="particles_counting_05um_out" />
+                    </td>
+                    <td>
+                      <field name="standard_05um_out" />
+                    </td>
+                    <td>
+                      <field name="particles_counting_5um_out" />
+                    </td>
+                    <td>
+                      <field name="standard_5um_out" />
                     </td>
                   </tr>
                 </tbody>

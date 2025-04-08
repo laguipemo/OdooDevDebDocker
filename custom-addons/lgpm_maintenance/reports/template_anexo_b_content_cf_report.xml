@@ -239,6 +239,7 @@
                     <table class="table table-bordered table-striped mt-2">
                         <thead>
                             <tr>
+                                <th scope="col" style="width: 10%;"><p>Lectura</p></th>
                                 <th scope="col" style="width: 15%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
                                 <th scope="col" style="width: 15%;">Alcanza norma</th>
                                 <th scope="col" style="width: 15%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
@@ -250,22 +251,48 @@
                         <tbody class="text-center">
                             <tr>
                                 <td>
-                                    <span t-field="maintenance_request.particles_counting_03um" class="mx-2" />
+                                    Dentro
                                 </td>
                                 <td>
-                                    <span t-field="maintenance_request.standard_03um" class="mx-2" />
+                                    <span t-field="maintenance_request.particles_counting_03um_in" class="mx-2" />
                                 </td>
                                 <td>
-                                    <span t-field="maintenance_request.particles_counting_05um" class="mx-2" />
+                                    <span t-field="maintenance_request.standard_03um_in" class="mx-2" />
                                 </td>
                                 <td>
-                                    <span t-field="maintenance_request.standard_05um" class="mx-2" />
+                                    <span t-field="maintenance_request.particles_counting_05um_in" class="mx-2" />
                                 </td>
                                 <td>
-                                    <span t-field="maintenance_request.particles_counting_5um" class="mx-2" />
+                                    <span t-field="maintenance_request.standard_05um_in" class="mx-2" />
                                 </td>
                                 <td>
-                                    <span t-field="maintenance_request.standard_5um" class="mx-2" />
+                                    <span t-field="maintenance_request.particles_counting_5um_in" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.standard_5um_in" class="mx-2" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Salida
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.particles_counting_03um_out" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.standard_03um_out" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.particles_counting_05um_out" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.standard_05um_out" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.particles_counting_5um_out" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.standard_5um_out" class="mx-2" />
                                 </td>
                             </tr>
                         </tbody>
@@ -637,7 +664,7 @@
                             <tr>
                                 <td>
                                     <p>
-                                        <t t-if="maintenance_request.no_finding_gt_03um">Sin hallazgos</t>
+                                        <t t-if="maintenance_request.no_finding_gt_03um_in">Sin hallazgos</t>
                                         <t t-else="">Se hallaron &gt; 0,3 &#xB5;m</t>
                                     </p>
                                     

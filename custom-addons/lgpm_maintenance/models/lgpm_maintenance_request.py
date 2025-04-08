@@ -350,26 +350,47 @@ class LgpmMaintenanceRequest(models.Model):
         selection=INTEGRITY_RESULT,
         default='N'
     )
-    particles_counting_03um = fields.Integer(
+    particles_counting_03um_in = fields.Integer(
         default=0
     )
-    standard_03um = fields.Char(
-        compute='_compute_standard_03um'
+    standard_03um_in = fields.Char(
+        compute='_compute_standard_03um_in'
     )
-    no_finding_gt_03um = fields.Boolean(
-        compute='_compute_no_finding_gt_03um'
+    no_finding_gt_03um_in = fields.Boolean(
+        compute='_compute_no_finding_gt_03um_in'
     )
-    particles_counting_05um = fields.Integer(
+    particles_counting_05um_in = fields.Integer(
         default=0
     )
-    standard_05um = fields.Char(
-        compute='_compute_standard_05um'
+    standard_05um_in = fields.Char(
+        compute='_compute_standard_05um_in'
     )
-    particles_counting_5um = fields.Integer(
+    particles_counting_5um_in = fields.Integer(
         default=0
     )
-    standard_5um = fields.Char(
-        compute='_compute_standard_5um'
+    standard_5um_in = fields.Char(
+        compute='_compute_standard_5um_in'
+    )
+    particles_counting_03um_out = fields.Integer(
+        default=0
+    )
+    standard_03um_out = fields.Char(
+        compute='_compute_standard_03um_out'
+    )
+    no_finding_gt_03um_out = fields.Boolean(
+        compute='_compute_no_finding_gt_03um_out'
+    )
+    particles_counting_05um_out = fields.Integer(
+        default=0
+    )
+    standard_05um_out = fields.Char(
+        compute='_compute_standard_05um_out'
+    )
+    particles_counting_5um_out = fields.Integer(
+        default=0
+    )
+    standard_5um_out = fields.Char(
+        compute='_compute_standard_5um_out'
     )
 
     # Only security cabinets, Localized aspiration points
@@ -591,7 +612,8 @@ class LgpmMaintenanceRequest(models.Model):
     @api.depends('equipment_id')
     def _compute_manufacture_date(self):
         for maintenance_request in self:
-            if maintenance_request.equipment_id:
+            if maintenance_request.equipment_id and maintenance_request.equipment_id.manufacture_date:
+                # Convert the date to a string in the format YYYY
                 maintenance_request.manufacture_date = str(maintenance_request.equipment_id.manufacture_date.year)
             else:
                 maintenance_request.manufacture_date = False
@@ -839,69 +861,136 @@ class LgpmMaintenanceRequest(models.Model):
         for maintenance_request in self:
             maintenance_request.work_depth_m = self.convert_to_meters(maintenance_request.work_depth)
 
-    @api.depends('particles_counting_03um')
-    def _compute_standard_03um(self):
+    @api.depends('particles_counting_03um_in')
+    def _compute_standard_03um_in(self):
         for maintenance_request in self:
-            if maintenance_request.particles_counting_03um <= 10:
+            if maintenance_request.particles_counting_03um_in <= 10:
                 standard = 'ISO 2'
-            elif maintenance_request.particles_counting_03um <= 102:
+            elif maintenance_request.particles_counting_03um_in <= 102:
                 standard = 'ISO 3'
-            elif maintenance_request.particles_counting_03um <= 1020:
+            elif maintenance_request.particles_counting_03um_in <= 1020:
                 standard = 'ISO 4'
-            elif maintenance_request.particles_counting_03um <= 10200:
+            elif maintenance_request.particles_counting_03um_in <= 10200:
                 standard = 'ISO 5'
-            elif maintenance_request.particles_counting_03um <= 102000:
+            elif maintenance_request.particles_counting_03um_in <= 102000:
                 standard = 'ISO 6'
             else:
                 standard = ''
-            maintenance_request.standard_03um = maintenance_request.PARTICLES_COUNTING_03um.get(standard)
+            maintenance_request.standard_03um_in = maintenance_request.PARTICLES_COUNTING_03um.get(standard)
     
-    @api.depends('particles_counting_05um')
-    def _compute_standard_05um(self):
+    @api.depends('particles_counting_05um_in')
+    def _compute_standard_05um_in(self):
         for maintenance_request in self:
-            if maintenance_request.particles_counting_05um <= 4:
+            if maintenance_request.particles_counting_05um_in <= 4:
                 standard = 'ISO 2'
-            elif maintenance_request.particles_counting_05um <= 35:
+            elif maintenance_request.particles_counting_05um_in <= 35:
                 standard = 'ISO 3'
-            elif maintenance_request.particles_counting_05um <= 352:
+            elif maintenance_request.particles_counting_05um_in <= 352:
                 standard = 'ISO 4'
-            elif maintenance_request.particles_counting_05um <= 3520:
+            elif maintenance_request.particles_counting_05um_in <= 3520:
                 standard = 'ISO 5'
-            elif maintenance_request.particles_counting_05um <= 35200:
+            elif maintenance_request.particles_counting_05um_in <= 35200:
                 standard = 'ISO 6'
-            elif maintenance_request.particles_counting_05um <= 352000:
+            elif maintenance_request.particles_counting_05um_in <= 352000:
                 standard = 'ISO 7'
-            elif maintenance_request.particles_counting_05um <= 3520000:
+            elif maintenance_request.particles_counting_05um_in <= 3520000:
                 standard = 'ISO 8'
-            elif maintenance_request.particles_counting_05um <= 35200000:
+            elif maintenance_request.particles_counting_05um_in <= 35200000:
                 standard = 'ISO 9'
             else:
                 standard = ''
-            maintenance_request.standard_05um = maintenance_request.PARTICLES_COUNTING_05um.get(standard)
+            maintenance_request.standard_05um_in = maintenance_request.PARTICLES_COUNTING_05um.get(standard)
     
-    @api.depends('particles_counting_5um')
-    def _compute_standard_5um(self):
+    @api.depends('particles_counting_5um_in')
+    def _compute_standard_5um_in(self):
         for maintenance_request in self:
-            if maintenance_request.particles_counting_5um <= 29:
+            if maintenance_request.particles_counting_5um_in <= 29:
                 standard = 'ISO 5'
-            elif maintenance_request.particles_counting_5um <= 293:
+            elif maintenance_request.particles_counting_5um_in <= 293:
                 standard = 'ISO 6'
-            elif maintenance_request.particles_counting_5um <= 2930:
+            elif maintenance_request.particles_counting_5um_in <= 2930:
                 standard = 'ISO 7'
-            elif maintenance_request.particles_counting_5um <= 29300:
+            elif maintenance_request.particles_counting_5um_in <= 29300:
                 standard = 'ISO 8'
-            elif maintenance_request.particles_counting_5um <= 293000:
+            elif maintenance_request.particles_counting_5um_in <= 293000:
                 standard = 'ISO 9'
             else:
                 standard = ''
-            maintenance_request.standard_5um = maintenance_request.PARTICLES_COUNTING_5um.get(standard)
+            maintenance_request.standard_5um_in = maintenance_request.PARTICLES_COUNTING_5um.get(standard)
+    
+    @api.depends('particles_counting_03um_out')
+    def _compute_standard_03um_out(self):
+        for maintenance_request in self:
+            if maintenance_request.particles_counting_03um_out <= 10:
+                standard = 'ISO 2'
+            elif maintenance_request.particles_counting_03um_out <= 102:
+                standard = 'ISO 3'
+            elif maintenance_request.particles_counting_03um_out <= 1020:
+                standard = 'ISO 4'
+            elif maintenance_request.particles_counting_03um_out <= 10200:
+                standard = 'ISO 5'
+            elif maintenance_request.particles_counting_03um_out <= 102000:
+                standard = 'ISO 6'
+            else:
+                standard = ''
+            maintenance_request.standard_03um_out = maintenance_request.PARTICLES_COUNTING_03um.get(standard)
+    
+    @api.depends('particles_counting_05um_out')
+    def _compute_standard_05um_out(self):
+        for maintenance_request in self:
+            if maintenance_request.particles_counting_05um_out <= 4:
+                standard = 'ISO 2'
+            elif maintenance_request.particles_counting_05um_out <= 35:
+                standard = 'ISO 3'
+            elif maintenance_request.particles_counting_05um_out <= 352:
+                standard = 'ISO 4'
+            elif maintenance_request.particles_counting_05um_out <= 3520:
+                standard = 'ISO 5'
+            elif maintenance_request.particles_counting_05um_out <= 35200:
+                standard = 'ISO 6'
+            elif maintenance_request.particles_counting_05um_out <= 352000:
+                standard = 'ISO 7'
+            elif maintenance_request.particles_counting_05um_out <= 3520000:
+                standard = 'ISO 8'
+            elif maintenance_request.particles_counting_05um_out <= 35200000:
+                standard = 'ISO 9'
+            else:
+                standard = ''
+            maintenance_request.standard_05um_out = maintenance_request.PARTICLES_COUNTING_05um.get(standard)
+    
+    @api.depends('particles_counting_5um_out')
+    def _compute_standard_5um_out(self):
+        for maintenance_request in self:
+            if maintenance_request.particles_counting_5um_out <= 29:
+                standard = 'ISO 5'
+            elif maintenance_request.particles_counting_5um_out <= 293:
+                standard = 'ISO 6'
+            elif maintenance_request.particles_counting_5um_out <= 2930:
+                standard = 'ISO 7'
+            elif maintenance_request.particles_counting_5um_out <= 29300:
+                standard = 'ISO 8'
+            elif maintenance_request.particles_counting_5um_out <= 293000:
+                standard = 'ISO 9'
+            else:
+                standard = ''
+            maintenance_request.standard_5um_out = maintenance_request.PARTICLES_COUNTING_5um.get(standard)
     
     @api.depends(
-        'particles_counting_05um',
-        'particles_counting_5um',
+        'particles_counting_05um_in',
+        'particles_counting_5um_in',
         )
-    def _compute_no_finding_gt_03um(self):
+    def _compute_no_finding_gt_03um_in(self):
         for maintenance_request in self:
-            maintenance_request.no_finding_gt_03um = True
-            if maintenance_request.particles_counting_05um > 0 or maintenance_request.particles_counting_5um > 0:
-                maintenance_request.no_finding_gt_03um = False
+            maintenance_request.no_finding_gt_03um_in = True
+            if maintenance_request.particles_counting_05um_in > 0 or maintenance_request.particles_counting_5um_in > 0:
+                maintenance_request.no_finding_gt_03um_in = False
+
+    @api.depends(
+        'particles_counting_05um_out',
+        'particles_counting_5um_out',
+        )
+    def _compute_no_finding_gt_03um_out(self):
+        for maintenance_request in self:
+            maintenance_request.no_finding_gt_03um_out = True
+            if maintenance_request.particles_counting_05um_out > 0 or maintenance_request.particles_counting_5um_out > 0:
+                maintenance_request.no_finding_gt_03um_out = False
