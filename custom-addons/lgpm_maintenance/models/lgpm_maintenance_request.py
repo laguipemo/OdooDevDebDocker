@@ -95,9 +95,10 @@ class LgpmMaintenanceRequest(models.Model):
         string='Fabricante',
         related='equipment_id.partner_id.name'
     )
-    manufacture_date = fields.Date(
-        string='Fecha de fabricación',
-        related='equipment_id.manufacture_date'
+    manufacture_date = fields.Char(
+        string='Año de fabricación',
+        # related='equipment_id.manufacture_date',
+        compute='_compute_manufacture_date',
     )
     partner_ref = fields.Char(
         string='Referencia',
@@ -586,6 +587,14 @@ class LgpmMaintenanceRequest(models.Model):
     )
 
     # Methods to compute fields and
+
+    @api.depends('equipment_id')
+    def _compute_manufacture_date(self):
+        for maintenance_request in self:
+            if maintenance_request.equipment_id:
+                maintenance_request.manufacture_date = str(maintenance_request.equipment_id.manufacture_date.year)
+            else:
+                maintenance_request.manufacture_date = False
 
     @api.depends('equipment_id')
     def _compute_equipment_type(self):

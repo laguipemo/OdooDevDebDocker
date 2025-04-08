@@ -8,7 +8,7 @@
       <field name="model">maintenance.equipment</field>
       <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
       <field name="arch" type="xml">
-        <xpath expr="//field[@name='model']" position="before">
+        <xpath expr="//field[@name='model']" position="before">': 'years'
           <field name="manufacture_date" />
           <field name="equipment_type" />
           <field name="vg_type_use" attrs="{'invisible': [('equipment_type', '!=', 'VG')]}" />

@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-5 p-3">
                                 <p>
-                                    <b>Año construcción:</b>
+                                    <b>Año de fabricación:</b>
                                     <span t-field="maintenance_request.manufacture_date" class="mx-2"/>
                                 </p>
                                 <p>
