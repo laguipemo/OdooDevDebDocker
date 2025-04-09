@@ -13,6 +13,10 @@ class LgpmMaintenanceSatReportResources(models.Model):
         help='Nombre de la figura siguiendo formato ej. "Figura 1"',
         required=True,
     )
+    title_0 = fields.Char(
+        string='Numeración de la figura',
+        required=True
+    )
     title = fields.Text(
         string='Titulo de la figura',
         required=True

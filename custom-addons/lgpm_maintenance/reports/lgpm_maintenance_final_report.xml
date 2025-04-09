@@ -23,6 +23,7 @@
             <t t-if="maintenance_request.equipment_type in ['Vitrina de Gases', 'Capotaje']" t-call="lgpm_maintenance.request_maintenance_vg_report_introduction" t-lang="lang"/>
             <t t-elif="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']" t-call="lgpm_maintenance.request_maintenance_cf_report_introduction" t-lang="lang"/>
             <t t-elif="maintenance_request.equipment_type=='Armario de Seguridad'" t-call="lgpm_maintenance.request_maintenance_as_report_introduction" t-lang="lang"/>
+            <t t-elif="maintenance_request.equipment_type=='Punto de Aspiración Localizada Brazo'" t-call="lgpm_maintenance.request_maintenance_palb_report_introduction" t-lang="lang"/>
           </t>
           <!-- Call and show Anexo A -->
           <t t-if="maintenance_request_first"  t-call="lgpm_maintenance.request_maintenance_final_report_anexo_title" t-lang="lang">
@@ -39,6 +40,7 @@
           <t t-if="maintenance_request.equipment_type in ['Vitrina de Gases', 'Capotaje']" t-call="lgpm_maintenance.request_maintenance_final_report_vg_anexo_b_content" t-lang="lang"/>
           <t t-elif="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']" t-call="lgpm_maintenance.request_maintenance_final_report_cf_anexo_b_content" t-lang="lang"/>
           <t t-elif="maintenance_request.equipment_type=='Armario de Seguridad'" t-call="lgpm_maintenance.request_maintenance_final_report_as_anexo_b_content" t-lang="lang"/>
+          <t t-elif="maintenance_request.equipment_type=='Punto de Aspiración Localizada Brazo'" t-call="lgpm_maintenance.request_maintenance_final_report_palb_anexo_b_content" t-lang="lang"/>
           <t t-else="" t-call="lgpm_maintenance.request_maintenance_final_report_anexo_b_content" t-lang="lang"/>
 
           <!-- Call and show Anexo C -->

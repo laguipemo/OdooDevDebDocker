@@ -37,7 +37,7 @@
                                         <b>Tipo de vitrina:</b>
                                         <span t-field="maintenance_request.vg_type_use" class="mx-2"/>
                                     </t>
-                                    <t t-elif="maintenance_request.equipment_type == 'Cabina de Flujo'">
+                                    <t t-elif="maintenance_request.equipment_type == 'Capotaje'">
                                         <b>Tipo de capotaje:</b>
                                         <span t-field="maintenance_request.ca_type_use" class="mx-2"/>
                                     </t>

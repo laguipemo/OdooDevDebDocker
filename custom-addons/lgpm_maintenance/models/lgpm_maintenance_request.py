@@ -71,7 +71,7 @@ class LgpmMaintenanceRequest(models.Model):
         record_info=self.env['lgpm_maintenance.sat_report_resources'].search(
             [('name', '=', name)]
         )
-        return (record_info.name, record_info.title, record_info.figure)
+        return (record_info.name, record_info.title_0, record_info.title, record_info.figure)
 
 
     def get_default_image(self, image_name):
@@ -127,6 +127,10 @@ class LgpmMaintenanceRequest(models.Model):
     cp_type_use = fields.Char(
         string='Tipo de Cabina',
         compute='_compute_cp_type_use'
+    )
+    palb_type_use = fields.Char(
+        string='Tipo de Punto de Aspiración',
+        compute='_compute_palb_type_use'
     )
     as_type_use = fields.Char(
         string='Tipo de armario',
@@ -477,6 +481,26 @@ class LgpmMaintenanceRequest(models.Model):
         compute='_compute_extraction_volume'
     )
 
+    # Only PALB - Measurement plan Velocity values
+    palb_plan_v1 = fields.Float(
+        default=0.0
+    )
+    palb_plan_v2 = fields.Float(
+        default=0.0
+    )
+    palb_plan_v3 = fields.Float(
+        default=0.0
+    )
+    palb_plan_v4 = fields.Float(
+        default=0.0
+    )
+    palb_plan_v5 = fields.Float(
+        default=0.0
+    )
+    palb_plan_v_media = fields.Float(
+        compute='_compute_palb_plan_v_media'
+    )
+
     #Only CF - Descendent airflow velocity
     integrity_03um = fields.Boolean()
     work_depth = fields.Integer(
@@ -689,6 +713,21 @@ class LgpmMaintenanceRequest(models.Model):
                 maintenance_request.cp_type_use = ''
 
     @api.depends('equipment_id')
+    def _compute_palb_type_use(self):
+        
+        for maintenance_request in self:
+            if maintenance_request.equipment_id:
+                key = maintenance_request.equipment_id.palb_type_use
+                maintenance_request.palb_type_use = dict(
+                    self.env[
+                        'maintenance.equipment'
+                        ]._fields[
+                            'palb_type_use'
+                            ].selection).get(key)
+            else:
+                maintenance_request.palb_type_use = ''
+
+    @api.depends('equipment_id')
     def _compute_as_type_use(self):
         for maintenance_request in self:
             if maintenance_request.equipment_id:
@@ -774,6 +813,24 @@ class LgpmMaintenanceRequest(models.Model):
                     maintenance_request.frontal_v3
                 ]
             maintenance_request.frontal_v_media = sum(values)/len(values)
+
+    @api.depends(
+        'palb_plan_v1',
+        'palb_plan_v2',
+        'palb_plan_v3',
+        'palb_plan_v4',
+        'palb_plan_v5',
+        )
+    def _compute_palb_plan_v_media(self):
+        for maintenance_request in self:
+            values = [
+                maintenance_request.palb_plan_v1,
+                maintenance_request.palb_plan_v2,
+                maintenance_request.palb_plan_v3,
+                maintenance_request.palb_plan_v4,
+                maintenance_request.palb_plan_v5,
+            ]
+            maintenance_request.palb_plan_v_media = sum(values)/len(values)
 
     @api.depends(
         'descendent_v1',

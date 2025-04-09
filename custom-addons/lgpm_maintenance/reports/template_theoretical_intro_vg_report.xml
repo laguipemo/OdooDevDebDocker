@@ -553,15 +553,15 @@
             </p>
             <!-- Figure 1 Anemometer reading -->
             <figure class="figure col-12">
-                <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 1')" />
+                <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig1')" />
                 <center>
-                <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
+                <img t-attf-src="data:image/*;base64,{{figura_info[3]}}"
                     t-alt="Figura 1: Lectura con anemómetro"
                     class="img img-fluid o_we_custom_image o_modified_image_to_save"
                     style="width: 60%; height: 300px" />
                 </center>
                 <figcaption class="figure-caption text-center mt-2">
-                <b><span t-out="figura_info[0]" /> :</b> <i><span t-out="figura_info[1]" /></i>
+                <b><span t-out="figura_info[1]" /> :</b> <i><span t-out="figura_info[2]" /></i>
                 </figcaption>
             </figure>
             <!-- Test with anemometer, more precedure info -->
@@ -581,29 +581,29 @@
             <div class="d-flex flex-row justify-content-between col-12 p-2" >
                 <div class="col-8 p-2">
                 <figure class="figure w-100" >
-                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 2')" />
+                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig2')" />
                     <center>  
-                    <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
+                    <img t-attf-src="data:image/*;base64,{{figura_info[3]}}"
                         t-alt="Figura 2: Distribución de puntos de lectrua frontal"
                         class="img img-fluid o_we_custom_image o_modified_image_to_save"
                         style="width: 100%; height: 300px" />
                     </center>
                     <figcaption class="figure-caption text-center mt-2">
-                    <b><span t-out="figura_info[0]" />:</b> <i><span t-out="figura_info[1]" /></i>
+                    <b><span t-out="figura_info[1]" />:</b> <i><span t-out="figura_info[2]" /></i>
                     </figcaption>
                 </figure>
                 </div>
                 <div class="col-4 p-2">
                 <figure class="figure w-100">
-                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('Figura 3')" /> 
+                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig3')" /> 
                     <center>  
-                    <img t-attf-src="data:image/*;base64,{{figura_info[2]}}"
+                    <img t-attf-src="data:image/*;base64,{{figura_info[3]}}"
                         t-alt="Figura 3: Detalle de trípode con anemómetro"
                         class="img img-fluid o_we_custom_image o_modified_image_to_save"
                         style="width: 100%; height: 300px" />
                     </center>
                     <figcaption class="figure-caption text-center mt-2">
-                    <b><span t-out="figura_info[0]" />:</b> <i><span t-out="figura_info[1]" /></i>
+                    <b><span t-out="figura_info[1]" />:</b> <i><span t-out="figura_info[2]" /></i>
                     </figcaption>
                 </figure>
                 </div>

@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <!-- Template for the anexo B content -->
-        <template id="lgpm_maintenance.request_maintenance_final_report_anexo_b_content">
+        <template id="lgpm_maintenance.request_maintenance_final_report_palb_anexo_b_content">
             <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
             <t t-call="web.external_layout">
                 <div class="page">
@@ -33,23 +33,9 @@
                                     <b>Fabricante:</b>
                                     <span t-field="maintenance_request.partner_id" class="mx-2"/>
                                 </p>
-                                <p t-if="maintenance_request.equipment_type == 'Vitrina de Gases'">
-                                    <b>Tipo de vitrina:</b>
+                                <p>
+                                    <b>Tipo de punto de aspiración:</b>
                                     <span t-field="maintenance_request.vg_type_use" class="mx-2"/>
-                                </p>
-                                <p t-elif="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                    <b>Tipo de cabina:</b>
-                                    <span t-field="maintenance_request.cf_type_use" class="mx-2"/>
-                                </p>
-                                <p t-elif="maintenance_request.equipment_type == 'Cabina de Pesadas'">
-                                    <b>Tipo de uso:</b>
-                                    <span t-field="maintenance_request.cp_type_use" class="mx-2"/>
-                                </p>
-                                <p t-elif="maintenance_request.equipment_type == 'Armario de Seguridad'">
-                                    <b>Tipo de vitrina:</b>
-                                    <span t-field="maintenance_request.as_type_use" class="mx-2"/>
-                                </p>
-                                <p t-else="">
                                 </p>
                                 <p>
                                     <b>Referencia:</b>
@@ -84,12 +70,7 @@
                     <!-- Visual Verifications title -->
                     <h5 class="alert-heading text-left mt-5 py-0" colspan="4">
                         <span>
-                            <t t-if="maintenance_request.equipment_type != 'Armario de Seguridad'">
-                                <b>Estado general del equipo y del sistema de extracción</b>
-                            </t>
-                            <t t-if="maintenance_request.equipment_type == 'Armario de Seguridad'">
-                                <b>Estado general del armario y del sistema de extracción</b>
-                            </t>
+                            <b>Estado general del equipo y del sistema de extracción</b>
                         </span>
                     </h5>
 
@@ -105,35 +86,10 @@
                                 <b>Estabilidad del equipo:</b>
                                 <span t-field="maintenance_request.sat_equipment_stability" class="mx-2" />
                             </p>
-                            <t t-if="maintenance_request.equipment_type not in ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared']">
-                                <p>
-                                    <b>Estado de cristales y cableado:</b>
-                                    <span t-field="maintenance_request.sat_glass_wiring_state" class="mx-2" />
-                                </p>
-                            </t>
-                            <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                <p>
-                                    <b>Horas de funcionamiento:</b>
-                                    <span t-field="maintenance_request.sat_operating_hours" class="mx-2" />
-                                </p>
-                            </t>
-                            <t t-if="maintenance_request.equipment_type not in ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo', 'Punto de Aspiración Localizada Pared']">
-                                <p>
-                                    <b>Funcionamiento del controlador digital:</b>
-                                    <span t-field="maintenance_request.sat_digital_ctrl" class="mx-2" />
-                                </p>
-                            </t>
                             <p>
                                 <b>Inspección visual del sistema de extracción:</b>
                                 <span t-field="maintenance_request.sat_extraction_sys" class="mx-2" />
                             </p>
-                            
-                            <t t-if="maintenance_request.equipment_type == 'Cabina de Flujo'">
-                                <p>
-                                    <b>Posición del variador:</b>
-                                    <span t-field="maintenance_request.sat_var_speed" class="mx-2" />
-                                </p>
-                            </t>
                         </div>
                     </div>
 
@@ -160,145 +116,6 @@
                     <br/>
                     <!-- Initial space for begining of the new page -->
 
-                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">
-                        <!-- Integrity test title -->
-                        <h5 class="alert-heading text-left mt-5 py-0">
-                            <span>
-                                <b>Ensayo de verificación de integridad y estanquedad de los filtros HEPA/ULPA</b>
-                            </span>
-                        </h5>
-                        <!-- Table of filters integration info -->
-                        <table class="table table-bordered table-striped mt-2">
-                            <thead>
-                                <tr class="align-middle">
-                                    <th scope="col" style="width: 20%;"><b>Nº de filtro</b></th>
-                                    <th scope="col" style="width: 20%;"><b>Nº de serie/Identificación</b></th>
-                                    <th scope="col" style="width: 15%;"><b>Dimensiones(mm)</b></th>
-                                    <th scope="col" style="width: 10%;"><b>Concentración aerosol (&#xB5;g/L)</b></th>
-                                    <th scope="col" style="width: 20%;"><b>Valor obtenido <br/> (&#x2264; 0,01%)</b></th>
-                                    <th scope="col" style="width: 15%;"><b>Resultado</b></th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <td>
-                                        <span t-field="maintenance_request.filter1_number" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.filter1_serial_id" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.filter1_dimensions" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <t t-if="maintenance_request.filter1_number != False ">
-                                            <span t-field="maintenance_request.aerosol1_conc" class="mx-2" />
-                                        </t>
-                                    </td>
-                                    <td>
-                                        <t t-if="maintenance_request.filter1_serial_id != False ">
-                                            <span t-field="maintenance_request.integrity1_value" class="mx-2" />
-                                        </t>
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.integrity1_result" class="mx-2" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span t-field="maintenance_request.filter2_number" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.filter2_serial_id" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.filter2_dimensions" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <t t-if="maintenance_request.filter2_number != False ">
-                                            <span t-field="maintenance_request.aerosol2_conc" class="mx-2" />
-                                        </t>
-                                    </td>
-                                    <td>
-                                        <t t-if="maintenance_request.filter2_serial_id != False ">
-                                            <span t-field="maintenance_request.integrity2_value" class="mx-2" />
-                                        </t>
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.integrity2_result" class="mx-2" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span t-field="maintenance_request.filter3_number" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.filter3_serial_id" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.filter3_dimensions" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <t t-if="maintenance_request.filter3_number != False ">
-                                            <span t-field="maintenance_request.aerosol3_conc" class="mx-2" />
-                                        </t>
-                                    </td>
-                                    <td>
-                                        <t t-if="maintenance_request.filter3_number != False ">
-                                            <span t-field="maintenance_request.integrity3_value" class="mx-2" />
-                                        </t>
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.integrity3_result" class="mx-2" />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- Particles counting mesurement title -->
-                        <h5 class="alert-heading text-left mt-5 py-0">
-                            <span>
-                                <b>Conteo de partículas</b>
-                            </span>
-                        </h5>
-                        <!-- Table of particles counting measurement values -->
-                        <table class="table table-bordered table-striped mt-2">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="width: 15%;"><p>0,3 &#xB5;m <br/> (ISO 5 &lt; 10200)</p></th>
-                                    <th scope="col" style="width: 15%;">Alcanza norma</th>
-                                    <th scope="col" style="width: 15%;"><p>0,5 &#xB5;m <br/> (ISO 5 &lt; 3520)</p></th>
-                                    <th scope="col" style="width: 15%;">Alcanza norma</th>
-                                    <th scope="col" style="width: 15%;"><p>5 &#xB5;m <br/> (ISO 5 &lt; 29)</p></th>
-                                    <th scope="col" style="width: 15%;">Alcanza norma</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <td>
-                                        <span t-field="maintenance_request.particles_counting_03um" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.standard_03um" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.particles_counting_05um" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.standard_05um" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.particles_counting_5um" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.standard_5um" class="mx-2" />
-                                    </td>
-                                    
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </t>
-                    
                     <!-- Extraction volume measurement title -->
                     <h5 class="alert-heading text-left mt-5 py-0">
                         <span>
@@ -307,208 +124,119 @@
                     </h5>
                     <!-- Info about measurement area -->
                     <div class="mt-2">
-                        <t t-if="maintenance_request.equipment_type in ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo']">
-                            <p>
-                                <b>Diámetro del conducto (mm):</b>
-                                <span t-field="maintenance_request.work_diameter" class="mx-2" />
-                            </p>
-                        </t>
-                        <t t-else="">
-                            <p>
-                                <b>Longitud trabajo (mm):</b>
-                                <span t-field="maintenance_request.work_length" class="mx-2" />
-                            </p>
-                            <p>
-                                <b>Altura de trabajo (mm):</b>
-                                <span t-field="maintenance_request.work_height" class="mx-2" />
-                            </p>
-                        </t>
+                        <p>
+                            <b>Diámetro del conducto (mm):</b>
+                            <span t-field="maintenance_request.work_diameter" class="mx-2" />
+                        </p>
                     </div>
                     <h6 class="alert-heading text-left mt-3 py-0">
-                        <t t-if="maintenance_request.equipment_type in ['Armario de Seguridad', 'Punto de Aspiración Localizada Brazo']">
-                            <span>
-                                <b>
-                                    <i>Superficie de medición(m<sup>2</sup>) = &#x3C0; x (Diámetro del conducto/2)<sup>2</sup> </i>
-                                </b>
-                            </span>
-                        </t>
-                        <t t-else="">
-                            <span>
-                                <b>
-                                    <i>Superficie de medición(m<sup>2</sup>) = Longitud de trabajo(m) x Altura de trabajo(m) </i>
-                                </b>
-                            </span>
-                        </t>
+                        <span>
+                            <b>
+                                <i>Superficie de medición(m<sup>2</sup>) = &#x3C0; x (Diámetro del conducto/2)<sup>2</sup> </i>
+                            </b>
+                        </span>
                     </h6>
                     <!-- Table of area info -->
-                    <t t-if="maintenance_request.equipment_type == 'Armario de Seguridad'">
-                        <table class="table table-bordered table-striped mt-2">
-                            <thead>
-                                <tr>
-                                    <th scope="col">
-                                        <b>Diámetro del conducto (mm)
-                                        </b>
-                                    </th>
-                                    <th scope="col">
-                                        <b>Superficie de medición (m<sup>2</sup>)
-                                        </b>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <td>
-                                        <span t-field="maintenance_request.work_diameter_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 4}" class="mx-2" />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </t>
-                    <t t-else="">
-                        <table class="table table-bordered table-striped mt-2">
-                            <thead>
-                                <tr>
-                                    <th scope="col">
-                                        <b>Longitud de trabajo (m)</b>
-                                    </th>
-                                    <th scope="col">
-                                        <b>Altura de trabajo (m)</b>
-                                    </th>
-                                    <th scope="col">
-                                        <b>Superficie de medición (m<sup>2</sup>)
-                                        </b>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <td>
-                                        <span t-field="maintenance_request.work_length_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.work_height_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td>
-                                        <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </t>
-
-                    <t t-if="maintenance_request.equipment_type in ['Cabina de Flujo', 'Cabina de Pesadas']">    
-                        <p style="page-break-after: always;"></p>
-
-                        <br/>
-                        <!-- Initial space for begining of the new page -->
-                    </t>
-
+                    <table class="table table-bordered table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <b>Diámetro del conducto (mm)
+                                    </b>
+                                </th>
+                                <th scope="col">
+                                    <b>Superficie de medición (m<sup>2</sup>)
+                                    </b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <span t-field="maintenance_request.work_diameter_m" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td>
+                                    <span t-field="maintenance_request.measurement_area" t-options="{'widget': 'float', 'precision': 4}" class="mx-2" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                     <!-- Frontal or conduct velocity title -->
                     <h6 name="mediciones" class="alert-heading text-left mt-4 py-0">
                         <!-- Conduct velocity title -->
-                        <t t-if="maintenance_request.equipment_type == 'Armario de Seguridad'">
-                            <span>
-                                <b>Velocidades en el conducto (m/s)</b>
-                            </span>
-                        </t>
-                        <!-- Frontal velocity title -->
-                        <t t-else="">
-                            <span>
-                                <b>Velocidades en frontal (m/s)</b>
-                            </span>
-                        </t>
+                        <span>
+                            <b>Velocidades en el conducto (m/s)</b>
+                        </span>
                     </h6>
-                    <t t-if="maintenance_request.equipment_type == 'Armario de Seguridad'">
-                        <!-- Table of conduct velocity values -->
-                        <table class="table table-bordered table-striped mt-2">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Medida 1</th>
-                                    <th scope="col">Medida 2</th>
-                                    <th scope="col">Medida 3</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.conduct_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.conduct_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.conduct_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2" class="align-middle" style="text-align:right;">Media</th>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.conduct_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
+                    <!-- Table of conduct velocity values -->
+                    <table class="table table-bordered table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Medida 1</th>
+                                <th scope="col">Medida 2</th>
+                                <th scope="col">Medida 3</th>
                             </tr>
-                            </tbody>
-                        </table>
-                    </t>
-                    <t t-else="">
-                        <!-- Table of frontal velocity values -->
-                        <table class="table table-bordered table-striped mt-2">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Izquierda</th>
-                                    <th scope="col">Centro</th>
-                                    <th scope="col">Derecha</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <tr>
-                                    <th class="align-middle">Arriba</th>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="align-middle">Centro</th>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v4" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v5" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v6" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="align-middle">Abajo</th>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v7" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v8" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v9" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" class="align-middle" style="text-align:right;">Media</th>
-                                    <td class="align-middle">
-                                        <span t-field="maintenance_request.frontal_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </t>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" class="align-middle" style="text-align:right;">Media</th>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.conduct_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!-- Table of measurement plan velocity values -->
+                    <table class="table table-bordered table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Izquierda</th>
+                                <th scope="col">Centro</th>
+                                <th scope="col">Derecha</th>
+                                <th scope="col">Delante</th>
+                                <th scope="col">Detrás</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <th class="align-middle">Plano a 1,5d</th>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v4" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v5" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="5" class="align-middle" style="text-align:right;">Media</th>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                     <!-- Extraction volume title -->
                     <h5 class="alert-heading text-left mt-5 py-0">

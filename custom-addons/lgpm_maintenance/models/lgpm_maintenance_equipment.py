@@ -64,6 +64,15 @@ class LgpmMaintenanceEquipment(models.Model):
         ],
         default='NO'
     )
+    palb_type_use = fields.Selection(
+        string = 'Tipo de Uso',
+        selection=[
+            ('NO', ''),
+            ('G', 'Uso General'),
+            ('SP','Uso Especial')
+        ],
+        default='NO'
+    )
     as_type_use = fields.Selection(
         string= 'Tipo de armario',
         selection=[
