@@ -405,7 +405,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th>Plano a 1,5d</th>
+                      <th>Plano a 1,5 x d</th>
                       <td>
                         <field name="palb_plan_v1" />
                       </td>

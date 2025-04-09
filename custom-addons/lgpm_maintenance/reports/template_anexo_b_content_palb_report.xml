@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <!-- Template for the anexo B content -->
+        <!-- Template for the anexo B content for palb -->
         <template id="lgpm_maintenance.request_maintenance_final_report_palb_anexo_b_content">
             <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
             <t t-call="web.external_layout">
@@ -11,16 +11,15 @@
                     <!-- Begining the measurements for each individual equipment for anexo B -->
 
                     <!-- Equipment serial number -->
-                    <div class="d-flex row justify-content-center align-items-center col-mb-4 my-5 text-center ">
-                        <h2 class="alert-heading text-center mx-0 py-5">
+                    <div class="d-flex row justify-content-center align-items-center col-mb-4 my-4 text-center ">
+                        <h1 class="alert-heading text-center my-0 py-0">
                             <span>
                                 <b>
                                     <span t-field="maintenance_request.equipment_type" />
                                 </b>
                             </span>
-                        </h2>
-                        <h1 class="alert-heading text-center my-0 py-0">
-                            <span class="badge bg-light border border-success text-dark py-3 px=5">
+                            <br/>
+                            <span class="badge bg-light border border-success text-dark mt-3 py-3 px=5">
                                 <span t-field="maintenance_request.lot_id" class="px-5" />
                             </span>
                         </h1>
@@ -116,10 +115,57 @@
                     <br/>
                     <!-- Initial space for begining of the new page -->
 
+                    <!-- Aspiration velocity measurements title -->
+                    <h5 class="alert-heading text-left mt-5 py-0">
+                        <span>
+                            <b>Velocidades de aspiración en el plano de medición</b>
+                        </span>
+                    </h5>
+                    <!-- Table of the measurement plan velocity values -->
+                    <table class="table table-bordered table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Izquierda</th>
+                                <th scope="col">Centro</th>
+                                <th scope="col">Derecha</th>
+                                <th scope="col">Delante</th>
+                                <th scope="col">Detrás</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <th class="align-middle">Plano a 1,5 x d</th>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v4" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v5" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="5" class="align-middle" style="text-align:right;">Media</th>
+                                <td class="align-middle">
+                                    <span t-field="maintenance_request.palb_plan_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
                     <!-- Extraction volume measurement title -->
                     <h5 class="alert-heading text-left mt-5 py-0">
                         <span>
-                            <b>Medición volumen de extracción</b>
+                            <b>Medición volumen de extracción en conducto</b>
                         </span>
                     </h5>
                     <!-- Info about measurement area -->
@@ -198,50 +244,11 @@
                         </tr>
                         </tbody>
                     </table>
-                    <!-- Table of measurement plan velocity values -->
-                    <table class="table table-bordered table-striped mt-2">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Izquierda</th>
-                                <th scope="col">Centro</th>
-                                <th scope="col">Derecha</th>
-                                <th scope="col">Delante</th>
-                                <th scope="col">Detrás</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center">
-                            <tr>
-                                <th class="align-middle">Plano a 1,5d</th>
-                                <td class="align-middle">
-                                    <span t-field="maintenance_request.palb_plan_v1" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                </td>
-                                <td class="align-middle">
-                                    <span t-field="maintenance_request.palb_plan_v2" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                </td>
-                                <td class="align-middle">
-                                    <span t-field="maintenance_request.palb_plan_v3" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                </td>
-                                <td class="align-middle">
-                                    <span t-field="maintenance_request.palb_plan_v4" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                </td>
-                                <td class="align-middle">
-                                    <span t-field="maintenance_request.palb_plan_v5" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th colspan="5" class="align-middle" style="text-align:right;">Media</th>
-                                <td class="align-middle">
-                                    <span t-field="maintenance_request.palb_plan_v_media" t-options="{'widget': 'float', 'precision': 2}" class="mx-2" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                
                     <!-- Extraction volume title -->
                     <h5 class="alert-heading text-left mt-5 py-0">
                         <span>
-                            <b>Cálculo del volumen de extracción</b>
+                            <b>Cálculo del volumen de extracción en conducto</b>
                         </span>
                     </h5>
                     <h6 class="alert-heading text-left mt-3 py-0">
@@ -798,7 +805,7 @@
                             <t t-set="photo1" t-value="maintenance_request.photo1"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo1" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo1" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo1}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -810,7 +817,7 @@
                             <t t-set="photo2" t-value="maintenance_request.photo2"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo2" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo2" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo2}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -822,7 +829,7 @@
                             <t t-set="photo3" t-value="maintenance_request.photo3"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo3" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo3" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo3}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -834,7 +841,7 @@
                             <t t-set="photo4" t-value="maintenance_request.photo4"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo4" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo4" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo4}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -846,7 +853,7 @@
                             <t t-set="photo5" t-value="maintenance_request.photo5"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo5" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo5" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo5}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -858,7 +865,7 @@
                             <t t-set="photo6" t-value="maintenance_request.photo6"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo6" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo6" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo6}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />

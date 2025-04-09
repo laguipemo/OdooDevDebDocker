@@ -615,16 +615,16 @@
                 <caption><b>Tabla 2.</b> <i>Caudales adecuados según diámetro del brazo (m<sup>3</sup>/h)</i></caption>
                 <thead>
                 <tr>
-                    <th class="col-7">
+                    <th class="col-5">
                     <b>Diámetro del brazo</b>
                     </th>
-                    <th class="col-5">
+                    <th class="col-7">
                     <b>Rango de caudal de aire aspirado</b>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr class="text-center">
                     <td>
                     50 mm
                     </td> 
@@ -632,7 +632,7 @@
                     Entre 45 y 110 m<sup>3</sup>/h
                     </td>
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <td>
                     75 mm
                     </td> 
@@ -640,7 +640,7 @@
                     Entre 80 y 240 m<sup>3</sup>/h
                     </td>
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <td>
                     100 mm
                     </td> 

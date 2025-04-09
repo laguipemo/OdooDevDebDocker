@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <!-- Template for the anexo B content for vg-->
+        <!-- Template for the anexo B content for vg -->
         <template id="lgpm_maintenance.request_maintenance_final_report_vg_anexo_b_content">
             <t t-set="maintenance_request" t-value="maintenance_request.with_context(lang=lang)" />
             <t t-call="web.external_layout">
@@ -496,7 +496,7 @@
                             <t t-set="photo1" t-value="maintenance_request.photo1"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo1" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo1" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo1}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -508,7 +508,7 @@
                             <t t-set="photo2" t-value="maintenance_request.photo2"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo2" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo2" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo2}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -520,7 +520,7 @@
                             <t t-set="photo3" t-value="maintenance_request.photo3"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo3" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo3" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo3}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -532,7 +532,7 @@
                             <t t-set="photo4" t-value="maintenance_request.photo4"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo4" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo4" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo4}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -544,7 +544,7 @@
                             <t t-set="photo5" t-value="maintenance_request.photo5"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo5" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo5" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo5}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
@@ -556,7 +556,7 @@
                             <t t-set="photo6" t-value="maintenance_request.photo6"/>
                         </t>
                         <t t-else="">
-                            <t t-set="photo6" t-value="maintenance_request.get_resource_of('LogoTC')[2]"/>
+                            <t t-set="photo6" t-value="maintenance_request.get_resource_of('LogoTC')[3]"/>
                         </t>
                         <div class="col-m-5 p2 border border-success">
                             <div t-attf-style="background-image: url(data:image/*;base64,{{photo6}}); background-size: cover; background-position: center center; background-repeat: none; height: 275px; width: 400px;" />
