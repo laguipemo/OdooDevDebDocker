@@ -17,7 +17,7 @@ class LgpmMaintenanceRequestMaintenanceFinalReport(models.AbstractModel):
         # raise an error if user select more than one type of equipment
         equipment_types = set(docs.mapped('equipment_id.equipment_type'))
         if len(equipment_types) > 1:
-            if equipment_types != {'PALB', 'PALP'} and equipment_types != {'VG', 'CA'}:
+            if equipment_types != {'VG', 'CA'}:
                 _logger.info(equipment_types)
                 raise UserError(_('Solo se puede seleccionar mantenimientos del mismo tipo de equipo'))
             

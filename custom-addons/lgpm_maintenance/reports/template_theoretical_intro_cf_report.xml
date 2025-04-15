@@ -666,7 +666,7 @@
             </p>
             <!-- Figure 1 Anemometer reading -->
             <figure class="figure col-12">
-                <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig1')" />
+                <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig1_intro_vg')" />
                 <center>
                 <img t-attf-src="data:image/*;base64,{{figura_info[3]}}"
                     t-alt="Figura 1: Lectura con anemómetro"
@@ -694,7 +694,7 @@
             <div class="d-flex flex-row justify-content-between col-12 p-2" >
                 <div class="col-8 p-2">
                 <figure class="figure w-100" >
-                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig2')" />
+                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig2_intro_vg')" />
                     <center>  
                     <img t-attf-src="data:image/*;base64,{{figura_info[3]}}"
                         t-alt="Figura 2: Distribución de puntos de lectrua frontal"
@@ -708,7 +708,7 @@
                 </div>
                 <div class="col-4 p-2">
                 <figure class="figure w-100">
-                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig3')" /> 
+                    <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig3_intro_vg')" /> 
                     <center>  
                     <img t-attf-src="data:image/*;base64,{{figura_info[3]}}"
                         t-alt="Figura 3: Detalle de trípode con anemómetro"
@@ -734,7 +734,7 @@
             </h6>
             <!-- Caudal measurement content -->
             <p style="text-align: justify;">
-                Una vez calculada la velocidad media en el plano de la guillotina se calcula el caudal aplicando la
+                Una vez calculada la velocidad media en el plano de la puerta se calcula el caudal aplicando la
                 fórmula que se indica a continuación: 
             </p>
             <!-- Caudal calculation expresion -->
@@ -748,7 +748,7 @@
                 Donde:<br/>
                 <span class="fw-bold ff-italic mx-4">Q = Caudal de aspiración</span><br/>
                 <span class="fw-bold ff-italic mx-4">V = Velocidad media en el plano máximo de entrada de la vitrina (m/s)</span><br/>
-                <span class="fw-bold ff-italic mx-4">S = Superficie del plano máximo den entrada de la vitrina (m<sup>2</sup>)</span><br/>
+                <span class="fw-bold ff-italic mx-4">S = Superficie del plano máximo den entrada de la cabina (m<sup>2</sup>)</span><br/>
             </p>
             <!-- Caudal calculation more info -->
             <p style="text-align: justify;">

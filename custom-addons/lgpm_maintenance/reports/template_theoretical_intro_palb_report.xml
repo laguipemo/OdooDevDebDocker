@@ -251,7 +251,6 @@
                             <div class="col-1 text-right"><span class="badge bg-success rounded-pill">6</span></div>
                         </div>
                         </li>
-                        <ul class="list-unstyled">
                         <li>
                         <div class="d-flex flex-row justify-content-between col-12 py-1">
                             <div class="col-11 ps-2"><span class="ms-2 ps-0">4.3. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE </span></div>
@@ -259,45 +258,44 @@
                         </div>
                         </li>
                     </ul>
-                </ul>
-                <li>
-                    <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">5. DETALLES DE LOS VALORES OBTENIDOS</span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
-                    </div>
-                </li>
-                <ul class="list-unstyled">
                     <li>
-                    <div class="d-flex flex-row justify-content-between col-12 py-1">
-                        <div class="col-11 ps-2"><span class="ms-2 ps-0">5.1. DETALLES DE LOS RESULTADOS </span></div>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                        <div class="col-11 ps-0"><span class="ms-0 ps-0">5. DETALLES DE LOS VALORES OBTENIDOS</span></div>
                         <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
-                    </div>
+                        </div>
+                    </li>
+                    <ul class="list-unstyled">
+                        <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">5.1. DETALLES DE LOS RESULTADOS </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
+                        </div>
+                        </li>
+                        <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                            <div class="col-11 ps-2"><span class="ms-2 ps-0">5.2. DICTAMEN FINAL </span></div>
+                            <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
+                        </div>
+                        </li>
+                    </ul>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                        <div class="col-11 ps-0"><span class="ms-0 ps-0">6. OBSERVACIONES </span></div>
+                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
+                        </div>
                     </li>
                     <li>
-                    <div class="d-flex flex-row justify-content-between col-12 py-1">
-                        <div class="col-11 ps-2"><span class="ms-2 ps-0">5.2. DICTAMEN FINAL </span></div>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                        <div class="col-11 ps-0"><span class="ms-0 ps-0">7. LISTADO DE NO CONFORMIDADES </span></div>
                         <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
-                    </div>
+                        </div>
                     </li>
-                </ul>
-                <li>
-                    <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">6. OBSERVACIONES </span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">7. LISTADO DE NO CONFORMIDADES </span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">7</span></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="d-flex flex-row justify-content-between col-12 py-1">
-                    <div class="col-11 ps-0"><span class="ms-0 ps-0">8. LISTADO DE ANEXOS </span></div>
-                    <div class="col-1 text-right"><span class="badge bg-success rounded-pill">8</span></div>
-                    </div>
-                </li>
+                    <li>
+                        <div class="d-flex flex-row justify-content-between col-12 py-1">
+                        <div class="col-11 ps-0"><span class="ms-0 ps-0">8. LISTADO DE ANEXOS </span></div>
+                        <div class="col-1 text-right"><span class="badge bg-success rounded-pill">8</span></div>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <p style="page-break-after: always;"></p>
@@ -471,7 +469,7 @@
             <!-- Test of air procedure content -->
             <p style="text-align: justify;">
                 Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 000X-Punto de aspiración localizada</i></b>,
-                basado en las siguientes normativas: <b>UNE-EN 16589-1</b>, <b>EN ISO 5167-1</b>.
+                basado en las siguientes normativas: <b>UNE-EN 16589-1</b>, <b>EN ISO 5167-1</b>.<br/>
             </p>
             <p style="text-align: justify;">
                 El punto de aspiración deberá estar funcionando en las condiciones teóricas de trabajo, realizando las mediciones a
@@ -549,11 +547,6 @@
                 las velocidades medidas en el plano de medición, recomendándose unos valores mínimos que se
                 indican en la <b>Tabla 1</b>.
             </p>
-
-            <p style="page-break-after: always;"></p>
-            
-            <br/> <!-- Initial space for begining of the new page -->
-
             
             <!-- Table 1 - Air inlet velocity -->
             <table class="table table-borderless caption-top">
@@ -595,6 +588,12 @@
                 </tr>
                 </tbody>
             </table>
+
+            <p style="page-break-after: always;"></p>
+            
+            <br/> <!-- Initial space for begining of the new page -->
+
+
             <!-- Acceptance criteria of velocity - title -->
             <h6 class="mt-4">
                 <span>
