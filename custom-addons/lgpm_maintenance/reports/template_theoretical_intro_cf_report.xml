@@ -654,16 +654,25 @@
             <!-- Test of air procedure content -->
             <p style="text-align: justify;">
                 Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0003-Vitrinas de gases</i></b> basado
-                en las siguientes normativas: <b>EN ISO 5167-1</b>, <b>EN 14175-3</b>, <b>AFNOR NF X 15-211</b>.<br/>
+                en las siguientes normativas: <b>EN ISO 5167-1</b>, <b>EN 14175-3</b>, <b>AFNOR NF X 15-211</b>.
+            </p>
+            <p style="text-align: justify;">
                 La vitrina deberá estar funcionando en las condiciones teóricas de trabajo, realizando las mediciones
                 a la altura operacional de trabajo de la vitrina con el interior de la misma vacío. El anemómetro
                 será omnidireccional capaz de medir velocidades de aire entre 0,1 m/s y 2,0 m/s. El tiempo de respuesta
                 del sensor no debe ser superior a 1 s. La precisión de una lectura individual debe ser superior al 15 % a
                 las velocidades de aire entre 0,2 m/s y 0,15 m/s. Se utilizará un anemómetro con certificado de
-                calibración en vigor. El factor de corrección es el propio de cada aparato de media.<br/>
+                calibración en vigor. El factor de corrección es el propio de cada aparato de media.
+            </p>
+            <p style="text-align: justify;">
                 La sonda del anemómetro se situará en los puntos determinados por la intersección de las siguientes líneas
                 en el plano interior de medida (ver <b>Figura 1</b>):
             </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
             <!-- Figure 1 Anemometer reading -->
             <figure class="figure col-12">
                 <t t-set="figura_info" t-value="maintenance_request.get_resource_of('fig1_intro_vg')" />
@@ -1004,10 +1013,6 @@
                 </tbody>
             </table>
 
-            <p style="page-break-after: always;"></p>
-
-            <br/> <!-- Initial space for begining of the new page -->
-
             <!-- Particles counting - acceptance criteria - title -->
             <h6 class="alert-heading text-left mt-3 py-0">
                 <span>
@@ -1018,6 +1023,10 @@
             <p style="text-align: justify;">
                 La clase de limpieza de aire es la esperada según la normativa <b>ISO 14644-1</b>.
             </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
 
             <!-- Air flow visual test - title -->
             <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">

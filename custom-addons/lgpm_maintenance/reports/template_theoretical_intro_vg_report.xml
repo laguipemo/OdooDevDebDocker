@@ -541,13 +541,17 @@
             <!-- Test of air procedure content -->
             <p style="text-align: justify;">
                 Según Procedimiento interno de <b>Atlas Romero S.L.U.</b> Código <b><i>PNT 0003-Vitrinas de gases</i></b> basado
-                en las siguientes normativas: <b>EN ISO 5167-1</b>, <b>EN 14175-3</b>, <b>AFNOR NF X 15-211</b>.<br/>
+                en las siguientes normativas: <b>EN ISO 5167-1</b>, <b>EN 14175-3</b>, <b>AFNOR NF X 15-211</b>.
+            </p>
+            <p style="text-align: justify;">
                 La vitrina deberá estar funcionando en las condiciones teóricas de trabajo, realizando las mediciones
                 a la altura operacional de trabajo de la vitrina con el interior de la misma vacío. El anemómetro
                 será omnidireccional capaz de medir velocidades de aire entre 0,1 m/s y 2,0 m/s. El tiempo de respuesta
                 del sensor no debe ser superior a 1 s. La precisión de una lectura individual debe ser superior al 15 % a
                 las velocidades de aire entre 0,2 m/s y 0,15 m/s. Se utilizará un anemómetro con certificado de
-                calibración en vigor. El factor de corrección es el propio de cada aparato de media.<br/>
+                calibración en vigor. El factor de corrección es el propio de cada aparato de media.
+            </p>
+            <p style="text-align: justify;">
                 La sonda del anemómetro se situará en los puntos determinados por la intersección de las siguientes líneas
                 en el plano interior de medida (ver <b>Figura 1</b>):
             </p>
@@ -564,6 +568,11 @@
                 <b><span t-out="figura_info[1]" /> :</b> <i><span t-out="figura_info[2]" /></i>
                 </figcaption>
             </figure>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
             <!-- Test with anemometer, more precedure info -->
             <p style="text-align: justify;">
                 Una serie de, al menos, tres líneas equidistantes situadas entre los límites horizontales del plano

@@ -589,11 +589,6 @@
                 </tbody>
             </table>
 
-            <p style="page-break-after: always;"></p>
-            
-            <br/> <!-- Initial space for begining of the new page -->
-
-
             <!-- Acceptance criteria of velocity - title -->
             <h6 class="mt-4">
                 <span>
@@ -605,6 +600,11 @@
                 Para lo punto de aspiración localizada tipo brazo: <b>INFORMATIVO</b>.
                 Se recomienda un valor superior a 0,4m/s.
             </p>
+
+            <p style="page-break-after: always;"></p>
+            
+            <br/> <!-- Initial space for begining of the new page -->
+
             <p style="text-align: justify;">
                 En cuanto al caudal de aire aspirado en el conducto del brazo, los rangos
                 adecuados según fabricantes son:
@@ -652,7 +652,7 @@
 
 
             <!-- Test of sound - title -->
-            <h5 name="test_sonido" class="alert-heading text-left mt-4 py-0">
+            <h5 name="test_sonido" class="alert-heading text-left mt-5 py-0">
                 <span>
                 <b>4.2. TEST DE SONIDO</b>
                 </span>
@@ -712,14 +712,10 @@
                 <b>INFORMATIVO</b>. Se recomienda un nivel de ruido &#x2264; 70 db(A).
             </p>
 
-            <p style="page-break-after: always;"></p>
-
-            <br/> <!-- Initial space for begining of the new page -->
-
             <!-- Test air flow (visual) - title -->
             <h5 name="test_visual_flujo_aire" class="alert-heading text-left mt-4 py-0">
                 <span>
-                <b>4.5. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE</b>
+                <b>4.3. TEST DE VISUALIZACIÓN DEL FLUJO DE AIRE</b>
                 </span>
             </h5>
             <!-- Test air flow (visual) - objective title -->
@@ -745,6 +741,11 @@
             <p style="text-align: justify;">
                 Trazador de corrientes de aire tipo Dräger o similar.
             </p>
+
+            <p style="page-break-after: always;"></p>
+
+            <br/> <!-- Initial space for begining of the new page -->
+
             <!-- Test air flow (visual) - procedure title -->
             <h6>
                 <span>
@@ -809,10 +810,6 @@
                 Si durante la cualificación se detecta alguna No Conformidad, se adjuntará al presente informe
                 como  <b>Anexo D</b>. En caso contrario no existirá dicho anexo.
             </p>
-
-            <p style="page-break-after: always;"></p>
-
-            <br/> <!-- Initial space for begining of the new page -->
 
             <!-- Anexos - index title -->
             <h5 name="anexos" class="alert-heading text-left mt-4 py-0">
